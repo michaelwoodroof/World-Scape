@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-files-path name = "world_path" path = "/data/worlds" />
+    <external-files-path name = "character_path" path = "/data/characters" />
+    <external-files-path name="image_path" path="/data/res/images" />
+</paths>
