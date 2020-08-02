@@ -1,14 +1,17 @@
 package com.michaelwoodroof.worldscape
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.michaelwoodroof.worldscape.ui.CharacterFragment
 import com.michaelwoodroof.worldscape.ui.WorldDetailFragment
 import kotlinx.android.synthetic.main.activity_world_detail.*
+import kotlinx.android.synthetic.main.default_toolbar.*
 
 class WorldDetailActivity : AppCompatActivity() {
 
@@ -22,22 +25,32 @@ class WorldDetailActivity : AppCompatActivity() {
             if (bundle.containsKey("uid")) {
                 // @TODO LOAD DATA FROM UID
 //                tvDesc.text = intent.getStringExtra("uid")
+            } else {
+                // @TODO
             }
 
             if (bundle.containsKey("title")) {
                 // @TODO
-                tvTitle.text = intent.getStringExtra("title")
+                val tv = incToolbarWD.findViewById<TextView>(tvTitle.id)
+                tv.text = intent.getStringExtra("title")
 
                 val worldDetailFragment = WorldDetailFragment()
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.add(R.id.flFragmentsWD, worldDetailFragment)
                 transaction.commit()
+            } else {
+                // @TODO
             }
         }
 
     }
 
-    fun openNavMenu(view : View) {
+    fun loadSettings(view : View) {
+        val i = Intent(this, SettingsActivity::class.java)
+        startActivity(i)
+    }
+
+    fun loadMenu(view : View) {
         dlMain.openDrawer(GravityCompat.START)
     }
 

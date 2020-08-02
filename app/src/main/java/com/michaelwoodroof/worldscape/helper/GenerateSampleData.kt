@@ -22,12 +22,24 @@ object GenerateSampleData {
     fun generateWorldData(limit : Int) : ArrayList<WorldContent.WorldItem> {
 
         val dataset = ArrayList<WorldContent.WorldItem>()
-        dataset.add(WorldContent.WorldItem("World One", "A very very long description for this world however, words can be long", generateUUID()))
-        dataset.add(WorldContent.WorldItem("World Two", "A short description", generateUUID()))
-        dataset.add(WorldContent.WorldItem("World Three", "A very very long description for this world however, words can be long", generateUUID()))
-        dataset.add(WorldContent.WorldItem("World Four", "A short description", generateUUID()))
-        dataset.add(WorldContent.WorldItem("World Five", "A very very long description for this world however, words can be long", generateUUID()))
-        dataset.add(WorldContent.WorldItem("World Six", "A short description", generateUUID()))
+
+        dataset.add(WorldContent.WorldItem("World One",
+            "A very very long description for this world however, words can be long", generateUUID(), "#8BC34A"))
+
+        dataset.add(WorldContent.WorldItem("World Two",
+            "A short description", generateUUID(), "#F44336"))
+
+        dataset.add(WorldContent.WorldItem("World Three",
+            "A very very long description for this world however, words can be long", generateUUID(), "#03A9F4"))
+
+        dataset.add(WorldContent.WorldItem("World Four",
+            "A short description", generateUUID(), "#9C27B0"))
+
+        dataset.add(WorldContent.WorldItem("World Five",
+            "A very very long description for this world however, words can be long", generateUUID(), "#FFEB3B"))
+
+        dataset.add(WorldContent.WorldItem("World Six",
+            "A short description", generateUUID(), "#009688"))
 
         return dataset
 

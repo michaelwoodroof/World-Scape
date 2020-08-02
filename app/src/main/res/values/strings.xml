@@ -15,6 +15,11 @@
     <string name="create_world_create">Create</string>
     <string name="create_world_button">Pick Image</string>
 
+    <!-- Content Descriptions -->
+    <string name="cd_settings">Settings Button</string>
+    <string name="cd_menu">Menu Button</string>
+    <string name="cd_back">Back Button</string>
+
     <!-- Hints -->
     <string name="world_name_hint">Enter a world name</string>
     <string name="desc_hint">Enter a description of world</string>

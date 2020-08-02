@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -44,11 +45,11 @@ class MainActivity : AppCompatActivity() {
         fabNewWorld.setImageDrawable(filtered)
 
         // Set Up Toolbar
-        val tv = incToolbar.findViewById<TextView>(tvTitle.id)
+        val tv = incToolbarM.findViewById<TextView>(tvTitle.id)
+        // Hide Menu as Not Needed
+        val btnMenu = incToolbarM.findViewById<ImageButton>(btnMenu.id)
+        btnMenu.visibility = View.GONE
         tv.text = getString(R.string.app_name)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            incToolbar.elevation = 4F
-        }
     }
 
     fun loadSettings(view : View) {

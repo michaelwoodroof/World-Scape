@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clContainer"
     android:layout_width="match_parent"
-    android:layout_height="182dp">
+    android:layout_height="172dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvMain"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="4dp"
         app:cardCornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,10 +25,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/tvAccent"
+                android:layout_width="0dp"
+                android:layout_height="5dp"
+                android:background="#FF9800"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/imgPreview"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="145dp"
+                android:layout_height="145dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="4dp"
                 android:text="@string/placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +60,7 @@
                 android:id="@+id/tvDesc"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="3dp"
                 android:inputType="textMultiLine"
                 android:lines="7"
                 android:maxLines="7"

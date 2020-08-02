@@ -2,3 +2,5 @@
 build/
 app/src/androidTest/
 app/src/test/
+build/intermediates/line-cache/maven.google/
+build/intermediates/line-cache/sdk-registry.xml/sdk-registry.xml
