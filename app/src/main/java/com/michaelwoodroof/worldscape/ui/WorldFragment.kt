@@ -24,7 +24,7 @@ class WorldFragment : Fragment() {
         rvWorlds.layoutManager = LinearLayoutManager(activity)
         val dataset = loadWorlds()
         // Ensures in Alphabetical Order @TODO Allow user to Filter and Search for Worlds
-        dataset.sortBy { it.title }
+        //dataset.sortBy { it.title }
         rvWorlds.adapter = WorldAdapter(dataset)
         rvWorlds.overScrollMode = View.OVER_SCROLL_NEVER
         return root

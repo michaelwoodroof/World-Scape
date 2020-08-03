@@ -4,8 +4,10 @@
     <color name="colorPrimaryDark">#b0003a</color>
     <color name="colorAccent">#ff6090</color>
 
+    <color name="stroke_colour">#AAAAAA</color>
+
     <color name="lightbg">#F4F4F4</color>
 
-    <color name="medGray">#616161</color>
+    <color name="medGray">#838383</color>
     <color name="medGreen">#8BC34A</color>
 </resources>

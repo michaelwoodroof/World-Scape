@@ -58,6 +58,8 @@ class WorldDetailActivity : AppCompatActivity() {
 
         when (item.title) {
 
+            // @TODO Replace Errors with to string.xml method
+
             // @TODO ADD MENU ITEMS
             "Characters" -> {
                 val characterFragment = CharacterFragment()

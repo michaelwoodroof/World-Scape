@@ -4,32 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clContainer"
     android:layout_width="match_parent"
-    android:layout_height="172dp">
+    android:layout_height="166dp">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvMain"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="4dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/stroke_colour"
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clCard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
             <TextView
                 android:id="@+id/tvAccent"
                 android:layout_width="0dp"
                 android:layout_height="5dp"
                 android:background="#FF9800"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -51,6 +57,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="4dp"
+                android:fontFamily="sans-serif-condensed"
                 android:text="@string/placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imgPreview"
@@ -61,6 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="3dp"
+                android:fontFamily="sans-serif-condensed"
                 android:inputType="textMultiLine"
                 android:lines="7"
                 android:maxLines="7"
@@ -72,6 +80,6 @@
                 app:layout_constraintStart_toStartOf="@+id/tvTitle"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

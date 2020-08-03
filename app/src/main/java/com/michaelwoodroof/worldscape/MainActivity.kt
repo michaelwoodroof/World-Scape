@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,21 +29,6 @@ class MainActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.flFragmentsM, worldFragment)
         transaction.commit()
-
-        val fabSrc : Drawable = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_add_24, null)!!
-        } else {
-            resources.getDrawable(android.R.drawable.ic_input_add)
-        }
-
-        val filtered = fabSrc.constantState!!.newDrawable()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            filtered.mutate().colorFilter = BlendModeColorFilter(Color.WHITE, BlendMode.SRC_ATOP)
-        } else {
-            filtered.mutate().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP)
-        }
-
-        fabNewWorld.setImageDrawable(filtered)
 
         // Set Up Toolbar
         val tv = incToolbarM.findViewById<TextView>(tvTitle.id)

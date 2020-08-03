@@ -20,17 +20,25 @@
 
     </FrameLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabNewWorld"
+    <Button
+        android:id="@+id/btnNewWorld"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:fontFamily="sans-serif-condensed"
         android:onClick="loadCreateWorld"
-        app:backgroundTint="#8BC34A"
+        android:text="Add World"
+        android:textColor="@color/colorPrimary"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="100dp"
+        app:elevation="8dp"
+        app:icon="@drawable/ic_baseline_add_24"
+        app:iconTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <include
         android:id="@+id/incToolbarM"
