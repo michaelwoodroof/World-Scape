@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/clToolbar"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clMainFWD"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tvRecentCharacters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/recent_characters"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <TextView
+        android:id="@+id/tvRecentTimeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/recent_timeline"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/tvRecentCharacters"
+        app:layout_constraintTop_toTopOf="@+id/gl66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <TextView
+        android:id="@+id/tvRecentStories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/recent_stories"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/tvRecentTimeline"
+        app:layout_constraintTop_toTopOf="@+id/gl33" />
 </androidx.constraintlayout.widget.ConstraintLayout>

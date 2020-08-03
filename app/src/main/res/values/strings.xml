@@ -10,12 +10,20 @@
     <string name="characters">Characters</string>
     <string name="settings">Settings</string>
 
-    <!-- Main Strings -->
+    <!-- Main Menu Strings -->
 
     <!-- Create World Strings -->
-    <string name="create_world_title">Create World</string>
-    <string name="create_world_create">Create</string>
+    <string name="create_world_title">Create a World</string>
+    <string name="create_world_create">Create World</string>
     <string name="create_world_button">Pick Image</string>
+    <string name="name_of_world">Name of World</string>
+    <string name="desc_of_world">Description of World</string>
+    <string name="choose_an_image">Choose an Image</string>
+
+    <!-- World Detail Strings -->
+    <string name="recent_characters">Recent Characters</string>
+    <string name="recent_timeline">Recent Timeline</string>
+    <string name="recent_stories">Recent Stories</string>
 
     <!-- Content Descriptions -->
     <string name="cd_settings">Settings Button</string>

@@ -14,10 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.content.WorldContent
-import kotlinx.android.synthetic.main.default_toolbar.view.*
 import kotlinx.android.synthetic.main.world_layout.view.*
 import kotlinx.android.synthetic.main.world_layout.view.tvTitle
-import org.w3c.dom.Text
 
 class WorldAdapter (private val givenValues: List<WorldContent.WorldItem>)
     : RecyclerView.Adapter<WorldAdapter.ViewHolder>() {

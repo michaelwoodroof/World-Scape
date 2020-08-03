@@ -64,7 +64,7 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:background="@null"
         android:contentDescription="@string/cd_back"
         android:onClick="goBack"
@@ -74,6 +74,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+        app:srcCompat="@drawable/ic_baseline_chevron_left_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,20 +42,20 @@
 
             <ImageView
                 android:id="@+id/imgPreview"
-                android:layout_width="145dp"
-                android:layout_height="145dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:padding="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/ic_baseline_help_24" />
+                app:srcCompat="@drawable/ic_baseline_help_24" />
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/placeholder"
@@ -67,7 +67,8 @@
                 android:id="@+id/tvDesc"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif-condensed"
                 android:inputType="textMultiLine"
                 android:lines="7"
