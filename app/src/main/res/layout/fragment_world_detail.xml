@@ -16,29 +16,78 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/btnShowAllCharacters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:contentDescription="@string/cd_show_c"
+        android:onClick="loadAllCharacters"
+        android:padding="4dp"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/tvRecentCharacters"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvRecentCharacters"
+        app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecentCharacters"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/gl33"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecentCharacters" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <TextView
-        android:id="@+id/tvRecentTimeline"
+        android:id="@+id/tvRecentPlaces"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/recent_timeline"
+        android:text="@string/recent_places"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="@+id/tvRecentCharacters"
-        app:layout_constraintTop_toTopOf="@+id/gl66" />
+        app:layout_constraintTop_toTopOf="@+id/gl33" />
+
+    <ImageButton
+        android:id="@+id/btnShowAllPlaces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:contentDescription="@string/cd_show_p"
+        android:padding="4dp"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/tvRecentPlaces"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvRecentPlaces"
+        app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecentPlaces"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/gl66"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecentPlaces" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl66"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33" />
+        app:layout_constraintGuide_percent="0.66" />
 
     <TextView
         android:id="@+id/tvRecentStories"
@@ -47,6 +96,31 @@
         android:layout_marginTop="16dp"
         android:text="@string/recent_stories"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="@+id/tvRecentTimeline"
-        app:layout_constraintTop_toTopOf="@+id/gl33" />
+        app:layout_constraintStart_toStartOf="@+id/tvRecentPlaces"
+        app:layout_constraintTop_toTopOf="@+id/gl66" />
+
+    <ImageButton
+        android:id="@+id/btnShowAllStories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:contentDescription="@string/cd_show_s"
+        android:padding="4dp"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/tvRecentStories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvRecentStories"
+        app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecentStories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecentStories" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

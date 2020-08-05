@@ -9,6 +9,28 @@
         android:id="@+id/rvCharacters"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/lightbg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnNewCharacter"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:fontFamily="sans-serif-condensed"
+        android:onClick="loadCreateCharacter"
+        android:text="@string/add_character"
+        android:textColor="@color/colorPrimary"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="100dp"
+        app:elevation="8dp"
+        app:icon="@drawable/ic_baseline_add_24"
+        app:iconTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

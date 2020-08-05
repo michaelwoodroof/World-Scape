@@ -54,6 +54,18 @@ class WorldDetailActivity : AppCompatActivity() {
         dlMain.openDrawer(GravityCompat.START)
     }
 
+    fun loadCreateCharacter(view : View) {
+        Toast.makeText(this, "TO BE IMPLEMENTED", Toast.LENGTH_SHORT).show()
+    }
+
+    fun loadAllCharacters(view : View) {
+        val characterFragment = CharacterFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.flFragmentsWD, characterFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
     fun openSubMenu(item : MenuItem) {
 
         when (item.title) {

@@ -14,6 +14,10 @@ object GenerateSampleData {
         val dataset = ArrayList<CharacterContent.CharacterItem>()
         dataset.add(CharacterContent.CharacterItem("Sir Nibbles", "22", generateUUID()))
         dataset.add(CharacterContent.CharacterItem("Knight Nibbles", "23", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("Sir Nibbles", "22", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("Knight Nibbles", "23", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("Sir Nibbles", "22", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("Knight Nibbles", "23", generateUUID()))
 
         return dataset
 

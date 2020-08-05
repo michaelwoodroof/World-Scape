@@ -31,6 +31,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:boxBackgroundColor="#FFFFFF"
+        app:counterEnabled="true"
+        app:counterMaxLength="100"
+        app:counterTextAppearance="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvWorldName"
         app:layout_constraintTop_toBottomOf="@+id/tvWorldName">
@@ -64,7 +67,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:gravity="top"
         app:boxBackgroundColor="#FFFFFF"
+        app:counterEnabled="true"
+        app:counterMaxLength="500"
+        app:counterTextAppearance="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvWorldName"
         app:layout_constraintTop_toBottomOf="@+id/tvDesc">
@@ -73,29 +80,14 @@
             android:id="@+id/tietDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:maxLines="5"
+            android:minLines="5"
             android:textSize="12sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif-condensed"
-        android:onClick="addWorld"
-        android:paddingRight="40dp"
-        android:text="@string/create_world_create"
-        android:textColor="@color/colorPrimary"
-        app:backgroundTint="#FFFFFF"
-        app:cornerRadius="100dp"
-        app:elevation="8dp"
-        app:icon="@drawable/ic_baseline_add_24"
-        app:iconPadding="0dp"
-        app:iconTint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tilDesc"
-        app:layout_constraintStart_toStartOf="@+id/tilDesc" />
 
     <TextView
         android:id="@+id/tvImageSelect"
@@ -109,6 +101,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tilDesc" />
 
     <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:onClick="addWorld"
+        android:paddingStart="16dp"
+        android:paddingLeft="0dp"
+        android:paddingEnd="40dp"
+        android:paddingRight="0dp"
+        android:text="@string/create_world_create"
+        android:textColor="@color/colorPrimary"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="100dp"
+        app:elevation="8dp"
+        app:icon="@drawable/ic_baseline_add_24"
+        app:iconPadding="0dp"
+        app:iconTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tilDesc"
+        app:layout_constraintStart_toStartOf="@+id/tilDesc" />
+
+    <Button
         android:id="@+id/btnPickImage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -116,7 +131,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif-condensed"
-        android:paddingRight="40dp"
+        android:paddingStart="16dp"
+        android:paddingLeft="0dp"
+        android:paddingEnd="40dp"
+        android:paddingRight="0dp"
         android:text="@string/create_world_button"
         android:textSize="12sp"
         app:backgroundTint="@color/colorPrimary"
@@ -152,6 +170,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:adjustViewBounds="false"
+                android:contentDescription="@string/cd_preview"
                 android:cropToPadding="false"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"

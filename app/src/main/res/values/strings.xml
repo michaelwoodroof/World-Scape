@@ -4,13 +4,20 @@
 
     <!-- Placeholders -->
     <string name="world_detail_placeholder">[World Name]</string>
+    <string name="placeholder_title">Lorem Ipsum</string>
+    <string name="placeholder_desc">It is a long established fact that a reader
+        will be distracted by the readable content of a page when looking at its
+        layout. The point of using Lorem Ipsum is</string>
 
     <!-- Menu Items -->
     <string name="placeholder">Placeholder</string>
     <string name="characters">Characters</string>
     <string name="settings">Settings</string>
+    <string name="places">Places</string>
+    <string name="stories">Stories</string>
 
     <!-- Main Menu Strings -->
+    <string name="add_world">Add World</string>
 
     <!-- Create World Strings -->
     <string name="create_world_title">Create a World</string>
@@ -22,13 +29,22 @@
 
     <!-- World Detail Strings -->
     <string name="recent_characters">Recent Characters</string>
-    <string name="recent_timeline">Recent Timeline</string>
+    <string name="recent_places">Recent Places</string>
     <string name="recent_stories">Recent Stories</string>
+
+    <!-- Character Layout Strings -->
+    <string name="add_character">Add Character</string>
 
     <!-- Content Descriptions -->
     <string name="cd_settings">Settings Button</string>
     <string name="cd_menu">Menu Button</string>
     <string name="cd_back">Back Button</string>
+    <string name="cd_preview">Preview of Chosen Image</string>
+    <string name="cd_show_c">Show all Characters</string>
+    <string name="cd_show_p">Show all Places</string>
+    <string name="cd_show_s">Show all Stories</string>
+    <string name="cd_character_preview">Character Image</string>
+    <string name="cd_world_preview">Image of chosen World</string>
 
     <!-- Hints -->
     <string name="world_name_hint">Enter a world name</string>

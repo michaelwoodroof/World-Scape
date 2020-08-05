@@ -10,13 +10,13 @@
         <item
             android:id="@+id/nav_p2"
             android:icon="@drawable/ic_baseline_help_24"
-            android:title="@string/placeholder"
+            android:title="@string/places"
             android:onClick="openSubMenu" />
 
         <item
             android:id="@+id/nav_p3"
             android:icon="@drawable/ic_baseline_help_24"
-            android:title="@string/placeholder"
+            android:title="@string/stories"
             android:onClick="openSubMenu" />
 
     </group>

@@ -30,7 +30,7 @@
         android:background="#FFFFFF"
         android:fontFamily="sans-serif-condensed"
         android:onClick="loadCreateWorld"
-        android:text="Add World"
+        android:text="@string/add_world"
         android:textColor="@color/colorPrimary"
         app:backgroundTint="#FFFFFF"
         app:cornerRadius="100dp"

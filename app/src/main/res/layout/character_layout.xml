@@ -4,31 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clContainer"
     android:layout_width="match_parent"
-    android:layout_height="90dp">
+    android:layout_height="98dp">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvMain"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="90dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="4dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/stroke_colour"
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clCard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imgPreview"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:contentDescription="@string/cd_character_preview"
+                android:padding="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +47,9 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 android:ellipsize="end"
-                android:text="Lorem Ipsum"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/placeholder_title"
+                android:textColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imgPreview"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,16 +62,17 @@
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="4dp"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-condensed"
                 android:lines="2"
                 android:maxLines="2"
                 android:minLines="2"
-                android:text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is"
+                android:text="@string/placeholder_desc"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tvCharacterName"
                 app:layout_constraintStart_toEndOf="@+id/imgPreview"
                 app:layout_constraintTop_toBottomOf="@+id/tvCharacterName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
