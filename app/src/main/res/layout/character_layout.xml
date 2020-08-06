@@ -26,7 +26,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clCard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/content_background">
 
             <ImageView
                 android:id="@+id/imgPreview"

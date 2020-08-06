@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*
@@ -14,12 +15,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Set Dark Mode @TODO Change to Auto / Settings
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
         setContentView(R.layout.activity_main)
 
         // Add Fragment to Frame Layout
         val worldFragment = WorldFragment()
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.flFragmentsM, worldFragment)
+        transaction.replace(R.id.flFragmentsM, worldFragment)
         transaction.commit()
 
         // Set Up Toolbar

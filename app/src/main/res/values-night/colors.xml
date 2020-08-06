@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f8bbd0</color>
+    <color name="colorPrimaryDark">#c48b9f</color>
+    <color name="colorAccent">#ffeeff</color>
+    <color name="baseTextColor">#ffffff</color>
+
+    <color name="stroke_colour">#AAAAAA</color>
+    <color name="content_background">#494949</color>
+
+    <color name="background">#333333</color>
+    <color name="add_button_bg">@color/colorPrimary</color>
+    <color name="add_button_text_color">#FFFFFF</color>
+
+    <color name="medGray">#838383</color>
+    <color name="medGreen">#8BC34A</color>
+</resources>

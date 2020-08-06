@@ -5,7 +5,7 @@
     android:id="@+id/clMainCW"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightbg"
+    android:background="@color/background"
     tools:context=".CreateWorldActivity">
 
     <TextView
@@ -112,13 +112,13 @@
         android:paddingEnd="40dp"
         android:paddingRight="0dp"
         android:text="@string/create_world_create"
-        android:textColor="@color/colorPrimary"
-        app:backgroundTint="#FFFFFF"
+        android:textColor="@color/add_button_text_color"
+        app:backgroundTint="@color/add_button_bg"
         app:cornerRadius="100dp"
         app:elevation="8dp"
         app:icon="@drawable/ic_baseline_add_24"
         app:iconPadding="0dp"
-        app:iconTint="@color/colorPrimary"
+        app:iconTint="@color/add_button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tilDesc"
         app:layout_constraintStart_toStartOf="@+id/tilDesc" />
