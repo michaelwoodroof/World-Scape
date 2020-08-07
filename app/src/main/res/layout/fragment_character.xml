@@ -24,12 +24,12 @@
         android:fontFamily="sans-serif-condensed"
         android:onClick="loadCreateCharacter"
         android:text="@string/add_character"
-        android:textColor="@color/colorPrimary"
-        app:backgroundTint="#FFFFFF"
+        android:textColor="@color/add_button_text_color"
+        app:backgroundTint="@color/add_button_bg"
         app:cornerRadius="100dp"
         app:elevation="8dp"
         app:icon="@drawable/ic_baseline_add_24"
-        app:iconTint="@color/colorPrimary"
+        app:iconTint="@color/add_button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

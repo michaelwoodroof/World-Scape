@@ -1,77 +1,29 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/psMain">
 
-    <PreferenceCategory app:title="@string/messages_header"
-        app:iconSpaceReserved="false">
-
-        <EditTextPreference
-            app:iconSpaceReserved="false"
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
+    <PreferenceCategory
+        android:id="@+id/pcTheme"
+        app:iconSpaceReserved="false"
+        app:title="@string/theme_header">
 
         <ListPreference
+            android:id="@+id/prlTheme"
+            app:entries="@array/theme_choices"
+            app:entryValues="@array/theme_values"
             app:iconSpaceReserved="false"
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+            app:key="theme"
+            app:title="@string/theme_header"
             app:useSimpleSummaryProvider="true" />
-
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header"
-        app:iconSpaceReserved="false">
-
-        <SwitchPreferenceCompat
+    <PreferenceCategory android:id="@+id/pcVersion">
+        <Preference
+            android:id="@+id/prVersion"
             app:iconSpaceReserved="false"
-            app:key="sync"
-            app:title="@string/sync_title" />
-
-        <SwitchPreferenceCompat
-            app:iconSpaceReserved="false"
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
-
-    </PreferenceCategory>
-    <PreferenceCategory app:title="@string/messages_header"
-        app:iconSpaceReserved="false">
-
-        <EditTextPreference
-            app:iconSpaceReserved="false"
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
-
-        <ListPreference
-            app:iconSpaceReserved="false"
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
-
-    </PreferenceCategory>
-    <PreferenceCategory app:title="@string/sync_header"
-        app:iconSpaceReserved="false">
-
-        <SwitchPreferenceCompat
-            app:iconSpaceReserved="false"
-            app:key="sync"
-            app:title="@string/sync_title" />
-
-        <SwitchPreferenceCompat
-            app:iconSpaceReserved="false"
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
-
+            app:key="version"
+            app:summary="@string/version"
+            app:title="@string/version_header" />
     </PreferenceCategory>
 
 </PreferenceScreen>

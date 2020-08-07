@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clContainer"
     android:layout_width="match_parent"
-    android:layout_height="98dp">
+    android:layout_height="99dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvMain"
@@ -13,6 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="1dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="4dp"
         app:cardElevation="0dp"
