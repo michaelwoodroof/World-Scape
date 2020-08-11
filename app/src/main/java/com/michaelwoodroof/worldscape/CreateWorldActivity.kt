@@ -69,16 +69,30 @@ class CreateWorldActivity : AppCompatActivity() {
         // Move Button when Clicked
 
         val root = clMainCW
+        val v = btnPickImage.id
+        val t = cvPreview.id
         val c1 = ConstraintSet()
         c1.clone(root)
 
-        // @TODO Replace with Constraint Sets as Cleaner 
+        // @TODO Replace with Constraint Sets as Cleaner
 
         val c2 = ConstraintSet()
-        c2.clone(this, R.layout.activity_create_world_alt)
+        c2.clone(this, R.layout.activity_create_world)
+        c2.connect(
+            v,
+            ConstraintSet.TOP,
+            t,
+            ConstraintSet.BOTTOM
+        )
+        c2.connect(
+            v,
+            ConstraintSet.BOTTOM,
+            t,
+            ConstraintSet.BOTTOM
+        )
 
         val c3 = ConstraintSet()
-        c3.clone(this, R.layout.activity_create_world_alt_2)
+        c3.clone(this, R.layout.activity_create_world_alt)
 
         findViewById<Button>(R.id.btnPickImage).setOnClickListener {
             // Change from Point one to Point Two
