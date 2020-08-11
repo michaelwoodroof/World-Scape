@@ -67,43 +67,21 @@ class CreateWorldActivity : AppCompatActivity() {
 
     private fun addAnimation() {
         // Move Button when Clicked
-
         val root = clMainCW
-        val v = btnPickImage.id
-        val t = cvPreview.id
-        val c1 = ConstraintSet()
-        c1.clone(root)
 
-        // @TODO Replace with Constraint Sets as Cleaner
-
-        val c2 = ConstraintSet()
-        c2.clone(this, R.layout.activity_create_world)
-        c2.connect(
-            v,
-            ConstraintSet.TOP,
-            t,
-            ConstraintSet.BOTTOM
-        )
-        c2.connect(
-            v,
-            ConstraintSet.BOTTOM,
-            t,
-            ConstraintSet.BOTTOM
-        )
-
-        val c3 = ConstraintSet()
-        c3.clone(this, R.layout.activity_create_world_alt)
+        val c = ConstraintSet()
+        c.clone(this, R.layout.activity_create_world_alt)
 
         findViewById<Button>(R.id.btnPickImage).setOnClickListener {
             // Change from Point one to Point Two
 
             if (btnPickImage.tag != "run") {
                 val dur = ChangeBounds()
-                dur.duration = 250
+                dur.duration = 300
 
                 val r1 = Runnable {
                     TransitionManager.beginDelayedTransition(root, dur)
-                    c3.applyTo(root)
+                    c.applyTo(root)
                     btnPickImage.text = ""
                 }
 
@@ -117,10 +95,11 @@ class CreateWorldActivity : AppCompatActivity() {
                     cvPreview.visibility = View.VISIBLE
                 }
 
-                r1.run {
-                    //r1.run()
+                val r = Runnable {}
+
+                r.run {
                     r1.run()
-                    Handler().postDelayed(r2, 300)
+                    Handler().postDelayed(r2, dur.duration)
                 }
 
 
