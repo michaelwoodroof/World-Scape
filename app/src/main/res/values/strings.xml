@@ -26,6 +26,7 @@
     <string name="name_of_world">Name of World</string>
     <string name="desc_of_world">Description of World</string>
     <string name="choose_an_image">Choose an Image</string>
+    <string name="genre_of_world">Genre of World</string>
 
     <!-- World Detail Strings -->
     <string name="recent_characters">Recent Characters</string>

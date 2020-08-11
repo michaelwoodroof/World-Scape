@@ -4,5 +4,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/baseTextColor</item>
+        <item name="android:textViewStyle">@style/CondensedFont</item>
     </style>
+
+    <style name="CondensedFont" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
 </resources>

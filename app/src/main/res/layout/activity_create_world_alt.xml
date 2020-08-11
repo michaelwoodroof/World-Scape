@@ -140,7 +140,7 @@
         android:id="@+id/cvPreview"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:cardCornerRadius="8dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -185,16 +185,15 @@
         app:iconGravity="start"
         app:iconPadding="0dp"
         app:iconTint="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spOne" />
+        app:layout_constraintBottom_toBottomOf="@+id/cvPreview"
+        app:layout_constraintEnd_toEndOf="@+id/cvPreview"
+        app:layout_constraintStart_toStartOf="@+id/cvPreview"
+        app:layout_constraintTop_toBottomOf="@+id/cvPreview" />
 
     <Button
         android:id="@+id/btnCreate"
         android:layout_width="0dp"
         android:layout_height="64dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-condensed"
         android:onClick="addWorld"
@@ -211,8 +210,8 @@
         app:iconPadding="0dp"
         app:iconTint="@color/add_button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/tilDesc"
+        app:layout_constraintStart_toStartOf="@+id/tilDesc" />
 
     <Space
         android:id="@+id/spOne"
