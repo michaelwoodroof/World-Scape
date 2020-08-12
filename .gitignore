@@ -1,5 +1,10 @@
 .idea
+.idea\
+.idea/
+/.idea/
+/.gradle/
 .gradle
+.gradle\
 /build/
 app/src/androidTest/
 app/src/test/
