@@ -1,5 +1,8 @@
 package com.michaelwoodroof.worldscape
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,6 +24,12 @@ import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 
 class CreateWorldActivity : AppCompatActivity() {
+
+    companion object {
+        // Intent Codes
+        private const val MEDIA_PICK_CODE = 100
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_world)
@@ -69,7 +78,33 @@ class CreateWorldActivity : AppCompatActivity() {
     private fun addAnimation() {
         findViewById<Button>(R.id.btnPickImage).setOnClickListener {
             // Only Animate if Condition is Met
-            animatePickImage()
+
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = ("image/*")
+
+            // Mime Types
+            val acceptedTypes = ArrayList<String>()
+            acceptedTypes.add("image/png")
+            acceptedTypes.add("image/jpg")
+            acceptedTypes.add("image/jpeg")
+
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, acceptedTypes)
+            startActivityForResult(intent, MEDIA_PICK_CODE)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == MEDIA_PICK_CODE) {
+                val selectedImage = data?.data
+                if (selectedImage != null) {
+                    imgPreview.setImageURI(selectedImage)
+                    imgPreview.tag = "GAL"
+                    animatePickImage()
+                }
+            }
         }
     }
 
@@ -102,8 +137,8 @@ class CreateWorldActivity : AppCompatActivity() {
             val r = Runnable {}
 
             r.run {
-                r1.run()
-                Handler().postDelayed(r2, dur.duration)
+                Handler().postDelayed(r1, 100)
+                Handler().postDelayed(r2, dur.duration + 200)
             }
 
         }

@@ -16,8 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // @TODO Review how Dark Mode is Called
+        
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
         when (sharedPreferences.getString("theme", "")) {
