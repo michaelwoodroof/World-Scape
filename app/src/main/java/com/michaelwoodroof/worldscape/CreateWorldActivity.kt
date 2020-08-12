@@ -7,6 +7,7 @@ import android.os.Handler
 import android.transition.AutoTransition
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -66,49 +67,46 @@ class CreateWorldActivity : AppCompatActivity() {
     }
 
     private fun addAnimation() {
-        // Move Button when Clicked
+        findViewById<Button>(R.id.btnPickImage).setOnClickListener {
+            // Only Animate if Condition is Met
+            animatePickImage()
+        }
+    }
+
+    private fun animatePickImage() {
         val root = clMainCW
 
         val c = ConstraintSet()
         c.clone(this, R.layout.activity_create_world_alt)
 
-        findViewById<Button>(R.id.btnPickImage).setOnClickListener {
-            // Change from Point one to Point Two
+        if (btnPickImage.tag != "run") {
+            val dur = ChangeBounds()
+            dur.duration = 300
 
-            if (btnPickImage.tag != "run") {
-                val dur = ChangeBounds()
-                dur.duration = 300
-
-                val r1 = Runnable {
-                    TransitionManager.beginDelayedTransition(root, dur)
-                    c.applyTo(root)
-                    btnPickImage.text = ""
-                }
-
-                val r2 = Runnable {
-                    // Convert to Circle
-                    btnPickImage.setPadding(36, 4, 12, 4)
-                    btnPickImage.text = ""
-                    btnPickImage.background = ContextCompat.getDrawable(this, R.drawable.circle)
-                    btnPickImage.tag = "run"
-                    // Make Image Visible
-                    cvPreview.visibility = View.VISIBLE
-                }
-
-                val r = Runnable {}
-
-                r.run {
-                    r1.run()
-                    Handler().postDelayed(r2, dur.duration)
-                }
-
-
+            val r1 = Runnable {
+                TransitionManager.beginDelayedTransition(root, dur)
+                c.applyTo(root)
+                btnPickImage.text = ""
             }
 
+            val r2 = Runnable {
+                // Convert to Circle
+                btnPickImage.setPadding(36, 4, 12, 4)
+                btnPickImage.text = ""
+                btnPickImage.background = ContextCompat.getDrawable(this, R.drawable.circle)
+                btnPickImage.tag = "run"
+                // Make Image Visible
+                cvPreview.visibility = View.VISIBLE
+            }
+
+            val r = Runnable {}
+
+            r.run {
+                r1.run()
+                Handler().postDelayed(r2, dur.duration)
+            }
 
         }
-
-
     }
 
 }
