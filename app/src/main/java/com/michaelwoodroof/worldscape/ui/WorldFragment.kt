@@ -18,6 +18,8 @@ import kotlin.collections.ArrayList
 
 class WorldFragment : Fragment() {
 
+    lateinit var rv : RecyclerView
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_world, container, false)
@@ -28,7 +30,15 @@ class WorldFragment : Fragment() {
         //dataset.sortBy { it.title }
         rvWorlds.adapter = WorldAdapter(dataset)
         rvWorlds.overScrollMode = View.OVER_SCROLL_NEVER
+        rv = rvWorlds
         return root
+    }
+
+    // @TODO Review is proper
+    override fun onStart() {
+        val dataset = loadWorlds()
+        rv.adapter = WorldAdapter(dataset)
+        super.onStart()
     }
 
     private fun loadWorlds() : ArrayList<WorldContent.WorldItem> {

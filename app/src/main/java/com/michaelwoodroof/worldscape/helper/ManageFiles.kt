@@ -64,7 +64,6 @@ class ManageFiles(private val gc : Context) {
             val ois = ObjectInputStream(fis)
             val wi = ois.readObject() as WorldContent.WorldItem
             wl.add(wi)
-            Log.d("testData", wi.title)
         }
 
         return wl
