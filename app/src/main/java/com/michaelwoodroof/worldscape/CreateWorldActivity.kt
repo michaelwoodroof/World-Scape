@@ -12,10 +12,7 @@ import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
@@ -58,15 +55,21 @@ class CreateWorldActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
+
+    // @TODO Inject Data when Create World is done
+    
     fun addWorld(view : View) {
         // Load Intent
         // @TODO Add Data to File
         val title = tietWorld.text.toString()
         val desc = tietDesc.text.toString()
+        // @TODO Replace
+        // @TODO Add Colour Method
         val img = null
-        // @TODO Add image saving val img
-        if (ManageFiles.saveWorld(title, desc, img)) {
-            // @TODO Report
+        val mf = ManageFiles(this)
+        val ed = ddGenre.text
+        if (mf.saveWorld(title, desc, ed.toString(), img, "#ffffff")) {
+            Toast.makeText(this, "File Made", Toast.LENGTH_SHORT).show()
 
         } else {
             // @TODO Report

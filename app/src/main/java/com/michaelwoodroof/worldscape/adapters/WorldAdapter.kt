@@ -31,7 +31,7 @@ class WorldAdapter (private val givenValues: List<WorldContent.WorldItem>)
         holder.mTitle.text = item.title
         holder.mDesc.text = item.desc
 
-        holder.mAccent.setBackgroundColor(Color.parseColor(item.colour))
+        holder.mAccent.setBackgroundColor(Color.parseColor(item.color))
 
         with(holder.mTitle) {
             setOnClickListener {

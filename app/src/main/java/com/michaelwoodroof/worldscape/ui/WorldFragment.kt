@@ -1,6 +1,8 @@
 package com.michaelwoodroof.worldscape.ui
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +13,8 @@ import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.adapters.WorldAdapter
 import com.michaelwoodroof.worldscape.helper.GenerateSampleData
+import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlin.collections.ArrayList
-
-// @TODO Combine with Main Activity if Needed
 
 class WorldFragment : Fragment() {
 
@@ -30,9 +31,9 @@ class WorldFragment : Fragment() {
         return root
     }
 
-    // @TODO Update with Real Method
-    fun loadWorlds() : ArrayList<WorldContent.WorldItem> {
-        return GenerateSampleData.generateWorldData(0)
+    private fun loadWorlds() : ArrayList<WorldContent.WorldItem> {
+        val mf = activity?.baseContext?.let { ManageFiles(it) }
+        return mf?.getWorlds() ?: ArrayList()
     }
 
 
