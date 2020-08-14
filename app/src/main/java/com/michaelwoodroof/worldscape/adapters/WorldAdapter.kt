@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.content.WorldContent
+import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.world_layout.view.*
 import kotlinx.android.synthetic.main.world_layout.view.tvTitle
 
@@ -30,6 +31,11 @@ class WorldAdapter (private val givenValues: List<WorldContent.WorldItem>)
         val item = givenValues[position]
         holder.mTitle.text = item.title
         holder.mDesc.text = item.desc
+
+        if (item.hasImg) {
+            val mf = ManageFiles(holder.mImg.context)
+            holder.mImg.setImageBitmap(mf.getWorldImage(item.uid))
+        }
 
         holder.mAccent.setBackgroundColor(Color.parseColor(item.color))
 

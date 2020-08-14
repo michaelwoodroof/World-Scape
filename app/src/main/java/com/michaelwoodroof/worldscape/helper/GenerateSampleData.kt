@@ -29,27 +29,27 @@ object GenerateSampleData {
 
         dataset.add(WorldContent.WorldItem("World One",
             "A very very long description for this world however, words can be long", "",
-            "", "#8BC34A" , generateUUID()))
+            false, "#8BC34A" , generateUUID()))
 
         dataset.add(WorldContent.WorldItem("World Two",
             "A very very long description for this world however, words can be long", "",
-            "", "#8BC34A" , generateUUID()))
+            false, "#8BC34A" , generateUUID()))
 
         dataset.add(WorldContent.WorldItem("World Three",
             "A very very long description for this world however, words can be long", "",
-            "", "#8BC34A" , generateUUID()))
+            false, "#8BC34A" , generateUUID()))
 
         dataset.add(WorldContent.WorldItem("World Four",
             "A very very long description for this world however, words can be long", "",
-            "", "#8BC34A" , generateUUID()))
+            false, "#8BC34A" , generateUUID()))
 
         dataset.add(WorldContent.WorldItem("World Five",
             "A very very long description for this world however, words can be long", "",
-            "", "#8BC34A" , generateUUID()))
+            false, "#8BC34A" , generateUUID()))
 
         dataset.add(WorldContent.WorldItem("World Six",
             "A very very long description for this world however, words can be long", "",
-            "", "#8BC34A" , generateUUID()))
+            false, "#8BC34A" , generateUUID()))
 
         return dataset
 

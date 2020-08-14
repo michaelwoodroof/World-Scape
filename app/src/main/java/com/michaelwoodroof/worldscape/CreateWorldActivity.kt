@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -21,6 +22,8 @@ import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 
 class CreateWorldActivity : AppCompatActivity() {
+
+    lateinit var uriPointer : Uri
 
     companion object {
         // Intent Codes
@@ -59,23 +62,33 @@ class CreateWorldActivity : AppCompatActivity() {
     // @TODO Inject Data when Create World is done
 
     fun addWorld(view : View) {
-        // Load Intent
-        // @TODO Add Data to File
+
+        // Captures Data from Activity
         val title = tietWorld.text.toString()
         val desc = tietDesc.text.toString()
-        // @TODO Replace
-        // @TODO Add Colour Method
-        val img = null
+
+        var img = false
+        if (imgPreview.tag == "hasImage") {
+            img = true
+        }
+
         val mf = ManageFiles(this)
         val ed = ddGenre.text
-        if (mf.saveWorld(title, desc, ed.toString(), img, "#ffffff")) {
-            Toast.makeText(this, "File Made", Toast.LENGTH_SHORT).show()
+        val uid = mf.generateUUID()
 
-        } else {
-            // @TODO Report
-
+        // Attempt to Save World Image
+        if (img && this::uriPointer.isInitialized) {
+            mf.saveWorldImage(uid, uriPointer, this.contentResolver)
         }
-        super.onBackPressed()
+
+        if (mf.saveWorld(title, desc, ed.toString(), img, "#ffffff", uid)) {
+            super.onBackPressed()
+        } else {
+            // @TODO Improve Error Message
+            Toast.makeText(this, "ERR : Could not save world", Toast.LENGTH_SHORT).show()
+            Log.e("ERR", "COULD NOT SAVE FILE")
+        }
+
     }
 
     private fun addAnimation() {
@@ -104,7 +117,8 @@ class CreateWorldActivity : AppCompatActivity() {
                 val selectedImage = data?.data
                 if (selectedImage != null) {
                     imgPreview.setImageURI(selectedImage)
-                    imgPreview.tag = "GAL"
+                    uriPointer = selectedImage
+                    imgPreview.tag = "hasImage"
                     animatePickImage()
                 }
             }
