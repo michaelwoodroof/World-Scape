@@ -122,7 +122,7 @@ class CreateWorldActivity : AppCompatActivity() {
             }
 
             2 -> {
-                return if (ddGenre.text.toString().trim() == "") {
+                return if (ddGenre.text.toString().trim() != "") {
                     txtiGenre.error = getString(R.string.err_genre)
                     true
                 } else {

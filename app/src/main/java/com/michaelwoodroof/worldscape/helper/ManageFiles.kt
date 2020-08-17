@@ -83,11 +83,11 @@ class ManageFiles(private val gc : Context) {
                 cf.createNewFile()
                 // Create Bitmap of URI
                 var bm: Bitmap? = null
-                if (Build.VERSION.SDK_INT < 28) {
-                    bm = MediaStore.Images.Media.getBitmap(gcr, Uri.parse(img.toString()))
+                bm = if (Build.VERSION.SDK_INT < 28) {
+                    MediaStore.Images.Media.getBitmap(gcr, Uri.parse(img.toString()))
                 } else {
                     val src = ImageDecoder.createSource(gcr, Uri.parse(img.toString()))
-                    bm = ImageDecoder.decodeBitmap(src)
+                    ImageDecoder.decodeBitmap(src)
                 }
                 // Write Bitmap to File
                 val stream : OutputStream = FileOutputStream(cf)
