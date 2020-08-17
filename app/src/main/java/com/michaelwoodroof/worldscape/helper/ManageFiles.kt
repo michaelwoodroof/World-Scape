@@ -110,17 +110,18 @@ class ManageFiles(private val gc : Context) {
     fun getWorldImage(uid : String) : Bitmap? {
         val bm : Bitmap? = null
 
-        val wf = File(gc.filesDir.absolutePath + "/world_images")
+        val wf = File(gc.filesDir.absolutePath + "/world_images/" + uid)
 
-        wf.listFiles()?.forEach {
-            if (it.name.toString() == uid) {
-                return BitmapFactory.decodeFile(it.absolutePath)
-            }
+        return try {
+            BitmapFactory.decodeFile(wf.absolutePath)
+        } catch (e : Exception) {
+            Log.e("Error", e.toString())
+            bm
         }
 
-        return bm
     }
 
+    // @TODO Test
     fun deleteWorld(fileName : String) : Boolean {
 
         try {
@@ -131,7 +132,7 @@ class ManageFiles(private val gc : Context) {
             }
             // Delete World_Image (if exists)
             return try {
-                val fwi = File(gc.filesDir.absolutePath + "/res/world_images/" + fileName)
+                val fwi = File(gc.filesDir.absolutePath + "/world_images/" + fileName)
                 if (fwi.exists()) {
                     fwi.delete()
                 }

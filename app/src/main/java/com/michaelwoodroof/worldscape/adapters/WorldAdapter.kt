@@ -18,6 +18,8 @@ import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.world_layout.view.*
 import kotlinx.android.synthetic.main.world_layout.view.tvTitle
 
+// @TODO Implement Genre Icon on World_Layout / Adapter
+
 class WorldAdapter (private val givenValues: List<WorldContent.WorldItem>)
     : RecyclerView.Adapter<WorldAdapter.ViewHolder>() {
 

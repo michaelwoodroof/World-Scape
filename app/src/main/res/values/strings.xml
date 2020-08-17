@@ -29,6 +29,11 @@
     <string name="choose_an_image">Choose an Image</string>
     <string name="genre_of_world">Genre of World</string>
 
+    <!-- Errors @TODO Update -->
+    <string name="err_world">No title added</string>
+    <string name="err_desc">No description added</string>
+    <string name="err_genre">No genre chosen</string>
+
     <!-- World Detail Strings -->
     <string name="recent_characters">Recent Characters</string>
     <string name="recent_places">Recent Places</string>
