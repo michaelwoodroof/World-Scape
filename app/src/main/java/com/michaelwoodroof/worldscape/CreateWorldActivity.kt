@@ -123,16 +123,18 @@ class CreateWorldActivity : AppCompatActivity() {
 
             2 -> {
                 return if (ddGenre.text.toString().trim() != "") {
-                    txtiGenre.error = getString(R.string.err_genre)
+                    txtiGenre.error = ""
                     true
                 } else {
-                    txtiGenre.error = ""
+                    txtiGenre.error = getString(R.string.err_genre)
                     false
                 }
             }
 
             3 -> {
                 if (imgPreview.tag == "") {
+                    // @TODO Report Warning
+                } else {
                     // @TODO Report Warning
                 }
                 return true
@@ -146,7 +148,11 @@ class CreateWorldActivity : AppCompatActivity() {
     }
 
     private fun checkFields() : Boolean {
-        return checkField(0) && checkField(1) && checkField(2) && checkField(3)
+        val t1 = checkField(0)
+        val t2 = checkField(1)
+        val t3 = checkField(2)
+        val t4 = checkField(3)
+        return t1 && t2 && t3 && t4
     }
 
     private fun addAnimation() {

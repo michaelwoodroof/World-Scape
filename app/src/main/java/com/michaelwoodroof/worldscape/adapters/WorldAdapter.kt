@@ -2,6 +2,7 @@ package com.michaelwoodroof.worldscape.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -36,7 +37,10 @@ class WorldAdapter (private val givenValues: List<WorldContent.WorldItem>)
 
         if (item.hasImg) {
             val mf = ManageFiles(holder.mImg.context)
-            holder.mImg.setImageBitmap(mf.getWorldImage(item.uid))
+            holder.mImg.setImageBitmap(mf.getWorldImage(item.uid)?.let {
+                Bitmap.createScaledBitmap(
+                    it, 300, 300, false)
+            })
         }
 
         holder.mAccent.setBackgroundColor(Color.parseColor(item.color))

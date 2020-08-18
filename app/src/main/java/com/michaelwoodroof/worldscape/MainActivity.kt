@@ -52,8 +52,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
-        val mf = ManageFiles(this)
-        mf.getWorldImage("")
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         when (sharedPreferences.getString("theme", "")) {
             "dark_mode" -> {
