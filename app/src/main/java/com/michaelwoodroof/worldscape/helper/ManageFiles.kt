@@ -89,6 +89,7 @@ class ManageFiles(private val gc : Context) {
                     val src = ImageDecoder.createSource(gcr, Uri.parse(img.toString()))
                     ImageDecoder.decodeBitmap(src)
                 }
+                bm = bm?.let { Bitmap.createScaledBitmap(it, 300, 300, false) }
                 // Write Bitmap to File
                 val stream : OutputStream = FileOutputStream(cf)
                 bm?.compress(Bitmap.CompressFormat.JPEG, 100, stream)

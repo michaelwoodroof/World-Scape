@@ -1,8 +1,6 @@
 package com.michaelwoodroof.worldscape.ui
 
-import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,13 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.adapters.WorldAdapter
-import com.michaelwoodroof.worldscape.helper.GenerateSampleData
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlin.collections.ArrayList
 
 class WorldFragment : Fragment() {
 
-    lateinit var rv : RecyclerView
+    private lateinit var rv : RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -34,10 +31,8 @@ class WorldFragment : Fragment() {
         return root
     }
 
-    // @TODO Review is proper
     override fun onStart() {
-        val dataset = loadWorlds()
-        rv.adapter = WorldAdapter(dataset)
+        rv.adapter = WorldAdapter(loadWorlds())
         super.onStart()
     }
 

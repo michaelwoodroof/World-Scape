@@ -13,6 +13,7 @@
     <color name="add_button_text_color">#FFFFFF</color>
 
     <color name="error_color">#EF9A9A</color>
+    <color name="warning_color">#FFF8E1</color>
 
     <color name="medGray">#838383</color>
     <color name="medGreen">#8BC34A</color>

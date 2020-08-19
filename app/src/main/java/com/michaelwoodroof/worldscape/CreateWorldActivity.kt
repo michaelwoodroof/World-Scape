@@ -1,15 +1,11 @@
 package com.michaelwoodroof.worldscape
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.transition.AutoTransition
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.Log
@@ -17,9 +13,9 @@ import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
-import androidx.core.view.setPadding
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.behavior.SwipeDismissBehavior
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.default_toolbar.*
@@ -48,14 +44,12 @@ class CreateWorldActivity : AppCompatActivity() {
         btnBack.visibility = View.VISIBLE
 
         // Set-Up DropDown
-        // @Todo expand and make it from a pre-built selection rather than hardcoded here
-        val genreTypes = arrayOf("Fantasy", "Sci-Fi", "Other")
+        val genreTypes = resources.getStringArray(R.array.genres)
 
         val adapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, genreTypes)
         ddGenre.setAdapter(adapter)
 
         setUpFocusChangers()
-
         addAnimation()
     }
 
@@ -84,12 +78,12 @@ class CreateWorldActivity : AppCompatActivity() {
                 mf.saveWorldImage(uid, uriPointer, this.contentResolver)
             }
 
-            if (mf.saveWorld(title, desc, ed.toString(), img, "#ffffff", uid)) {
+            if (!mf.saveWorld(title, desc, ed.toString(), img, "#ffffff", uid)) {
                 super.onBackPressed()
             } else {
-                // @TODO Improve Error Message
-                Toast.makeText(this, "ERR : Could not save world", Toast.LENGTH_SHORT).show()
-                Log.e("ERR", "COULD NOT SAVE FILE")
+                Snackbar.make(findViewById<View>(R.id.colMainCW), resources.getString(R.string.err_save_world), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
+                    addWorld(findViewById<View>(R.id.btnCreate))
+                }.show()
             }
         }
 
@@ -132,10 +126,12 @@ class CreateWorldActivity : AppCompatActivity() {
             }
 
             3 -> {
-                if (imgPreview.tag == "") {
-                    // @TODO Report Warning
+                if (imgPreview.tag == "NT") {
+                    tvWarning.visibility = View.VISIBLE
+                    imgWarning.visibility = View.VISIBLE
                 } else {
-                    // @TODO Report Warning
+                    tvWarning.visibility = View.GONE
+                    imgWarning.visibility = View.GONE
                 }
                 return true
             }
@@ -193,7 +189,7 @@ class CreateWorldActivity : AppCompatActivity() {
 
         val tietWorld = findViewById<EditText>(R.id.tietWorld)
 
-        tietWorld.onFocusChangeListener = View.OnFocusChangeListener{ v : View, focus ->
+        tietWorld.onFocusChangeListener = View.OnFocusChangeListener{ _: View, focus ->
             if (!focus) {
                 checkField(0)
             }
@@ -201,7 +197,7 @@ class CreateWorldActivity : AppCompatActivity() {
 
         val tietDesc = findViewById<EditText>(R.id.tietDesc)
 
-        tietDesc.onFocusChangeListener = View.OnFocusChangeListener { v : View, focus ->
+        tietDesc.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
             if (!focus) {
                 checkField(1)
             }
@@ -209,7 +205,7 @@ class CreateWorldActivity : AppCompatActivity() {
 
         val ddGenre = findViewById<AutoCompleteTextView>(R.id.ddGenre)
 
-        ddGenre.onFocusChangeListener = View.OnFocusChangeListener { v : View, focus ->
+        ddGenre.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
             if (!focus) {
                 checkField(2)
             }

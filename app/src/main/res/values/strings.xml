@@ -28,11 +28,19 @@
     <string name="desc_of_world">Description of World</string>
     <string name="choose_an_image">Choose an Image</string>
     <string name="genre_of_world">Genre of World</string>
+    <string name="action_text">Retry</string>
+    <string-array name="genres"> <!-- TODO EXPANDS -->
+        <item>Fantasy</item>
+        <item>Sci-Fi</item>
+        <item>Other</item>
+    </string-array>
 
-    <!-- Errors @TODO Update -->
+    <!-- Errors -->
+    <string name="err_save_world">"ERR: Could not Save World"</string>
     <string name="err_world">No title added</string>
     <string name="err_desc">No description added</string>
     <string name="err_genre">No genre chosen</string>
+    <string name="war_img">No image chosen</string>
 
     <!-- World Detail Strings -->
     <string name="recent_characters">Recent Characters</string>

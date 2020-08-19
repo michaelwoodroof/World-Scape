@@ -1,228 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/clMainCW"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/colMainCW"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".CreateWorldActivity">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/incToolbarCW"
-        layout="@layout/default_toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- @TODO Style Text Input Layout -->
-
-    <TextView
-        android:id="@+id/tvWorldName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/name_of_world"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incToolbarCW" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilWorld"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/clMainCW"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:boxBackgroundColor="@color/content_background"
-        app:counterMaxLength="100"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWorldName">
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        tools:context=".CreateWorldActivity">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietWorld"
-            android:layout_width="match_parent"
+        <include
+            android:id="@+id/incToolbarCW"
+            layout="@layout/default_toolbar"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="12sp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <!-- @TODO Style Text Input Layout -->
 
-    <TextView
-        android:id="@+id/tvDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/desc_of_world"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilWorld" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilDesc"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="top"
-        app:boxBackgroundColor="@color/content_background"
-        app:counterMaxLength="500"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top"
-            android:inputType="textMultiLine"
-            android:lines="3"
-            android:maxLines="3"
-            android:minLines="3"
-            android:textSize="12sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvGenre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/genre_of_world"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilDesc" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtiGenre"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#FFFFFF"
-        app:boxBackgroundColor="@color/content_background"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGenre">
-
-        <AutoCompleteTextView
-            android:id="@+id/ddGenre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:editable="false"
-            android:textSize="12sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvImageSelect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/choose_an_image"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtiGenre" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvPreview"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:visibility="gone"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spOne">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clPreview"
+        <TextView
+            android:id="@+id/tvWorldName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/name_of_world"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/incToolbarCW" />
 
-            <ImageView
-                android:id="@+id/imgPreview"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:adjustViewBounds="false"
-                android:contentDescription="@string/cd_preview"
-                android:cropToPadding="false"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilWorld"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:boxBackgroundColor="@color/content_background"
+            app:boxStrokeErrorColor="@color/error_color"
+            app:counterMaxLength="100"
+            app:errorEnabled="true"
+            app:errorIconTint="@color/error_color"
+            app:errorTextColor="@color/error_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWorldName">
 
-    <Button
-        android:id="@+id/btnPickImage"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
-        android:elevation="4dp"
-        android:fontFamily="sans-serif-condensed"
-        android:paddingStart="16dp"
-        android:paddingEnd="40dp"
-        android:text="@string/create_world_button"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        app:backgroundTint="@color/colorPrimary"
-        app:cornerRadius="20dp"
-        app:icon="@drawable/ic_baseline_image_24"
-        app:iconGravity="start"
-        app:iconPadding="0dp"
-        app:iconTint="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spOne" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietWorld"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif-condensed"
-        android:onClick="addWorld"
-        android:paddingStart="16dp"
-        android:paddingLeft="0dp"
-        android:paddingEnd="40dp"
-        android:paddingRight="0dp"
-        android:text="@string/create_world_create"
-        android:textColor="@color/add_button_text_color"
-        app:backgroundTint="@color/add_button_bg"
-        app:cornerRadius="100dp"
-        app:elevation="8dp"
-        app:icon="@drawable/ic_baseline_add_24"
-        app:iconPadding="0dp"
-        app:iconTint="@color/add_button_text_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Space
-        android:id="@+id/spOne"
-        android:layout_width="0dp"
-        android:layout_height="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvImageSelect" />
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/desc_of_world"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilWorld" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDesc"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="top"
+            app:boxBackgroundColor="@color/content_background"
+            app:boxStrokeErrorColor="@color/error_color"
+            app:counterMaxLength="500"
+            app:errorEnabled="true"
+            app:errorIconTint="@color/error_color"
+            app:errorTextColor="@color/error_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDesc">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:maxLines="3"
+                android:minLines="3"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/genre_of_world"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilDesc" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtiGenre"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#FFFFFF"
+            app:boxBackgroundColor="@color/content_background"
+            app:boxStrokeErrorColor="@color/error_color"
+            app:errorEnabled="true"
+            app:errorIconTint="@color/error_color"
+            app:errorTextColor="@color/error_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGenre">
+
+            <AutoCompleteTextView
+                android:id="@+id/ddGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvImageSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/choose_an_image"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtiGenre" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvPreview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spOne">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgPreview"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/cd_preview"
+                    android:cropToPadding="false"
+                    android:scaleType="fitXY"
+                    android:tag="NT"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/btnPickImage"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:elevation="4dp"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingStart="16dp"
+            android:paddingEnd="40dp"
+            android:text="@string/create_world_button"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:backgroundTint="@color/colorPrimary"
+            app:cornerRadius="20dp"
+            app:icon="@drawable/ic_baseline_image_24"
+            app:iconGravity="start"
+            app:iconPadding="0dp"
+            app:iconTint="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spOne" />
+
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-condensed"
+            android:onClick="addWorld"
+            android:paddingStart="16dp"
+            android:paddingLeft="0dp"
+            android:paddingEnd="40dp"
+            android:paddingRight="0dp"
+            android:text="@string/create_world_create"
+            android:textColor="@color/add_button_text_color"
+            app:backgroundTint="@color/add_button_bg"
+            app:cornerRadius="100dp"
+            app:elevation="8dp"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconPadding="0dp"
+            app:iconTint="@color/add_button_text_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Space
+            android:id="@+id/spOne"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWarning" />
+
+        <TextView
+            android:id="@+id/tvWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:text="@string/war_img"
+            android:textColor="@color/warning_color"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/imgWarning"
+            app:layout_constraintTop_toBottomOf="@+id/tvImageSelect" />
+
+        <ImageView
+            android:id="@+id/imgWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvWarning"
+            app:layout_constraintStart_toStartOf="@+id/tvImageSelect"
+            app:layout_constraintTop_toBottomOf="@+id/tvImageSelect"
+            app:srcCompat="@drawable/ic_baseline_warning_24"
+            app:tint="@color/warning_color"
+            tools:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
