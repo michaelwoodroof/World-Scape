@@ -55,7 +55,8 @@ class WorldDetailActivity : AppCompatActivity() {
     }
 
     fun loadCreateCharacter(view : View) {
-        Toast.makeText(this, "TO BE IMPLEMENTED", Toast.LENGTH_SHORT).show()
+        val i = Intent(this, CreateCharacterActivity::class.java)
+        startActivity(i)
     }
 
     fun loadAllCharacters(view : View) {

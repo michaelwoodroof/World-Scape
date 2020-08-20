@@ -35,6 +35,10 @@
         <item>Other</item>
     </string-array>
 
+    <!-- Create Character Strings -->
+    <string name="create_character_title">Create a Character</string>
+    <string name="create_character_create">Create Character</string>
+
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
     <string name="err_world">No title added</string>
