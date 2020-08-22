@@ -78,7 +78,7 @@ class CreateWorldActivity : AppCompatActivity() {
                 mf.saveWorldImage(uid, uriPointer, this.contentResolver)
             }
 
-            if (!mf.saveWorld(title, desc, ed.toString(), img, "#ffffff", uid)) {
+            if (mf.saveWorld(title, desc, ed.toString(), img, "#ffffff", uid)) {
                 super.onBackPressed()
             } else {
                 Snackbar.make(findViewById<View>(R.id.colMainCW), resources.getString(R.string.err_save_world), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {

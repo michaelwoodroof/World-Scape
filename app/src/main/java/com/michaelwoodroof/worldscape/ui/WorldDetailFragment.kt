@@ -34,47 +34,21 @@ class WorldDetailFragment : Fragment() {
         rvRCharacters.adapter = loadRecentCharacters()?.let { WDCharacterAdapter(it) }
         rvRCharacters.overScrollMode = View.OVER_SCROLL_NEVER
 
-        val btnTest : ImageButton = root.findViewById(R.id.btnTest)
+        val btnSAC : ImageButton = root.findViewById(R.id.btnShowAllCharacters)
+        val btnSAP : ImageButton = root.findViewById(R.id.btnShowAllPlaces)
+        val btnSAS : ImageButton = root.findViewById(R.id.btnShowAllStories)
 
-        btnTest.setOnClickListener {
-            Toast.makeText(root.context, "I WAS CLICKED!", Toast.LENGTH_SHORT).show()
-        }
+        // Set On Touches
+        btnSAC.setOnTouchListener(View.OnTouchListener() { view, event ->
+            return@OnTouchListener handleTouch(view as ImageButton, event)
+        })
 
-        btnTest.setOnTouchListener(View.OnTouchListener() { view, event ->
-                val chosenDrawable1 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null)
-                val chosenDrawable2 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null)
-                val chosenDrawable : AnimatedVectorDrawable
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        if (view.tag == "na") {
-                            val b = view as ImageButton
-                            chosenDrawable = chosenDrawable1 as AnimatedVectorDrawable
-                            b.tag = "es"
-                            b.setImageDrawable(chosenDrawable)
-                            chosenDrawable.start()
-                        }
-                        return@OnTouchListener true
-                    }
-                    MotionEvent.ACTION_UP -> {
-                        if (view.tag == "es") {
-                            val b = view as ImageButton
-                            chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
-                            b.tag = "na"
-                            b.setImageDrawable(chosenDrawable)
-                            chosenDrawable.start()
+        btnSAP.setOnTouchListener(View.OnTouchListener() { view, event ->
+            return@OnTouchListener handleTouch(view as ImageButton, event)
+        })
 
-                            val xE = event.x
-                            val yE = event.y
-
-                            if (!(xE < 0 || xE > b.width || yE < 0 || yE > b.height)) {
-                                // Is Within Bounds
-                                view.performClick()
-                            }
-                        }
-                        return@OnTouchListener false
-                    }
-                    else -> {return@OnTouchListener false}
-                }
+        btnSAS.setOnTouchListener(View.OnTouchListener() { view, event ->
+            return@OnTouchListener handleTouch(view as ImageButton, event)
         })
 
 //        val rvRPlaces = rvRecentCharacters
@@ -91,19 +65,41 @@ class WorldDetailFragment : Fragment() {
         return root
     }
 
-    private fun animateView(view: ImageButton) {
+    private fun handleTouch(view : ImageButton, event: MotionEvent) : Boolean {
         val chosenDrawable1 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null)
         val chosenDrawable2 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null)
         val chosenDrawable : AnimatedVectorDrawable
-        if (view.tag == "na") {
-            chosenDrawable = chosenDrawable1 as AnimatedVectorDrawable
-            view.tag = "es"
-        } else {
-            chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
-            view.tag = "na"
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                if (view.tag == "na") {
+                    val b = view as ImageButton
+                    chosenDrawable = chosenDrawable1 as AnimatedVectorDrawable
+                    b.tag = "es"
+                    b.setImageDrawable(chosenDrawable)
+                    chosenDrawable.start()
+                }
+                return true
+            }
+            MotionEvent.ACTION_UP -> {
+                if (view.tag == "es") {
+                    val b = view as ImageButton
+                    chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
+                    b.tag = "na"
+                    b.setImageDrawable(chosenDrawable)
+                    chosenDrawable.start()
+
+                    val xE = event.x
+                    val yE = event.y
+
+                    if (!(xE < 0 || xE > b.width || yE < 0 || yE > b.height)) {
+                        // Is Within Bounds
+                        view.performClick()
+                    }
+                }
+                return false
+            }
+            else -> {return false}
         }
-        view.setImageDrawable(chosenDrawable)
-        chosenDrawable.start()
     }
 
     // @TODO Replace with real method
