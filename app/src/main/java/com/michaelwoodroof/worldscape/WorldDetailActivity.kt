@@ -1,13 +1,16 @@
 package com.michaelwoodroof.worldscape
 
 import android.content.Intent
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.michaelwoodroof.worldscape.ui.CharacterFragment
 import com.michaelwoodroof.worldscape.ui.WorldDetailFragment
 import kotlinx.android.synthetic.main.activity_world_detail.*
@@ -55,7 +58,9 @@ class WorldDetailActivity : AppCompatActivity() {
     }
 
     fun loadCreateCharacter(view : View) {
+        val uid = intent.getStringExtra("uid")
         val i = Intent(this, CreateCharacterActivity::class.java)
+        intent.putExtra("uid", uid)
         startActivity(i)
     }
 

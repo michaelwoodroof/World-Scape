@@ -29,7 +29,7 @@
     <string name="choose_an_image">Choose an Image</string>
     <string name="genre_of_world">Genre of World</string>
     <string name="action_text">Retry</string>
-    <string-array name="genres"> <!-- TODO EXPANDS -->
+    <string-array name="genres"> <!-- TODO EXPAND -->
         <item>Fantasy</item>
         <item>Sci-Fi</item>
         <item>Other</item>
@@ -38,6 +38,10 @@
     <!-- Create Character Strings -->
     <string name="create_character_title">Create a Character</string>
     <string name="create_character_create">Create Character</string>
+    <string name="character_title">Name of Character</string>
+    <string name="birth_title">Year of Birth</string>
+    <string name="birth_loc">Place of Birth</string>
+    <string name="current_loc">Current Location</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>

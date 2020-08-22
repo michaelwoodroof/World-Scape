@@ -1,23 +1,30 @@
 package com.michaelwoodroof.worldscape.ui
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.adapters.WDCharacterAdapter
-import com.michaelwoodroof.worldscape.adapters.WDPlacesAdapter
 import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.content.PlacesContent
 import com.michaelwoodroof.worldscape.content.StoriesContent
 import com.michaelwoodroof.worldscape.helper.GenerateSampleData
-import kotlinx.android.synthetic.main.fragment_world_detail.*
 
 class WorldDetailFragment : Fragment() {
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_world_detail, container, false)
@@ -26,6 +33,49 @@ class WorldDetailFragment : Fragment() {
         rvRCharacters.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         rvRCharacters.adapter = loadRecentCharacters()?.let { WDCharacterAdapter(it) }
         rvRCharacters.overScrollMode = View.OVER_SCROLL_NEVER
+
+        val btnTest : ImageButton = root.findViewById(R.id.btnTest)
+
+        btnTest.setOnClickListener {
+            Toast.makeText(root.context, "I WAS CLICKED!", Toast.LENGTH_SHORT).show()
+        }
+
+        btnTest.setOnTouchListener(View.OnTouchListener() { view, event ->
+                val chosenDrawable1 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null)
+                val chosenDrawable2 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null)
+                val chosenDrawable : AnimatedVectorDrawable
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        if (view.tag == "na") {
+                            val b = view as ImageButton
+                            chosenDrawable = chosenDrawable1 as AnimatedVectorDrawable
+                            b.tag = "es"
+                            b.setImageDrawable(chosenDrawable)
+                            chosenDrawable.start()
+                        }
+                        return@OnTouchListener true
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        if (view.tag == "es") {
+                            val b = view as ImageButton
+                            chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
+                            b.tag = "na"
+                            b.setImageDrawable(chosenDrawable)
+                            chosenDrawable.start()
+
+                            val xE = event.x
+                            val yE = event.y
+
+                            if (!(xE < 0 || xE > b.width || yE < 0 || yE > b.height)) {
+                                // Is Within Bounds
+                                view.performClick()
+                            }
+                        }
+                        return@OnTouchListener false
+                    }
+                    else -> {return@OnTouchListener false}
+                }
+        })
 
 //        val rvRPlaces = rvRecentCharacters
 //        rvRPlaces.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -39,6 +89,21 @@ class WorldDetailFragment : Fragment() {
 //        rvRStories.overScrollMode = View.OVER_SCROLL_NEVER
 
         return root
+    }
+
+    private fun animateView(view: ImageButton) {
+        val chosenDrawable1 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null)
+        val chosenDrawable2 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null)
+        val chosenDrawable : AnimatedVectorDrawable
+        if (view.tag == "na") {
+            chosenDrawable = chosenDrawable1 as AnimatedVectorDrawable
+            view.tag = "es"
+        } else {
+            chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
+            view.tag = "na"
+        }
+        view.setImageDrawable(chosenDrawable)
+        chosenDrawable.start()
     }
 
     // @TODO Replace with real method

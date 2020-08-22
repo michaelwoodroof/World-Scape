@@ -23,14 +23,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="@null"
-        android:contentDescription="@string/cd_show_c"
         android:onClick="loadAllCharacters"
         android:padding="4dp"
         android:tint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/tvRecentCharacters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvRecentCharacters"
-        app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+        app:srcCompat="@drawable/selector_show_all_button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecentCharacters"
@@ -71,7 +70,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvRecentPlaces"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvRecentPlaces"
-        app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+        app:srcCompat="@drawable/selector_show_all_button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecentPlaces"
@@ -112,7 +111,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvRecentStories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvRecentStories"
-        app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+        app:srcCompat="@drawable/selector_show_all_button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecentStories"
@@ -123,5 +122,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRecentStories" />
+
+    <ImageButton
+        android:id="@+id/btnTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:background="@null"
+        android:src="@drawable/chevron_shrink_short"
+        android:tag="na"
+        app:layout_constraintBottom_toTopOf="@+id/tvRecentStories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecentPlaces"
+        app:tint="@color/colorPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

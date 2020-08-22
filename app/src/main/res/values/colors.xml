@@ -12,6 +12,8 @@
     <color name="add_button_bg">#ffffff</color>
     <color name="add_button_text_color">#E91E63</color>
 
+    <color name="show_all_background">#66FFCDD2</color>
+
     <color name="error_color">#F44336</color>
     <color name="warning_color">#FFC107</color>
 
