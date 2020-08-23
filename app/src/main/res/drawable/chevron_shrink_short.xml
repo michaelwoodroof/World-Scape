@@ -26,7 +26,7 @@
             <set>
                 <objectAnimator
                     android:propertyName="fillAlpha"
-                    android:startOffset="90"
+                    android:startOffset="290"
                     android:duration="10"
                     android:valueFrom="0.4"
                     android:valueTo="0"
@@ -34,7 +34,7 @@
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="pathData"
-                    android:duration="100"
+                    android:duration="300"
                     android:valueFrom="M 640 320 C 640 496.61 496.61 640 320 640 C 143.39 640 0 496.61 0 320 C 0 143.39 143.39 0 320 0 C 496.61 0 640 143.39 640 320 Z"
                     android:valueTo="M 320 319.5 C 320 319.78 319.78 320 319.5 320 C 319.22 320 319 319.78 319 319.5 C 319 319.22 319.22 319 319.5 319 C 319.78 319 320 319.22 320 319.5 Z"
                     android:valueType="pathType"

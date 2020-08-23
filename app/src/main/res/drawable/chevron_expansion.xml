@@ -9,17 +9,17 @@
             android:viewportWidth="640"
             android:viewportHeight="640">
             <path
-                android:name="path_3"
+                android:name="circle"
                 android:pathData="M 480 320 C 480 408.31 408.31 480 320 480 C 231.69 480 160 408.31 160 320 C 160 231.69 231.69 160 320 160 C 408.31 160 480 231.69 480 320 Z"
                 android:fillColor="#000000"
                 android:fillAlpha="0.4"/>
             <path
-                android:name="path"
+                android:name="chevron"
                 android:pathData="M 339.5 320.33 L 240 422.49 L 269.75 453.66 L 400 320.33 L 269.75 187 L 240 217.17 L 339.5 320.33 Z"
                 android:fillColor="#000000"/>
         </vector>
     </aapt:attr>
-    <target android:name="path_3">
+    <target android:name="circle">
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator

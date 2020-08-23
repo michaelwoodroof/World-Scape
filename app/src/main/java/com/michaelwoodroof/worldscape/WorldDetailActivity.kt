@@ -1,5 +1,6 @@
 package com.michaelwoodroof.worldscape
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
@@ -9,8 +10,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
+import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.ui.CharacterFragment
 import com.michaelwoodroof.worldscape.ui.WorldDetailFragment
 import kotlinx.android.synthetic.main.activity_world_detail.*
@@ -18,6 +20,7 @@ import kotlinx.android.synthetic.main.default_toolbar.*
 
 class WorldDetailActivity : AppCompatActivity() {
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_world_detail)
@@ -45,6 +48,13 @@ class WorldDetailActivity : AppCompatActivity() {
                 // @TODO
             }
         }
+
+        val btnSettings = incToolbarWD.findViewById<ImageButton>(btnSettings.id)
+        btnSettings.setOnTouchListener(View.OnTouchListener() { view, event ->
+            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+                ResourcesCompat.getDrawable(resources, R.drawable.settings_expand, null) as AnimatedVectorDrawable,
+            ResourcesCompat.getDrawable(resources, R.drawable.settings_shrink, null) as AnimatedVectorDrawable)
+        })
 
     }
 

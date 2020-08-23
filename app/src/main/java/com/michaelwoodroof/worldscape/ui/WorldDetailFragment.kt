@@ -3,23 +3,21 @@ package com.michaelwoodroof.worldscape.ui
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.adapters.WDCharacterAdapter
 import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.content.PlacesContent
 import com.michaelwoodroof.worldscape.content.StoriesContent
+import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.GenerateSampleData
 
 class WorldDetailFragment : Fragment() {
@@ -40,15 +38,21 @@ class WorldDetailFragment : Fragment() {
 
         // Set On Touches
         btnSAC.setOnTouchListener(View.OnTouchListener() { view, event ->
-            return@OnTouchListener handleTouch(view as ImageButton, event)
+            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+            ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
+            ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
         btnSAP.setOnTouchListener(View.OnTouchListener() { view, event ->
-            return@OnTouchListener handleTouch(view as ImageButton, event)
+            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
         btnSAS.setOnTouchListener(View.OnTouchListener() { view, event ->
-            return@OnTouchListener handleTouch(view as ImageButton, event)
+            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
 //        val rvRPlaces = rvRecentCharacters
@@ -79,6 +83,22 @@ class WorldDetailFragment : Fragment() {
                     chosenDrawable.start()
                 }
                 return true
+            }
+            MotionEvent.ACTION_MOVE -> {
+                if (view.tag == "es") {
+                    val b = view as ImageButton
+
+                    val xE = event.x
+                    val yE = event.y
+
+                    if ((xE < 0 || xE > b.width || yE < 0 || yE > b.height)) {
+                        chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
+                        b.tag = "na"
+                        b.setImageDrawable(chosenDrawable)
+                        chosenDrawable.start()
+                    }
+                }
+                return false
             }
             MotionEvent.ACTION_UP -> {
                 if (view.tag == "es") {
