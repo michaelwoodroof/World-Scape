@@ -69,59 +69,6 @@ class WorldDetailFragment : Fragment() {
         return root
     }
 
-    private fun handleTouch(view : ImageButton, event: MotionEvent) : Boolean {
-        val chosenDrawable1 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null)
-        val chosenDrawable2 = ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null)
-        val chosenDrawable : AnimatedVectorDrawable
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                if (view.tag == "na") {
-                    val b = view as ImageButton
-                    chosenDrawable = chosenDrawable1 as AnimatedVectorDrawable
-                    b.tag = "es"
-                    b.setImageDrawable(chosenDrawable)
-                    chosenDrawable.start()
-                }
-                return true
-            }
-            MotionEvent.ACTION_MOVE -> {
-                if (view.tag == "es") {
-                    val b = view as ImageButton
-
-                    val xE = event.x
-                    val yE = event.y
-
-                    if ((xE < 0 || xE > b.width || yE < 0 || yE > b.height)) {
-                        chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
-                        b.tag = "na"
-                        b.setImageDrawable(chosenDrawable)
-                        chosenDrawable.start()
-                    }
-                }
-                return false
-            }
-            MotionEvent.ACTION_UP -> {
-                if (view.tag == "es") {
-                    val b = view as ImageButton
-                    chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
-                    b.tag = "na"
-                    b.setImageDrawable(chosenDrawable)
-                    chosenDrawable.start()
-
-                    val xE = event.x
-                    val yE = event.y
-
-                    if (!(xE < 0 || xE > b.width || yE < 0 || yE > b.height)) {
-                        // Is Within Bounds
-                        view.performClick()
-                    }
-                }
-                return false
-            }
-            else -> {return false}
-        }
-    }
-
     // @TODO Replace with real method
     private fun loadRecentCharacters() : ArrayList<CharacterContent.CharacterItem>? {
         return GenerateSampleData.generateCharacterData(0)

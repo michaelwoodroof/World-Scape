@@ -1,21 +1,22 @@
 package com.michaelwoodroof.worldscape
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
-import com.google.android.material.behavior.SwipeDismissBehavior
-import com.google.android.material.snackbar.BaseTransientBottomBar
+import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
+import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.default_toolbar.*
@@ -29,6 +30,7 @@ class CreateWorldActivity : AppCompatActivity() {
         private const val MEDIA_PICK_CODE = 100
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_world)
@@ -42,6 +44,13 @@ class CreateWorldActivity : AppCompatActivity() {
         btnSettings.visibility = View.GONE
         val btnBack = incToolbarCW.findViewById<ImageButton>(btnBack.id)
         btnBack.visibility = View.VISIBLE
+
+        btnBack.setOnTouchListener(View.OnTouchListener() { view, event ->
+            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
+            )
+        })
 
         // Set-Up DropDown
         val genreTypes = resources.getStringArray(R.array.genres)

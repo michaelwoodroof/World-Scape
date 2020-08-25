@@ -1,19 +1,21 @@
 package com.michaelwoodroof.worldscape
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 
 class CreateCharacterActivity : AppCompatActivity() {
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_character)
@@ -27,6 +29,13 @@ class CreateCharacterActivity : AppCompatActivity() {
         btnSettings.visibility = View.GONE
         val btnBack = incToolbarCC.findViewById<ImageButton>(btnBack.id)
         btnBack.visibility = View.VISIBLE
+
+        btnBack.setOnTouchListener(View.OnTouchListener() { view, event ->
+            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
+            )
+        })
 
         // Used to Hide Create Character when Keyboard is not Screen (for better user experience)
         val v : View = findViewById(R.id.clMainCC)

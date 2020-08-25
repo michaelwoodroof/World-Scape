@@ -1,19 +1,24 @@
 package com.michaelwoodroof.worldscape
 
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 
 class SettingsActivity : AppCompatActivity() {
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -49,6 +54,13 @@ class SettingsActivity : AppCompatActivity() {
         btnSettings.visibility = View.GONE
         val btnBack = incToolbarS.findViewById<ImageButton>(btnBack.id)
         btnBack.visibility = View.VISIBLE
+
+        btnBack.setOnTouchListener(View.OnTouchListener() { view, event ->
+            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
+            )
+        })
     }
 
     fun goBack(view : View) {
