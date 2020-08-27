@@ -5,6 +5,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/baseTextColor</item>
         <item name="android:textViewStyle">@style/CondensedFont</item>
+        <item name="android:navigationBarColor">@color/navigation</item>
     </style>
 
     <style name="CondensedFont" parent="android:Widget.TextView">

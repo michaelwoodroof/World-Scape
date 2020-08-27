@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#c48b9f</color>
     <color name="colorAccent">#ffeeff</color>
     <color name="baseTextColor">#ffffff</color>
+    <color name="navigation">#222222</color>
 
     <color name="stroke_colour">#AAAAAA</color>
     <color name="content_background">#494949</color>

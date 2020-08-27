@@ -41,7 +41,7 @@
     <string name="character_title">Name of Character</string>
     <string name="birth_title">Year of Birth</string>
     <string name="birth_loc">Place of Birth</string>
-    <string name="current_loc">Current Location</string>
+    <string name="current_loc">Current Location / Region</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
