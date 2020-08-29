@@ -8,15 +8,19 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
+import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_world_detail.*
 import kotlinx.android.synthetic.main.default_toolbar.*
+import kotlinx.android.synthetic.main.fragment_world.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -65,59 +69,6 @@ class MainActivity : AppCompatActivity() {
         tv.text = getString(R.string.app_name)
     }
 
-    private fun handleTouch(view : ImageButton, event: MotionEvent) : Boolean {
-        val chosenDrawable1 = ResourcesCompat.getDrawable(resources, R.drawable.settings_expand, null)
-        val chosenDrawable2 = ResourcesCompat.getDrawable(resources, R.drawable.settings_shrink, null)
-        val chosenDrawable : AnimatedVectorDrawable
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                if (view.tag == "na") {
-                    val b = view as ImageButton
-                    chosenDrawable = chosenDrawable1 as AnimatedVectorDrawable
-                    b.tag = "es"
-                    b.setImageDrawable(chosenDrawable)
-                    chosenDrawable.start()
-                }
-                return true
-            }
-            MotionEvent.ACTION_MOVE -> {
-                if (view.tag == "es") {
-                    val b = view as ImageButton
-
-                    val xE = event.x
-                    val yE = event.y
-
-                    if ((xE < 0 || xE > b.width || yE < 0 || yE > b.height)) {
-                        chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
-                        b.tag = "na"
-                        b.setImageDrawable(chosenDrawable)
-                        chosenDrawable.start()
-                    }
-                }
-                return false
-            }
-            MotionEvent.ACTION_UP -> {
-                if (view.tag == "es") {
-                    val b = view as ImageButton
-                    chosenDrawable = chosenDrawable2 as AnimatedVectorDrawable
-                    b.tag = "na"
-                    b.setImageDrawable(chosenDrawable)
-                    chosenDrawable.start()
-
-                    val xE = event.x
-                    val yE = event.y
-
-                    if (!(xE < 0 || xE > b.width || yE < 0 || yE > b.height)) {
-                        // Is Within Bounds
-                        view.performClick()
-                    }
-                }
-                return false
-            }
-            else -> {return false}
-        }
-    }
-
     override fun onStart() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         when (sharedPreferences.getString("theme", "")) {
@@ -145,6 +96,22 @@ class MainActivity : AppCompatActivity() {
     fun loadCreateWorld(view : View) {
         val i = Intent(this, CreateWorldActivity::class.java)
         startActivity(i)
+    }
+
+    fun deleteWorld(view : View) {
+        val mf = ManageFiles(baseContext)
+        if (mf.deleteWorld(view.tag as String)!!) {
+            // Was Deleted @TODO Include option to Undo
+            // @TODO Improve this Method
+            val worldFragment = WorldFragment()
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.flFragmentsM, worldFragment)
+            transaction.commit()
+            Toast.makeText(baseContext, "Deleted", Toast.LENGTH_SHORT).show()
+        } else {
+            // @TODO Why it wasn't deleted
+            // Try Again Once
+        }
     }
 
 }

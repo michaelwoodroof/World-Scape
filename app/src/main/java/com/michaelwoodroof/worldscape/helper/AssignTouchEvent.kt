@@ -10,6 +10,7 @@ object AssignTouchEvent {
     fun assignTouch(view : View, event : MotionEvent, cd1 : AnimatedVectorDrawable, cd2 : AnimatedVectorDrawable) : Boolean {
         val chosenDrawable : AnimatedVectorDrawable
         when (event.action) {
+
             MotionEvent.ACTION_DOWN -> {
                 if (view.tag == "na") {
                     val b = view as ImageButton
@@ -56,6 +57,10 @@ object AssignTouchEvent {
             }
             else -> {return false}
         }
+    }
+
+    fun swipeToDelete(view : View, event : MotionEvent) : Boolean {
+        return true
     }
 
 }

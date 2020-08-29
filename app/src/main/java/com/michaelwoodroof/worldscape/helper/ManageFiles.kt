@@ -30,8 +30,9 @@ class ManageFiles(private val gc : Context) {
 
             // Tries to Create File
             return try {
-                val cf = File(fo.absolutePath + "/worlds", generateUUID())
+                val cf = File(fo.absolutePath + "/worlds", uid)
                 cf.createNewFile()
+                Log.d("testData", cf.toString())
                 val fos = FileOutputStream(cf)
                 val oos = ObjectOutputStream(fos)
                 // Create WorldContent.WorldItem
@@ -122,19 +123,22 @@ class ManageFiles(private val gc : Context) {
 
     }
 
-    // @TODO Test
     fun deleteWorld(fileName : String) : Boolean {
 
         try {
             // Delete World
             val f = File(gc.filesDir.absolutePath + "/worlds/" + fileName)
+            Log.d("testData", f.toString())
             if (f.exists()) {
+                Log.d("testData", f.toString())
                 f.delete()
             }
             // Delete World_Image (if exists)
             return try {
                 val fwi = File(gc.filesDir.absolutePath + "/world_images/" + fileName)
+                Log.d("testData", fwi.toString())
                 if (fwi.exists()) {
+                    Log.d("testData", fwi.toString())
                     fwi.delete()
                 }
                 true

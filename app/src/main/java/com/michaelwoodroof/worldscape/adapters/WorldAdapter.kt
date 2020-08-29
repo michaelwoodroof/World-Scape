@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.world_layout.view.tvTitle
 
 // @TODO Implement Genre Icon on World_Layout / Adapter
 
-class WorldAdapter (private val givenValues: List<WorldContent.WorldItem>)
+class WorldAdapter (private var givenValues: List<WorldContent.WorldItem>)
     : RecyclerView.Adapter<WorldAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,6 +34,8 @@ class WorldAdapter (private val givenValues: List<WorldContent.WorldItem>)
         val item = givenValues[position]
         holder.mTitle.text = item.title
         holder.mDesc.text = item.desc
+        holder.mCont.id = position
+        holder.mDel.tag = item.uid
 
         if (item.hasImg) {
             val mf = ManageFiles(holder.mImg.context)
@@ -82,13 +85,14 @@ class WorldAdapter (private val givenValues: List<WorldContent.WorldItem>)
 
     override fun getItemCount(): Int = givenValues.size
 
-    inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
+    class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         val mTitle : TextView = mView.tvTitle
         val mDesc : TextView = mView.tvDesc
         val mAccent : TextView = mView.tvAccent
         val mCard : CardView = mView.cvMain
         val mCont : ConstraintLayout = mView.clCard
         val mImg : ImageView = mView.imgPreview
+        val mDel : ImageButton = mView.btnDelete
 
         override fun toString(): String {
             return super.toString() + " '"
