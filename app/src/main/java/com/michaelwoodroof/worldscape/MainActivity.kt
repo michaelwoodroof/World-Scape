@@ -4,16 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.WorldFragment
@@ -99,19 +102,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun deleteWorld(view : View) {
-        val mf = ManageFiles(baseContext)
-        if (mf.deleteWorld(view.tag as String)!!) {
-            // Was Deleted @TODO Include option to Undo
-            // @TODO Improve this Method
-            val worldFragment = WorldFragment()
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.flFragmentsM, worldFragment)
-            transaction.commit()
-            Toast.makeText(baseContext, "Deleted", Toast.LENGTH_SHORT).show()
-        } else {
-            // @TODO Why it wasn't deleted
-            // Try Again Once
-        }
+        MaterialAlertDialogBuilder(this, R.style.DialogTheme)
+            .setTitle(resources.getString(R.string.delete_world_dialog_title))
+            .setMessage(resources.getString(R.string.delete_world_dialog_message))
+            .setNeutralButton(resources.getString(R.string.dialog_cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton(resources.getString(R.string.dialog_accept)) { dialog, _ ->
+                val mf = ManageFiles(baseContext)
+                if (mf.deleteWorld(view.tag as String)) {
+                    // Was Deleted @TODO Include option to Undo
+                    val worldFragment = WorldFragment()
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.flFragmentsM, worldFragment)
+                    transaction.commit()
+                    dialog.dismiss()
+                } else {
+                    // Try Again Once
+                    if (!mf.deleteWorld(view.tag as String)) {
+                        Toast.makeText(baseContext, resources.getString(R.string.delete_fail),
+                            Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }.show()
     }
 
 }
