@@ -82,6 +82,8 @@ class CreateWorldActivity : AppCompatActivity() {
             val ed = ddGenre.text
             val uid = mf.generateUUID()
 
+            mf.createFolderStructure(uid, this)
+
             // Attempt to Save World Image
             if (img && this::uriPointer.isInitialized) {
                 mf.saveWorldImage(uid, uriPointer, this.contentResolver)

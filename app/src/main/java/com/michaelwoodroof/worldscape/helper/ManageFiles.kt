@@ -17,38 +17,77 @@ import kotlin.collections.ArrayList
 
 class ManageFiles(private val gc : Context) {
 
-    fun saveWorld(title : String, desc : String, genre : String, hasImg : Boolean,
-                  color : String, uid : String) : Boolean {
+    // Used to Create the Folder Structure when a new world is made
+    fun createFolderStructure(uid : String, gc : Context) : Boolean {
+
+        val fo = gc.filesDir
 
         try {
-            // Checks if Worlds Folder exists
-            val fo = gc.filesDir
+            // Creates Worlds Folder if not already Existing
             val f = File(fo, "worlds")
             if (!f.exists()) {
                 f.mkdir()
             }
 
-            // Tries to Create File
-            return try {
-                val cf = File(fo.absolutePath + "/worlds", uid)
-                cf.createNewFile()
-                Log.d("testData", cf.toString())
-                val fos = FileOutputStream(cf)
-                val oos = ObjectOutputStream(fos)
-                // Create WorldContent.WorldItem
-                val wi = WorldContent.WorldItem(title, desc, genre, hasImg, color, uid)
-                oos.writeObject(wi)
-                fos.close()
-                oos.close()
-                true
-            } catch (e : Exception) {
-                Log.e("Error", e.toString())
-                false
+            // Create Folder for the Unique World
+            val filePath = "$fo/worlds"
+            val fi = File(filePath, uid)
+            if (!fi.exists()) {
+                fi.mkdir()
+            }
+
+            // Create Folder for the Characters
+            val filePathInner = "$fo/worlds/$uid"
+            val fic = File(filePathInner, "characters")
+            if (!fic.exists()) {
+                fic.mkdir()
+            }
+
+            // Create Folder for the Stories
+            val fis = File(filePathInner, "stories")
+            if (!fis.exists()) {
+                fis.mkdir()
+            }
+
+            // Create Folder for the Places
+            val fip = File(filePathInner, "places")
+            if (!fip.exists()) {
+                fip.mkdir()
+            }
+
+            val fich = File(filePathInner, "chapters")
+            if (!fich.exists()) {
+                fich.mkdir()
             }
 
         } catch (e : Exception) {
-            Log.e("Error", e.toString())
+            Log.e("error", e.toString())
             return false
+        }
+
+        return true
+
+    }
+
+    fun saveWorld(title : String, desc : String, genre : String, hasImg : Boolean,
+                  color : String, uid : String) : Boolean {
+
+        val fo = gc.filesDir
+        return try {
+            val filePath = File(fo.absolutePath + "/worlds/$uid")
+            val fwd = File(filePath, "world_data")
+            fwd.createNewFile()
+            val fos = FileOutputStream(fwd)
+            val oos = ObjectOutputStream(fos)
+            // Create WorldContent.WorldItem
+            val wi = WorldContent.WorldItem(title, desc, genre, hasImg, color, uid)
+            oos.writeObject(wi)
+            fos.close()
+            oos.close()
+            true
+        } catch (e : Exception) {
+            Log.e("Error", e.toString())
+            false
         }
 
     }
@@ -59,7 +98,7 @@ class ManageFiles(private val gc : Context) {
         val wf = File(gc.filesDir.absolutePath + "/worlds")
 
         wf.listFiles()?.forEach {
-            val fis = FileInputStream(it)
+            val fis = FileInputStream(it.absolutePath + "/world_data")
             val ois = ObjectInputStream(fis)
             val wi = ois.readObject() as WorldContent.WorldItem
             wl.add(wi)
@@ -68,43 +107,31 @@ class ManageFiles(private val gc : Context) {
         return wl
     }
 
+    @Suppress("DEPRECATION")
     fun saveWorldImage(uid : String, img : Uri, gcr : ContentResolver) : Boolean {
         // Check if Res Folder is Made
-        try {
-            // Makes Res Folder
-            val fo = gc.filesDir
-            val fw = File(fo, "world_images")
-            if (!fw.exists()) {
-                fw.mkdir()
+        // Try to Create File
+        return try {
+            val cf = File(gc.filesDir.absolutePath + "/worlds/$uid", "world_image")
+            cf.createNewFile()
+            // Create Bitmap of URI
+            var bm: Bitmap?
+            bm = if (Build.VERSION.SDK_INT < 28) {
+                MediaStore.Images.Media.getBitmap(gcr, Uri.parse(img.toString()))
+            } else {
+                val src = ImageDecoder.createSource(gcr, Uri.parse(img.toString()))
+                ImageDecoder.decodeBitmap(src)
             }
-
-            // Try to Create File
-            return try {
-                val cf = File(gc.filesDir.absolutePath + "/world_images", uid)
-                cf.createNewFile()
-                // Create Bitmap of URI
-                var bm: Bitmap? = null
-                bm = if (Build.VERSION.SDK_INT < 28) {
-                    MediaStore.Images.Media.getBitmap(gcr, Uri.parse(img.toString()))
-                } else {
-                    val src = ImageDecoder.createSource(gcr, Uri.parse(img.toString()))
-                    ImageDecoder.decodeBitmap(src)
-                }
-                bm = bm?.let { Bitmap.createScaledBitmap(it, 300, 300, false) }
-                // Write Bitmap to File
-                val stream : OutputStream = FileOutputStream(cf)
-                bm?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-                stream.flush()
-                stream.close()
-                true
-            } catch (e : Exception) {
-                Log.e("Error", e.toString())
-                false
-            }
-
+            bm = bm?.let { Bitmap.createScaledBitmap(it, 300, 300, false) }
+            // Write Bitmap to File
+            val stream : OutputStream = FileOutputStream(cf)
+            bm?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            stream.flush()
+            stream.close()
+            true
         } catch (e : Exception) {
             Log.e("Error", e.toString())
-            return false
+            false
         }
 
     }
@@ -112,7 +139,7 @@ class ManageFiles(private val gc : Context) {
     fun getWorldImage(uid : String) : Bitmap? {
         val bm : Bitmap? = null
 
-        val wf = File(gc.filesDir.absolutePath + "/world_images/" + uid)
+        val wf = File(gc.filesDir.absolutePath + "/worlds/$uid/world_image")
 
         return try {
             BitmapFactory.decodeFile(wf.absolutePath)
@@ -125,30 +152,18 @@ class ManageFiles(private val gc : Context) {
 
     fun deleteWorld(fileName : String) : Boolean {
 
-        try {
-            // Delete World
+        return try {
+            // Delete World and all Data
             val f = File(gc.filesDir.absolutePath + "/worlds/" + fileName)
             Log.d("testData", f.toString())
             if (f.exists()) {
                 Log.d("testData", f.toString())
-                f.delete()
+                f.deleteRecursively()
             }
-            // Delete World_Image (if exists)
-            return try {
-                val fwi = File(gc.filesDir.absolutePath + "/world_images/" + fileName)
-                Log.d("testData", fwi.toString())
-                if (fwi.exists()) {
-                    Log.d("testData", fwi.toString())
-                    fwi.delete()
-                }
-                true
-            } catch (e : Exception) {
-                Log.e("Error", e.toString())
-                false
-            }
+            true
         } catch (e : Exception) {
             Log.e("Error", e.toString())
-            return false
+            false
         }
 
     }
@@ -156,6 +171,10 @@ class ManageFiles(private val gc : Context) {
    fun generateUUID() : String {
         val uuid = UUID.randomUUID()
         return uuid.toString()
+   }
+
+    fun verifyUUID(uid : String) : Boolean {
+        return true
     }
 
 }
