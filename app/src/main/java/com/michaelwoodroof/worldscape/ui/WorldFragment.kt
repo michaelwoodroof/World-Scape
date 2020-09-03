@@ -27,7 +27,6 @@ class WorldFragment : Fragment() {
         // Ensures in Alphabetical Order @TODO Allow user to Filter and Search for Worlds
         //dataset.sortBy { it.title }
         rvWorlds.adapter = WorldAdapter(dataset)
-        rvWorlds.overScrollMode = View.OVER_SCROLL_NEVER
         rv = rvWorlds
         return root
     }

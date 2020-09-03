@@ -25,7 +25,7 @@ class WDCharacterAdapter (private val givenValues: List<CharacterContent.Charact
 
     override fun getItemCount(): Int = givenValues.size
 
-    inner class ViewHolder(mView : View) : RecyclerView.ViewHolder(mView) {
+    class ViewHolder(mView : View) : RecyclerView.ViewHolder(mView) {
         val mTitle : TextView = mView.tvCharacterName
 
         override fun toString(): String {

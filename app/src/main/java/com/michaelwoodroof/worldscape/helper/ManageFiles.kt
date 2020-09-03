@@ -155,9 +155,8 @@ class ManageFiles(private val gc : Context) {
         return try {
             // Delete World and all Data
             val f = File(gc.filesDir.absolutePath + "/worlds/" + fileName)
-            Log.d("testData", f.toString())
+
             if (f.exists()) {
-                Log.d("testData", f.toString())
                 f.deleteRecursively()
             }
             true

@@ -3,6 +3,8 @@ package com.michaelwoodroof.worldscape.adapters
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Color.red
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.WorldDetailActivity
@@ -42,7 +45,21 @@ class WorldAdapter (private var givenValues: List<WorldContent.WorldItem>)
             holder.mImg.setImageBitmap(mf.getWorldImage(item.uid))
         }
 
-        holder.mAccent.setBackgroundColor(Color.parseColor(item.color))
+        when (item.genre) {
+
+            "Fantasy" -> {
+                holder.mGenre.setImageDrawable(ResourcesCompat.getDrawable(holder.itemView.resources, R.drawable.ic_genre_fantasy, null))
+            }
+
+            "Sci-Fi" -> {
+                holder.mGenre.setImageDrawable(ResourcesCompat.getDrawable(holder.itemView.resources, R.drawable.ic_genre_scifi, null))
+            }
+
+            else -> {
+                holder.mGenre.setImageDrawable(ResourcesCompat.getDrawable(holder.itemView.resources, R.drawable.ic_genre_other, null))
+            }
+
+        }
 
         with(holder.mTitle) {
             setOnClickListener {
@@ -62,7 +79,7 @@ class WorldAdapter (private var givenValues: List<WorldContent.WorldItem>)
             }
         }
 
-        with (holder.mAccent) {
+        with(holder.mGenre) {
             setOnClickListener {
                 onClick(this.context, item)
             }
@@ -88,11 +105,11 @@ class WorldAdapter (private var givenValues: List<WorldContent.WorldItem>)
     class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         val mTitle : TextView = mView.tvTitle
         val mDesc : TextView = mView.tvDesc
-        val mAccent : TextView = mView.tvAccent
         val mCard : CardView = mView.cvMain
         val mCont : ConstraintLayout = mView.clCard
         val mImg : ImageView = mView.imgPreview
         val mDel : ImageButton = mView.btnDelete
+        val mGenre : ImageView = mView.imgGenre
 
         override fun toString(): String {
             return super.toString() + " '"

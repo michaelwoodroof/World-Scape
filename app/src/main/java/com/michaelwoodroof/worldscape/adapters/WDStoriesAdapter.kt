@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.wd_character_layout.view.*
 
 class WDStoriesAdapter {
 
-    inner class ViewHolder(mView : View) : RecyclerView.ViewHolder(mView) {
+    class ViewHolder(mView : View) : RecyclerView.ViewHolder(mView) {
         val mTitle: TextView = mView.tvCharacterName
 
         override fun toString(): String {

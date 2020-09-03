@@ -21,7 +21,6 @@ class CharacterFragment : Fragment() {
         rvCharacter.layoutManager = LinearLayoutManager(activity)
         val dataset = loadCharacters()
         rvCharacter.adapter = CharacterAdapter(dataset)
-        rvCharacter.overScrollMode = View.OVER_SCROLL_NEVER
         return root
     }
 

@@ -26,7 +26,7 @@ class CharacterAdapter (private val givenValues: List<CharacterContent.Character
 
     override fun getItemCount(): Int = givenValues.size
 
-    inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
+    class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         val mTitle : TextView = mView.tvCharacterName
         val mDesc : TextView = mView.tvDescription
 

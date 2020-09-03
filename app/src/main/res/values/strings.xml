@@ -23,7 +23,7 @@
     <string name="delete_world_dialog_message">This will delete the world and all information
         relating to this world</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_accept">Accept</string>
+    <string name="dialog_accept">Delete</string>
     <string name="delete_fail">Could not delete world</string>
 
     <!-- Create World Strings -->

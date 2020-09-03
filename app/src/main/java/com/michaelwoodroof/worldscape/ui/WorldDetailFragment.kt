@@ -30,7 +30,6 @@ class WorldDetailFragment : Fragment() {
         val rvRCharacters = root.findViewById<RecyclerView>(R.id.rvRecentCharacters)
         rvRCharacters.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         rvRCharacters.adapter = loadRecentCharacters()?.let { WDCharacterAdapter(it) }
-        rvRCharacters.overScrollMode = View.OVER_SCROLL_NEVER
 
         val btnSAC : ImageButton = root.findViewById(R.id.btnShowAllCharacters)
         val btnSAP : ImageButton = root.findViewById(R.id.btnShowAllPlaces)
@@ -58,13 +57,11 @@ class WorldDetailFragment : Fragment() {
 //        val rvRPlaces = rvRecentCharacters
 //        rvRPlaces.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 //        rvRPlaces.adapter = WDPlacesAdapter(loadRecentPlaces())
-//        rvRPlaces.overScrollMode = View.OVER_SCROLL_NEVER
 
 
         //        val rvRStories = rvRecentStories
 //        rvRStories.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 //        rvRStories.adapter = WDStoriesAdapter(loadRecentStories())
-//        rvRStories.overScrollMode = View.OVER_SCROLL_NEVER
 
         return root
     }

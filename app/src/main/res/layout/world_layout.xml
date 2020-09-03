@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clContainer"
     android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="1dp"
         android:visibility="visible"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/content_background"
         app:cardCornerRadius="4dp"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"
@@ -29,18 +30,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clCard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/content_background">
-
-            <TextView
-                android:id="@+id/tvAccent"
-                android:layout_width="0dp"
-                android:layout_height="5dp"
-                android:background="#FF9800"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imgPreview"
@@ -60,9 +50,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
+                android:clickable="false"
                 android:fontFamily="sans-serif-condensed"
+                android:longClickable="false"
                 android:text="@string/placeholder"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/baseTextColor"
+                app:layout_constraintEnd_toStartOf="@+id/imgGenre"
                 app:layout_constraintStart_toEndOf="@+id/imgPreview"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,18 +65,22 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
+                android:clickable="false"
                 android:contentDescription="@string/placeholder_desc"
                 android:fontFamily="sans-serif-condensed"
                 android:inputType="textMultiLine"
                 android:lines="7"
+                android:longClickable="false"
                 android:maxLines="7"
                 android:minLines="7"
                 android:text="@string/placeholder_desc"
+                android:textColor="@color/baseTextColor"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+                app:layout_constraintEnd_toEndOf="@+id/imgGenre"
                 app:layout_constraintStart_toStartOf="@+id/tvTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                tools:ignore="TextViewEdits" />
 
             <ImageButton
                 android:id="@+id/btnDelete"
@@ -98,6 +95,17 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/ic_baseline_delete_outline_24" />
+
+            <ImageView
+                android:id="@+id/imgGenre"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvTitle"
+                app:srcCompat="@drawable/ic_genre_fantasy"
+                app:tint="@color/baseTextColor" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
