@@ -12,6 +12,7 @@ import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.adapters.WorldAdapter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlin.collections.ArrayList
 
 class WorldFragment : Fragment() {
@@ -32,7 +33,14 @@ class WorldFragment : Fragment() {
     }
 
     override fun onStart() {
-        rv.adapter = WorldAdapter(loadWorlds())
+        val dataset = loadWorlds()
+        rv.adapter = WorldAdapter(dataset)
+        if (dataset.size == 0) {
+           rv.overScrollMode = View.OVER_SCROLL_NEVER
+        } else {
+            // @TODO Add Scroll effect when items exceed phone height
+            rv.overScrollMode = View.OVER_SCROLL_ALWAYS
+        }
         super.onStart()
     }
 

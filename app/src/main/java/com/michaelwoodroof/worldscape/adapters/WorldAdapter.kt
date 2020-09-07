@@ -1,10 +1,6 @@
 package com.michaelwoodroof.worldscape.adapters
 
-import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.Color.red
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,11 +16,8 @@ import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.world_layout.view.*
-import kotlinx.android.synthetic.main.world_layout.view.tvTitle
 
-// @TODO Implement Genre Icon on World_Layout / Adapter
-
-class WorldAdapter (private var givenValues: List<WorldContent.WorldItem>)
+class WorldAdapter(private var givenValues: List<WorldContent.WorldItem>)
     : RecyclerView.Adapter<WorldAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -48,56 +41,50 @@ class WorldAdapter (private var givenValues: List<WorldContent.WorldItem>)
         when (item.genre) {
 
             "Fantasy" -> {
-                holder.mGenre.setImageDrawable(ResourcesCompat.getDrawable(holder.itemView.resources, R.drawable.ic_genre_fantasy, null))
+                holder.mGenre.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        holder.itemView.resources,
+                        R.drawable.ic_genre_fantasy,
+                        null
+                    )
+                )
             }
 
             "Sci-Fi" -> {
-                holder.mGenre.setImageDrawable(ResourcesCompat.getDrawable(holder.itemView.resources, R.drawable.ic_genre_scifi, null))
+                holder.mGenre.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        holder.itemView.resources,
+                        R.drawable.ic_genre_scifi,
+                        null
+                    )
+                )
             }
 
             else -> {
-                holder.mGenre.setImageDrawable(ResourcesCompat.getDrawable(holder.itemView.resources, R.drawable.ic_genre_other, null))
+                holder.mGenre.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        holder.itemView.resources,
+                        R.drawable.ic_genre_other,
+                        null
+                    )
+                )
             }
 
-        }
-
-        with(holder.mTitle) {
-            setOnClickListener {
-                onClick(this.context, item)
-            }
-        }
-
-        with(holder.mDesc) {
-            setOnClickListener {
-                onClick(this.context, item)
-            }
-        }
-
-        with (holder.mImg) {
-            setOnClickListener {
-                onClick(this.context, item)
-            }
-        }
-
-        with(holder.mGenre) {
-            setOnClickListener {
-                onClick(this.context, item)
-            }
         }
 
         with(holder.itemView) {
             setOnClickListener {
-                onClick(this.context, item)
+                // Prevents Double Clicks as Intent is loading
+                if (holder.itemView.tag != "clicked") {
+                    holder.itemView.tag = "clicked"
+                    val intent = Intent(this.context, WorldDetailActivity::class.java)
+                    intent.putExtra("uid", item.uid)
+                    intent.putExtra("title", item.title)
+                    this.context.startActivity(intent)
+                }
             }
         }
 
-    }
-
-    private fun onClick(ctx : Context, item : WorldContent.WorldItem) {
-        val intent = Intent(ctx, WorldDetailActivity::class.java)
-        intent.putExtra("uid", item.uid)
-        intent.putExtra("title", item.title)
-        ctx.startActivity(intent)
     }
 
     override fun getItemCount(): Int = givenValues.size

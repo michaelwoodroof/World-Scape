@@ -3,13 +3,19 @@ package com.michaelwoodroof.worldscape
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.SpannableStringBuilder
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
+import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 
@@ -49,6 +55,28 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    fun setLink(view : View) {
+        val mf = ManageFiles(this)
+        when(view.id) {
+
+            btnLinkPlace.id -> {
+                // @TODO Replace with Actual Places
+                val items = arrayOf("Item One","Item Two","Item Three","Item Four","Item Five")
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Test Title")
+                    .setItems(items) {dialog, which ->
+                        tietPlaceOfBirth.text = SpannableStringBuilder(items[which])
+                        dialog.dismiss()
+                    }.show()
+            }
+
+            else -> {
+                Log.e("error", "Err : Button not found")
+            }
+
+        }
     }
 
     fun goBack(view : View) {

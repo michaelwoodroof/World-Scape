@@ -44,6 +44,7 @@
     <!-- Create Character Strings -->
     <string name="create_character_title">Create a Character</string>
     <string name="create_character_create">Create Character</string>
+    <string name="add_field">Add a field</string>
     <string name="character_title">Name of Character</string>
     <string name="birth_title">Year of Birth</string>
     <string name="birth_loc">Place of Birth</string>

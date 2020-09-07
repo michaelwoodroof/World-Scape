@@ -33,44 +33,107 @@
             android:layout_height="match_parent"
             android:visibility="visible">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
             <TextView
                 android:id="@+id/tvCharacterTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/character_title"
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/colorPrimary"
+                android:translationZ="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cvPreview"
+                app:layout_constraintEnd_toEndOf="@+id/cvPreview"
+                app:layout_constraintStart_toStartOf="@+id/cvPreview"
+                app:layout_constraintTop_toBottomOf="@+id/cvPreview"
+                app:srcCompat="@drawable/ic_baseline_image_10_white" />
+
+            <TextView
+                android:id="@+id/tvPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Pick an Image @REF"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/tvBirth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/birth_title"
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilCharacterName" />
+                app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvPreview"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="6dp"
+                app:cardBackgroundColor="@color/content_background"
+                app:cardCornerRadius="4dp"
+                app:strokeColor="@color/stroke_color_cc"
+                app:strokeWidth="1dp"
+                app:cardElevation="0dp"
+                app:cardMaxElevation="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toTopOf="@+id/tilCharacterName">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clInnerCV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgPreviewCC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/tvPlaceOfBirth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
                 android:text="@string/birth_loc"
                 android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBirthYear" />
+                app:layout_constraintStart_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toTopOf="@+id/tvBirth" />
 
             <TextView
                 android:id="@+id/tvCurrentLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/current_loc"
                 android:textColor="@color/colorPrimary"
@@ -78,25 +141,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/tilPlaceOfBirth" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilCharacterName"
+                android:id="@+id/tilPlaceOfBirth"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 app:boxBackgroundColor="@color/content_background"
                 app:boxStrokeErrorColor="@color/error_color"
                 app:counterMaxLength="100"
+                app:endIconCheckable="false"
                 app:errorEnabled="true"
                 app:errorIconTint="@color/error_color"
                 app:errorTextColor="@color/error_color"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCharacterTitle">
+                app:layout_constraintStart_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toBottomOf="@+id/tvPlaceOfBirth"
+                app:startIconCheckable="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietCharacterName"
+                    android:id="@+id/tietPlaceOfBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -107,18 +172,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilBirthYear"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
                 app:boxBackgroundColor="@color/content_background"
                 app:boxStrokeErrorColor="@color/error_color"
                 app:counterMaxLength="100"
                 app:errorEnabled="true"
                 app:errorIconTint="@color/error_color"
                 app:errorTextColor="@color/error_color"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/gl50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvBirth">
 
@@ -132,25 +196,24 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPlaceOfBirth"
+                android:id="@+id/tilCharacterName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
                 app:boxBackgroundColor="@color/content_background"
                 app:boxStrokeErrorColor="@color/error_color"
                 app:counterMaxLength="100"
                 app:errorEnabled="true"
                 app:errorIconTint="@color/error_color"
                 app:errorTextColor="@color/error_color"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/gl50"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlaceOfBirth">
+                app:layout_constraintTop_toBottomOf="@+id/tvCharacterTitle">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietPlaceOfBirth"
+                    android:id="@+id/tietCharacterName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -161,18 +224,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCurrentLocation"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
                 app:boxBackgroundColor="@color/content_background"
                 app:boxStrokeErrorColor="@color/error_color"
                 app:counterMaxLength="100"
                 app:errorEnabled="true"
                 app:errorIconTint="@color/error_color"
                 app:errorTextColor="@color/error_color"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/gl50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation">
 
@@ -184,6 +246,34 @@
                     android:translationZ="4dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/btnLinkPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:onClick="setLink"
+                android:padding="8dp"
+                android:translationZ="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilPlaceOfBirth"
+                app:layout_constraintEnd_toEndOf="@+id/tilPlaceOfBirth"
+                app:layout_constraintTop_toTopOf="@+id/tilPlaceOfBirth"
+                app:srcCompat="@drawable/ic_baseline_link_24" />
+
+            <ImageButton
+                android:id="@+id/btnLinkCurrentLoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:onClick="setLink"
+                android:padding="8dp"
+                android:translationZ="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilCurrentLocation"
+                app:layout_constraintEnd_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toTopOf="@+id/tilCurrentLocation"
+                app:srcCompat="@drawable/ic_baseline_link_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

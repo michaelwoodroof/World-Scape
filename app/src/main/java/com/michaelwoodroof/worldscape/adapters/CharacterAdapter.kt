@@ -21,7 +21,7 @@ class CharacterAdapter (private val givenValues: List<CharacterContent.Character
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = givenValues[position]
         holder.mTitle.text = item.name
-        holder.mDesc.text = item.age
+        holder.mDesc.text = item.yearOfBirth
     }
 
     override fun getItemCount(): Int = givenValues.size

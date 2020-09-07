@@ -12,12 +12,18 @@ object GenerateSampleData {
     fun generateCharacterData(limit : Int) : ArrayList<CharacterContent.CharacterItem> {
 
         val dataset = ArrayList<CharacterContent.CharacterItem>()
-        dataset.add(CharacterContent.CharacterItem("Sir Nibbles", "22", generateUUID()))
-        dataset.add(CharacterContent.CharacterItem("Knight Nibbles", "23", generateUUID()))
-        dataset.add(CharacterContent.CharacterItem("Sir Nibbles", "22", generateUUID()))
-        dataset.add(CharacterContent.CharacterItem("Knight Nibbles", "23", generateUUID()))
-        dataset.add(CharacterContent.CharacterItem("Sir Nibbles", "22", generateUUID()))
-        dataset.add(CharacterContent.CharacterItem("Knight Nibbles", "23", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("Sir Nibbles", false, "200BC", "Lorem",
+            "Lorem", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("Knight", false, "2344BC", "Lorem",
+            "Lorem", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("The Dark One", false, "10AD", "Lorem",
+            "Lorem", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("Holy Crusader", false, "90AD", "Lorem",
+            "Lorem", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("The Matriarch", false, "160AD", "Lorem",
+            "Lorem", generateUUID()))
+        dataset.add(CharacterContent.CharacterItem("Neo", false, "192AD", "Lorem",
+            "Lorem", generateUUID()))
 
         return dataset
 
