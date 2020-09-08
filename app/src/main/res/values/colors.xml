@@ -7,7 +7,7 @@
     <color name="navigation">#fff</color>
     <color name="transparent">#00FFFFFF</color>
 
-    <color name="stroke_colour">#AAAAAA</color>
+    <color name="stroke_color">#AAAAAA</color>
     <color name="stroke_color_cc">#C4C4C4</color>
     <color name="content_background">#ffffff</color>
     <color name="transition_color">#D5D5D5</color>

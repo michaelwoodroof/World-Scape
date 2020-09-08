@@ -6,7 +6,7 @@
     <color name="baseTextColor">#ffffff</color>
     <color name="navigation">#222222</color>
 
-    <color name="stroke_colour">#AAAAAA</color>
+    <color name="stroke_color">#AAAAAA</color>
     <color name="stroke_color_cc">#777</color>
     <color name="content_background">#494949</color>
 
