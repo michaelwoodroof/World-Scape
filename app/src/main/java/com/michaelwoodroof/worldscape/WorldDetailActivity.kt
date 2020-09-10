@@ -110,6 +110,10 @@ class WorldDetailActivity : AppCompatActivity() {
             }
         }
 
+        // @TODO Review
+        item.isCheckable = true
+        item.isChecked = false
+
         dlMain.closeDrawer(GravityCompat.START)
 
     }

@@ -40,6 +40,13 @@
         <item>Sci-Fi</item>
         <item>Other</item>
     </string-array>
+    <string name="add_stats">Add a stat sheet</string>
+    <string name="general_title">General Information about the Character</string>
+    <string name="physical_title">Physical Features of Character</string>
+    <string name="optional">(Optional)</string>
+    <string name="eye_color">Eye Colour</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
 
     <!-- Create Character Strings -->
     <string name="create_character_title">Create a Character</string>
@@ -49,6 +56,8 @@
     <string name="birth_title">Year of Birth</string>
     <string name="birth_loc">Place of Birth</string>
     <string name="current_loc">Current Location / Region</string>
+    <string name="pick_image_cc">Image of Character</string>
+    <string name="biography_cc">Biography / Description</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>

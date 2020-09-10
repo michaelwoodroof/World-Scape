@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group>
         <item
             android:id="@+id/nav_p1"
             android:icon="@drawable/ic_baseline_help_24"
-            android:title="@string/characters"
-            android:onClick="openSubMenu" />
+            android:onClick="openSubMenu"
+            android:title="@string/characters" />
         <item
             android:id="@+id/nav_p2"
             android:icon="@drawable/ic_baseline_help_24"
-            android:title="@string/places"
-            android:onClick="openSubMenu" />
+            android:onClick="openSubMenu"
+            android:title="@string/places" />
 
         <item
             android:id="@+id/nav_p3"
             android:icon="@drawable/ic_baseline_help_24"
-            android:title="@string/stories"
-            android:onClick="openSubMenu" />
+            android:onClick="openSubMenu"
+            android:title="@string/stories" />
 
     </group>
 </menu>

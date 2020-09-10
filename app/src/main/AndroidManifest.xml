@@ -8,18 +8,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateWorldActivity"/>
+        <activity android:name=".CreateWorldActivity"
+            android:screenOrientation="sensorPortrait"/>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".MainActivity">
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WorldDetailActivity" />
-        <activity android:name=".CreateCharacterActivity" />
+        <activity android:name=".WorldDetailActivity"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".CreateCharacterActivity"
+            android:screenOrientation="sensorPortrait"/>
     </application>
 
 </manifest>

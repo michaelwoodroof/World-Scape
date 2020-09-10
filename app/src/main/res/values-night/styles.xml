@@ -24,7 +24,7 @@
 
     <style name="Alert.Button.Neutral" parent="@style/Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="backgroundTint">@color/transparent</item>
-        <item name="rippleColor">@color/colorAccent</item>
+        <item name="rippleColor">@color/baseTextColor</item>
         <item name="android:textColor">@color/baseTextColor</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textAllCaps">false</item>
