@@ -1,0 +1,17 @@
+package com.michaelwoodroof.worldscape.ui
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.michaelwoodroof.worldscape.R
+
+class CreateCharacterFragmentS1 : Fragment() {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        return(inflater.inflate(R.layout.fragment_create_character_s1, container, false))
+    }
+
+}

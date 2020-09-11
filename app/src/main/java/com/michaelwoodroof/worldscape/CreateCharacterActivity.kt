@@ -3,12 +3,10 @@ package com.michaelwoodroof.worldscape
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
-import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +14,10 @@ import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.ui.CreateCharacterFragmentS1
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
+import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -43,6 +43,12 @@ class CreateCharacterActivity : AppCompatActivity() {
             )
         })
 
+        // Set up Fragment
+        val createCharacterFragment = CreateCharacterFragmentS1()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.flCCMain, createCharacterFragment)
+        transaction.commit()
+
         // Used to Hide Create Character when Keyboard is not Screen (for better user experience)
         val v : View = findViewById(R.id.clMainCC)
         v.viewTreeObserver.addOnGlobalLayoutListener {
@@ -57,17 +63,34 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     }
 
+    fun goBack(view : View) {
+        super.onBackPressed()
+    }
+
     fun setLink(view : View) {
         val mf = ManageFiles(this)
         when(view.id) {
 
-            btnLinkPlace.id -> {
-                // @TODO Replace with Actual Places
+            // @TODO Replace with Actual Places
+
+           btnLinkPlace.id -> {
                 val items = arrayOf("Item One","Item Two","Item Three","Item Four","Item Five")
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Test Title")
                     .setItems(items) {dialog, which ->
                         tietPlaceOfBirth.text = SpannableStringBuilder(items[which])
+                        tietPlaceOfBirth.setSelection(items[which].length)
+                        dialog.dismiss()
+                    }.show()
+            }
+
+            btnLinkCurrentLoc.id -> {
+                val items = arrayOf("Item One","Item Two","Item Three","Item Four","Item Five")
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Test Title")
+                    .setItems(items) {dialog, which ->
+                        tietCurrentLocation.text = SpannableStringBuilder(items[which])
+                        tietCurrentLocation.setSelection(items[which].length)
                         dialog.dismiss()
                     }.show()
             }
@@ -77,10 +100,6 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
         }
-    }
-
-    fun goBack(view : View) {
-        super.onBackPressed()
     }
 
     fun createCharacter(view : View) {
