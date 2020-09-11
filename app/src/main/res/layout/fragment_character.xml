@@ -15,23 +15,24 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/character_layout"/>
 
-    <Button
-        android:id="@+id/btnNewCharacter"
-        style="@style/Widget.MaterialComponents.Button.Icon"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabCreateWorld"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-condensed"
+        android:minHeight="56dp"
         android:onClick="loadCreateCharacter"
+        android:tag="L"
         android:text="@string/add_character"
         android:textColor="@color/add_button_text_color"
+        android:visibility="visible"
         app:backgroundTint="@color/add_button_bg"
-        app:cornerRadius="100dp"
-        app:elevation="8dp"
         app:icon="@drawable/ic_baseline_add_24"
         app:iconTint="@color/add_button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/transparent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

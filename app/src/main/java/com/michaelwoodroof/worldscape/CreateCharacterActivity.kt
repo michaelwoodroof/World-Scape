@@ -12,14 +12,18 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
-import com.michaelwoodroof.worldscape.ui.CreateCharacterFragmentS1
+import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
 class CreateCharacterActivity : AppCompatActivity() {
+
+    // @TODO Utilise
+    lateinit var currentCharacter : CharacterContent.CharacterItem
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,9 +59,9 @@ class CreateCharacterActivity : AppCompatActivity() {
             if ((v.rootView.height - v.height) > TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP, 200F, baseContext.resources.displayMetrics)
             ) {
-                btnCreateCC.visibility = View.INVISIBLE
+                fabCreateCC.visibility = View.INVISIBLE
             } else {
-                btnCreateCC.visibility = View.VISIBLE
+                fabCreateCC.visibility = View.VISIBLE
             }
         }
 

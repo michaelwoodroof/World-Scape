@@ -1,4 +1,4 @@
-package com.michaelwoodroof.worldscape.ui
+package com.michaelwoodroof.worldscape.ui.create_character
 
 import android.os.Bundle
 import android.view.LayoutInflater

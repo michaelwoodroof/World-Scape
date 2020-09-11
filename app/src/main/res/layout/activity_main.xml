@@ -14,30 +14,32 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/background"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/incToolbarM">
 
     </FrameLayout>
 
-    <Button
-        android:id="@+id/btnNewWorld"
-        style="@style/Widget.MaterialComponents.Button.Icon"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabCreateWorld"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-condensed"
+        android:minHeight="56dp"
         android:onClick="loadCreateWorld"
+        android:tag="L"
         android:text="@string/add_world"
         android:textColor="@color/add_button_text_color"
+        android:visibility="visible"
         app:backgroundTint="@color/add_button_bg"
-        app:cornerRadius="100dp"
-        app:elevation="8dp"
         app:icon="@drawable/ic_baseline_add_24"
         app:iconTint="@color/add_button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/transparent" />
 
     <include
         android:id="@+id/incToolbarM"
@@ -45,6 +47,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
