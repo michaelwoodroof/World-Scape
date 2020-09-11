@@ -13,12 +13,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*
+import kotlinx.android.synthetic.main.fragment_world.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -64,9 +64,6 @@ class MainActivity : AppCompatActivity() {
                 ResourcesCompat.getDrawable(resources, R.drawable.settings_shrink, null) as AnimatedVectorDrawable)
         })
 
-        // Used to Show as Layout is Shown
-        fabCreateWorld.show()
-
         tv.text = getString(R.string.app_name)
     }
 
@@ -87,16 +84,6 @@ class MainActivity : AppCompatActivity() {
 
         }
         super.onStart()
-    }
-
-    fun extendShrink(view : View) {
-        if (view.tag == "S") {
-            view.tag = "L"
-            fabCreateWorld.extend()
-        } else {
-            view.tag = "S"
-            fabCreateWorld.shrink()
-        }
     }
 
     fun loadSettings(view : View) {
