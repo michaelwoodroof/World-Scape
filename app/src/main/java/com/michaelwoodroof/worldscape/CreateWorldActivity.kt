@@ -13,12 +13,21 @@ import android.transition.TransitionManager
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.activity_create_world.*
+import kotlinx.android.synthetic.main.activity_create_world.clMainCW
+import kotlinx.android.synthetic.main.activity_create_world.ddGenre
+import kotlinx.android.synthetic.main.activity_create_world.fabPickImage
+import kotlinx.android.synthetic.main.activity_create_world.imgPreview
+import kotlinx.android.synthetic.main.activity_create_world.incToolbarCW
+import kotlinx.android.synthetic.main.activity_create_world.tietDesc
+import kotlinx.android.synthetic.main.activity_create_world.tietWorld
+import kotlinx.android.synthetic.main.activity_create_world.tilDesc
+import kotlinx.android.synthetic.main.activity_create_world.tilWorld
+import kotlinx.android.synthetic.main.activity_create_world.txtiGenre
 import kotlinx.android.synthetic.main.default_toolbar.*
 
 class CreateWorldActivity : AppCompatActivity() {
@@ -163,7 +172,7 @@ class CreateWorldActivity : AppCompatActivity() {
     }
 
     private fun addAnimation() {
-        findViewById<Button>(R.id.btnPickImage).setOnClickListener {
+        findViewById<Button>(R.id.fabPickImage).setOnClickListener {
             // Only Animate if Condition is Met
 
             val intent = Intent(Intent.ACTION_PICK)
@@ -230,32 +239,28 @@ class CreateWorldActivity : AppCompatActivity() {
         val c = ConstraintSet()
         c.clone(this, R.layout.activity_create_world_alt)
 
-        if (btnPickImage.tag != "run") {
+        if (fabPickImage.tag != "run") {
             val dur = ChangeBounds()
             dur.duration = 300
 
             val r1 = Runnable {
                 TransitionManager.beginDelayedTransition(root, dur)
                 c.applyTo(root)
-                btnPickImage.text = ""
             }
 
             val r2 = Runnable {
                 // Convert to Circle
-                btnPickImage.setPadding(36, 4, 12, 4)
-                btnPickImage.text = ""
-                btnPickImage.background = ContextCompat.getDrawable(this, R.drawable.circle)
-                btnPickImage.tag = "run"
-                // Make Image Visible
-                cvPreview.visibility = View.VISIBLE
+                fabPickImage.shrink()
             }
 
             val r = Runnable {}
 
             r.run {
                 Handler().postDelayed(r1, 100)
-                Handler().postDelayed(r2, dur.duration + 200)
+                Handler().postDelayed(r2, 400)
             }
+
+            fabPickImage.tag = "run"
 
         }
     }

@@ -186,26 +186,23 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnPickImage"
-            android:layout_width="200dp"
-            android:layout_height="48dp"
-            android:elevation="4dp"
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabPickImage"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:fontFamily="sans-serif-condensed"
-            android:paddingStart="16dp"
-            android:paddingEnd="40dp"
-            android:text="@string/create_world_button"
+            android:minHeight="30dp"
+            android:tag="L"
+            android:text="@string/pick_image_cc"
             android:textColor="#FFFFFF"
-            android:textSize="12sp"
+            android:visibility="visible"
             app:backgroundTint="@color/colorPrimary"
-            app:cornerRadius="20dp"
             app:icon="@drawable/ic_baseline_image_24"
-            app:iconGravity="start"
-            app:iconPadding="0dp"
-            app:iconTint="#ffffff"
+            app:iconTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spOne" />
+            app:layout_constraintTop_toBottomOf="@+id/spOne"
+            app:rippleColor="@color/transparent" />
 
         <Button
             android:id="@+id/btnCreate"
