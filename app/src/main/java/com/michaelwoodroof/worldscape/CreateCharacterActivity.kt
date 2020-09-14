@@ -16,6 +16,7 @@ import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
+import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS2
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
@@ -47,6 +48,9 @@ class CreateCharacterActivity : AppCompatActivity() {
             )
         })
 
+        // Shrink FABS
+        //fabNext.shrink()
+
         // Set up Fragment
         val createCharacterFragment = CreateCharacterFragmentS1()
         val transaction = supportFragmentManager.beginTransaction()
@@ -56,15 +60,27 @@ class CreateCharacterActivity : AppCompatActivity() {
         // Used to Hide Create Character when Keyboard is not Screen (for better user experience)
         val v : View = findViewById(R.id.clMainCC)
         v.viewTreeObserver.addOnGlobalLayoutListener {
-            if ((v.rootView.height - v.height) > TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 200F, baseContext.resources.displayMetrics)
-            ) {
-                fabCreateCC.visibility = View.INVISIBLE
-            } else {
-                fabCreateCC.visibility = View.VISIBLE
+            if (flCCMain.tag == "S5") {
+                if ((v.rootView.height - v.height) > TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 200F, baseContext.resources.displayMetrics)
+                ) {
+                    fabCreateCC.visibility = View.INVISIBLE
+                } else {
+                    fabCreateCC.visibility = View.VISIBLE
+                }
             }
         }
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        // Update Step Number
+        when (flCCMain.tag) {
+            "S2" -> {
+                flCCMain.tag = "S1"
+            }
+        }
     }
 
     fun goBack(view : View) {
@@ -103,6 +119,18 @@ class CreateCharacterActivity : AppCompatActivity() {
                 Log.e("error", "Err : Button not found")
             }
 
+        }
+    }
+
+    fun stepForward(view : View) {
+        if (flCCMain.tag == "S1") {
+            // Update Frag
+            flCCMain.tag = "S2"
+            val createCharacterFragment = CreateCharacterFragmentS2()
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.flCCMain, createCharacterFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
     }
 

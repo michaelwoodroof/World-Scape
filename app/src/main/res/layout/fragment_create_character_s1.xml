@@ -14,10 +14,8 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clInnerContainer"
@@ -249,7 +247,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="@null"
                 android:onClick="setLink"
                 android:padding="8dp"
                 android:translationZ="10dp"
@@ -315,7 +313,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="@null"
                 android:onClick="setLink"
                 android:padding="8dp"
                 android:translationZ="10dp"
@@ -335,10 +333,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/tilCurrentLocation" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvPreview"
+                android:id="@+id/cvPreviewCC"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:translationZ="0dp"
                 android:visibility="gone"
                 app:cardBackgroundColor="@color/content_background"
@@ -348,7 +346,7 @@
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPreview"
+                app:layout_constraintTop_toBottomOf="@+id/spOne"
                 app:strokeColor="@color/stroke_color_cc"
                 app:strokeWidth="1dp">
 
@@ -369,29 +367,43 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <Button
-                android:id="@+id/btnPickImageCC"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:elevation="4dp"
-                android:ellipsize="end"
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/fabPickImageCC"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:fontFamily="sans-serif-condensed"
-                android:paddingStart="16dp"
-                android:paddingEnd="40dp"
-                android:text="@string/create_world_button"
+                android:minHeight="30dp"
+                android:paddingTop="10dp"
+                android:tag="L"
+                android:text="@string/pick_image_cc"
                 android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:translationZ="1dp"
+                android:visibility="visible"
                 app:backgroundTint="@color/colorPrimary"
-                app:cornerRadius="20dp"
                 app:icon="@drawable/ic_baseline_image_24"
-                app:iconGravity="start"
-                app:iconPadding="0dp"
-                app:iconTint="#ffffff"
-                app:layout_constraintEnd_toStartOf="@+id/gl75"
-                app:layout_constraintStart_toStartOf="@+id/gl25"
+                app:iconPadding="16dp"
+                app:iconTint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/cvPreviewCC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvPreviewCC"
+                app:rippleColor="@color/transparent" />
+
+            <Space
+                android:id="@+id/spOne"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPreview" />
+
+            <Space
+                android:id="@+id/spTwo"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fabPickImageCC" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
