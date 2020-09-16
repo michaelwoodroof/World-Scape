@@ -68,6 +68,9 @@
     <string name="err_genre">No genre chosen</string>
     <string name="war_img">No image chosen</string>
 
+    <string name="err_no_cc_name">No character name chosen</string>
+    <string name="err_no_bio">No description / biography chosen</string>
+
     <!-- World Detail Strings -->
     <string name="recent_characters">Recent Characters</string>
     <string name="recent_places">Recent Places</string>

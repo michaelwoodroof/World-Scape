@@ -135,7 +135,6 @@
                 android:id="@+id/ddGenre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"
                 android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -201,7 +200,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spOne"
-            app:rippleColor="@color/transparent" />
+            app:rippleColor="@color/fab_ripple" />
 
         <Button
             android:id="@+id/btnCreate"
@@ -226,7 +225,8 @@
             app:iconTint="@color/add_button_text_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="@color/fab_ripple" />
 
         <Space
             android:id="@+id/spOne"

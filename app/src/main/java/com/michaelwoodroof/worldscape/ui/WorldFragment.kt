@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,6 @@ import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.adapters.WorldAdapter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
-import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlin.collections.ArrayList
 
 class WorldFragment : Fragment() {

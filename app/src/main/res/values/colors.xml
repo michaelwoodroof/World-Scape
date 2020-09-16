@@ -11,6 +11,7 @@
     <color name="stroke_color_cc">#C4C4C4</color>
     <color name="content_background">#ffffff</color>
     <color name="transition_color">#D5D5D5</color>
+    <color name="fab_ripple">#40FFFFFF</color>
 
     <color name="background">#F5F5F5</color>
     <color name="add_button_bg">#ffffff</color>

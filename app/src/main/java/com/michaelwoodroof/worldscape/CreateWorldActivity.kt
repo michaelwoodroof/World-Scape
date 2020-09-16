@@ -122,7 +122,6 @@ class CreateWorldActivity : AppCompatActivity() {
                     tilWorld.error = ""
                     true
                 }
-
             }
 
             1 -> {
@@ -261,7 +260,6 @@ class CreateWorldActivity : AppCompatActivity() {
             }
 
             fabPickImage.tag = "run"
-
         }
     }
 

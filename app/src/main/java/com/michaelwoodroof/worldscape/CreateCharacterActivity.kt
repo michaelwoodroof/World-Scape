@@ -7,11 +7,13 @@ import android.text.SpannableStringBuilder
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
@@ -48,9 +50,6 @@ class CreateCharacterActivity : AppCompatActivity() {
             )
         })
 
-        // Shrink FABS
-        //fabNext.shrink()
-
         // Set up Fragment
         val createCharacterFragment = CreateCharacterFragmentS1()
         val transaction = supportFragmentManager.beginTransaction()
@@ -71,6 +70,12 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Set-Up Focus Changers @TODO Increment when to Add these
+        setUpFocusChangers(0)
     }
 
     override fun onBackPressed() {
@@ -124,14 +129,125 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     fun stepForward(view : View) {
         if (flCCMain.tag == "S1") {
-            // Update Frag
-            flCCMain.tag = "S2"
-            val createCharacterFragment = CreateCharacterFragmentS2()
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.flCCMain, createCharacterFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            // Update Frag if Condition passed
+            if (checkFields(0)) {
+                flCCMain.tag = "S2"
+                val createCharacterFragment = CreateCharacterFragmentS2()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.flCCMain, createCharacterFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
         }
+    }
+
+    private fun checkFields(stageNumber : Int) : Boolean {
+
+        when (stageNumber) {
+
+            0 -> {
+                val c1 = checkField(0)
+                val c2 = checkField(1)
+                checkField(2)
+                checkField(3)
+                checkField(4)
+                checkField(5)
+                return c1 && c2
+            }
+
+            1 -> {
+                return false
+            }
+
+            else -> {
+                return false
+            }
+
+        }
+
+    }
+
+    private fun checkField(field : Int) : Boolean {
+
+        when (field) {
+
+            0 -> {
+                return if (tietCharacterName.text.toString().trim() == "") {
+                    tilCharacterName.error = getString(R.string.err_no_cc_name)
+                    tietCharacterName.error = getString(R.string.err_no_cc_name)
+                    false
+                } else {
+                    tilCharacterName.error = ""
+                    true
+                }
+            }
+
+            1 -> {
+                return if (tietBiography.text.toString().trim() == "") {
+                    tilBiography.error = getString(R.string.err_no_cc_name)
+                    tietBiography.error = getString(R.string.err_no_cc_name)
+                    false
+                } else {
+                    tilCharacterName.error = ""
+                    true
+                }
+            }
+
+            2 -> {
+                return true
+            }
+
+            3 -> {
+                return true
+            }
+
+            4 -> {
+                return true
+            }
+
+            5 -> {
+                return true
+            }
+
+            else -> {
+                return false
+            }
+
+        }
+
+    }
+
+    // @TODO Implement
+    private fun setUpFocusChangers(stageNumber: Int) {
+
+        when (stageNumber) {
+
+            0 -> {
+                // Set-up for Stage One
+                val tietCN = findViewById<TextInputEditText>(R.id.tietCharacterName)
+
+                tietCN.onFocusChangeListener = View.OnFocusChangeListener{ _: View, focus ->
+                    if (!focus) {
+                        checkField(0)
+                    }
+                }
+
+                val tietBio = findViewById<TextInputEditText>(R.id.tietBiography)
+                tietBio.onFocusChangeListener = View.OnFocusChangeListener{ _: View, focus ->
+                    if (!focus) {
+                        checkField(1)
+                    }
+                }
+            }
+
+            1 -> {
+                // Set-up for Stage Two
+            }
+
+        }
+
+
+
     }
 
     fun createCharacter(view : View) {

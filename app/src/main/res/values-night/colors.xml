@@ -9,6 +9,7 @@
     <color name="stroke_color">#AAAAAA</color>
     <color name="stroke_color_cc">#777</color>
     <color name="content_background">#494949</color>
+    <color name="fab_ripple">#40FFFFFF</color>
 
     <color name="background">#333333</color>
     <color name="add_button_bg">@color/colorPrimary</color>

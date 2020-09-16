@@ -18,7 +18,6 @@ import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*
-import kotlinx.android.synthetic.main.fragment_world.*
 
 class MainActivity : AppCompatActivity() {
 

@@ -87,7 +87,6 @@ class WorldDetailActivity : AppCompatActivity() {
         when (item.title) {
 
             // @TODO Replace Errors with to string.xml method
-
             // @TODO ADD MENU ITEMS
             "Characters" -> {
                 val characterFragment = CharacterFragment()
@@ -115,7 +114,6 @@ class WorldDetailActivity : AppCompatActivity() {
         item.isChecked = false
 
         dlMain.closeDrawer(GravityCompat.START)
-
     }
 
 }
