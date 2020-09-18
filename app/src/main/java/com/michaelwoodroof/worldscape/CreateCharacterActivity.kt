@@ -7,7 +7,6 @@ import android.text.SpannableStringBuilder
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -148,6 +147,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             0 -> {
                 val c1 = checkField(0)
                 val c2 = checkField(1)
+                // Optional fields
                 checkField(2)
                 checkField(3)
                 checkField(4)
@@ -156,7 +156,11 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             1 -> {
-                return false
+                return true
+            }
+
+            2 -> {
+                return true
             }
 
             else -> {
@@ -178,34 +182,63 @@ class CreateCharacterActivity : AppCompatActivity() {
                     false
                 } else {
                     tilCharacterName.error = ""
+                    tietCharacterName.error = ""
                     true
                 }
             }
 
             1 -> {
                 return if (tietBiography.text.toString().trim() == "") {
-                    tilBiography.error = getString(R.string.err_no_cc_name)
-                    tietBiography.error = getString(R.string.err_no_cc_name)
+                    tilBiography.error = getString(R.string.err_no_bio)
+                    tietBiography.error = getString(R.string.err_no_bio)
                     false
                 } else {
-                    tilCharacterName.error = ""
+                    tilBiography.error = ""
+                    tietBiography.error = ""
                     true
                 }
             }
 
             2 -> {
+                if (tietBirthYear.text.toString().trim() == "") {
+                    tilBirthYear.error = getString(R.string.err_no_by)
+                    tietBirthYear.error = getString(R.string.err_no_by)
+                } else {
+                    tilBirthYear.error = ""
+                    tietBirthYear.error = ""
+                }
                 return true
             }
 
             3 -> {
+                if (tietPlaceOfBirth.text.toString().trim() == "") {
+                    tilPlaceOfBirth.error = getString(R.string.err_no_pob)
+                    tietPlaceOfBirth.error = getString(R.string.err_no_pob)
+                } else {
+                    tilPlaceOfBirth.error = ""
+                    tietPlaceOfBirth.error = ""
+                }
                 return true
             }
 
             4 -> {
+                if (tietCurrentLocation.text.toString().trim() == "") {
+                    tilCurrentLocation.error = getString(R.string.err_no_cl)
+                    tietCurrentLocation.error = getString(R.string.err_no_cl)
+                } else {
+                    tilCurrentLocation.error = ""
+                    tietCurrentLocation.error = ""
+                }
                 return true
             }
 
             5 -> {
+                // Image Checking
+                if (imgPreviewCC.visibility == View.VISIBLE) {
+                    // @TODO Implement
+                } else {
+                    // @TODO Implement
+                }
                 return true
             }
 

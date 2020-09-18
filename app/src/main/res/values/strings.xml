@@ -70,6 +70,9 @@
 
     <string name="err_no_cc_name">No character name chosen</string>
     <string name="err_no_bio">No description / biography chosen</string>
+    <string name="err_no_by">No birth year chosen</string>
+    <string name="err_no_pob">No place of birth chosen</string>
+    <string name="err_no_cl">No current location chosen</string>
 
     <!-- World Detail Strings -->
     <string name="recent_characters">Recent Characters</string>

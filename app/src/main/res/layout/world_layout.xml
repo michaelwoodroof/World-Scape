@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="167dp">
 
+
+    <!-- @TODO Change RIPPLE COLOUR TO MORE SUITABLE COLOUR -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvMain"
         android:layout_width="0dp"
@@ -14,6 +16,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="1dp"
+        android:clickable="true"
+        android:longClickable="true"
         android:visibility="visible"
         app:cardBackgroundColor="@color/content_background"
         app:cardCornerRadius="4dp"
@@ -23,6 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/fab_ripple"
         app:strokeColor="@color/stroke_color"
         app:strokeWidth="1dp">
 
