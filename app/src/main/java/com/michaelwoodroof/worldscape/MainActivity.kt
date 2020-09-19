@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -13,11 +14,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*
+import kotlinx.android.synthetic.main.fragment_world.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -119,6 +122,14 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }.show()
+    }
+
+    fun loadWorld(view : View) {
+        val intent = Intent(this, WorldDetailActivity::class.java)
+        val tag = view.tag as WorldContent.WorldItem
+        intent.putExtra("uid", tag.uid)
+        intent.putExtra("title", tag.title)
+        this.startActivity(intent)
     }
 
 }

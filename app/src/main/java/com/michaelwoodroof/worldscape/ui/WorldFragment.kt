@@ -17,12 +17,14 @@ import kotlin.collections.ArrayList
 class WorldFragment : Fragment() {
 
     private lateinit var rv : RecyclerView
+    private lateinit var fabe : ExtendedFloatingActionButton
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_world, container, false)
         val rvWorlds = root.findViewById(R.id.rvWorlds) as RecyclerView
         val fab = root.findViewById(R.id.fabCreateWorld) as ExtendedFloatingActionButton
+        fabe = fab
         rvWorlds.layoutManager = LinearLayoutManager(activity)
         val dataset = loadWorlds()
         // Ensures in Alphabetical Order @TODO Allow user to Filter and Search for Worlds
@@ -55,6 +57,7 @@ class WorldFragment : Fragment() {
             // @TODO Add Scroll effect when items exceed phone height
             rv.overScrollMode = View.OVER_SCROLL_ALWAYS
         }
+        fabe.tag = ""
         super.onStart()
     }
 

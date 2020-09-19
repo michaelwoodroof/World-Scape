@@ -32,7 +32,7 @@
         app:iconTint="@color/add_button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/transparent" />
+        app:rippleColor="@color/fab_ripple" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

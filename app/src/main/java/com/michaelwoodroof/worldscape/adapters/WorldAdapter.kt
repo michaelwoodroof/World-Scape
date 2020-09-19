@@ -1,6 +1,5 @@
 package com.michaelwoodroof.worldscape.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.world_layout.view.*
@@ -32,6 +30,9 @@ class WorldAdapter(private var givenValues: List<WorldContent.WorldItem>)
         holder.mDesc.text = item.desc
         holder.mCont.id = position
         holder.mDel.tag = item.uid
+        holder.itemView.tag = item.uid + "," + item.title
+        holder.mCard.tag = item
+        //holder.mCard.tag = item.uid + "," + item.title
 
         if (item.hasImg) {
             val mf = ManageFiles(holder.mImg.context)
@@ -72,19 +73,6 @@ class WorldAdapter(private var givenValues: List<WorldContent.WorldItem>)
 
         }
 
-        with(holder.itemView) {
-            setOnClickListener {
-                // Prevents Double Clicks as Intent is loading
-                if (holder.itemView.tag != "clicked") {
-                    holder.itemView.tag = "clicked"
-                    val intent = Intent(this.context, WorldDetailActivity::class.java)
-                    intent.putExtra("uid", item.uid)
-                    intent.putExtra("title", item.title)
-                    this.context.startActivity(intent)
-                }
-            }
-        }
-
     }
 
     override fun getItemCount(): Int = givenValues.size
@@ -103,4 +91,8 @@ class WorldAdapter(private var givenValues: List<WorldContent.WorldItem>)
         }
     }
 
+}
+
+interface OnItemClicked {
+    fun onItemClicked(worldItem : WorldContent.WorldItem)
 }
