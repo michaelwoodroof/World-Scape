@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.R
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
@@ -29,6 +30,7 @@ class CreateCharacterFragmentS1 : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_create_character_s1, container, false)
         rootParent = root
+
         addAnimation(root)
 
         if (Build.VERSION.SDK_INT >= 23) {
@@ -43,8 +45,8 @@ class CreateCharacterFragmentS1 : Fragment() {
             val sv = root.findViewById<ScrollView>(R.id.svCreateCharacter)
             sv.setOnScrollChangeListener(sl)
         }
-
-        return(root)
+        
+        return root
     }
 
     private fun addAnimation(root : View) {

@@ -178,11 +178,9 @@ class CreateCharacterActivity : AppCompatActivity() {
             0 -> {
                 return if (tietCharacterName.text.toString().trim() == "") {
                     tilCharacterName.error = getString(R.string.err_no_cc_name)
-                    tietCharacterName.error = getString(R.string.err_no_cc_name)
                     false
                 } else {
-                    tilCharacterName.error = ""
-                    tietCharacterName.error = ""
+                    tilCharacterName.error = null
                     true
                 }
             }
@@ -190,11 +188,9 @@ class CreateCharacterActivity : AppCompatActivity() {
             1 -> {
                 return if (tietBiography.text.toString().trim() == "") {
                     tilBiography.error = getString(R.string.err_no_bio)
-                    tietBiography.error = getString(R.string.err_no_bio)
                     false
                 } else {
-                    tilBiography.error = ""
-                    tietBiography.error = ""
+                    tilBiography.error = null
                     true
                 }
             }
@@ -202,10 +198,8 @@ class CreateCharacterActivity : AppCompatActivity() {
             2 -> {
                 if (tietBirthYear.text.toString().trim() == "") {
                     tilBirthYear.error = getString(R.string.err_no_by)
-                    tietBirthYear.error = getString(R.string.err_no_by)
                 } else {
-                    tilBirthYear.error = ""
-                    tietBirthYear.error = ""
+                    tilBirthYear.error = null
                 }
                 return true
             }
@@ -213,10 +207,8 @@ class CreateCharacterActivity : AppCompatActivity() {
             3 -> {
                 if (tietPlaceOfBirth.text.toString().trim() == "") {
                     tilPlaceOfBirth.error = getString(R.string.err_no_pob)
-                    tietPlaceOfBirth.error = getString(R.string.err_no_pob)
                 } else {
-                    tilPlaceOfBirth.error = ""
-                    tietPlaceOfBirth.error = ""
+                    tilPlaceOfBirth.error = null
                 }
                 return true
             }
@@ -224,10 +216,8 @@ class CreateCharacterActivity : AppCompatActivity() {
             4 -> {
                 if (tietCurrentLocation.text.toString().trim() == "") {
                     tilCurrentLocation.error = getString(R.string.err_no_cl)
-                    tietCurrentLocation.error = getString(R.string.err_no_cl)
                 } else {
-                    tilCurrentLocation.error = ""
-                    tietCurrentLocation.error = ""
+                    tilCurrentLocation.error = null
                 }
                 return true
             }

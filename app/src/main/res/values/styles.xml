@@ -6,6 +6,25 @@
         <item name="android:textViewStyle">@style/CondensedFont</item>
     </style>
 
+    <style name="TextInputLayoutTheme" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeErrorColor">@color/error_color</item>
+        <item name="errorTextColor">@color/error_color</item>
+        <item name="errorIconTint">@color/error_color</item>
+        <item name="textAppearanceCaption">@style/TextAppearanceTextInputLayout</item>
+    </style>
+
+    <style name="TextInputLayoutThemeWarning" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeErrorColor">@color/warning_color</item>
+        <item name="errorTextColor">@color/warning_color</item>
+        <item name="errorIconTint">@color/warning_color</item>
+        <item name="errorIconDrawable">@drawable/ic_baseline_warning_24</item>
+        <item name="textAppearanceCaption">@style/TextAppearanceTextInputLayout</item>
+    </style>
+
+    <style name="TextAppearanceTextInputLayout" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+    </style>
+
     <style name="DialogTheme" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
         <item name="buttonBarNegativeButtonStyle">@style/Alert.Button.Neutral</item>

@@ -28,7 +28,7 @@
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl25"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.25" />
 
@@ -93,8 +93,7 @@
                     android:inputType="text"
                     android:lines="1"
                     android:maxLines="1"
-                    android:textSize="12sp"
-                    android:translationZ="4dp" />
+                    android:textSize="12sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,8 +130,7 @@
                     android:inputType="text"
                     android:lines="1"
                     android:maxLines="1"
-                    android:textSize="12sp"
-                    android:translationZ="4dp" />
+                    android:textSize="12sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,8 +167,7 @@
                     android:inputType="text"
                     android:lines="1"
                     android:maxLines="1"
-                    android:textSize="12sp"
-                    android:translationZ="4dp" />
+                    android:textSize="12sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

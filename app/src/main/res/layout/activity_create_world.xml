@@ -35,18 +35,15 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilWorld"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/TextInputLayoutTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:boxBackgroundColor="@color/content_background"
-            app:boxStrokeErrorColor="@color/error_color"
             app:counterMaxLength="100"
             app:errorEnabled="true"
-            app:errorIconTint="@color/error_color"
-            app:errorTextColor="@color/error_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWorldName">
@@ -72,7 +69,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilDesc"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/TextInputLayoutTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -80,11 +77,8 @@
             android:layout_marginEnd="16dp"
             android:gravity="top"
             app:boxBackgroundColor="@color/content_background"
-            app:boxStrokeErrorColor="@color/error_color"
             app:counterMaxLength="500"
             app:errorEnabled="true"
-            app:errorIconTint="@color/error_color"
-            app:errorTextColor="@color/error_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDesc">
@@ -122,6 +116,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#FFFFFF"
+            android:minHeight="50dp"
             app:boxBackgroundColor="@color/content_background"
             app:boxStrokeErrorColor="@color/error_color"
             app:errorEnabled="true"
