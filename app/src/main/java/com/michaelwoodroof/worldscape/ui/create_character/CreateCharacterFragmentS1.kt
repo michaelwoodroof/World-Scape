@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.R
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
@@ -45,7 +44,7 @@ class CreateCharacterFragmentS1 : Fragment() {
             val sv = root.findViewById<ScrollView>(R.id.svCreateCharacter)
             sv.setOnScrollChangeListener(sl)
         }
-        
+
         return root
     }
 

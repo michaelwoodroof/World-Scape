@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clCCS2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <ScrollView
         android:id="@+id/svCreateCharacterS2"
@@ -71,17 +72,14 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilHeight"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInputLayoutThemeWarning"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 app:boxBackgroundColor="@color/content_background"
-                app:boxStrokeErrorColor="@color/error_color"
                 app:errorEnabled="true"
-                app:errorIconTint="@color/error_color"
-                app:errorTextColor="@color/error_color"
                 app:layout_constraintEnd_toStartOf="@+id/gl50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeight">
@@ -98,6 +96,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/tvOptionalCC1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilHeight"
+                app:layout_constraintEnd_toEndOf="@+id/tilHeight" />
+
+            <TextView
                 android:id="@+id/tvWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -108,17 +118,14 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilWeight"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInputLayoutThemeWarning"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 app:boxBackgroundColor="@color/content_background"
-                app:boxStrokeErrorColor="@color/error_color"
                 app:errorEnabled="true"
-                app:errorIconTint="@color/error_color"
-                app:errorTextColor="@color/error_color"
                 app:layout_constraintEnd_toEndOf="@+id/tvPhysicalTitle"
                 app:layout_constraintStart_toStartOf="@+id/gl50"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeight">
@@ -135,6 +142,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/tvOptionalCC2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilWeight"
+                app:layout_constraintEnd_toEndOf="@+id/tilWeight" />
+
+            <TextView
                 android:id="@+id/tvEyeColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -144,18 +163,26 @@
                 app:layout_constraintStart_toStartOf="@+id/tilHeight"
                 app:layout_constraintTop_toBottomOf="@+id/tilHeight" />
 
+            <TextView
+                android:id="@+id/tvRace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/race"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toBottomOf="@+id/tilHeight" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilEyeColor"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInputLayoutThemeWarning"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="4dp"
                 app:boxBackgroundColor="@color/content_background"
-                app:boxStrokeErrorColor="@color/error_color"
                 app:errorEnabled="true"
-                app:errorIconTint="@color/error_color"
-                app:errorTextColor="@color/error_color"
                 app:layout_constraintEnd_toStartOf="@+id/gl50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEyeColor">
@@ -170,6 +197,54 @@
                     android:textSize="12sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvOptionalCC3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilEyeColor"
+                app:layout_constraintEnd_toEndOf="@+id/tilEyeColor" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRace"
+                style="@style/TextInputLayoutThemeWarning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                app:boxBackgroundColor="@color/content_background"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toTopOf="@+id/tilEyeColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietRace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvOptionalCC4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilRace"
+                app:layout_constraintEnd_toEndOf="@+id/tilRace" />
 
             <Space
                 android:id="@+id/spEnd"

@@ -58,17 +58,15 @@ class CreateCharacterActivity : AppCompatActivity() {
         // Used to Hide Create Character when Keyboard is not Screen (for better user experience)
         val v : View = findViewById(R.id.clMainCC)
         v.viewTreeObserver.addOnGlobalLayoutListener {
-            if (flCCMain.tag == "S5") {
-                if ((v.rootView.height - v.height) > TypedValue.applyDimension(
-                        TypedValue.COMPLEX_UNIT_DIP, 200F, baseContext.resources.displayMetrics)
-                ) {
-                    fabCreateCC.visibility = View.INVISIBLE
-                } else {
-                    fabCreateCC.visibility = View.VISIBLE
-                }
+            if ((v.rootView.height - v.height) > TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 200F, baseContext.resources.displayMetrics
+                )
+            ) {
+                fabNext.visibility = View.INVISIBLE
+            } else {
+                fabNext.visibility = View.VISIBLE
             }
         }
-
     }
 
     override fun onStart() {

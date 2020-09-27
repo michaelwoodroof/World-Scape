@@ -119,7 +119,7 @@ class CreateWorldActivity : AppCompatActivity() {
                     false
                 } else {
                     // Reset Field -- To Ensure Error isn't Showing
-                    tilWorld.error = ""
+                    tilWorld.error = null
                     true
                 }
             }
@@ -129,18 +129,18 @@ class CreateWorldActivity : AppCompatActivity() {
                     tilDesc.error = getString(R.string.err_desc)
                     false
                 } else {
-                    tilDesc.error = ""
+                    tilDesc.error = null
                     true
                 }
             }
 
             2 -> {
-                return if (ddGenre.text.toString().trim() != "") {
-                    txtiGenre.error = ""
-                    true
-                } else {
+                return if (ddGenre.text.toString().trim() == "") {
                     txtiGenre.error = getString(R.string.err_genre)
                     false
+                } else {
+                    txtiGenre.error = null
+                    true
                 }
             }
 
