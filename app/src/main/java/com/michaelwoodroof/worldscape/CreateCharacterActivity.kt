@@ -205,6 +205,12 @@ class CreateCharacterActivity : AppCompatActivity() {
             3 -> {
                 if (tietPlaceOfBirth.text.toString().trim() == "") {
                     tilPlaceOfBirth.error = getString(R.string.err_no_pob)
+                    //tilPlaceOfBirth.error = ""
+                    when (val drawable = btnLinkPlace.drawable) {
+                        is AnimatedVectorDrawable -> {
+                            drawable.start()
+                        }
+                    }
                 } else {
                     tilPlaceOfBirth.error = null
                 }
@@ -213,7 +219,13 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             4 -> {
                 if (tietCurrentLocation.text.toString().trim() == "") {
-                    tilCurrentLocation.error = getString(R.string.err_no_cl)
+                    //tilCurrentLocation.error = getString(R.string.err_no_cl)
+                    tilCurrentLocation.error = getString(R.string.err_no_pob)
+                    when (val drawable = btnLinkCurrentLoc.drawable) {
+                        is AnimatedVectorDrawable -> {
+                            drawable.start()
+                        }
+                    }
                 } else {
                     tilCurrentLocation.error = null
                 }

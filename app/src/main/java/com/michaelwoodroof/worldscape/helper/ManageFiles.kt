@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
+import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.content.WorldContent
 import java.io.*
 import java.lang.Exception
@@ -90,6 +91,23 @@ class ManageFiles(private val gc : Context) {
             false
         }
 
+    }
+
+    fun saveCharacter() : Boolean {
+        val fo = gc.filesDir
+        return try {
+            true
+        } catch (e : Exception) {
+            Log.e("Error", e.toString())
+            false
+        }
+    }
+
+    fun getCharacters() : ArrayList<CharacterContent.CharacterItem> {
+        val cl = ArrayList<CharacterContent.CharacterItem>()
+        // Get Characters
+
+        return cl
     }
 
     fun getWorlds() : ArrayList<WorldContent.WorldItem> {

@@ -60,6 +60,8 @@
     <string name="current_loc">Current Location / Region</string>
     <string name="pick_image_cc">Image of Character</string>
     <string name="biography_cc">Biography / Description</string>
+    <string name="birthdate">Birthday</string>
+    <string name="race">Race</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
