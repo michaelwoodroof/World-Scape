@@ -2,6 +2,7 @@ package com.michaelwoodroof.worldscape
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.util.Log
@@ -9,6 +10,7 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -73,6 +75,13 @@ class CreateCharacterActivity : AppCompatActivity() {
         super.onStart()
         // Set-Up Focus Changers @TODO Increment when to Add these
         setUpFocusChangers(0)
+        // Reset Animations
+        var drawable = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawable.reset()
+            drawable = btnLinkPlace.drawable as AnimatedVectorDrawable
+            drawable.reset()
+        }
     }
 
     override fun onBackPressed() {
@@ -81,6 +90,19 @@ class CreateCharacterActivity : AppCompatActivity() {
         when (flCCMain.tag) {
             "S2" -> {
                 flCCMain.tag = "S1"
+            }
+
+            "S1" -> {
+                // Reset Animations
+                btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
+                btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
+                var drawable = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    drawable.reset()
+                    drawable = btnLinkPlace.drawable as AnimatedVectorDrawable
+                    drawable.reset()
+                }
+
             }
         }
     }
@@ -150,6 +172,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 checkField(3)
                 checkField(4)
                 checkField(5)
+                checkField(6)
                 return c1 && c2
             }
 
@@ -205,10 +228,12 @@ class CreateCharacterActivity : AppCompatActivity() {
             3 -> {
                 if (tietPlaceOfBirth.text.toString().trim() == "") {
                     tilPlaceOfBirth.error = getString(R.string.err_no_pob)
-                    //tilPlaceOfBirth.error = ""
-                    when (val drawable = btnLinkPlace.drawable) {
-                        is AnimatedVectorDrawable -> {
-                            drawable.start()
+                    if (btnLinkPlace.tag != "err") {
+                        when (val drawable = btnLinkPlace.drawable) {
+                            is AnimatedVectorDrawable -> {
+                                btnLinkPlace.tag = "err"
+                                drawable.start()
+                            }
                         }
                     }
                 } else {
@@ -219,15 +244,26 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             4 -> {
                 if (tietCurrentLocation.text.toString().trim() == "") {
-                    //tilCurrentLocation.error = getString(R.string.err_no_cl)
-                    tilCurrentLocation.error = getString(R.string.err_no_pob)
-                    when (val drawable = btnLinkCurrentLoc.drawable) {
-                        is AnimatedVectorDrawable -> {
-                            drawable.start()
+                    tilCurrentLocation.error = getString(R.string.err_no_cl)
+                    if (btnLinkCurrentLoc.tag != "err") {
+                        when (val drawable = btnLinkCurrentLoc.drawable) {
+                            is AnimatedVectorDrawable -> {
+                                btnLinkCurrentLoc.tag = "err"
+                                drawable.start()
+                            }
                         }
                     }
                 } else {
                     tilCurrentLocation.error = null
+                    if (btnLinkCurrentLoc.tag == "err") {
+                        btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.warning_to_link, null))
+                        when (val drawable = btnLinkCurrentLoc.drawable) {
+                            is AnimatedVectorDrawable -> {
+                                btnLinkCurrentLoc.tag = "ne"
+                                drawable.start()
+                            }
+                        }
+                    }
                 }
                 return true
             }
@@ -238,6 +274,15 @@ class CreateCharacterActivity : AppCompatActivity() {
                     // @TODO Implement
                 } else {
                     // @TODO Implement
+                }
+                return true
+            }
+
+            6 -> {
+                if (tietBirthDate.text.toString().trim() == "") {
+                    tilBirthDate.error = getString(R.string.err_no_pob) // @TODO Change to real value
+                } else {
+                    tilBirthDate.error = null
                 }
                 return true
             }
@@ -269,6 +314,13 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBio.onFocusChangeListener = View.OnFocusChangeListener{ _: View, focus ->
                     if (!focus) {
                         checkField(1)
+                    }
+                }
+
+                val tietCurrLoc = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
+                tietCurrLoc.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(4)
                     }
                 }
             }

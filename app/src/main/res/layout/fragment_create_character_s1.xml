@@ -178,83 +178,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/tilBirthYear" />
 
             <TextView
-                android:id="@+id/tvPlaceOfBirth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/birth_loc"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="@+id/gl50"
-                app:layout_constraintTop_toTopOf="@+id/tvCurrentLocation" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPlaceOfBirth"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                app:boxBackgroundColor="@color/content_background"
-                app:endIconCheckable="false"
-                app:errorEnabled="true"
-                app:errorIconDrawable="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/gl50"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlaceOfBirth"
-                app:startIconCheckable="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietPlaceOfBirth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tvOptionalCC2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="1dp"
-                android:text="@string/optional"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilPlaceOfBirth"
-                app:layout_constraintEnd_toEndOf="@+id/tilPlaceOfBirth" />
-
-            <ImageButton
-                android:id="@+id/btnLinkPlace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="11dp"
-                android:background="?attr/selectableItemBackground"
-                android:onClick="setLink"
-                android:padding="8dp"
-                android:translationZ="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilPlaceOfBirth"
-                app:layout_constraintEnd_toEndOf="@+id/tilPlaceOfBirth"
-                app:layout_constraintTop_toTopOf="@+id/tilPlaceOfBirth"
-                app:srcCompat="@drawable/link_to_warning" />
-
-            <TextView
-                android:id="@+id/tvCurrentLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/current_loc"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBirthYear" />
-
-            <TextView
-                android:id="@+id/tvCurrentLocation2"
+                android:id="@+id/tvBirthDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -262,44 +186,6 @@
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="@+id/gl50"
                 app:layout_constraintTop_toTopOf="@+id/tvBirthYear" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilCurrentLocation"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:errorIconDrawable="@null"
-                app:layout_constraintEnd_toStartOf="@+id/gl50"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietCurrentLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tvOptionalCC3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="1dp"
-                android:text="@string/optional"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilCurrentLocation"
-                app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilBirthDate"
@@ -327,7 +213,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/tvOptionalCC4"
+                android:id="@+id/tvOptionalCC2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -337,6 +223,44 @@
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tilBirthDate"
                 app:layout_constraintEnd_toEndOf="@+id/tilBirthDate" />
+
+            <TextView
+                android:id="@+id/tvCurrentLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/current_loc"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBirthYear" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCurrentLocation"
+                style="@style/TextInputLayoutThemeWarning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:tag="ne"
+                app:boxBackgroundColor="@color/content_background"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null"
+                app:layout_constraintEnd_toStartOf="@+id/gl50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietCurrentLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
                 android:id="@+id/btnLinkCurrentLoc"
@@ -352,6 +276,84 @@
                 app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation"
                 app:layout_constraintTop_toTopOf="@+id/tilCurrentLocation"
                 app:srcCompat="@drawable/link_to_warning" />
+
+            <TextView
+                android:id="@+id/tvOptionalCC3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilCurrentLocation"
+                app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation" />
+
+            <TextView
+                android:id="@+id/tvPlaceOfBirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/birth_loc"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toTopOf="@+id/tvCurrentLocation" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPlaceOfBirth"
+                style="@style/TextInputLayoutThemeWarning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:tag="ne"
+                app:boxBackgroundColor="@color/content_background"
+                app:endIconCheckable="false"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/gl50"
+                app:layout_constraintTop_toBottomOf="@+id/tvPlaceOfBirth"
+                app:startIconCheckable="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietPlaceOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/btnLinkPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="11dp"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="setLink"
+                android:padding="8dp"
+                android:translationZ="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilPlaceOfBirth"
+                app:layout_constraintEnd_toEndOf="@+id/tilPlaceOfBirth"
+                app:layout_constraintTop_toTopOf="@+id/tilPlaceOfBirth"
+                app:srcCompat="@drawable/link_to_warning" />
+
+            <TextView
+                android:id="@+id/tvOptionalCC4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilPlaceOfBirth"
+                app:layout_constraintEnd_toEndOf="@+id/btnLinkPlace" />
 
             <TextView
                 android:id="@+id/tvPreview"
