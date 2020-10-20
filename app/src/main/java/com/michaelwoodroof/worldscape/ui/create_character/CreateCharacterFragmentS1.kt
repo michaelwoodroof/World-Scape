@@ -53,6 +53,34 @@ class CreateCharacterFragmentS1 : Fragment() {
         return root
     }
 
+    override fun onStart() {
+        btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
+        btnLinkCurrentLoc.tag = "ne"
+        btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
+        btnLinkPlace.tag = "ne"
+        var drawable = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawable.reset()
+            drawable = btnLinkPlace.drawable as AnimatedVectorDrawable
+            drawable.reset()
+        }
+        super.onStart()
+    }
+
+    override fun onResume() {
+        btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
+        btnLinkCurrentLoc.tag = "ne"
+        btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
+        btnLinkPlace.tag = "ne"
+        var drawable = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawable.reset()
+            drawable = btnLinkPlace.drawable as AnimatedVectorDrawable
+            drawable.reset()
+        }
+        super.onResume()
+    }
+
     private fun addAnimation(root : View) {
         root.findViewById<ExtendedFloatingActionButton>(R.id.fabPickImageCC).setOnClickListener {
             // Only Animate if Condition is Met

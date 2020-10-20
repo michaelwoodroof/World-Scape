@@ -75,40 +75,25 @@ class CreateCharacterActivity : AppCompatActivity() {
         super.onStart()
         // Set-Up Focus Changers @TODO Increment when to Add these
         setUpFocusChangers(0)
-        // Reset Animations
-        var drawable = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            drawable.reset()
-            drawable = btnLinkPlace.drawable as AnimatedVectorDrawable
-            drawable.reset()
-        }
     }
 
     override fun onBackPressed() {
+        backTasks()
         super.onBackPressed()
+    }
+
+    fun goBack(view : View) {
+        backTasks()
+        super.onBackPressed()
+    }
+
+    private fun backTasks() {
         // Update Step Number
         when (flCCMain.tag) {
             "S2" -> {
                 flCCMain.tag = "S1"
             }
-
-            "S1" -> {
-                // Reset Animations
-                btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
-                btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
-                var drawable = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    drawable.reset()
-                    drawable = btnLinkPlace.drawable as AnimatedVectorDrawable
-                    drawable.reset()
-                }
-
-            }
         }
-    }
-
-    fun goBack(view : View) {
-        super.onBackPressed()
     }
 
     fun setLink(view : View) {
