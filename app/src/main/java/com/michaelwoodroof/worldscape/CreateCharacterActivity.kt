@@ -2,15 +2,14 @@ package com.michaelwoodroof.worldscape
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,6 +22,7 @@ import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmen
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
+
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -45,9 +45,18 @@ class CreateCharacterActivity : AppCompatActivity() {
         btnBack.visibility = View.VISIBLE
 
         btnBack.setOnTouchListener(View.OnTouchListener() { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
+            return@OnTouchListener AssignTouchEvent.assignTouch(
+                view as ImageButton, event,
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.chevron_expansion_left,
+                    null
+                ) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.chevron_shrink_left,
+                    null
+                ) as AnimatedVectorDrawable
             )
         })
 
@@ -82,7 +91,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
-    fun goBack(view : View) {
+    fun goBack(view: View) {
         backTasks()
         super.onBackPressed()
     }
@@ -96,17 +105,17 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
     }
 
-    fun setLink(view : View) {
+    fun setLink(view: View) {
         val mf = ManageFiles(this)
         when(view.id) {
 
             // @TODO Replace with Actual Places
 
-           btnLinkPlace.id -> {
-                val items = arrayOf("Item One","Item Two","Item Three","Item Four","Item Five")
+            btnLinkPlace.id -> {
+                val items = arrayOf("Item One", "Item Two", "Item Three", "Item Four", "Item Five")
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Test Title")
-                    .setItems(items) {dialog, which ->
+                    .setItems(items) { dialog, which ->
                         tietPlaceOfBirth.text = SpannableStringBuilder(items[which])
                         tietPlaceOfBirth.setSelection(items[which].length)
                         dialog.dismiss()
@@ -114,10 +123,10 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             btnLinkCurrentLoc.id -> {
-                val items = arrayOf("Item One","Item Two","Item Three","Item Four","Item Five")
+                val items = arrayOf("Item One", "Item Two", "Item Three", "Item Four", "Item Five")
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Test Title")
-                    .setItems(items) {dialog, which ->
+                    .setItems(items) { dialog, which ->
                         tietCurrentLocation.text = SpannableStringBuilder(items[which])
                         tietCurrentLocation.setSelection(items[which].length)
                         dialog.dismiss()
@@ -131,7 +140,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
     }
 
-    fun stepForward(view : View) {
+    fun stepForward(view: View) {
         if (flCCMain.tag == "S1") {
             // Update Frag if Condition passed
             if (checkFields(0)) {
@@ -145,7 +154,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkFields(stageNumber : Int) : Boolean {
+    private fun checkFields(stageNumber: Int) : Boolean {
 
         when (stageNumber) {
 
@@ -177,7 +186,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     }
 
-    private fun checkField(field : Int) : Boolean {
+    private fun checkField(field: Int) : Boolean {
 
         when (field) {
 
@@ -204,8 +213,10 @@ class CreateCharacterActivity : AppCompatActivity() {
             2 -> {
                 if (tietBirthYear.text.toString().trim() == "") {
                     tilBirthYear.error = getString(R.string.err_no_by)
+                    tvOptionalCC1.visibility = View.GONE
                 } else {
                     tilBirthYear.error = null
+                    tvOptionalCC1.visibility = View.VISIBLE
                 }
                 return true
             }
@@ -213,6 +224,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             3 -> {
                 if (tietPlaceOfBirth.text.toString().trim() == "") {
                     tilPlaceOfBirth.error = getString(R.string.err_no_pob)
+                    tvOptionalCC4.visibility = View.GONE
                     if (btnLinkPlace.tag != "err") {
                         when (val drawable = btnLinkPlace.drawable) {
                             is AnimatedVectorDrawable -> {
@@ -223,6 +235,22 @@ class CreateCharacterActivity : AppCompatActivity() {
                     }
                 } else {
                     tilPlaceOfBirth.error = null
+                    tvOptionalCC4.visibility = View.VISIBLE
+                    if (btnLinkPlace.tag == "err") {
+                        btnLinkPlace.setImageDrawable(
+                            ResourcesCompat.getDrawable(
+                                resources,
+                                R.drawable.warning_to_link,
+                                null
+                            )
+                        )
+                        when (val drawable = btnLinkPlace.drawable) {
+                            is AnimatedVectorDrawable -> {
+                                btnLinkPlace.tag = "ne"
+                                drawable.start()
+                            }
+                        }
+                    }
                 }
                 return true
             }
@@ -230,6 +258,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             4 -> {
                 if (tietCurrentLocation.text.toString().trim() == "") {
                     tilCurrentLocation.error = getString(R.string.err_no_cl)
+                    tvOptionalCC3.visibility = View.GONE
                     if (btnLinkCurrentLoc.tag != "err") {
                         when (val drawable = btnLinkCurrentLoc.drawable) {
                             is AnimatedVectorDrawable -> {
@@ -240,8 +269,15 @@ class CreateCharacterActivity : AppCompatActivity() {
                     }
                 } else {
                     tilCurrentLocation.error = null
+                    tvOptionalCC3.visibility = View.VISIBLE
                     if (btnLinkCurrentLoc.tag == "err") {
-                        btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.warning_to_link, null))
+                        btnLinkCurrentLoc.setImageDrawable(
+                            ResourcesCompat.getDrawable(
+                                resources,
+                                R.drawable.warning_to_link,
+                                null
+                            )
+                        )
                         when (val drawable = btnLinkCurrentLoc.drawable) {
                             is AnimatedVectorDrawable -> {
                                 btnLinkCurrentLoc.tag = "ne"
@@ -266,8 +302,10 @@ class CreateCharacterActivity : AppCompatActivity() {
             6 -> {
                 if (tietBirthDate.text.toString().trim() == "") {
                     tilBirthDate.error = getString(R.string.err_no_pob) // @TODO Change to real value
+                    tvOptionalCC2.visibility = View.GONE
                 } else {
                     tilBirthDate.error = null
+                    tvOptionalCC2.visibility = View.VISIBLE
                 }
                 return true
             }
@@ -280,7 +318,6 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     }
 
-    // @TODO Implement
     private fun setUpFocusChangers(stageNumber: Int) {
 
         when (stageNumber) {
@@ -289,23 +326,44 @@ class CreateCharacterActivity : AppCompatActivity() {
                 // Set-up for Stage One
                 val tietCN = findViewById<TextInputEditText>(R.id.tietCharacterName)
 
-                tietCN.onFocusChangeListener = View.OnFocusChangeListener{ _: View, focus ->
+                tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(0)
                     }
                 }
 
                 val tietBio = findViewById<TextInputEditText>(R.id.tietBiography)
-                tietBio.onFocusChangeListener = View.OnFocusChangeListener{ _: View, focus ->
+                tietBio.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(1)
                     }
                 }
 
+                val tietYOB = findViewById<TextInputEditText>(R.id.tietBirthYear)
+                tietYOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
+                    if (!focus) {
+                        checkField(2)
+                    }
+                }
+
+                val tietPOB = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
+                tietPOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
+                    if (!focus) {
+                        checkField(3)
+                    }
+                }
+
                 val tietCurrLoc = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
-                tietCurrLoc.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                tietCurrLoc.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(4)
+                    }
+                }
+
+                val tietBD = findViewById<TextInputEditText>(R.id.tietBirthDate)
+                tietBD.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
+                    if (!focus) {
+                        checkField(6)
                     }
                 }
             }
@@ -320,7 +378,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     }
 
-    fun createCharacter(view : View) {
+    fun createCharacter(view: View) {
         super.onBackPressed()
     }
 
