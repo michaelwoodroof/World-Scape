@@ -7,7 +7,6 @@ import android.text.SpannableStringBuilder
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +21,6 @@ import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmen
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
-
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -150,6 +148,8 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
+                // Add Focus Changers
+                setUpFocusChangers(1)
             }
         }
     }
@@ -325,7 +325,6 @@ class CreateCharacterActivity : AppCompatActivity() {
             0 -> {
                 // Set-up for Stage One
                 val tietCN = findViewById<TextInputEditText>(R.id.tietCharacterName)
-
                 tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(0)
@@ -370,11 +369,36 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             1 -> {
                 // Set-up for Stage Two
+                val tietHeight = findViewById<TextInputEditText>(R.id.tietHeight)
+                tietHeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(7)
+                    }
+                }
+
+                val tietWeight = findViewById<TextInputEditText>(R.id.tietWeight)
+                tietWeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(8)
+                    }
+                }
+
+                val tietEyeColour = findViewById<TextInputEditText>(R.id.tietEyeColor)
+                tietEyeColour.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(9)
+                    }
+                }
+
+                val tietRace = findViewById<TextInputEditText>(R.id.tietRace)
+                tietRace.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(10)
+                    }
+                }
             }
 
         }
-
-
 
     }
 
