@@ -21,6 +21,11 @@ import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmen
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
+import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC1
+import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC2
+import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC3
+import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC4
+import kotlinx.android.synthetic.main.fragment_create_character_s2.*
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -148,8 +153,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
-                // Add Focus Changers
-                setUpFocusChangers(1)
             }
         }
     }
@@ -301,11 +304,66 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             6 -> {
                 if (tietBirthDate.text.toString().trim() == "") {
-                    tilBirthDate.error = getString(R.string.err_no_pob) // @TODO Change to real value
+                    tilBirthDate.error = getString(R.string.err_no_bday)
                     tvOptionalCC2.visibility = View.GONE
                 } else {
                     tilBirthDate.error = null
                     tvOptionalCC2.visibility = View.VISIBLE
+                }
+                return true
+            }
+
+            7 -> {
+                if (tietHeight.text.toString().trim() == "") {
+                    tilHeight.error = getString(R.string.err_no_height)
+                    tvOptional2CC1.visibility = View.GONE
+                } else {
+                    tilHeight.error = null
+                    tvOptional2CC1.visibility = View.VISIBLE
+                }
+                return true
+            }
+
+            8 -> {
+                if (tietWeight.text.toString().trim() == "") {
+                    tilWeight.error = getString(R.string.err_no_weight)
+                    tvOptional2CC2.visibility = View.GONE
+                } else {
+                    tilWeight.error = null
+                    tvOptional2CC2.visibility = View.VISIBLE
+                }
+                return true
+            }
+
+            9 -> {
+                if (tietEyeColor.text.toString().trim() == "") {
+                    tilEyeColor.error = getString(R.string.err_no_eye_colour)
+                    tvOptional2CC3.visibility = View.GONE
+                } else {
+                    tilEyeColor.error = null
+                    tvOptional2CC3.visibility = View.VISIBLE
+                }
+                return true
+            }
+
+            10 -> {
+                if (tietRace.text.toString().trim() == "") {
+                    tilRace.error = getString(R.string.err_no_race)
+                    tvOptional2CC4.visibility = View.GONE
+                } else {
+                    tilRace.error = null
+                    tvOptional2CC4.visibility = View.VISIBLE
+                }
+                return true
+            }
+
+            11 -> {
+                if (tietHairColor.text.toString().trim() == "") {
+                    tilHairColor.error = getString(R.string.err_no_hair)
+                    tvOptional2CC5.visibility = View.GONE
+                } else {
+                    tilHairColor.error = null
+                    tvOptional2CC5.visibility = View.VISIBLE
                 }
                 return true
             }
@@ -318,7 +376,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     }
 
-    private fun setUpFocusChangers(stageNumber: Int) {
+    fun setUpFocusChangers(stageNumber: Int) {
 
         when (stageNumber) {
 
@@ -394,6 +452,13 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietRace.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(10)
+                    }
+                }
+
+                val tietHair = findViewById<TextInputEditText>(R.id.tietHairColor)
+                tietHair.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(11)
                     }
                 }
             }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
 
 class CreateCharacterFragmentS2 : Fragment() {
@@ -12,6 +13,11 @@ class CreateCharacterFragmentS2 : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return(inflater.inflate(R.layout.fragment_create_character_s2, container, false))
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (activity as CreateCharacterActivity).setUpFocusChangers(1)
     }
 
 }

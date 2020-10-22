@@ -96,7 +96,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/tvOptionalCC1"
+                android:id="@+id/tvOptional2CC1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -142,7 +142,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/tvOptionalCC2"
+                android:id="@+id/tvOptional2CC2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -164,42 +164,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tilHeight" />
 
             <TextView
-                android:id="@+id/tvHairColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/eye_color"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="@+id/tilHeight"
-                app:layout_constraintTop_toBottomOf="@+id/tilEyeColor" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilHairColor"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toStartOf="@+id/gl50"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietHairColor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tvOptionalCC3"
+                android:id="@+id/tvOptional2CC3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -270,7 +235,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/tvOptionalCC4"
+                android:id="@+id/tvOptional2CC4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -280,6 +245,52 @@
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tilRace"
                 app:layout_constraintEnd_toEndOf="@+id/tilRace" />
+
+            <TextView
+                android:id="@+id/tvHairColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/hair"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/tilHeight"
+                app:layout_constraintTop_toBottomOf="@+id/tilEyeColor" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilHairColor"
+                style="@style/TextInputLayoutThemeWarning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:boxBackgroundColor="@color/content_background"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toStartOf="@+id/gl50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHairColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietHairColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvOptional2CC5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilHairColor"
+                app:layout_constraintEnd_toStartOf="@+id/gl50" />
 
             <Space
                 android:id="@+id/spEnd"

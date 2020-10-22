@@ -40,13 +40,8 @@
         <item>Sci-Fi</item>
         <item>Other</item>
     </string-array>
-    <string name="add_stats">Add a stat sheet</string>
-    <string name="general_title">General Information about the Character</string>
-    <string name="physical_title">Physical Features of Character</string>
-    <string name="optional">(Optional)</string>
-    <string name="eye_color">Eye Colour</string>
-    <string name="height">Height</string>
-    <string name="weight">Weight</string>
+
+    <!-- Generics -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -62,6 +57,14 @@
     <string name="biography_cc">Biography / Description</string>
     <string name="birthdate">Birthday</string>
     <string name="race">Race</string>
+    <string name="add_stats">Add a stat sheet</string>
+    <string name="general_title">General Information about the Character</string>
+    <string name="physical_title">Physical Features of Character</string>
+    <string name="optional">(Optional)</string>
+    <string name="eye_color">Eye Colour</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="hair">Hair Colour</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
@@ -74,7 +77,13 @@
     <string name="err_no_bio">No description / biography chosen</string>
     <string name="err_no_by">No birth year chosen</string>
     <string name="err_no_pob">No place of birth chosen</string>
+    <string name="err_no_bday">No birth day chosen</string>
     <string name="err_no_cl">No current location chosen</string>
+    <string name="err_no_height">No height chosen</string>
+    <string name="err_no_weight">No weight chosen</string>
+    <string name="err_no_eye_colour">No eye colour chosen</string>
+    <string name="err_no_race">No race chosen</string>
+    <string name="err_no_hair">No hair colour chosen</string>
 
     <!-- World Detail Strings -->
     <string name="recent_characters">Recent Characters</string>
