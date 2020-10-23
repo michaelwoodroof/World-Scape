@@ -3,7 +3,10 @@ package com.michaelwoodroof.worldscape
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.text.Editable
 import android.text.SpannableStringBuilder
+import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
@@ -26,11 +29,13 @@ import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC2
 import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC3
 import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC4
 import kotlinx.android.synthetic.main.fragment_create_character_s2.*
+import org.w3c.dom.Text
 
 class CreateCharacterActivity : AppCompatActivity() {
 
     // @TODO Utilise
     lateinit var currentCharacter : CharacterContent.CharacterItem
+    lateinit var r : Runnable
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,8 +90,10 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // Set-Up Focus Changers @TODO Increment when to Add these
         setUpFocusChangers(0)
+        setUpTextChangers(0)
+        // Init Runnable
+        r = Runnable {}
     }
 
     override fun onBackPressed() {
@@ -106,6 +113,16 @@ class CreateCharacterActivity : AppCompatActivity() {
                 flCCMain.tag = "S1"
             }
         }
+    }
+
+    // Get Reset on Text Changed
+    private fun delayError(field : Int) {
+        // Ensures Reset before Attempting Timeout
+        Handler().removeCallbacksAndMessages(r)
+        r = Runnable {
+            checkField(field)
+        }
+        Handler().postDelayed(r, 2000)
     }
 
     fun setLink(view: View) {
@@ -386,6 +403,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(0)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(0)
                     }
                 }
 
@@ -393,6 +413,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBio.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(1)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(1)
                     }
                 }
 
@@ -400,6 +423,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietYOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(2)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(2)
                     }
                 }
 
@@ -407,6 +433,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietPOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(3)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(3)
                     }
                 }
 
@@ -414,6 +443,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietCurrLoc.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(4)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(4)
                     }
                 }
 
@@ -421,6 +453,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBD.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(6)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(6)
                     }
                 }
             }
@@ -467,8 +502,91 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     }
 
+    private fun TextInputEditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
+        this.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(e: Editable?) {
+                afterTextChanged.invoke(e.toString())
+            }
+
+        })
+    }
+
+    private fun setUpTextChangers(stageNumber: Int) {
+        when (stageNumber) {
+
+            0 -> {
+                val tietNOC = findViewById<TextInputEditText>(R.id.tietCharacterName)
+                tietNOC.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(0)
+                    } else {
+                        checkField(0)
+                    }
+                }
+
+                val tietBio = findViewById<TextInputEditText>(R.id.tietBiography)
+                tietBio.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(1)
+                    } else {
+                        checkField(1)
+                    }
+                }
+
+                val tietYOB = findViewById<TextInputEditText>(R.id.tietBirthYear)
+                tietYOB.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(2)
+                    } else {
+                        checkField(2)
+                    }
+                }
+
+                val tietPOB = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
+                tietPOB.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(3)
+                    } else {
+                        checkField(3)
+                    }
+                }
+
+                val tietCurLoc = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
+                tietCurLoc.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(4)
+                    } else {
+                        checkField(4)
+                    }
+                }
+
+                val tietBDay = findViewById<TextInputEditText>(R.id.tietBirthDate)
+                tietBDay.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(6)
+                    } else {
+                        checkField(6)
+                    }
+                }
+            }
+
+            1 -> {
+
+            }
+
+            else -> {
+
+            }
+
+        }
+    }
+
     fun createCharacter(view: View) {
-        super.onBackPressed()
+        super.onBackPressed() // @TODO Modify this is not ideal
     }
 
 }
