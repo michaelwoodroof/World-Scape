@@ -466,6 +466,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(7)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(7)
                     }
                 }
 
@@ -473,6 +476,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietWeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(8)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(8)
                     }
                 }
 
@@ -480,6 +486,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietEyeColour.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(9)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(9)
                     }
                 }
 
@@ -487,6 +496,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietRace.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(10)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(10)
                     }
                 }
 
@@ -494,6 +506,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHair.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(11)
+                        Handler().removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(11)
                     }
                 }
             }
@@ -515,7 +530,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         })
     }
 
-    private fun setUpTextChangers(stageNumber: Int) {
+    fun setUpTextChangers(stageNumber: Int) {
         when (stageNumber) {
 
             0 -> {
@@ -575,11 +590,55 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             1 -> {
+                // Set-up for Stage Two
+                val tietHeight = findViewById<TextInputEditText>(R.id.tietHeight)
+                tietHeight.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(7)
+                    } else {
+                        checkField(7)
+                    }
+                }
 
+                val tietWeight = findViewById<TextInputEditText>(R.id.tietWeight)
+                tietWeight.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(8)
+                    } else {
+                        checkField(8)
+                    }
+                }
+
+                val tietEyeColour = findViewById<TextInputEditText>(R.id.tietEyeColor)
+                tietEyeColour.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(9)
+                    } else {
+                        checkField(9)
+                    }
+                }
+
+                val tietRace = findViewById<TextInputEditText>(R.id.tietRace)
+                tietRace.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(10)
+                    } else {
+                        checkField(10)
+                    }
+                }
+
+                val tietHair = findViewById<TextInputEditText>(R.id.tietHairColor)
+                tietHair.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(11)
+                    } else {
+                        checkField(11)
+                    }
+                }
             }
 
             else -> {
-
+                Log.e("error", "Err : Non-Existent Stage for Text Changer")
             }
 
         }
