@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
@@ -115,7 +116,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
     }
 
-    // Get Reset on Text Changed
+    // Gets Reset on Text Changed
     private fun delayError(field : Int) {
         // Ensures Reset before Attempting Timeout
         Handler().removeCallbacksAndMessages(r)
@@ -167,9 +168,34 @@ class CreateCharacterActivity : AppCompatActivity() {
                 flCCMain.tag = "S2"
                 val createCharacterFragment = CreateCharacterFragmentS2()
                 val transaction = supportFragmentManager.beginTransaction()
+
+                // Update Character
+                currentCharacter.name = tietCharacterName.text.toString()
+                currentCharacter.biography = tietBiography.text.toString()
+                currentCharacter.yearOfBirth = tietBirthYear.text.toString()
+                currentCharacter.birthday = tietBirthDate.text.toString()
+                currentCharacter.currentLocation = tietCurrentLocation.text.toString()
+                currentCharacter.placeOfBirth = tietPlaceOfBirth.text.toString()
+                currentCharacter.hasImg = cvPreviewCC.visibility == View.VISIBLE
+
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
+            }
+        } else if (flCCMain.tag == "S2") {
+            // Update Frag if Condition passes
+            if (checkFields(1)) {
+                flCCMain.tag = "S3"
+
+                // Update Character
+                currentCharacter.height = tietHeight.text.toString()
+                currentCharacter.weight = tietWeight.text.toString()
+                currentCharacter.eyeColor = tietEyeColor.text.toString()
+                currentCharacter.race = tietRace.text.toString()
+                currentCharacter.hairColor = tietHairColor.text.toString()
+                currentCharacter.build = tietBuild.text.toString()
+                currentCharacter.markings = tietMarkings.text.toString()
+
             }
         }
     }

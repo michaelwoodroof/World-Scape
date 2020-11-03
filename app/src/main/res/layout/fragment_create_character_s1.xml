@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clInnerContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:visibility="visible">
 
             <androidx.constraintlayout.widget.Guideline
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:gravity="start|left"
+                android:gravity="start"
                 app:boxBackgroundColor="@color/content_background"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -125,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textMultiLine"
+                    android:lines="2"
                     android:textSize="12sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -269,6 +270,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="2dp"
                 android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/cd_link_icon"
                 android:onClick="setLink"
                 android:padding="8dp"
                 android:translationZ="10dp"
@@ -334,6 +336,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="2dp"
                 android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/cd_link_icon"
                 android:onClick="setLink"
                 android:padding="8dp"
                 android:translationZ="10dp"
@@ -390,6 +393,7 @@
                         android:id="@+id/imgPreviewCC"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:contentDescription="@string/cd_character_preview"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

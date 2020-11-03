@@ -65,6 +65,8 @@
     <string name="height">Height</string>
     <string name="weight">Weight</string>
     <string name="hair">Hair Colour</string>
+    <string name="build">Build</string>
+    <string name="markings">Tattoos / Markings / Scars</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
@@ -103,6 +105,7 @@
     <string name="cd_show_s">Show all Stories</string>
     <string name="cd_character_preview">Character Image</string>
     <string name="cd_world_preview">Image of chosen World</string>
+    <string name="cd_link_icon">Link Button</string>
 
     <!-- Hints -->
     <string name="world_name_hint">Enter a world name</string>
