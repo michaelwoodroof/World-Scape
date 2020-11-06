@@ -350,7 +350,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilMarkings"
-                style="@style/TextInputLayoutTheme"
+                style="@style/TextInputLayoutThemeWarning"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -385,13 +385,105 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tilMarkings"
                 app:layout_constraintEnd_toEndOf="@+id/tilMarkings" />
 
+            <TextView
+                android:id="@+id/tvHairStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/hair_style"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/tilHeight"
+                app:layout_constraintTop_toBottomOf="@+id/tilMarkings" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilHairStyle"
+                style="@style/TextInputLayoutThemeWarning"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:boxBackgroundColor="@color/content_background"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toStartOf="@+id/gl50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHairStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietHairStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvOptional2CC8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilHairStyle"
+                app:layout_constraintEnd_toEndOf="@+id/tilMarkings" />
+
+            <TextView
+                android:id="@+id/tvClothing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/clothing_style"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/tilHeight"
+                app:layout_constraintTop_toBottomOf="@+id/tilHairStyle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilClothingStyle"
+                style="@style/TextInputLayoutThemeWarning"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:boxBackgroundColor="@color/content_background"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toStartOf="@+id/gl50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvClothing">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietClothingStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvOptional2CC9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/optional"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tilClothingStyle"
+                app:layout_constraintEnd_toEndOf="@+id/tilMarkings" />
+
             <Space
                 android:id="@+id/spEnd"
                 android:layout_width="0dp"
                 android:layout_height="28dp"
+                android:layout_marginTop="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilMarkings" />
+                app:layout_constraintTop_toBottomOf="@+id/tilClothingStyle" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

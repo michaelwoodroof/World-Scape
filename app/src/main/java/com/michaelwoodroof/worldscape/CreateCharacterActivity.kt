@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.text.TextWatcher
@@ -22,6 +23,7 @@ import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS2
+import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS3
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
@@ -34,8 +36,8 @@ import org.w3c.dom.Text
 
 class CreateCharacterActivity : AppCompatActivity() {
 
-    // @TODO Utilise
-    lateinit var currentCharacter : CharacterContent.CharacterItem
+    var currentCharacter : CharacterContent.CharacterItem =
+        CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "", "")
     lateinit var r : Runnable
 
     @SuppressLint("ClickableViewAccessibility")
@@ -109,9 +111,24 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     private fun backTasks() {
         // Update Step Number
+        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
         when (flCCMain.tag) {
             "S2" -> {
                 flCCMain.tag = "S1"
+                r = Runnable {
+                    setUpFocusChangers(0)
+                    setUpTextChangers(0)
+                }
+                Handler(Looper.getMainLooper()).postDelayed(r, 0)
+            }
+
+            "S3" -> {
+                flCCMain.tag = "S2"
+                r = Runnable {
+                    setUpFocusChangers(1)
+                    setUpTextChangers(1)
+                }
+                Handler(Looper.getMainLooper()).postDelayed(r, 0)
             }
         }
     }
@@ -119,11 +136,11 @@ class CreateCharacterActivity : AppCompatActivity() {
     // Gets Reset on Text Changed
     private fun delayError(field : Int) {
         // Ensures Reset before Attempting Timeout
-        Handler().removeCallbacksAndMessages(r)
+        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
         r = Runnable {
             checkField(field)
         }
-        Handler().postDelayed(r, 2000)
+        Handler(Looper.getMainLooper()).postDelayed(r, 2000)
     }
 
     fun setLink(view: View) {
@@ -162,6 +179,7 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     fun stepForward(view: View) {
+        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
         if (flCCMain.tag == "S1") {
             // Update Frag if Condition passed
             if (checkFields(0)) {
@@ -181,11 +199,19 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
+
+                r = Runnable {
+                    setUpFocusChangers(1)
+                    setUpTextChangers(1)
+                }
+                Handler(Looper.getMainLooper()).postDelayed(r, 0)
             }
         } else if (flCCMain.tag == "S2") {
             // Update Frag if Condition passes
             if (checkFields(1)) {
                 flCCMain.tag = "S3"
+                val createCharacterFragment = CreateCharacterFragmentS3()
+                val transaction = supportFragmentManager.beginTransaction()
 
                 // Update Character
                 currentCharacter.height = tietHeight.text.toString()
@@ -196,7 +222,20 @@ class CreateCharacterActivity : AppCompatActivity() {
                 currentCharacter.build = tietBuild.text.toString()
                 currentCharacter.markings = tietMarkings.text.toString()
 
+                transaction.replace(R.id.flCCMain, createCharacterFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+
+                r = Runnable {
+                    setUpFocusChangers(2)
+                    setUpTextChangers(2)
+                }
+                Handler(Looper.getMainLooper()).postDelayed(r, 0)
             }
+        } else if (flCCMain.tag == "S3") {
+//            if (checkFields(2)) {
+//                flCCMain.tag = "S4"
+//            }
         }
     }
 
@@ -217,6 +256,9 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             1 -> {
+                checkField(7)
+                checkField(8)
+                checkField(9)
                 return true
             }
 
@@ -411,6 +453,50 @@ class CreateCharacterActivity : AppCompatActivity() {
                 return true
             }
 
+            12 -> {
+                if (tietBuild.text.toString().trim() == "") {
+                    tilBuild.error = getString(R.string.err_no_hair)
+                    tvOptional2CC6.visibility = View.GONE
+                } else {
+                    tilBuild.error = null
+                    tvOptional2CC6.visibility = View.VISIBLE
+                }
+                return true
+            }
+
+            13 -> {
+                if (tietMarkings.text.toString().trim() == "") {
+                    tilMarkings.error = getString(R.string.err_no_hair)
+                    tvOptional2CC7.visibility = View.GONE
+                } else {
+                    tilMarkings.error = null
+                    tvOptional2CC7.visibility = View.VISIBLE
+                }
+                return true
+            }
+
+            14 -> {
+                if (tietHairStyle.text.toString().trim() == "") {
+                    tilHairStyle.error = getString(R.string.err_no_hair)
+                    tvOptional2CC8.visibility = View.GONE
+                } else {
+                    tilHairStyle.error = null
+                    tvOptional2CC8.visibility = View.VISIBLE
+                }
+                return true
+            }
+
+            15 -> {
+                if (tietClothingStyle.text.toString().trim() == "") {
+                    tilClothingStyle.error = getString(R.string.err_no_hair)
+                    tvOptional2CC9.visibility = View.GONE
+                } else {
+                    tilClothingStyle.error = null
+                    tvOptional2CC9.visibility = View.VISIBLE
+                }
+                return true
+            }
+
             else -> {
                 return false
             }
@@ -429,7 +515,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(0)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(0)
                     }
@@ -439,7 +525,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBio.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(1)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(1)
                     }
@@ -449,7 +535,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietYOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(2)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(2)
                     }
@@ -459,7 +545,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietPOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(3)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(3)
                     }
@@ -469,7 +555,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietCurrLoc.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(4)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(4)
                     }
@@ -479,7 +565,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBD.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(6)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(6)
                     }
@@ -492,7 +578,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(7)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(7)
                     }
@@ -502,7 +588,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietWeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(8)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(8)
                     }
@@ -512,7 +598,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietEyeColour.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(9)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(9)
                     }
@@ -522,7 +608,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietRace.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(10)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(10)
                     }
@@ -532,9 +618,49 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHair.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(11)
-                        Handler().removeCallbacksAndMessages(r)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
                     } else {
                         delayError(11)
+                    }
+                }
+
+                val tietBuild = findViewById<TextInputEditText>(R.id.tietBuild)
+                tietBuild.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(12)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(12)
+                    }
+                }
+
+                val tietMarkings = findViewById<TextInputEditText>(R.id.tietMarkings)
+                tietMarkings.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(13)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(13)
+                    }
+                }
+
+                val tietHairStyle = findViewById<TextInputEditText>(R.id.tietHairStyle)
+                tietHairStyle.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(14)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(14)
+                    }
+                }
+
+                val tietClothingStyle = findViewById<TextInputEditText>(R.id.tietClothingStyle)
+                tietClothingStyle.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(15)
+                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                    } else {
+                        delayError(15)
                     }
                 }
             }
@@ -659,6 +785,42 @@ class CreateCharacterActivity : AppCompatActivity() {
                         delayError(11)
                     } else {
                         checkField(11)
+                    }
+                }
+
+                val tietBuild = findViewById<TextInputEditText>(R.id.tietBuild)
+                tietBuild.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(12)
+                    } else {
+                        checkField(12)
+                    }
+                }
+
+                val tietMarkings = findViewById<TextInputEditText>(R.id.tietMarkings)
+                tietMarkings.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(13)
+                    } else {
+                        checkField(13)
+                    }
+                }
+
+                val tietHairStyle = findViewById<TextInputEditText>(R.id.tietHairStyle)
+                tietHairStyle.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(14)
+                    } else {
+                        checkField(14)
+                    }
+                }
+
+                val tietClothingStyle = findViewById<TextInputEditText>(R.id.tietClothingStyle)
+                tietClothingStyle.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(15)
+                    } else {
+                        checkField(15)
                     }
                 }
             }

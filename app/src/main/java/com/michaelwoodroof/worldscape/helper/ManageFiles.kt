@@ -70,19 +70,18 @@ class ManageFiles(private val gc : Context) {
 
     }
 
-    fun saveWorld(title : String, desc : String, genre : String, hasImg : Boolean,
-                  color : String, uid : String) : Boolean {
+    fun saveWorld(world : WorldContent.WorldItem) : Boolean {
 
         val fo = gc.filesDir
         return try {
+            val uid = world.uid
             val filePath = File(fo.absolutePath + "/worlds/$uid")
             val fwd = File(filePath, "world_data")
             fwd.createNewFile()
             val fos = FileOutputStream(fwd)
             val oos = ObjectOutputStream(fos)
             // Create WorldContent.WorldItem
-            val wi = WorldContent.WorldItem(title, desc, genre, hasImg, color, uid)
-            oos.writeObject(wi)
+            oos.writeObject(world)
             fos.close()
             oos.close()
             true
@@ -93,7 +92,7 @@ class ManageFiles(private val gc : Context) {
 
     }
 
-    fun saveCharacter() : Boolean {
+    fun saveCharacter(sc : CharacterContent.CharacterItem) : Boolean {
         val fo = gc.filesDir
         return try {
             true

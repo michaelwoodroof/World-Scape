@@ -67,7 +67,7 @@ class WorldDetailFragment : Fragment() {
 
     // @TODO Replace with real method
     private fun loadRecentCharacters() : ArrayList<CharacterContent.CharacterItem>? {
-        return GenerateSampleData.generateCharacterData(0)
+        return GenerateSampleData.generateCharacterData(10)
     }
 
     // @TODO Replace with real method

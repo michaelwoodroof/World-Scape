@@ -8,6 +8,9 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.view.View
@@ -15,6 +18,8 @@ import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
+import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.activity_create_world.*
@@ -33,6 +38,7 @@ import kotlinx.android.synthetic.main.default_toolbar.*
 class CreateWorldActivity : AppCompatActivity() {
 
     lateinit var uriPointer : Uri
+    lateinit var r : Runnable
 
     companion object {
         // Intent Codes
@@ -67,8 +73,15 @@ class CreateWorldActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, genreTypes)
         ddGenre.setAdapter(adapter)
 
-        setUpFocusChangers()
         addAnimation()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setUpFocusChangers()
+        setUpTextChangers()
+        // Init Runnable
+        r = Runnable {}
     }
 
     fun goBack(view : View) {
@@ -98,7 +111,9 @@ class CreateWorldActivity : AppCompatActivity() {
                 mf.saveWorldImage(uid, uriPointer, this.contentResolver)
             }
 
-            if (mf.saveWorld(title, desc, ed.toString(), img, "#ffffff", uid)) {
+            val world : WorldContent.WorldItem = WorldContent.WorldItem(title, desc, ed.toString(), img, "#ffffff", uid)
+
+            if (mf.saveWorld(world)) {
                 super.onBackPressed()
             } else {
                 Snackbar.make(findViewById<View>(R.id.colMainCW), resources.getString(R.string.err_save_world), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
@@ -107,6 +122,71 @@ class CreateWorldActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun TextInputEditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
+        this.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(e: Editable?) {
+                afterTextChanged.invoke(e.toString())
+            }
+
+        })
+    }
+
+    private fun AutoCompleteTextView.afterTextChanged(afterTextChanged: (String) -> Unit) {
+        this.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(e: Editable?) {
+                afterTextChanged.invoke(e.toString())
+            }
+
+        })
+    }
+
+    private fun setUpTextChangers() {
+        val tietWorld = findViewById<TextInputEditText>(R.id.tietWorld)
+        tietWorld.afterTextChanged {
+            if (it.isEmpty()) {
+                delayError(0)
+            } else {
+                checkField(0)
+            }
+        }
+
+        val tietDesc = findViewById<TextInputEditText>(R.id.tietDesc)
+        tietDesc.afterTextChanged {
+            if (it.isEmpty()) {
+                delayError(1)
+            } else {
+                checkField(1)
+            }
+        }
+
+        val ddGenre = findViewById<AutoCompleteTextView>(R.id.ddGenre)
+        ddGenre.afterTextChanged {
+            if (it.isEmpty()) {
+                delayError(2)
+            } else {
+                checkField(2)
+            }
+        }
+
+    }
+
+    private fun delayError(field : Int) {
+        // Ensures Reset before Attempting Timeout
+        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+        r = Runnable {
+            checkField(field)
+        }
+        Handler(Looper.getMainLooper()).postDelayed(r, 2000)
     }
 
     private fun checkField(field : Int) : Boolean {
@@ -211,6 +291,9 @@ class CreateWorldActivity : AppCompatActivity() {
         tietWorld.onFocusChangeListener = View.OnFocusChangeListener{ _: View, focus ->
             if (!focus) {
                 checkField(0)
+                Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+            } else {
+                delayError(0)
             }
         }
 
@@ -219,6 +302,9 @@ class CreateWorldActivity : AppCompatActivity() {
         tietDesc.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
             if (!focus) {
                 checkField(1)
+                Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+            } else {
+                delayError(1)
             }
         }
 
@@ -227,6 +313,9 @@ class CreateWorldActivity : AppCompatActivity() {
         ddGenre.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
             if (!focus) {
                 checkField(2)
+                Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+            } else {
+                delayError(2)
             }
         }
 
