@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,13 +15,14 @@ import android.widget.ScrollView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
+import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
 class CreateCharacterFragmentS1 : Fragment() {
 
     lateinit var uriPointer : Uri
-    lateinit var rootParent : View
 
     companion object {
         // Intent Codes
@@ -30,7 +32,6 @@ class CreateCharacterFragmentS1 : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_create_character_s1, container, false)
-        rootParent = root
 
         addAnimation(root)
 
@@ -48,6 +49,19 @@ class CreateCharacterFragmentS1 : Fragment() {
         }
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (activity as CreateCharacterActivity).setUpFocusChangers(0)
+        (activity as CreateCharacterActivity).setUpTextChangers(0)
+        // Reset Checked Fields @TODO Update into Method
+        activity?.findViewById<TextInputLayout>(R.id.tilCharacterName)?.error = null
+        activity?.findViewById<TextInputLayout>(R.id.tilBiography)?.error = null
+        activity?.findViewById<TextInputLayout>(R.id.tilBirthYear)?.error = null
+        activity?.findViewById<TextInputLayout>(R.id.tilBirthDate)?.error = null
+        activity?.findViewById<TextInputLayout>(R.id.tilCurrentLocation)?.error = null
+        activity?.findViewById<TextInputLayout>(R.id.tilPlaceOfBirth)?.error = null
     }
 
     override fun onStart() {
@@ -120,7 +134,7 @@ class CreateCharacterFragmentS1 : Fragment() {
             }
 
             r2.run {
-                Handler().postDelayed(r2, 400)
+                Handler(Looper.getMainLooper()).postDelayed(r2, 400)
             }
 
             fabPickImageCC.tag = "run"

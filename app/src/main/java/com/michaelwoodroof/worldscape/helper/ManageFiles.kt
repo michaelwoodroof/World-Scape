@@ -189,8 +189,4 @@ class ManageFiles(private val gc : Context) {
         return uuid.toString()
    }
 
-    fun verifyUUID(uid : String) : Boolean {
-        return true
-    }
-
 }

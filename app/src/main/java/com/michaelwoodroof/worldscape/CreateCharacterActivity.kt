@@ -11,13 +11,16 @@ import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
@@ -33,6 +36,7 @@ import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC3
 import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC4
 import kotlinx.android.synthetic.main.fragment_create_character_s2.*
 import org.w3c.dom.Text
+import java.lang.Exception
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -93,10 +97,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        setUpFocusChangers(0)
-        setUpTextChangers(0)
-        // Init Runnable
-        r = Runnable {}
+        r = Runnable {  }
     }
 
     override fun onBackPressed() {
@@ -115,20 +116,10 @@ class CreateCharacterActivity : AppCompatActivity() {
         when (flCCMain.tag) {
             "S2" -> {
                 flCCMain.tag = "S1"
-                r = Runnable {
-                    setUpFocusChangers(0)
-                    setUpTextChangers(0)
-                }
-                Handler(Looper.getMainLooper()).postDelayed(r, 0)
             }
 
             "S3" -> {
                 flCCMain.tag = "S2"
-                r = Runnable {
-                    setUpFocusChangers(1)
-                    setUpTextChangers(1)
-                }
-                Handler(Looper.getMainLooper()).postDelayed(r, 0)
             }
         }
     }
@@ -199,12 +190,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
-
-                r = Runnable {
-                    setUpFocusChangers(1)
-                    setUpTextChangers(1)
-                }
-                Handler(Looper.getMainLooper()).postDelayed(r, 0)
             }
         } else if (flCCMain.tag == "S2") {
             // Update Frag if Condition passes
@@ -225,12 +210,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
-
-                r = Runnable {
-                    setUpFocusChangers(2)
-                    setUpTextChangers(2)
-                }
-                Handler(Looper.getMainLooper()).postDelayed(r, 0)
             }
         } else if (flCCMain.tag == "S3") {
 //            if (checkFields(2)) {
@@ -275,243 +254,299 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     private fun checkField(field: Int) : Boolean {
+        try {
+            when (field) {
 
-        when (field) {
+                0 -> {
+                    val cn = findViewById<TextInputEditText>(R.id.tietCharacterName)
+                    val cnp = findViewById<TextInputLayout>(R.id.tilCharacterName)
 
-            0 -> {
-                return if (tietCharacterName.text.toString().trim() == "") {
-                    tilCharacterName.error = getString(R.string.err_no_cc_name)
-                    false
-                } else {
-                    tilCharacterName.error = null
-                    true
+                    return if (cn.text.toString().trim() == "") {
+                        cnp.error = getString(R.string.err_no_cc_name)
+                        false
+                    } else {
+                        cnp.error = null
+                        true
+                    }
                 }
-            }
 
-            1 -> {
-                return if (tietBiography.text.toString().trim() == "") {
-                    tilBiography.error = getString(R.string.err_no_bio)
-                    false
-                } else {
-                    tilBiography.error = null
-                    true
+                1 -> {
+                    val bio = findViewById<TextInputEditText>(R.id.tietBiography)
+                    val biop = findViewById<TextInputLayout>(R.id.tilBiography)
+
+                    return if (bio.text.toString().trim() == "") {
+                        biop.error = getString(R.string.err_no_bio)
+                        false
+                    } else {
+                        biop.error = null
+                        true
+                    }
                 }
-            }
 
-            2 -> {
-                if (tietBirthYear.text.toString().trim() == "") {
-                    tilBirthYear.error = getString(R.string.err_no_by)
-                    tvOptionalCC1.visibility = View.GONE
-                } else {
-                    tilBirthYear.error = null
-                    tvOptionalCC1.visibility = View.VISIBLE
+                2 -> {
+                    val by = findViewById<TextInputEditText>(R.id.tietBirthYear)
+                    val byp = findViewById<TextInputLayout>(R.id.tilBirthYear)
+
+                    if (by.text.toString().trim() == "") {
+                        byp.error = getString(R.string.err_no_by)
+                        tvOptionalCC1.visibility = View.GONE
+                    } else {
+                        byp.error = null
+                        tvOptionalCC1.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            3 -> {
-                if (tietPlaceOfBirth.text.toString().trim() == "") {
-                    tilPlaceOfBirth.error = getString(R.string.err_no_pob)
-                    tvOptionalCC4.visibility = View.GONE
-                    if (btnLinkPlace.tag != "err") {
-                        when (val drawable = btnLinkPlace.drawable) {
-                            is AnimatedVectorDrawable -> {
-                                btnLinkPlace.tag = "err"
-                                drawable.start()
+                3 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
+                    val xp = findViewById<TextInputLayout>(R.id.tilPlaceOfBirth)
+                    val btn = findViewById<ImageButton>(R.id.btnLinkPlace)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_pob)
+                        tvOptionalCC4.visibility = View.GONE
+                        if (btn.tag != "err") {
+                            when (val drawable = btn.drawable) {
+                                is AnimatedVectorDrawable -> {
+                                    btn.tag = "err"
+                                    drawable.start()
+                                }
                             }
                         }
-                    }
-                } else {
-                    tilPlaceOfBirth.error = null
-                    tvOptionalCC4.visibility = View.VISIBLE
-                    if (btnLinkPlace.tag == "err") {
-                        btnLinkPlace.setImageDrawable(
-                            ResourcesCompat.getDrawable(
-                                resources,
-                                R.drawable.warning_to_link,
-                                null
+                    } else {
+                        xp.error = null
+                        tvOptionalCC4.visibility = View.VISIBLE
+                        if (btn.tag == "err") {
+                            btn.setImageDrawable(
+                                ResourcesCompat.getDrawable(
+                                    resources,
+                                    R.drawable.warning_to_link,
+                                    null
+                                )
                             )
-                        )
-                        when (val drawable = btnLinkPlace.drawable) {
-                            is AnimatedVectorDrawable -> {
-                                btnLinkPlace.tag = "ne"
-                                drawable.start()
+                            when (val drawable = btn.drawable) {
+                                is AnimatedVectorDrawable -> {
+                                    btn.tag = "ne"
+                                    drawable.start()
+                                }
                             }
                         }
                     }
+                    return true
                 }
-                return true
-            }
 
-            4 -> {
-                if (tietCurrentLocation.text.toString().trim() == "") {
-                    tilCurrentLocation.error = getString(R.string.err_no_cl)
-                    tvOptionalCC3.visibility = View.GONE
-                    if (btnLinkCurrentLoc.tag != "err") {
-                        when (val drawable = btnLinkCurrentLoc.drawable) {
-                            is AnimatedVectorDrawable -> {
-                                btnLinkCurrentLoc.tag = "err"
-                                drawable.start()
+                4 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
+                    val xp = findViewById<TextInputLayout>(R.id.tilCurrentLocation)
+                    val btn = findViewById<ImageButton>(R.id.btnLinkCurrentLoc)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_cl)
+                        tvOptionalCC3.visibility = View.GONE
+                        if (btn.tag != "err") {
+                            when (val drawable = btn.drawable) {
+                                is AnimatedVectorDrawable -> {
+                                    btn.tag = "err"
+                                    drawable.start()
+                                }
                             }
                         }
-                    }
-                } else {
-                    tilCurrentLocation.error = null
-                    tvOptionalCC3.visibility = View.VISIBLE
-                    if (btnLinkCurrentLoc.tag == "err") {
-                        btnLinkCurrentLoc.setImageDrawable(
-                            ResourcesCompat.getDrawable(
-                                resources,
-                                R.drawable.warning_to_link,
-                                null
+                    } else {
+                        xp.error = null
+                        tvOptionalCC3.visibility = View.VISIBLE
+                        if (btn.tag == "err") {
+                            btn.setImageDrawable(
+                                ResourcesCompat.getDrawable(
+                                    resources,
+                                    R.drawable.warning_to_link,
+                                    null
+                                )
                             )
-                        )
-                        when (val drawable = btnLinkCurrentLoc.drawable) {
-                            is AnimatedVectorDrawable -> {
-                                btnLinkCurrentLoc.tag = "ne"
-                                drawable.start()
+                            when (val drawable = btn.drawable) {
+                                is AnimatedVectorDrawable -> {
+                                    btn.tag = "ne"
+                                    drawable.start()
+                                }
                             }
                         }
                     }
+                    return true
                 }
-                return true
-            }
 
-            5 -> {
-                // Image Checking
-                if (imgPreviewCC.visibility == View.VISIBLE) {
-                    // @TODO Implement
-                } else {
-                    // @TODO Implement
+                5 -> {
+                    val x = findViewById<ImageView>(R.id.imgPreviewCC)
+
+                    // Image Checking
+                    if (x.visibility == View.VISIBLE) {
+                        // @TODO Implement
+                    } else {
+                        // @TODO Implement
+                    }
+                    return true
                 }
-                return true
-            }
 
-            6 -> {
-                if (tietBirthDate.text.toString().trim() == "") {
-                    tilBirthDate.error = getString(R.string.err_no_bday)
-                    tvOptionalCC2.visibility = View.GONE
-                } else {
-                    tilBirthDate.error = null
-                    tvOptionalCC2.visibility = View.VISIBLE
+                6 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietBirthDate)
+                    val xp = findViewById<TextInputLayout>(R.id.tilBirthDate)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_bday)
+                        tvOptionalCC2.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptionalCC2.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            7 -> {
-                if (tietHeight.text.toString().trim() == "") {
-                    tilHeight.error = getString(R.string.err_no_height)
-                    tvOptional2CC1.visibility = View.GONE
-                } else {
-                    tilHeight.error = null
-                    tvOptional2CC1.visibility = View.VISIBLE
+                7 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietHeight)
+                    val xp = findViewById<TextInputLayout>(R.id.tilHeight)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_height)
+                        tvOptional2CC1.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC1.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            8 -> {
-                if (tietWeight.text.toString().trim() == "") {
-                    tilWeight.error = getString(R.string.err_no_weight)
-                    tvOptional2CC2.visibility = View.GONE
-                } else {
-                    tilWeight.error = null
-                    tvOptional2CC2.visibility = View.VISIBLE
+                8 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietWeight)
+                    val xp = findViewById<TextInputLayout>(R.id.tilWeight)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_weight)
+                        tvOptional2CC2.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC2.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            9 -> {
-                if (tietEyeColor.text.toString().trim() == "") {
-                    tilEyeColor.error = getString(R.string.err_no_eye_colour)
-                    tvOptional2CC3.visibility = View.GONE
-                } else {
-                    tilEyeColor.error = null
-                    tvOptional2CC3.visibility = View.VISIBLE
+                9 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietEyeColor)
+                    val xp = findViewById<TextInputLayout>(R.id.tilEyeColor)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_eye_colour)
+                        tvOptional2CC3.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC3.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            10 -> {
-                if (tietRace.text.toString().trim() == "") {
-                    tilRace.error = getString(R.string.err_no_race)
-                    tvOptional2CC4.visibility = View.GONE
-                } else {
-                    tilRace.error = null
-                    tvOptional2CC4.visibility = View.VISIBLE
+                10 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietRace)
+                    val xp = findViewById<TextInputLayout>(R.id.tilRace)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_race)
+                        tvOptional2CC4.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC4.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            11 -> {
-                if (tietHairColor.text.toString().trim() == "") {
-                    tilHairColor.error = getString(R.string.err_no_hair)
-                    tvOptional2CC5.visibility = View.GONE
-                } else {
-                    tilHairColor.error = null
-                    tvOptional2CC5.visibility = View.VISIBLE
+                11 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietHairColor)
+                    val xp = findViewById<TextInputLayout>(R.id.tilHairColor)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_hair)
+                        tvOptional2CC5.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC5.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            12 -> {
-                if (tietBuild.text.toString().trim() == "") {
-                    tilBuild.error = getString(R.string.err_no_hair)
-                    tvOptional2CC6.visibility = View.GONE
-                } else {
-                    tilBuild.error = null
-                    tvOptional2CC6.visibility = View.VISIBLE
+                12 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietBuild)
+                    val xp = findViewById<TextInputLayout>(R.id.tilBuild)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_hair)
+                        tvOptional2CC6.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC6.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            13 -> {
-                if (tietMarkings.text.toString().trim() == "") {
-                    tilMarkings.error = getString(R.string.err_no_hair)
-                    tvOptional2CC7.visibility = View.GONE
-                } else {
-                    tilMarkings.error = null
-                    tvOptional2CC7.visibility = View.VISIBLE
+                13 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietMarkings)
+                    val xp = findViewById<TextInputLayout>(R.id.tilMarkings)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_hair)
+                        tvOptional2CC7.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC7.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            14 -> {
-                if (tietHairStyle.text.toString().trim() == "") {
-                    tilHairStyle.error = getString(R.string.err_no_hair)
-                    tvOptional2CC8.visibility = View.GONE
-                } else {
-                    tilHairStyle.error = null
-                    tvOptional2CC8.visibility = View.VISIBLE
+                14 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietHairStyle)
+                    val xp = findViewById<TextInputLayout>(R.id.tilHairStyle)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_hair)
+                        tvOptional2CC8.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC8.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            15 -> {
-                if (tietClothingStyle.text.toString().trim() == "") {
-                    tilClothingStyle.error = getString(R.string.err_no_hair)
-                    tvOptional2CC9.visibility = View.GONE
-                } else {
-                    tilClothingStyle.error = null
-                    tvOptional2CC9.visibility = View.VISIBLE
+                15 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietClothingStyle)
+                    val xp = findViewById<TextInputLayout>(R.id.tilClothingStyle)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_hair)
+                        tvOptional2CC9.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        tvOptional2CC9.visibility = View.VISIBLE
+                    }
+                    return true
                 }
-                return true
-            }
 
-            else -> {
-                return false
-            }
+                else -> {
+                    return false
+                }
 
+            }
+        } catch (e : Exception) {
+            Log.e("Error", e.toString())
+            return false
         }
-
     }
 
     fun setUpFocusChangers(stageNumber: Int) {
 
+        Log.d("myLogging", stageNumber.toString())
+
         when (stageNumber) {
 
             0 -> {
+
                 // Set-up for Stage One
                 val tietCN = findViewById<TextInputEditText>(R.id.tietCharacterName)
+
                 tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(0)
@@ -683,6 +718,9 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     fun setUpTextChangers(stageNumber: Int) {
+
+        Log.d("myLogging", stageNumber.toString())
+
         when (stageNumber) {
 
             0 -> {
