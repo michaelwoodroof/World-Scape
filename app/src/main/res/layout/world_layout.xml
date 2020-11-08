@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="167dp">
 
-    <!-- @TODO Change RIPPLE COLOUR TO MORE SUITABLE COLOUR -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvMain"
         android:layout_width="0dp"

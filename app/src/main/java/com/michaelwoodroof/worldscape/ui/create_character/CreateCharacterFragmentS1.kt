@@ -55,13 +55,6 @@ class CreateCharacterFragmentS1 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as CreateCharacterActivity).setUpFocusChangers(0)
         (activity as CreateCharacterActivity).setUpTextChangers(0)
-        // Reset Checked Fields @TODO Update into Method
-        activity?.findViewById<TextInputLayout>(R.id.tilCharacterName)?.error = null
-        activity?.findViewById<TextInputLayout>(R.id.tilBiography)?.error = null
-        activity?.findViewById<TextInputLayout>(R.id.tilBirthYear)?.error = null
-        activity?.findViewById<TextInputLayout>(R.id.tilBirthDate)?.error = null
-        activity?.findViewById<TextInputLayout>(R.id.tilCurrentLocation)?.error = null
-        activity?.findViewById<TextInputLayout>(R.id.tilPlaceOfBirth)?.error = null
     }
 
     override fun onStart() {
@@ -69,26 +62,18 @@ class CreateCharacterFragmentS1 : Fragment() {
         btnLinkCurrentLoc.tag = "ne"
         btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
         btnLinkPlace.tag = "ne"
-        var drawable = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
+        val drawableOne = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
+        val drawableTwo = btnLinkPlace.drawable as AnimatedVectorDrawable
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            drawable.reset()
-            drawable = btnLinkPlace.drawable as AnimatedVectorDrawable
-            drawable.reset()
+            drawableOne.reset()
+            drawableTwo.reset()
         }
         super.onStart()
     }
 
     override fun onResume() {
-        btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
-        btnLinkCurrentLoc.tag = "ne"
-        btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
-        btnLinkPlace.tag = "ne"
-        var drawable = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            drawable.reset()
-            drawable = btnLinkPlace.drawable as AnimatedVectorDrawable
-            drawable.reset()
-        }
+        (activity as CreateCharacterActivity).h.removeCallbacksAndMessages(null)
+        (activity as CreateCharacterActivity).resetFields(0)
         super.onResume()
     }
 

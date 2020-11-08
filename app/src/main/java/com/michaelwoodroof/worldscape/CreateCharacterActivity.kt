@@ -38,11 +38,14 @@ import kotlinx.android.synthetic.main.fragment_create_character_s2.*
 import org.w3c.dom.Text
 import java.lang.Exception
 
+// @TODO Fix how Errors are Handled Class Wide
+
 class CreateCharacterActivity : AppCompatActivity() {
 
     var currentCharacter : CharacterContent.CharacterItem =
-        CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "", "")
-    lateinit var r : Runnable
+        CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
+    var r : Runnable = Runnable {}
+    var h : Handler = Handler(Looper.getMainLooper())
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,11 +98,6 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        r = Runnable {  }
-    }
-
     override fun onBackPressed() {
         backTasks()
         super.onBackPressed()
@@ -111,8 +109,6 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     private fun backTasks() {
-        // Update Step Number
-        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
         when (flCCMain.tag) {
             "S2" -> {
                 flCCMain.tag = "S1"
@@ -127,11 +123,11 @@ class CreateCharacterActivity : AppCompatActivity() {
     // Gets Reset on Text Changed
     private fun delayError(field : Int) {
         // Ensures Reset before Attempting Timeout
-        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+        h.removeCallbacksAndMessages(null)
         r = Runnable {
             checkField(field)
         }
-        Handler(Looper.getMainLooper()).postDelayed(r, 2000)
+        h.postDelayed(r, 2000)
     }
 
     fun setLink(view: View) {
@@ -169,8 +165,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
     }
 
-    fun stepForward(view: View) {
-        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+    fun stepForward(view : View) {
         if (flCCMain.tag == "S1") {
             // Update Frag if Condition passed
             if (checkFields(0)) {
@@ -225,19 +220,19 @@ class CreateCharacterActivity : AppCompatActivity() {
             0 -> {
                 val c1 = checkField(0)
                 val c2 = checkField(1)
-                // Optional fields
-                checkField(2)
-                checkField(3)
-                checkField(4)
-                checkField(5)
-                checkField(6)
-                return c1 && c2
+                return if (c1 && c2) {
+                    true
+                } else {
+                    checkField(2)
+                    checkField(3)
+                    checkField(4)
+                    checkField(5)
+                    checkField(6)
+                    false
+                }
             }
 
             1 -> {
-                checkField(7)
-                checkField(8)
-                checkField(9)
                 return true
             }
 
@@ -253,7 +248,9 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     }
 
+    // @TODO Add FindView for Optional Tags
     private fun checkField(field: Int) : Boolean {
+        h.removeCallbacksAndMessages(null)
         try {
             when (field) {
 
@@ -286,13 +283,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 2 -> {
                     val by = findViewById<TextInputEditText>(R.id.tietBirthYear)
                     val byp = findViewById<TextInputLayout>(R.id.tilBirthYear)
+                    val o = findViewById<TextView>(R.id.tvOptionalCC1)
 
                     if (by.text.toString().trim() == "") {
                         byp.error = getString(R.string.err_no_by)
-                        tvOptionalCC1.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         byp.error = null
-                        tvOptionalCC1.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -301,10 +299,11 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val x = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
                     val xp = findViewById<TextInputLayout>(R.id.tilPlaceOfBirth)
                     val btn = findViewById<ImageButton>(R.id.btnLinkPlace)
+                    val o = findViewById<TextView>(R.id.tvOptionalCC4)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_pob)
-                        tvOptionalCC4.visibility = View.GONE
+                        o.visibility = View.GONE
                         if (btn.tag != "err") {
                             when (val drawable = btn.drawable) {
                                 is AnimatedVectorDrawable -> {
@@ -315,7 +314,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                         }
                     } else {
                         xp.error = null
-                        tvOptionalCC4.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                         if (btn.tag == "err") {
                             btn.setImageDrawable(
                                 ResourcesCompat.getDrawable(
@@ -339,10 +338,11 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val x = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
                     val xp = findViewById<TextInputLayout>(R.id.tilCurrentLocation)
                     val btn = findViewById<ImageButton>(R.id.btnLinkCurrentLoc)
+                    val o = findViewById<TextView>(R.id.tvOptionalCC3)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_cl)
-                        tvOptionalCC3.visibility = View.GONE
+                        o.visibility = View.GONE
                         if (btn.tag != "err") {
                             when (val drawable = btn.drawable) {
                                 is AnimatedVectorDrawable -> {
@@ -353,7 +353,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                         }
                     } else {
                         xp.error = null
-                        tvOptionalCC3.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                         if (btn.tag == "err") {
                             btn.setImageDrawable(
                                 ResourcesCompat.getDrawable(
@@ -388,13 +388,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 6 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietBirthDate)
                     val xp = findViewById<TextInputLayout>(R.id.tilBirthDate)
+                    val o = findViewById<TextView>(R.id.tvOptionalCC2)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_bday)
-                        tvOptionalCC2.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptionalCC2.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -402,13 +403,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 7 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietHeight)
                     val xp = findViewById<TextInputLayout>(R.id.tilHeight)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC1)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_height)
-                        tvOptional2CC1.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC1.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -416,13 +418,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 8 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietWeight)
                     val xp = findViewById<TextInputLayout>(R.id.tilWeight)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC2)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_weight)
-                        tvOptional2CC2.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC2.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -430,13 +433,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 9 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietEyeColor)
                     val xp = findViewById<TextInputLayout>(R.id.tilEyeColor)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC3)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_eye_colour)
-                        tvOptional2CC3.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC3.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -444,13 +448,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 10 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietRace)
                     val xp = findViewById<TextInputLayout>(R.id.tilRace)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC4)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_race)
-                        tvOptional2CC4.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC4.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -458,13 +463,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 11 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietHairColor)
                     val xp = findViewById<TextInputLayout>(R.id.tilHairColor)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC5)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_hair)
-                        tvOptional2CC5.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC5.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -472,13 +478,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 12 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietBuild)
                     val xp = findViewById<TextInputLayout>(R.id.tilBuild)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC6)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_hair)
-                        tvOptional2CC6.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC6.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -486,13 +493,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 13 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietMarkings)
                     val xp = findViewById<TextInputLayout>(R.id.tilMarkings)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC7)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_hair)
-                        tvOptional2CC7.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC7.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -500,13 +508,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 14 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietHairStyle)
                     val xp = findViewById<TextInputLayout>(R.id.tilHairStyle)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC8)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_hair)
-                        tvOptional2CC8.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC8.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -514,13 +523,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 15 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietClothingStyle)
                     val xp = findViewById<TextInputLayout>(R.id.tilClothingStyle)
+                    val o = findViewById<TextView>(R.id.tvOptional2CC9)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_hair)
-                        tvOptional2CC9.visibility = View.GONE
+                        o.visibility = View.GONE
                     } else {
                         xp.error = null
-                        tvOptional2CC9.visibility = View.VISIBLE
+                        o.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -536,9 +546,47 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
     }
 
-    fun setUpFocusChangers(stageNumber: Int) {
+    fun resetFields(stageNumber: Int) {
+        try {
+            when (stageNumber) {
+                0 -> {
+                    val x = findViewById<TextInputLayout>(R.id.tilCharacterName)
+                    x.error = null
 
-        Log.d("myLogging", stageNumber.toString())
+                    val y = findViewById<TextInputLayout>(R.id.tilBiography)
+                    y.error = null
+
+                    val z = findViewById<TextInputLayout>(R.id.tilBirthYear)
+                    z.error = null
+
+                    val a = findViewById<TextInputLayout>(R.id.tilBirthDate)
+                    a.error = null
+
+                    val b = findViewById<TextInputLayout>(R.id.tilCurrentLocation)
+                    b.error = null
+                    b.clearFocus()
+                    b.clearAnimation()
+
+                    val c = findViewById<TextInputLayout>(R.id.tilPlaceOfBirth)
+                    c.error = null
+                    c.clearFocus()
+                    c.clearAnimation()
+                }
+
+                1 -> {
+                    
+                }
+
+                2 -> {
+
+                }
+            }
+        } catch (e : Exception) {
+            Log.e("Error", e.toString())
+        }
+    }
+
+    fun setUpFocusChangers(stageNumber: Int) {
 
         when (stageNumber) {
 
@@ -550,7 +598,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(0)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(0)
                     }
@@ -560,7 +608,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBio.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(1)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(1)
                     }
@@ -570,7 +618,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietYOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(2)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(2)
                     }
@@ -580,7 +628,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietPOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(3)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(3)
                     }
@@ -590,7 +638,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietCurrLoc.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(4)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(4)
                     }
@@ -600,7 +648,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBD.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(6)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(6)
                     }
@@ -613,7 +661,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(7)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(7)
                     }
@@ -623,7 +671,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietWeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(8)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(8)
                     }
@@ -633,7 +681,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietEyeColour.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(9)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(9)
                     }
@@ -643,7 +691,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietRace.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(10)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(10)
                     }
@@ -653,7 +701,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHair.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(11)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(11)
                     }
@@ -663,7 +711,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBuild.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(12)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(12)
                     }
@@ -673,7 +721,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietMarkings.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(13)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(13)
                     }
@@ -683,7 +731,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHairStyle.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(14)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(14)
                     }
@@ -693,7 +741,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietClothingStyle.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(15)
-                        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
+                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(15)
                     }
