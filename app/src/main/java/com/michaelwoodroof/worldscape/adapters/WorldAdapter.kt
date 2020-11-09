@@ -15,7 +15,7 @@ import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.world_layout.view.*
 
-class WorldAdapter(private var givenValues: List<WorldContent.WorldItem>)
+class WorldAdapter(private var givenValues: MutableList<WorldContent.WorldItem>)
     : RecyclerView.Adapter<WorldAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -91,8 +91,4 @@ class WorldAdapter(private var givenValues: List<WorldContent.WorldItem>)
         }
     }
 
-}
-
-interface OnItemClicked {
-    fun onItemClicked(worldItem : WorldContent.WorldItem)
 }

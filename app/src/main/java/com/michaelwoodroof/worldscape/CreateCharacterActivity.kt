@@ -11,12 +11,10 @@ import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
@@ -30,12 +28,7 @@ import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmen
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
-import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC1
-import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC2
-import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC3
-import kotlinx.android.synthetic.main.fragment_create_character_s1.tvOptionalCC4
 import kotlinx.android.synthetic.main.fragment_create_character_s2.*
-import org.w3c.dom.Text
 import java.lang.Exception
 
 // @TODO Fix how Errors are Handled Class Wide
@@ -541,7 +534,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             }
         } catch (e : Exception) {
-            Log.e("Error", e.toString())
+            Log.e("error", e.toString())
             return false
         }
     }
@@ -574,7 +567,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
 
                 1 -> {
-                    
+
                 }
 
                 2 -> {
@@ -582,7 +575,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
             }
         } catch (e : Exception) {
-            Log.e("Error", e.toString())
+            Log.e("error", e.toString())
         }
     }
 
@@ -748,6 +741,10 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
             }
 
+            else -> {
+                Log.e("error", "Err : Non-Existent Stage for Focus Changer")
+            }
+
         }
 
     }
@@ -766,8 +763,6 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     fun setUpTextChangers(stageNumber: Int) {
-
-        Log.d("myLogging", stageNumber.toString())
 
         when (stageNumber) {
 

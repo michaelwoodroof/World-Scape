@@ -59,8 +59,4 @@ object AssignTouchEvent {
         }
     }
 
-    fun swipeToDelete(view : View, event : MotionEvent) : Boolean {
-        return true
-    }
-
 }

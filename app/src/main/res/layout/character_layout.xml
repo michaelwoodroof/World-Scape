@@ -76,7 +76,7 @@
                 android:textColor="@color/baseTextColor"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tvCharacterName"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imgPreview"
                 app:layout_constraintTop_toBottomOf="@+id/tvCharacterName" />
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -86,7 +86,7 @@ class ManageFiles(private val gc : Context) {
             oos.close()
             true
         } catch (e : Exception) {
-            Log.e("Error", e.toString())
+            Log.e("error", e.toString())
             false
         }
 
@@ -97,7 +97,7 @@ class ManageFiles(private val gc : Context) {
         return try {
             true
         } catch (e : Exception) {
-            Log.e("Error", e.toString())
+            Log.e("error", e.toString())
             false
         }
     }
@@ -147,7 +147,7 @@ class ManageFiles(private val gc : Context) {
             stream.close()
             true
         } catch (e : Exception) {
-            Log.e("Error", e.toString())
+            Log.e("error", e.toString())
             false
         }
 
@@ -161,7 +161,7 @@ class ManageFiles(private val gc : Context) {
         return try {
             BitmapFactory.decodeFile(wf.absolutePath)
         } catch (e : Exception) {
-            Log.e("Error", e.toString())
+            Log.e("error", e.toString())
             bm
         }
 
@@ -178,7 +178,7 @@ class ManageFiles(private val gc : Context) {
             }
             true
         } catch (e : Exception) {
-            Log.e("Error", e.toString())
+            Log.e("error", e.toString())
             false
         }
 
