@@ -68,6 +68,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
+        super.onStart()
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         when (sharedPreferences.getString("theme", "")) {
             "dark_mode" -> {
@@ -83,7 +84,6 @@ class SettingsActivity : AppCompatActivity() {
             }
 
         }
-        super.onStart()
     }
 
     class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -97,8 +97,8 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         override fun onPause() {
-            preferenceManager.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
             super.onPause()
+            preferenceManager.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
         }
 
         override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {

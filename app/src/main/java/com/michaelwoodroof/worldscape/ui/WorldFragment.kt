@@ -49,6 +49,7 @@ class WorldFragment : Fragment() {
     }
 
     override fun onStart() {
+        super.onStart()
         val dataset = loadWorlds()
         rv.adapter = WorldAdapter(dataset)
         if (dataset.size == 0) {
@@ -58,7 +59,6 @@ class WorldFragment : Fragment() {
             rv.overScrollMode = View.OVER_SCROLL_ALWAYS
         }
         fabe.tag = ""
-        super.onStart()
     }
 
     private fun loadWorlds() : ArrayList<WorldContent.WorldItem> {

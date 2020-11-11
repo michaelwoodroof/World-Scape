@@ -58,6 +58,7 @@ class CreateCharacterFragmentS1 : Fragment() {
     }
 
     override fun onStart() {
+        super.onStart()
         btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
         btnLinkCurrentLoc.tag = "ne"
         btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
@@ -68,13 +69,12 @@ class CreateCharacterFragmentS1 : Fragment() {
             drawableOne.reset()
             drawableTwo.reset()
         }
-        super.onStart()
     }
 
     override fun onResume() {
+        super.onResume()
         (activity as CreateCharacterActivity).h.removeCallbacksAndMessages(null)
         (activity as CreateCharacterActivity).resetFields(0)
-        super.onResume()
     }
 
     private fun addAnimation(root : View) {

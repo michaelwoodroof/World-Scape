@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
+        super.onStart()
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         when (sharedPreferences.getString("theme", "")) {
             "dark_mode" -> {
@@ -83,7 +84,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        super.onStart()
     }
 
     fun loadSettings(view : View) {

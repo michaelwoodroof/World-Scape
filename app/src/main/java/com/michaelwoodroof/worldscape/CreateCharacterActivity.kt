@@ -16,6 +16,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -28,10 +29,9 @@ import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmen
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
-import kotlinx.android.synthetic.main.fragment_create_character_s2.*
 import java.lang.Exception
 
-// @TODO Fix how Errors are Handled Class Wide
+// @TODO Fix Animation on Link Places
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -105,6 +105,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         when (flCCMain.tag) {
             "S2" -> {
                 flCCMain.tag = "S1"
+                updateCharacter(1)
             }
 
             "S3" -> {
@@ -121,6 +122,49 @@ class CreateCharacterActivity : AppCompatActivity() {
             checkField(field)
         }
         h.postDelayed(r, 2000)
+    }
+
+    private fun String.toEditable() : Editable {
+        return Editable.Factory.getInstance().newEditable(this)
+    }
+
+    fun fillFields(stageNumber: Int) {
+        when (stageNumber) {
+
+            1 -> {
+                val h = findViewById<TextInputEditText>(R.id.tietHeight)
+                h.text = currentCharacter.height?.toEditable()
+
+                val w = findViewById<TextInputEditText>(R.id.tietWeight)
+                w.text = currentCharacter.weight?.toEditable()
+
+                val eye = findViewById<TextInputEditText>(R.id.tietEyeColor)
+                eye.text = currentCharacter.eyeColor?.toEditable()
+
+                val race = findViewById<TextInputEditText>(R.id.tietRace)
+                race.text = currentCharacter.race?.toEditable()
+
+                val hc = findViewById<TextInputEditText>(R.id.tietHairColor)
+                hc.text = currentCharacter.hairColor?.toEditable()
+
+                val build = findViewById<TextInputEditText>(R.id.tietBuild)
+                build.text = currentCharacter.build?.toEditable()
+
+                val marks = findViewById<TextInputEditText>(R.id.tietMarkings)
+                marks.text = currentCharacter.markings?.toEditable()
+
+                val hs = findViewById<TextInputEditText>(R.id.tietHairStyle)
+                hs.text = currentCharacter.hairStyle?.toEditable()
+
+                val cl = findViewById<TextInputEditText>(R.id.tietClothingStyle)
+                cl.text = currentCharacter.clothingStyle?.toEditable()
+            }
+
+            2 -> {
+
+            }
+
+        }
     }
 
     fun setLink(view: View) {
@@ -158,6 +202,66 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateCharacter(stageNumber: Int) {
+        when (stageNumber) {
+            0 -> {
+                val cn = findViewById<TextInputEditText>(R.id.tietCharacterName)
+                currentCharacter.name = cn.text.toString()
+
+                val bio = findViewById<TextInputEditText>(R.id.tietBiography)
+                currentCharacter.biography = bio.text.toString()
+
+                val by = findViewById<TextInputEditText>(R.id.tietBirthYear)
+                currentCharacter.yearOfBirth = by.text.toString()
+
+                val bd = findViewById<TextInputEditText>(R.id.tietBirthDate)
+                currentCharacter.birthday = bd.text.toString()
+
+                val cl = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
+                currentCharacter.currentLocation = cl.text.toString()
+
+                val pob = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
+                currentCharacter.placeOfBirth = pob.text.toString()
+
+                val img = findViewById<MaterialCardView>(R.id.cvPreviewCC)
+                currentCharacter.hasImg = img.visibility == View.VISIBLE
+            }
+
+            1 -> {
+                val h = findViewById<TextInputEditText>(R.id.tietHeight)
+                currentCharacter.height = h.text.toString()
+
+                val w = findViewById<TextInputEditText>(R.id.tietWeight)
+                currentCharacter.weight = w.text.toString()
+
+                val eye = findViewById<TextInputEditText>(R.id.tietEyeColor)
+                currentCharacter.eyeColor = eye.text.toString()
+
+                val race = findViewById<TextInputEditText>(R.id.tietRace)
+                currentCharacter.race = race.text.toString()
+
+                val hc = findViewById<TextInputEditText>(R.id.tietHairColor)
+                currentCharacter.hairColor = hc.text.toString()
+
+                val build = findViewById<TextInputEditText>(R.id.tietBuild)
+                currentCharacter.build = build.text.toString()
+
+                val marks = findViewById<TextInputEditText>(R.id.tietMarkings)
+                currentCharacter.markings = marks.text.toString()
+
+                val hs = findViewById<TextInputEditText>(R.id.tietHairStyle)
+                currentCharacter.hairStyle = hs.text.toString()
+
+                val cl = findViewById<TextInputEditText>(R.id.tietClothingStyle)
+                currentCharacter.clothingStyle = cl.text.toString()
+            }
+
+            2 -> {
+
+            }
+        }
+    }
+
     fun stepForward(view : View) {
         if (flCCMain.tag == "S1") {
             // Update Frag if Condition passed
@@ -166,14 +270,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 val createCharacterFragment = CreateCharacterFragmentS2()
                 val transaction = supportFragmentManager.beginTransaction()
 
-                // Update Character
-                currentCharacter.name = tietCharacterName.text.toString()
-                currentCharacter.biography = tietBiography.text.toString()
-                currentCharacter.yearOfBirth = tietBirthYear.text.toString()
-                currentCharacter.birthday = tietBirthDate.text.toString()
-                currentCharacter.currentLocation = tietCurrentLocation.text.toString()
-                currentCharacter.placeOfBirth = tietPlaceOfBirth.text.toString()
-                currentCharacter.hasImg = cvPreviewCC.visibility == View.VISIBLE
+                updateCharacter(0)
 
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
@@ -186,14 +283,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 val createCharacterFragment = CreateCharacterFragmentS3()
                 val transaction = supportFragmentManager.beginTransaction()
 
-                // Update Character
-                currentCharacter.height = tietHeight.text.toString()
-                currentCharacter.weight = tietWeight.text.toString()
-                currentCharacter.eyeColor = tietEyeColor.text.toString()
-                currentCharacter.race = tietRace.text.toString()
-                currentCharacter.hairColor = tietHairColor.text.toString()
-                currentCharacter.build = tietBuild.text.toString()
-                currentCharacter.markings = tietMarkings.text.toString()
+                updateCharacter(1)
 
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
@@ -241,7 +331,6 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     }
 
-    // @TODO Add FindView for Optional Tags
     private fun checkField(field: Int) : Boolean {
         h.removeCallbacksAndMessages(null)
         try {
