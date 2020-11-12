@@ -80,7 +80,7 @@ class ManageFiles(private val gc : Context) {
             fwd.createNewFile()
             val fos = FileOutputStream(fwd)
             val oos = ObjectOutputStream(fos)
-            // Create WorldContent.WorldItem
+            //  Write World to File
             oos.writeObject(world)
             fos.close()
             oos.close()
@@ -92,9 +92,45 @@ class ManageFiles(private val gc : Context) {
 
     }
 
-    fun saveCharacter(sc : CharacterContent.CharacterItem) : Boolean {
-        val fo = gc.filesDir
+    fun saveCharacter(sc : CharacterContent.CharacterItem, wuid : String) : Boolean {
+        // wuid is the World's UID
+        val uid = sc.uid
+        val fo = gc.filesDir.absolutePath + "/worlds/$wuid/characters/$uid"
         return try {
+            val fc = File(fo, "character_data")
+            fc.createNewFile()
+            val fos = FileOutputStream(fc)
+            val oos = ObjectOutputStream(fos)
+            // Write Character to File
+            oos.writeObject(sc)
+            fos.close()
+            oos.close()
+            true
+        } catch (e : Exception) {
+            Log.e("error", e.toString())
+            false
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    fun saveCharacterImage(uid : String, wuid : String, img: Uri, gcr: ContentResolver) : Boolean {
+        val fo = gc.filesDir.absolutePath + "/worlds/$wuid/characters/$uid"
+        return try {
+            val fi = File(fo, "character_image")
+            fi.createNewFile()
+            var bm: Bitmap?
+            bm = if (Build.VERSION.SDK_INT < 28) {
+                MediaStore.Images.Media.getBitmap(gcr, Uri.parse(img.toString()))
+            } else {
+                val src = ImageDecoder.createSource(gcr, Uri.parse(img.toString()))
+                ImageDecoder.decodeBitmap(src)
+            }
+            bm = bm?.let { Bitmap.createScaledBitmap(it, 300, 300, false) }
+            // Write Bitmap to File
+            val stream : OutputStream = FileOutputStream(fi)
+            bm?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            stream.flush()
+            stream.close()
             true
         } catch (e : Exception) {
             Log.e("error", e.toString())

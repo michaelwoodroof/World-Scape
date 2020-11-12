@@ -22,8 +22,6 @@ import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
 class CreateCharacterFragmentS1 : Fragment() {
 
-    lateinit var uriPointer : Uri
-
     companion object {
         // Intent Codes
         private const val MEDIA_PICK_CODE = 100
@@ -102,7 +100,7 @@ class CreateCharacterFragmentS1 : Fragment() {
                 val selectedImage = data?.data
                 if (selectedImage != null) {
                     imgPreviewCC.setImageURI(selectedImage)
-                    uriPointer = selectedImage
+                    (activity as CreateCharacterActivity).uriPointer = selectedImage
                     imgPreviewCC.tag = "hasImage"
                     cvPreviewCC.visibility = View.VISIBLE
                     animatePickImage()

@@ -106,7 +106,7 @@ class CreateWorldActivity : AppCompatActivity() {
 
             mf.createFolderStructure(uid, this)
 
-            // Attempt to Save World Image
+            // Attempt to Save World Image @TODO Review
             if (img && this::uriPointer.isInitialized) {
                 mf.saveWorldImage(uid, uriPointer, this.contentResolver)
             }
@@ -344,8 +344,8 @@ class CreateWorldActivity : AppCompatActivity() {
             val r = Runnable {}
 
             r.run {
-                Handler().postDelayed(r1, 100)
-                Handler().postDelayed(r2, 400)
+                Handler(Looper.getMainLooper()).postDelayed(r1, 100)
+                Handler(Looper.getMainLooper()).postDelayed(r2, 400)
             }
 
             fabPickImage.tag = "run"

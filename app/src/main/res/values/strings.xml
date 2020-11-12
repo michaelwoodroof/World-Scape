@@ -73,6 +73,7 @@
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
+    <string name="err_save_character">"ERR: Could not Save Character"</string>
     <string name="err_world">No title added</string>
     <string name="err_desc">No description added</string>
     <string name="err_genre">No genre chosen</string>

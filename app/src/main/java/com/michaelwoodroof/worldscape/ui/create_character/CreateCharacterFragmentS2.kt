@@ -41,8 +41,8 @@ class CreateCharacterFragmentS2 : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as CreateCharacterActivity).fillFields(1)
         (activity as CreateCharacterActivity).h.removeCallbacksAndMessages(null)
+        (activity as CreateCharacterActivity).fillFields(1)
     }
 
 }

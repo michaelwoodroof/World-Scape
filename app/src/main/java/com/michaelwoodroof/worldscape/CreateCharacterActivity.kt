@@ -2,6 +2,7 @@ package com.michaelwoodroof.worldscape
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.content.CharacterContent
@@ -37,6 +39,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     var currentCharacter : CharacterContent.CharacterItem =
         CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
+    lateinit var uriPointer : Uri
     var r : Runnable = Runnable {}
     var h : Handler = Handler(Looper.getMainLooper())
 
@@ -656,7 +659,32 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
 
                 1 -> {
+                    val h = findViewById<TextInputEditText>(R.id.tilHeight)
+                    h.error = null
 
+                    val w = findViewById<TextInputEditText>(R.id.tilWeight)
+                    w.error = null
+
+                    val eye = findViewById<TextInputEditText>(R.id.tilEyeColor)
+                    eye.error = null
+
+                    val race = findViewById<TextInputEditText>(R.id.tilRace)
+                    race.error = null
+
+                    val hc = findViewById<TextInputEditText>(R.id.tilHairColor)
+                    hc.error = null
+
+                    val build = findViewById<TextInputEditText>(R.id.tilBuild)
+                    build.error = null
+
+                    val marks = findViewById<TextInputEditText>(R.id.tilMarkings)
+                    marks.error = null
+
+                    val hs = findViewById<TextInputEditText>(R.id.tilHairStyle)
+                    hs.error = null
+
+                    val cl = findViewById<TextInputEditText>(R.id.tilClothingStyle)
+                    cl.error = null
                 }
 
                 2 -> {
@@ -1003,7 +1031,26 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     fun createCharacter(view: View) {
-        super.onBackPressed() // @TODO Modify this is not ideal
+        // @TODO Add Check Fields method
+        val mf = ManageFiles(this)
+        // wuid is the World's uid
+        val wuid = intent.getStringExtra("uid")
+        currentCharacter.uid = mf.generateUUID()
+        if (wuid != null) {
+            if (mf.saveCharacter(currentCharacter, wuid)) {
+                // Save Image for Character
+                if (currentCharacter.hasImg && this::uriPointer.isInitialized) {
+                    mf.saveCharacterImage(currentCharacter.uid, wuid, uriPointer,
+                        this.contentResolver)
+                }
+            } else {
+                Snackbar.make(findViewById<View>(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
+                    createCharacter(findViewById<View>(R.id.fabCreateCC))
+                }.show()
+            }
+        }
+        // @TODO Remove each Fragment in the Create Character Process then Call Super.onBackPressed()
+        super.onBackPressed()
     }
 
 }
