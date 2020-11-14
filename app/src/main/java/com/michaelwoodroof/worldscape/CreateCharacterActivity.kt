@@ -113,6 +113,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             "S3" -> {
                 flCCMain.tag = "S2"
+                updateCharacter(2)
             }
         }
     }
@@ -164,7 +165,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             2 -> {
-
+                
             }
 
         }
