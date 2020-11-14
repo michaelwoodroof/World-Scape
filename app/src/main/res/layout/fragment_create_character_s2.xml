@@ -356,7 +356,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:gravity="start"
+                android:gravity="top"
                 app:boxBackgroundColor="@color/content_background"
                 app:errorEnabled="true"
                 app:errorTextAppearance="@style/TextInputLayoutThemeWarning"

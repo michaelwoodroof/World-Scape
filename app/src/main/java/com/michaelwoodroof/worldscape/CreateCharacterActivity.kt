@@ -34,11 +34,12 @@ import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 import java.lang.Exception
 
 // @TODO Fix Animation on Link Places
+// @TODO Fix Images on Stage One
 
 class CreateCharacterActivity : AppCompatActivity() {
 
     var currentCharacter : CharacterContent.CharacterItem =
-        CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
+        CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
     lateinit var uriPointer : Uri
     var r : Runnable = Runnable {}
     var h : Handler = Handler(Looper.getMainLooper())
@@ -208,6 +209,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     private fun updateCharacter(stageNumber: Int) {
         when (stageNumber) {
+
             0 -> {
                 val cn = findViewById<TextInputEditText>(R.id.tietCharacterName)
                 currentCharacter.name = cn.text.toString()
@@ -226,6 +228,9 @@ class CreateCharacterActivity : AppCompatActivity() {
 
                 val pob = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
                 currentCharacter.placeOfBirth = pob.text.toString()
+
+                val occ = findViewById<TextInputEditText>(R.id.tietOccupation)
+                currentCharacter.occupation = occ.text.toString()
 
                 val img = findViewById<MaterialCardView>(R.id.cvPreviewCC)
                 currentCharacter.hasImg = img.visibility == View.VISIBLE
@@ -263,6 +268,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             2 -> {
 
             }
+
         }
     }
 
@@ -315,6 +321,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     checkField(4)
                     checkField(5)
                     checkField(6)
+                    checkField(16)
                     false
                 }
             }
@@ -621,6 +628,21 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
+                16 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietOccupation)
+                    val xp = findViewById<TextInputLayout>(R.id.tilOccupation)
+                    val o = findViewById<TextView>(R.id.tvOptionalCC5)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_job)
+                        o.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        o.visibility = View.VISIBLE
+                    }
+                    return true
+                }
+
                 else -> {
                     return false
                 }
@@ -635,16 +657,8 @@ class CreateCharacterActivity : AppCompatActivity() {
     fun resetFields(stageNumber: Int) {
         try {
             when (stageNumber) {
+
                 0 -> {
-                    val x = findViewById<TextInputLayout>(R.id.tilCharacterName)
-                    x.error = null
-
-                    val y = findViewById<TextInputLayout>(R.id.tilBiography)
-                    y.error = null
-
-                    val z = findViewById<TextInputLayout>(R.id.tilBirthYear)
-                    z.error = null
-
                     val a = findViewById<TextInputLayout>(R.id.tilBirthDate)
                     a.error = null
 
@@ -657,6 +671,19 @@ class CreateCharacterActivity : AppCompatActivity() {
                     c.error = null
                     c.clearFocus()
                     c.clearAnimation()
+
+                    val d = findViewById<TextInputLayout>(R.id.tilOccupation)
+                    d.error = null
+
+                    val x = findViewById<TextInputLayout>(R.id.tilCharacterName)
+                    x.error = null
+
+                    val y = findViewById<TextInputLayout>(R.id.tilBiography)
+                    y.error = null
+
+                    val z = findViewById<TextInputLayout>(R.id.tilBirthYear)
+                    z.error = null
+
                 }
 
                 1 -> {
@@ -691,6 +718,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 2 -> {
 
                 }
+
             }
         } catch (e : Exception) {
             Log.e("error", e.toString())
@@ -762,6 +790,16 @@ class CreateCharacterActivity : AppCompatActivity() {
                         h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(6)
+                    }
+                }
+
+                val tietOcc = findViewById<TextInputEditText>(R.id.tietOccupation)
+                tietOcc.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
+                    if (!focus) {
+                        checkField(16)
+                        h.removeCallbacksAndMessages(null)
+                    } else {
+                        delayError(16)
                     }
                 }
             }
@@ -859,6 +897,10 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
             }
 
+            2 -> {
+
+            }
+
             else -> {
                 Log.e("error", "Err : Non-Existent Stage for Focus Changer")
             }
@@ -938,6 +980,16 @@ class CreateCharacterActivity : AppCompatActivity() {
                         checkField(6)
                     }
                 }
+
+                val tietOcc = findViewById<TextInputEditText>(R.id.tietOccupation)
+                tietOcc.afterTextChanged {
+                    if (it.isEmpty()) {
+                        delayError(16)
+                    } else {
+                        checkField(16)
+                    }
+                }
+
             }
 
             1 -> {
@@ -1022,6 +1074,10 @@ class CreateCharacterActivity : AppCompatActivity() {
                         checkField(15)
                     }
                 }
+            }
+
+            2 -> {
+
             }
 
             else -> {

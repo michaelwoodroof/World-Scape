@@ -70,6 +70,7 @@
     <string name="hair_style">Hair Style</string>
     <string name="clothing_style">Clothing Style</string>
     <string name="personality">Personality / Traits</string>
+    <string name="occupation">Occupation / Job</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
@@ -90,6 +91,7 @@
     <string name="err_no_eye_colour">No eye colour chosen</string>
     <string name="err_no_race">No race chosen</string>
     <string name="err_no_hair">No hair colour chosen</string>
+    <string name="err_no_job">No Occupation or Job chosen</string>
 
     <!-- World Detail Strings -->
     <string name="recent_characters">Recent Characters</string>
