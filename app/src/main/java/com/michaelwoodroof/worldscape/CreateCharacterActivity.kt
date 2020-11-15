@@ -19,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -34,7 +36,6 @@ import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 import java.lang.Exception
 
 // @TODO Fix Animation on Link Places
-// @TODO Fix Images on Stage One
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -135,6 +136,20 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     fun fillFields(stageNumber: Int) {
         when (stageNumber) {
+
+            0 -> {
+                // Only Update for Image as All other fields will be maintained
+                if (currentCharacter.hasImg) {
+                    val f = supportFragmentManager.findFragmentById(R.id.flCCMain) as CreateCharacterFragmentS1
+                    val fab = findViewById<ExtendedFloatingActionButton>(R.id.fabPickImageCC)
+                    fab.tag = "L"
+                    val cv = findViewById<MaterialCardView>(R.id.cvPreviewCC)
+                    cv.visibility = View.VISIBLE
+                    val img = findViewById<ImageView>(R.id.imgPreviewCC)
+                    img.setImageURI(uriPointer)
+                    f.animatePickImage(0)
+                }
+            }
 
             1 -> {
                 val h = findViewById<TextInputEditText>(R.id.tietHeight)
@@ -361,14 +376,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
 
                 1 -> {
-                    val bio = findViewById<TextInputEditText>(R.id.tietBiography)
-                    val biop = findViewById<TextInputLayout>(R.id.tilBiography)
+                    val cn = findViewById<TextInputEditText>(R.id.tietCharacterName)
+                    val cnp = findViewById<TextInputLayout>(R.id.tilCharacterName)
 
-                    return if (bio.text.toString().trim() == "") {
-                        biop.error = getString(R.string.err_no_bio)
+                    return if (cn.text.toString().trim() == "") {
+                        cnp.error = getString(R.string.err_no_cc_name)
                         false
                     } else {
-                        biop.error = null
+                        cnp.error = null
                         true
                     }
                 }

@@ -73,6 +73,7 @@ class CreateCharacterFragmentS1 : Fragment() {
         super.onResume()
         (activity as CreateCharacterActivity).h.removeCallbacksAndMessages(null)
         (activity as CreateCharacterActivity).resetFields(0)
+        (activity as CreateCharacterActivity).fillFields(0)
     }
 
     private fun addAnimation(root : View) {
@@ -103,13 +104,13 @@ class CreateCharacterFragmentS1 : Fragment() {
                     (activity as CreateCharacterActivity).uriPointer = selectedImage
                     imgPreviewCC.tag = "hasImage"
                     cvPreviewCC.visibility = View.VISIBLE
-                    animatePickImage()
+                    animatePickImage(400)
                 }
             }
         }
     }
 
-    private fun animatePickImage() {
+    fun animatePickImage(timer : Int) {
         if (fabPickImageCC.tag != "run") {
             val r2 = Runnable {
                 // Convert to Circle
@@ -117,7 +118,7 @@ class CreateCharacterFragmentS1 : Fragment() {
             }
 
             r2.run {
-                Handler(Looper.getMainLooper()).postDelayed(r2, 400)
+                Handler(Looper.getMainLooper()).postDelayed(r2, timer.toLong())
             }
 
             fabPickImageCC.tag = "run"
