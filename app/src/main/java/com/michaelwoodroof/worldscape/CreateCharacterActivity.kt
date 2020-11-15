@@ -326,17 +326,17 @@ class CreateCharacterActivity : AppCompatActivity() {
         when (stageNumber) {
 
             0 -> {
-                val c1 = checkField(0)
-                val c2 = checkField(1)
+                val c1 = checkField(100)
+                val c2 = checkField(101)
                 return if (c1 && c2) {
                     true
                 } else {
-                    checkField(2)
-                    checkField(3)
-                    checkField(4)
-                    checkField(5)
-                    checkField(6)
-                    checkField(16)
+                    checkField(102)
+                    checkField(103)
+                    checkField(104)
+                    checkField(105)
+                    checkField(106)
+                    checkField(107)
                     false
                 }
             }
@@ -360,9 +360,14 @@ class CreateCharacterActivity : AppCompatActivity() {
     private fun checkField(field: Int) : Boolean {
         h.removeCallbacksAndMessages(null)
         try {
+
+            // 1XX - Stage One Fields
+            // 2XX - Stage Two Fields
+            // 3XX - Stage Three Fields
+
             when (field) {
 
-                0 -> {
+                100 -> {
                     val cn = findViewById<TextInputEditText>(R.id.tietCharacterName)
                     val cnp = findViewById<TextInputLayout>(R.id.tilCharacterName)
 
@@ -375,20 +380,20 @@ class CreateCharacterActivity : AppCompatActivity() {
                     }
                 }
 
-                1 -> {
-                    val cn = findViewById<TextInputEditText>(R.id.tietCharacterName)
-                    val cnp = findViewById<TextInputLayout>(R.id.tilCharacterName)
+                101 -> {
+                    val bio = findViewById<TextInputEditText>(R.id.tietBiography)
+                    val biop = findViewById<TextInputLayout>(R.id.tilBiography)
 
-                    return if (cn.text.toString().trim() == "") {
-                        cnp.error = getString(R.string.err_no_cc_name)
+                    return if (bio.text.toString().trim() == "") {
+                        biop.error = getString(R.string.err_no_bio)
                         false
                     } else {
-                        cnp.error = null
+                        biop.error = null
                         true
                     }
                 }
 
-                2 -> {
+                102 -> {
                     val by = findViewById<TextInputEditText>(R.id.tietBirthYear)
                     val byp = findViewById<TextInputLayout>(R.id.tilBirthYear)
                     val o = findViewById<TextView>(R.id.tvOptionalCC1)
@@ -403,7 +408,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                3 -> {
+                103 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
                     val xp = findViewById<TextInputLayout>(R.id.tilPlaceOfBirth)
                     val btn = findViewById<ImageButton>(R.id.btnLinkPlace)
@@ -442,7 +447,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                4 -> {
+                104 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
                     val xp = findViewById<TextInputLayout>(R.id.tilCurrentLocation)
                     val btn = findViewById<ImageButton>(R.id.btnLinkCurrentLoc)
@@ -481,7 +486,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                5 -> {
+                105 -> {
                     val x = findViewById<ImageView>(R.id.imgPreviewCC)
 
                     // Image Checking
@@ -493,7 +498,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                6 -> {
+                106 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietBirthDate)
                     val xp = findViewById<TextInputLayout>(R.id.tilBirthDate)
                     val o = findViewById<TextView>(R.id.tvOptionalCC2)
@@ -508,7 +513,22 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                7 -> {
+                107 -> {
+                    val x = findViewById<TextInputEditText>(R.id.tietOccupation)
+                    val xp = findViewById<TextInputLayout>(R.id.tilOccupation)
+                    val o = findViewById<TextView>(R.id.tvOptionalCC5)
+
+                    if (x.text.toString().trim() == "") {
+                        xp.error = getString(R.string.err_no_job)
+                        o.visibility = View.GONE
+                    } else {
+                        xp.error = null
+                        o.visibility = View.VISIBLE
+                    }
+                    return true
+                }
+
+                200 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietHeight)
                     val xp = findViewById<TextInputLayout>(R.id.tilHeight)
                     val o = findViewById<TextView>(R.id.tvOptional2CC1)
@@ -523,7 +543,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                8 -> {
+                201 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietWeight)
                     val xp = findViewById<TextInputLayout>(R.id.tilWeight)
                     val o = findViewById<TextView>(R.id.tvOptional2CC2)
@@ -538,7 +558,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                9 -> {
+                202 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietEyeColor)
                     val xp = findViewById<TextInputLayout>(R.id.tilEyeColor)
                     val o = findViewById<TextView>(R.id.tvOptional2CC3)
@@ -553,7 +573,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                10 -> {
+                203 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietRace)
                     val xp = findViewById<TextInputLayout>(R.id.tilRace)
                     val o = findViewById<TextView>(R.id.tvOptional2CC4)
@@ -568,7 +588,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                11 -> {
+                204 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietHairColor)
                     val xp = findViewById<TextInputLayout>(R.id.tilHairColor)
                     val o = findViewById<TextView>(R.id.tvOptional2CC5)
@@ -583,7 +603,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                12 -> {
+                205 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietBuild)
                     val xp = findViewById<TextInputLayout>(R.id.tilBuild)
                     val o = findViewById<TextView>(R.id.tvOptional2CC6)
@@ -598,7 +618,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                13 -> {
+                206 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietMarkings)
                     val xp = findViewById<TextInputLayout>(R.id.tilMarkings)
                     val o = findViewById<TextView>(R.id.tvOptional2CC7)
@@ -613,7 +633,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                14 -> {
+                207 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietHairStyle)
                     val xp = findViewById<TextInputLayout>(R.id.tilHairStyle)
                     val o = findViewById<TextView>(R.id.tvOptional2CC8)
@@ -628,28 +648,13 @@ class CreateCharacterActivity : AppCompatActivity() {
                     return true
                 }
 
-                15 -> {
+                208 -> {
                     val x = findViewById<TextInputEditText>(R.id.tietClothingStyle)
                     val xp = findViewById<TextInputLayout>(R.id.tilClothingStyle)
                     val o = findViewById<TextView>(R.id.tvOptional2CC9)
 
                     if (x.text.toString().trim() == "") {
                         xp.error = getString(R.string.err_no_hair)
-                        o.visibility = View.GONE
-                    } else {
-                        xp.error = null
-                        o.visibility = View.VISIBLE
-                    }
-                    return true
-                }
-
-                16 -> {
-                    val x = findViewById<TextInputEditText>(R.id.tietOccupation)
-                    val xp = findViewById<TextInputLayout>(R.id.tilOccupation)
-                    val o = findViewById<TextView>(R.id.tvOptionalCC5)
-
-                    if (x.text.toString().trim() == "") {
-                        xp.error = getString(R.string.err_no_job)
                         o.visibility = View.GONE
                     } else {
                         xp.error = null
@@ -751,70 +756,70 @@ class CreateCharacterActivity : AppCompatActivity() {
 
                 tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
-                        checkField(0)
+                        checkField(100)
                         h.removeCallbacksAndMessages(null)
                     } else {
-                        delayError(0)
+                        delayError(100)
                     }
                 }
 
                 val tietBio = findViewById<TextInputEditText>(R.id.tietBiography)
                 tietBio.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
-                        checkField(1)
+                        checkField(101)
                         h.removeCallbacksAndMessages(null)
                     } else {
-                        delayError(1)
+                        delayError(101)
                     }
                 }
 
                 val tietYOB = findViewById<TextInputEditText>(R.id.tietBirthYear)
                 tietYOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
-                        checkField(2)
+                        checkField(102)
                         h.removeCallbacksAndMessages(null)
                     } else {
-                        delayError(2)
+                        delayError(102)
                     }
                 }
 
                 val tietPOB = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
                 tietPOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
-                        checkField(3)
+                        checkField(103)
                         h.removeCallbacksAndMessages(null)
                     } else {
-                        delayError(3)
+                        delayError(103)
                     }
                 }
 
                 val tietCurrLoc = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
                 tietCurrLoc.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
-                        checkField(4)
+                        checkField(104)
                         h.removeCallbacksAndMessages(null)
                     } else {
-                        delayError(4)
+                        delayError(104)
                     }
                 }
 
                 val tietBD = findViewById<TextInputEditText>(R.id.tietBirthDate)
                 tietBD.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
-                        checkField(6)
+                        checkField(106)
                         h.removeCallbacksAndMessages(null)
                     } else {
-                        delayError(6)
+                        checkField(106)
                     }
                 }
 
                 val tietOcc = findViewById<TextInputEditText>(R.id.tietOccupation)
                 tietOcc.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(16)
+                        checkField(107)
                         h.removeCallbacksAndMessages(null)
                     } else {
-                        delayError(16)
+                        delayError(107)
                     }
                 }
             }
@@ -824,90 +829,90 @@ class CreateCharacterActivity : AppCompatActivity() {
                 val tietHeight = findViewById<TextInputEditText>(R.id.tietHeight)
                 tietHeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(7)
+                        checkField(200)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(7)
+                        delayError(200)
                     }
                 }
 
                 val tietWeight = findViewById<TextInputEditText>(R.id.tietWeight)
                 tietWeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(8)
+                        checkField(201)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(8)
+                        delayError(201)
                     }
                 }
 
                 val tietEyeColour = findViewById<TextInputEditText>(R.id.tietEyeColor)
                 tietEyeColour.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(9)
+                        checkField(202)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(9)
+                        delayError(202)
                     }
                 }
 
                 val tietRace = findViewById<TextInputEditText>(R.id.tietRace)
                 tietRace.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(10)
+                        checkField(203)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(10)
+                        delayError(203)
                     }
                 }
 
                 val tietHair = findViewById<TextInputEditText>(R.id.tietHairColor)
                 tietHair.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(11)
+                        checkField(204)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(11)
+                        delayError(204)
                     }
                 }
 
                 val tietBuild = findViewById<TextInputEditText>(R.id.tietBuild)
                 tietBuild.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(12)
+                        checkField(205)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(12)
+                        delayError(205)
                     }
                 }
 
                 val tietMarkings = findViewById<TextInputEditText>(R.id.tietMarkings)
                 tietMarkings.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(13)
+                        checkField(206)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(13)
+                        delayError(206)
                     }
                 }
 
                 val tietHairStyle = findViewById<TextInputEditText>(R.id.tietHairStyle)
                 tietHairStyle.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(14)
+                        checkField(207)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(14)
+                        delayError(207)
                     }
                 }
 
                 val tietClothingStyle = findViewById<TextInputEditText>(R.id.tietClothingStyle)
                 tietClothingStyle.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
-                        checkField(15)
+                        checkField(208)
                         h.removeCallbacksAndMessages(r)
                     } else {
-                        delayError(15)
+                        delayError(208)
                     }
                 }
             }
@@ -945,63 +950,63 @@ class CreateCharacterActivity : AppCompatActivity() {
                 val tietNOC = findViewById<TextInputEditText>(R.id.tietCharacterName)
                 tietNOC.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(0)
+                        delayError(100)
                     } else {
-                        checkField(0)
+                        checkField(100)
                     }
                 }
 
                 val tietBio = findViewById<TextInputEditText>(R.id.tietBiography)
                 tietBio.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(1)
+                        delayError(101)
                     } else {
-                        checkField(1)
+                        checkField(101)
                     }
                 }
 
                 val tietYOB = findViewById<TextInputEditText>(R.id.tietBirthYear)
                 tietYOB.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(2)
+                        delayError(102)
                     } else {
-                        checkField(2)
+                        checkField(102)
                     }
                 }
 
                 val tietPOB = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
                 tietPOB.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(3)
+                        delayError(103)
                     } else {
-                        checkField(3)
+                        checkField(103)
                     }
                 }
 
                 val tietCurLoc = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
                 tietCurLoc.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(4)
+                        delayError(104)
                     } else {
-                        checkField(4)
+                        checkField(104)
                     }
                 }
 
                 val tietBDay = findViewById<TextInputEditText>(R.id.tietBirthDate)
                 tietBDay.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(6)
+                        delayError(106)
                     } else {
-                        checkField(6)
+                        checkField(106)
                     }
                 }
 
                 val tietOcc = findViewById<TextInputEditText>(R.id.tietOccupation)
                 tietOcc.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(16)
+                        delayError(107)
                     } else {
-                        checkField(16)
+                        checkField(107)
                     }
                 }
 
@@ -1012,81 +1017,81 @@ class CreateCharacterActivity : AppCompatActivity() {
                 val tietHeight = findViewById<TextInputEditText>(R.id.tietHeight)
                 tietHeight.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(7)
+                        delayError(200)
                     } else {
-                        checkField(7)
+                        checkField(200)
                     }
                 }
 
                 val tietWeight = findViewById<TextInputEditText>(R.id.tietWeight)
                 tietWeight.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(8)
+                        delayError(201)
                     } else {
-                        checkField(8)
+                        checkField(201)
                     }
                 }
 
                 val tietEyeColour = findViewById<TextInputEditText>(R.id.tietEyeColor)
                 tietEyeColour.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(9)
+                        delayError(202)
                     } else {
-                        checkField(9)
+                        checkField(202)
                     }
                 }
 
                 val tietRace = findViewById<TextInputEditText>(R.id.tietRace)
                 tietRace.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(10)
+                        delayError(203)
                     } else {
-                        checkField(10)
+                        checkField(203)
                     }
                 }
 
                 val tietHair = findViewById<TextInputEditText>(R.id.tietHairColor)
                 tietHair.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(11)
+                        delayError(204)
                     } else {
-                        checkField(11)
+                        checkField(204)
                     }
                 }
 
                 val tietBuild = findViewById<TextInputEditText>(R.id.tietBuild)
                 tietBuild.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(12)
+                        delayError(205)
                     } else {
-                        checkField(12)
+                        checkField(205)
                     }
                 }
 
                 val tietMarkings = findViewById<TextInputEditText>(R.id.tietMarkings)
                 tietMarkings.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(13)
+                        delayError(206)
                     } else {
-                        checkField(13)
+                        checkField(206)
                     }
                 }
 
                 val tietHairStyle = findViewById<TextInputEditText>(R.id.tietHairStyle)
                 tietHairStyle.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(14)
+                        delayError(207)
                     } else {
-                        checkField(14)
+                        checkField(207)
                     }
                 }
 
                 val tietClothingStyle = findViewById<TextInputEditText>(R.id.tietClothingStyle)
                 tietClothingStyle.afterTextChanged {
                     if (it.isEmpty()) {
-                        delayError(15)
+                        delayError(208)
                     } else {
-                        checkField(15)
+                        checkField(208)
                     }
                 }
             }
