@@ -64,50 +64,275 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvHeight2"
+                android:id="@+id/tvPositiveTraits"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/height"
+                android:text="@string/positive_traits"
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="@+id/tvPersonality"
                 app:layout_constraintTop_toBottomOf="@+id/tvPersonality" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilHeight"
-                style="@style/TextInputLayoutThemeWarning"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgPositiveTraits"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toStartOf="@+id/gl50"
-                app:layout_constraintStart_toStartOf="@+id/tvPersonality"
-                app:layout_constraintTop_toBottomOf="@+id/tvHeight2">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPositiveTraits">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietHeight"
-                    android:layout_width="match_parent"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpAdventrous"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
+                    android:text="@string/adventurous"
+                    android:textAppearance="@style/ChipText" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpAffable"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/affable"
+                    android:textAppearance="@style/ChipText" />
 
-            <TextView
-                android:id="@+id/tvOptional3CC1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="1dp"
-                android:text="@string/optional"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilHeight"
-                app:layout_constraintEnd_toStartOf="@+id/gl50" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpCapable"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/capable"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpCharming"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/charming"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpConfident"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confident"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpConscientious"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/conscientious"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpCultured"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cultured"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpDependable"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dependable"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpDiscreet"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/discreet"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpDutiful"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dutiful"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpEncouraging"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/encouraging"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpExuberant"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exuberant"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpFair"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fair"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpFearless"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fearless"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpGregarious"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gregarious"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpHelpful"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/helpful"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpHumble"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/humble"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpImaginative"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/imaginative"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpImpartial"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/impartial"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpIndependent"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/independent"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpKeen"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/keen"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpMeticulous"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/meticulous"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpObservant"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/observant"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpOptimistic"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/optimistic"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpPersistent"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/persistent"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpPrecise"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/precise"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpReliable"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reliable"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpSociable"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sociable"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpTrusting"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trusting"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpValiant"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/valiant"
+                    android:textAppearance="@style/ChipText" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chpPlus"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/additional_chip"
+                    android:textAppearance="@style/ChipText" />
+
+            </com.google.android.material.chip.ChipGroup>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

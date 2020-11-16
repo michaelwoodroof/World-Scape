@@ -71,6 +71,70 @@
     <string name="clothing_style">Clothing Style</string>
     <string name="personality">Personality / Traits</string>
     <string name="occupation">Occupation / Job</string>
+    <string name="positive_traits">Positive Traits</string>
+    <string name="negative_traits">Negative Traits</string>
+
+    <!-- Positive Traits -->
+    <string name="adventurous">Adventurous</string>
+    <string name="affable">Affable</string>
+    <string name="capable">Capable</string>
+    <string name="charming">Charming</string>
+    <string name="confident">Confident</string>
+    <string name="conscientious">Conscientious</string>
+    <string name="cultured">Cultured</string>
+    <string name="dependable">Dependable</string>
+    <string name="discreet">Discreet</string>
+    <string name="dutiful">Dutiful</string>
+    <string name="encouraging">Encouraging</string>
+    <string name="exuberant">Exuberant</string>
+    <string name="fair">Fair</string>
+    <string name="fearless">Fearless</string>
+    <string name="gregarious">Gregarious</string>
+    <string name="helpful">Helpful</string>
+    <string name="humble">Humble</string>
+    <string name="imaginative">Imaginative</string>
+    <string name="impartial">Impartial</string>
+    <string name="independent">Independent</string>
+    <string name="keen">Keen</string>
+    <string name="meticulous">Meticulous</string>
+    <string name="observant">Observant</string>
+    <string name="optimistic">Optimistic</string>
+    <string name="persistent">Persistent</string>
+    <string name="precise">Precise</string>
+    <string name="reliable">Reliable</string>
+    <string name="sociable">Sociable</string>
+    <string name="trusting">Trusting</string>
+    <string name="valiant">Valiant</string>
+
+    <!-- Negative Traits -->
+    <string name="arrogant">Arrogant</string>
+    <string name="boorish">Boorish</string>
+    <string name="bossy">Bossy</string>
+    <string name="conceited">Conceited</string>
+    <string name="cowardly">Cowardly</string>
+    <string name="dishonest">Dishonest</string>
+    <string name="finicky">Finicky</string>
+    <string name="impulsive">Impulsive</string>
+    <string name="lazy">Lazy</string>
+    <string name="malicious">Malicious</string>
+    <string name="obnoxious">Obnoxious</string>
+    <string name="picky">Picky</string>
+    <string name="pompous">Pompous</string>
+    <string name="quarrelsome">Quarrelsome</string>
+    <string name="rude">Rude</string>
+    <string name="sarcastic">Sarcastic</string>
+    <string name="self_centered">Self-Centered</string>
+    <string name="slovenly">Slovenly</string>
+    <string name="sneaky">Sneaky</string>
+    <string name="stingy">Stringy</string>
+    <string name="sullen">Sullen</string>
+    <string name="surly">Surly</string>
+    <string name="thoughtless">Thoughtless</string>
+    <string name="unfriendly">Unfriendly</string>
+    <string name="unruly">Unruly</string>
+    <string name="vulgar">Vulgar</string>
+
+    <string name="additional_chip">Custom +</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
@@ -91,6 +155,10 @@
     <string name="err_no_eye_colour">No eye colour chosen</string>
     <string name="err_no_race">No race chosen</string>
     <string name="err_no_hair">No hair colour chosen</string>
+    <string name="err_no_build">No build chosen</string>
+    <string name="err_no_markings">No markings / tattoos chosen</string>
+    <string name="err_no_hair_style">No hair style chosen</string>
+    <string name="err_no_clothing_style">No clothing style chosen</string>
     <string name="err_no_job">No Occupation or Job chosen</string>
 
     <!-- World Detail Strings -->

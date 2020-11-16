@@ -51,4 +51,28 @@
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
+    <style name="ChipStyle" parent="@style/Widget.MaterialComponents.Chip.Entry">
+        <item name="android:textColor">@color/chip_text</item>
+
+        <item name="chipBackgroundColor">@color/chip_state</item>
+        <item name="chipStrokeColor">@color/chip_stroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+
+        <item name="checkedIconEnabled">false</item>
+        <item name="checkedIcon">@null</item>
+        <item name="closeIconEnabled">false</item>
+        <item name="closeIcon">@null</item>
+
+        <item name="elevationOverlayEnabled">false</item>
+
+        <item name="elevation">0dp</item>
+        <item name="rippleColor">@color/chip_state</item>
+    </style>
+
+    <style name="ChipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="fontFamily">sans-serif-condensed</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>

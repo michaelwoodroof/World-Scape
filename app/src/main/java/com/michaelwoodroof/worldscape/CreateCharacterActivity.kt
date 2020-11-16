@@ -138,7 +138,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         when (stageNumber) {
 
             0 -> {
-                // Only Update for Image as All other fields will be maintained
+                // Only Update for Image as All other fields will be maintained through back stack
                 if (currentCharacter.hasImg) {
                     val f = supportFragmentManager.findFragmentById(R.id.flCCMain) as CreateCharacterFragmentS1
                     val fab = findViewById<ExtendedFloatingActionButton>(R.id.fabPickImageCC)
@@ -364,6 +364,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             // 1XX - Stage One Fields
             // 2XX - Stage Two Fields
             // 3XX - Stage Three Fields
+            // 4XX - Stage Four Fields
 
             when (field) {
 
@@ -609,7 +610,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val o = findViewById<TextView>(R.id.tvOptional2CC6)
 
                     if (x.text.toString().trim() == "") {
-                        xp.error = getString(R.string.err_no_hair)
+                        xp.error = getString(R.string.err_no_build)
                         o.visibility = View.GONE
                     } else {
                         xp.error = null
@@ -624,7 +625,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val o = findViewById<TextView>(R.id.tvOptional2CC7)
 
                     if (x.text.toString().trim() == "") {
-                        xp.error = getString(R.string.err_no_hair)
+                        xp.error = getString(R.string.err_no_markings)
                         o.visibility = View.GONE
                     } else {
                         xp.error = null
@@ -639,7 +640,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val o = findViewById<TextView>(R.id.tvOptional2CC8)
 
                     if (x.text.toString().trim() == "") {
-                        xp.error = getString(R.string.err_no_hair)
+                        xp.error = getString(R.string.err_no_hair_style)
                         o.visibility = View.GONE
                     } else {
                         xp.error = null
@@ -654,7 +655,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val o = findViewById<TextView>(R.id.tvOptional2CC9)
 
                     if (x.text.toString().trim() == "") {
-                        xp.error = getString(R.string.err_no_hair)
+                        xp.error = getString(R.string.err_no_clothing_style)
                         o.visibility = View.GONE
                     } else {
                         xp.error = null
