@@ -73,6 +73,10 @@
     <string name="occupation">Occupation / Job</string>
     <string name="positive_traits">Positive Traits</string>
     <string name="negative_traits">Negative Traits</string>
+    <string name="interests">Interests</string>
+    <string name="fears">Fears</string>
+    <string name="name_of_trait">Name of Trait</string>
+    <string name="add_trait">Add Trait</string>
 
     <!-- Positive Traits -->
     <string name="adventurous">Adventurous</string>
@@ -134,7 +138,7 @@
     <string name="unruly">Unruly</string>
     <string name="vulgar">Vulgar</string>
 
-    <string name="additional_chip">Custom +</string>
+    <string name="additional_chip">Trait</string>
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>

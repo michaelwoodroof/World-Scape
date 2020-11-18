@@ -329,10 +329,26 @@
                     style="@style/ChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="addChip"
                     android:text="@string/additional_chip"
-                    android:textAppearance="@style/ChipText" />
+                    android:textAppearance="@style/ChipText"
+                    app:chipIcon="@drawable/ic_baseline_add_24"
+                    app:chipIconSize="18dp"
+                    app:chipIconTint="@color/chip_text"
+                    app:iconStartPadding="2dp"
+                    app:textStartPadding="3dp" />
 
             </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/tvInterests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/interests"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/tvPersonality"
+                app:layout_constraintTop_toBottomOf="@+id/cgPositiveTraits" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

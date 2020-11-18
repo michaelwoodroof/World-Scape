@@ -16,6 +16,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -27,10 +28,12 @@ import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS2
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS3
 import kotlinx.android.synthetic.main.activity_create_character.*
+import kotlinx.android.synthetic.main.bottom_sheet_new_chip.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 import java.lang.Exception
@@ -42,6 +45,7 @@ class CreateCharacterActivity : AppCompatActivity() {
     var currentCharacter : CharacterContent.CharacterItem =
         CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
     lateinit var uriPointer : Uri
+    lateinit var bottomSheetFragment : AddChipBottomDialogFragment
     var r : Runnable = Runnable {}
     var h : Handler = Handler(Looper.getMainLooper())
 
@@ -1106,6 +1110,25 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    fun addChip(view: View) {
+        // Show Bottom Sheet on Click
+        bottomSheetFragment = AddChipBottomDialogFragment()
+        bottomSheetFragment.show(supportFragmentManager, "bottom_sheet_fragment")
+    }
+
+    fun addTrait(view: View) {
+        // Add Text from Textfield and Create new Chip
+        val text = bottomSheetFragment.tietNewChip.text.toString()
+        Log.d("capturedtext", text)
+        // Dismiss Fragment
+        try {
+            bottomSheetFragment.dismiss()
+        } catch (e : Exception){
+            Log.e("error", e.toString())
+        }
+
     }
 
     fun createCharacter(view: View) {

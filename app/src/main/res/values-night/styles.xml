@@ -8,6 +8,24 @@
         <item name="android:navigationBarColor">@color/navigation</item>
         <item name="errorTextColor">@color/error_color</item>
         <item name="errorIconTint">@color/error_color</item>
+        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
+    </style>
+
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="backgroundColor">@color/content_background</item>
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+    </style>
+
+    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
     <style name="TextInputLayoutTheme" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -53,6 +71,30 @@
 
     <style name="CondensedFont" parent="android:Widget.TextView">
         <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="ChipStyle" parent="@style/Widget.MaterialComponents.Chip.Entry">
+        <item name="android:textColor">@color/chip_text</item>
+
+        <item name="chipBackgroundColor">@color/chip_state</item>
+        <item name="chipStrokeColor">@color/chip_stroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+
+        <item name="checkedIconEnabled">false</item>
+        <item name="checkedIcon">@null</item>
+        <item name="closeIconEnabled">false</item>
+        <item name="closeIcon">@null</item>
+
+        <item name="elevationOverlayEnabled">false</item>
+
+        <item name="elevation">0dp</item>
+        <item name="rippleColor">@color/chip_state</item>
+    </style>
+
+    <style name="ChipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="fontFamily">sans-serif-condensed</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>
