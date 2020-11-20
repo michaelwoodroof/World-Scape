@@ -7,7 +7,11 @@
     <color name="navigation">#fff</color>
     <color name="transparent">#00FFFFFF</color>
 
+    <color name="chipBackground">#54E91E63</color>
+    <color name="closeColor">#606060</color>
+
     <color name="stroke_color">#AAAAAA</color>
+    <color name="chip_stroke_color">@color/medGreen</color>
     <color name="stroke_color_cc">#C4C4C4</color>
     <color name="content_background">#ffffff</color>
     <color name="transition_color">#D5D5D5</color>
@@ -24,5 +28,5 @@
     <color name="warning_color">#FFC107</color>
 
     <color name="medGray">#838383</color>
-    <color name="medGreen">#8BC34A</color>
+    <color name="medGreen">#8bc34a</color>
 </resources>

@@ -6,6 +6,9 @@
     <color name="baseTextColor">#ffffff</color>
     <color name="navigation">#222222</color>
 
+    <color name="chipBackground">#54FF6090</color>
+    <color name="closeColor">#CFCFCF</color>
+
     <color name="stroke_color">#AAAAAA</color>
     <color name="stroke_color_cc">#777</color>
     <color name="content_background">#494949</color>
@@ -22,5 +25,5 @@
     <color name="warning_color">#FFF8E1</color>
 
     <color name="medGray">#838383</color>
-    <color name="medGreen">#8BC34A</color>
+    <color name="medGreen">#587C2F</color>
 </resources>

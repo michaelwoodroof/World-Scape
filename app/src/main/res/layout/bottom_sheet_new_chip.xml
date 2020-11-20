@@ -41,29 +41,20 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fabCreateChip"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+    <Button
+        android:id="@+id/btnAddTrait"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="sans-serif-condensed"
-        android:minHeight="30dp"
         android:onClick="addTrait"
-        android:paddingTop="10dp"
-        android:tag="L"
         android:text="@string/add_trait"
-        android:textColor="#FFFFFF"
-        android:visibility="visible"
-        app:backgroundTint="@color/colorPrimary"
-        app:icon="@drawable/ic_baseline_image_24"
-        app:iconGravity="start"
-        app:iconPadding="16dp"
-        app:iconTint="#FFFFFF"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tilNewChip"
+        app:layout_constraintStart_toStartOf="@+id/tilNewChip"
         app:layout_constraintTop_toBottomOf="@+id/tilNewChip"
-        app:rippleColor="@color/fab_ripple" />
+        app:strokeColor="@color/stroke_color_cc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

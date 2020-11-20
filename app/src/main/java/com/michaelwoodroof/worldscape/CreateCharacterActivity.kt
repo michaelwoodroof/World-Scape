@@ -11,6 +11,7 @@ import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
+import android.view.ContextThemeWrapper
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -19,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -762,7 +765,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(100)
-                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(100)
                     }
@@ -772,7 +774,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBio.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(101)
-                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(101)
                     }
@@ -782,7 +783,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietYOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(102)
-                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(102)
                     }
@@ -792,7 +792,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietPOB.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(103)
-                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(103)
                     }
@@ -802,7 +801,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietCurrLoc.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(104)
-                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(104)
                     }
@@ -812,7 +810,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBD.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(106)
-                        h.removeCallbacksAndMessages(null)
                     } else {
                         checkField(106)
                     }
@@ -822,7 +819,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietOcc.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(107)
-                        h.removeCallbacksAndMessages(null)
                     } else {
                         delayError(107)
                     }
@@ -835,7 +831,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(200)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(200)
                     }
@@ -845,7 +840,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietWeight.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(201)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(201)
                     }
@@ -855,7 +849,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietEyeColour.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(202)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(202)
                     }
@@ -865,7 +858,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietRace.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(203)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(203)
                     }
@@ -875,7 +867,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHair.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(204)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(204)
                     }
@@ -885,7 +876,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietBuild.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(205)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(205)
                     }
@@ -895,7 +885,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietMarkings.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(206)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(206)
                     }
@@ -905,7 +894,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietHairStyle.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(207)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(207)
                     }
@@ -915,7 +903,6 @@ class CreateCharacterActivity : AppCompatActivity() {
                 tietClothingStyle.onFocusChangeListener = View.OnFocusChangeListener { _ : View, focus ->
                     if (!focus) {
                         checkField(208)
-                        h.removeCallbacksAndMessages(r)
                     } else {
                         delayError(208)
                     }
@@ -1119,9 +1106,18 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     fun addTrait(view: View) {
-        // Add Text from Textfield and Create new Chip
-        val text = bottomSheetFragment.tietNewChip.text.toString()
-        Log.d("capturedtext", text)
+        // Add Chip to ChipGroup and Set Attributes
+        val chip = Chip(this)
+        chip.setTextAppearance(R.style.ChipText)
+        chip.text = bottomSheetFragment.tietNewChip.text.toString()
+
+        val chipGroup = findViewById<ChipGroup>(R.id.cgPositiveTraits)
+        chipGroup.addView(chip)
+
+        chip.setOnCloseIconClickListener {
+            chipGroup.removeView(chip)
+        }
+
         // Dismiss Fragment
         try {
             bottomSheetFragment.dismiss()
