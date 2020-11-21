@@ -3,7 +3,7 @@
     <color name="colorPrimary">#F8BBD0</color>
     <color name="colorPrimaryDark">#c48b9f</color>
     <color name="colorAccent">#ffeeff</color>
-    <color name="baseTextColor">#ffffff</color>
+    <color name="baseTextColor">#E1E1E1</color>
     <color name="navigation">#222222</color>
 
     <color name="chipBackground">#54FF6090</color>
@@ -15,9 +15,11 @@
     <color name="fab_ripple">#40FFFFFF</color>
     <color name="card_ripple">#66ACACAC</color>
 
+    <color name="toolbar">#333333</color>
+
     <color name="background">#333333</color>
     <color name="add_button_bg">@color/colorPrimary</color>
-    <color name="add_button_text_color">#FFFFFF</color>
+    <color name="add_button_text_color">#333333</color>
 
     <color name="show_all_background">#66FFEEFF</color>
 

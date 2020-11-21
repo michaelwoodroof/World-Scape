@@ -18,6 +18,8 @@
     <color name="card_ripple">#66AAAAAA</color>
     <color name="fab_ripple">#40FFFFFF</color>
 
+    <color name="toolbar">#fff</color>
+
     <color name="background">#F5F5F5</color>
     <color name="add_button_bg">#ffffff</color>
     <color name="add_button_text_color">#E91E63</color>
