@@ -78,6 +78,11 @@
     <string name="name_of_trait">Name of Trait</string>
     <string name="add_trait">Add Trait</string>
     <string name="add_trait_pos">Add Positive Trait</string>
+    <string name="add_trait_neg">Add Negative Trait</string>
+    <string name="add_interest">Add Interest</string>
+    <string name="add_fear">Add Fear</string>
+    <string name="name_of_interest">Name of Interest</string>
+    <string name="name_of_fear">Name of Fear</string>
 
     <!-- Positive Traits -->
     <string name="adventurous">Adventurous</string>

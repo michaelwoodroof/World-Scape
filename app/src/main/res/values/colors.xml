@@ -20,6 +20,11 @@
 
     <color name="toolbar">#fff</color>
 
+    <color name="personality_background_neg">#fff</color>
+    <color name="personality_text_color_neg">@color/error_color</color>
+    <color name="personality_background_pos">#fff</color>
+    <color name="personality_text_color_pos">@color/medGreen</color>
+
     <color name="background">#F5F5F5</color>
     <color name="add_button_bg">#ffffff</color>
     <color name="add_button_text_color">#E91E63</color>
@@ -31,4 +36,5 @@
 
     <color name="medGray">#838383</color>
     <color name="medGreen">#8bc34a</color>
+    <color name="altGreen">#709E3B</color>
 </resources>

@@ -14,7 +14,7 @@ object CharacterContent {
         var height : String?, var weight : String?, var eyeColor : String?,
         var race : String?, var hairColor : String?, var build : String?,
         var markings: String?, var hairStyle: String?, var clothingStyle: String?,
-        var uid : String) : Parcelable, Serializable {
+        var positiveTraits: List<String>, var negativeTraits: List<String>, var uid : String) : Parcelable, Serializable {
 
 
         override fun toString(): String {

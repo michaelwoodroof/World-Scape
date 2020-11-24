@@ -1,8 +1,10 @@
 package com.michaelwoodroof.worldscape
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,20 +13,19 @@ import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
-import android.view.ContextThemeWrapper
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.children
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -46,7 +47,8 @@ import java.lang.Exception
 class CreateCharacterActivity : AppCompatActivity() {
 
     var currentCharacter : CharacterContent.CharacterItem =
-        CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
+        CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "",
+            "", "", "", ArrayList(), ArrayList(), "")
     lateinit var uriPointer : Uri
     lateinit var bottomSheetFragment : AddChipBottomDialogFragment
     var r : Runnable = Runnable {}
@@ -188,7 +190,21 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             2 -> {
-                
+                val cgp = findViewById<ChipGroup>(R.id.cgPositiveTraits)
+                for (child in currentCharacter.positiveTraits) {
+                    val chip = Chip(this)
+                    chip.setTextAppearance(R.style.ChipText)
+                    chip.text = child
+                    cgp.addView(chip)
+                }
+
+                val cgn = findViewById<ChipGroup>(R.id.cgNegativeTraits)
+                for (child in currentCharacter.negativeTraits) {
+                    val chip = Chip(this, null, R.attr.NegativeChipStyle)
+                    chip.setTextAppearance(R.style.NegativeChipText)
+                    chip.text = child
+                    cgn.addView(chip)
+                }
             }
 
         }
@@ -288,7 +304,19 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             2 -> {
+                val cgp = findViewById<ChipGroup>(R.id.cgPositiveTraits)
+                currentCharacter.positiveTraits = ArrayList()
+                for (chip in cgp.children) {
+                    chip as Chip
+                    (currentCharacter.positiveTraits as ArrayList<String>).add(chip.text.toString())
+                }
 
+                val cgn = findViewById<ChipGroup>(R.id.cgNegativeTraits)
+                currentCharacter.negativeTraits = ArrayList()
+                for (chip in cgn.children) {
+                    chip as Chip
+                    (currentCharacter.negativeTraits as ArrayList<String>).add(chip.text.toString())
+                }
             }
 
         }
@@ -1102,20 +1130,75 @@ class CreateCharacterActivity : AppCompatActivity() {
     fun addChip(view: View) {
         // Show Bottom Sheet on Click
         bottomSheetFragment = AddChipBottomDialogFragment()
+        when (view.tag) {
+
+            "0" -> {
+                bottomSheetFragment.isPos = true
+                bottomSheetFragment.titleOfFrag = getString(R.string.name_of_trait)
+                bottomSheetFragment.buttonText = getString(R.string.add_trait)
+            }
+
+            "1" -> {
+                bottomSheetFragment.isPos = false
+                bottomSheetFragment.titleOfFrag = getString(R.string.name_of_trait)
+                bottomSheetFragment.buttonText = getString(R.string.add_trait)
+            }
+
+            "2" -> {
+                bottomSheetFragment.isPos = true
+                bottomSheetFragment.titleOfFrag = getString(R.string.name_of_interest)
+                bottomSheetFragment.buttonText = getString(R.string.add_interest)
+            }
+
+            "3" -> {
+                bottomSheetFragment.isPos = false
+                bottomSheetFragment.titleOfFrag = getString(R.string.name_of_fear)
+                bottomSheetFragment.buttonText = getString(R.string.add_fear)
+            }
+
+        }
         bottomSheetFragment.show(supportFragmentManager, "bottom_sheet_fragment")
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     fun addTrait(view: View) {
         // Add Chip to ChipGroup and Set Attributes
-        val chip = Chip(this)
-        chip.setTextAppearance(R.style.ChipText)
+        val chip : Chip
+        if (bottomSheetFragment.isPos) {
+            chip = Chip(this)
+            chip.setTextAppearance(R.style.ChipText)
+        } else {
+            chip = Chip(this, null, R.attr.NegativeChipStyle)
+            chip.setTextAppearance(R.style.NegativeChipText)
+        }
+
         chip.text = bottomSheetFragment.tietNewChip.text.toString()
 
-        val chipGroup = findViewById<ChipGroup>(R.id.cgPositiveTraits)
-        chipGroup.addView(chip)
+        var parent : ChipGroup = this.findViewById(R.id.cgPositiveTraits)
+        when (bottomSheetFragment.titleOfFrag) {
+
+            getString(R.string.name_of_trait) -> {
+                parent = if (bottomSheetFragment.isPos) {
+                    this.findViewById(R.id.cgPositiveTraits)
+                } else {
+                    this.findViewById(R.id.cgNegativeTraits)
+                }
+            }
+
+            getString(R.string.name_of_interest) -> {
+                parent = this.findViewById(R.id.cgInterests)
+            }
+
+            getString(R.string.name_of_fear) -> {
+                parent = this.findViewById(R.id.cgFears)
+            }
+
+        }
+
+        parent.addView(chip)
 
         chip.setOnCloseIconClickListener {
-            chipGroup.removeView(chip)
+            parent.removeView(chip)
         }
 
         // Dismiss Fragment
@@ -1141,8 +1224,8 @@ class CreateCharacterActivity : AppCompatActivity() {
                         this.contentResolver)
                 }
             } else {
-                Snackbar.make(findViewById<View>(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
-                    createCharacter(findViewById<View>(R.id.fabCreateCC))
+                Snackbar.make(findViewById(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
+                    createCharacter(findViewById(R.id.fabCreateCC))
                 }.show()
             }
         }

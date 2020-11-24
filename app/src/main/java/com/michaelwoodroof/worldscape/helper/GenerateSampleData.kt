@@ -12,8 +12,9 @@ object GenerateSampleData {
     fun generateCharacterData(limit : Int) : ArrayList<CharacterContent.CharacterItem> {
 
         val dataset = ArrayList<CharacterContent.CharacterItem>()
-        val baseCharacter = CharacterContent.CharacterItem("Bob", false, "Bob is bob", "200BC", "200",
-        "200", "200", "200", "200", "Blue", "Lizard", "Red", "Stocky", "None", "", "", "", generateUUID())
+        val baseCharacter = CharacterContent.CharacterItem("Bob", false, "Bob is bob", "200BC",
+            "200", "200", "200", "200", "200", "Blue", "Lizard", "Red", "Stocky", "None", "", "",
+            "", ArrayList(), ArrayList(), generateUUID())
 
         for (i in 0 until limit) {
             baseCharacter.uid = generateUUID()

@@ -6,6 +6,7 @@
         <item name="android:textViewStyle">@style/CondensedFont</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
         <item name="chipStyle">@style/ChipStyle</item>
+        <item name="NegativeChipStyle">@style/NegativeChipStyle</item>
     </style>
 
     <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
@@ -25,7 +26,7 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
-    <style name="RoundedContainerButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="RoundedContainerButton" parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearanceOverlay">@style/RoundedContainerButtonShape</item>
     </style>
 
@@ -105,6 +106,16 @@
         <item name="android:fontFamily">sans-serif-condensed</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/chip_stroke_color</item>
+    </style>
+
+    <style name="NegativeChipStyle" parent="@style/ChipStyle">
+        <item name="android:textColor">@color/error_color</item>
+        <item name="chipStrokeColor">@color/error_color</item>
+        <item name="rippleColor">@color/error_color</item>
+    </style>
+
+    <style name="NegativeChipText" parent="@style/ChipText">
+        <item name="android:textColor">@color/error_color</item>
     </style>
 
 </resources>
