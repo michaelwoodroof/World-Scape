@@ -24,6 +24,8 @@
     <color name="personality_text_color_neg">@color/error_color</color>
     <color name="personality_background_pos">#fff</color>
     <color name="personality_text_color_pos">@color/medGreen</color>
+    <color name="personality_ripple_pos">@color/medGreen</color>
+    <color name="personality_ripple_neg">@color/error_color</color>
 
     <color name="background">#F5F5F5</color>
     <color name="add_button_bg">#ffffff</color>
@@ -32,9 +34,11 @@
     <color name="show_all_background">#66FFCDD2</color>
 
     <color name="error_color">#F44336</color>
+    >
     <color name="warning_color">#FFC107</color>
 
     <color name="medGray">#838383</color>
     <color name="medGreen">#8bc34a</color>
     <color name="altGreen">#709E3B</color>
+    <color name="medPink">#F44336</color>
 </resources>

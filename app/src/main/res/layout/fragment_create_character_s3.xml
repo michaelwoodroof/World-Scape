@@ -81,18 +81,18 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/personality_background_pos"
                 android:onClick="addChip"
                 android:tag="0"
                 android:text="@string/add_trait_pos"
-                android:backgroundTint="@color/personality_background_pos"
                 android:textColor="@color/personality_text_color_pos"
                 android:textColorHighlight="@color/personality_text_color_pos"
                 android:textColorLink="@color/personality_text_color_pos"
-                app:rippleColor="@color/personality_background_pos"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/tvPersonality"
                 app:layout_constraintStart_toStartOf="@+id/tvPositiveTraits"
-                app:layout_constraintTop_toBottomOf="@+id/tvPositiveTraits" />
+                app:layout_constraintTop_toBottomOf="@+id/tvPositiveTraits"
+                app:rippleColor="@color/personality_ripple_pos" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/cgPositiveTraits"
@@ -104,14 +104,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnAddChip" >
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="yo this is a string" />
-            </com.google.android.material.chip.ChipGroup>
+                app:layout_constraintTop_toBottomOf="@+id/btnAddChip" />
 
             <TextView
                 android:id="@+id/tvNegativeTraits"
@@ -131,19 +124,19 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/personality_background_neg"
                 android:onClick="addChip"
                 android:tag="1"
                 android:text="@string/add_trait_neg"
-                android:backgroundTint="@color/personality_background_neg"
                 android:textColor="@color/personality_text_color_neg"
                 android:textColorHighlight="@color/personality_text_color_neg"
                 android:textColorLink="@color/personality_text_color_neg"
-                app:rippleColor="@color/personality_background_neg"
-                app:strokeColor="@color/error_color"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/tvPersonality"
                 app:layout_constraintStart_toStartOf="@+id/tvPositiveTraits"
-                app:layout_constraintTop_toBottomOf="@+id/tvNegativeTraits" />
+                app:layout_constraintTop_toBottomOf="@+id/tvNegativeTraits"
+                app:rippleColor="@color/personality_ripple_neg"
+                app:strokeColor="@color/personality_background_neg" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/cgNegativeTraits"
@@ -154,9 +147,7 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnAddChipNeg">
-
-            </com.google.android.material.chip.ChipGroup>
+                app:layout_constraintTop_toBottomOf="@+id/btnAddChipNeg"/>
 
             <TextView
                 android:id="@+id/tvInterests"
@@ -176,18 +167,18 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/personality_background_pos"
                 android:onClick="addChip"
                 android:tag="2"
                 android:text="@string/add_interest"
-                android:backgroundTint="@color/personality_background_pos"
                 android:textColor="@color/personality_text_color_pos"
                 android:textColorHighlight="@color/personality_text_color_pos"
                 android:textColorLink="@color/personality_text_color_pos"
-                app:rippleColor="@color/personality_background_pos"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/tvPersonality"
                 app:layout_constraintStart_toStartOf="@+id/tvPositiveTraits"
-                app:layout_constraintTop_toBottomOf="@+id/tvInterests" />
+                app:layout_constraintTop_toBottomOf="@+id/tvInterests"
+                app:rippleColor="@color/personality_ripple_pos" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/cgInterests"
@@ -220,19 +211,19 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/personality_background_neg"
                 android:onClick="addChip"
                 android:tag="3"
                 android:text="@string/add_fear"
-                android:backgroundTint="@color/personality_background_neg"
                 android:textColor="@color/personality_text_color_neg"
                 android:textColorHighlight="@color/personality_text_color_neg"
                 android:textColorLink="@color/personality_text_color_neg"
-                app:rippleColor="@color/personality_background_neg"
-                app:strokeColor="@color/error_color"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/tvPersonality"
                 app:layout_constraintStart_toStartOf="@+id/tvPositiveTraits"
-                app:layout_constraintTop_toBottomOf="@+id/tvFears" />
+                app:layout_constraintTop_toBottomOf="@+id/tvFears"
+                app:rippleColor="@color/personality_ripple_neg"
+                app:strokeColor="@color/personality_background_neg" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/cgFears"
@@ -246,6 +237,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/btnAddFear">
 
             </com.google.android.material.chip.ChipGroup>
+
+            <Space
+                android:id="@+id/spS3End"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cgFears" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
