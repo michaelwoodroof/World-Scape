@@ -32,7 +32,6 @@ class WorldAdapter(private var givenValues: MutableList<WorldContent.WorldItem>)
         holder.mDel.tag = item.uid
         holder.itemView.tag = item.uid + "," + item.title
         holder.mCard.tag = item
-        //holder.mCard.tag = item.uid + "," + item.title
 
         if (item.hasImg) {
             val mf = ManageFiles(holder.mImg.context)

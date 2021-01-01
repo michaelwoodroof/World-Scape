@@ -9,18 +9,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.adapters.WorldAdapter
+import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
-import kotlin.collections.ArrayList
 
 class WorldFragment : Fragment() {
 
     private lateinit var rv : RecyclerView
     private lateinit var fabe : ExtendedFloatingActionButton
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val root = inflater.inflate(R.layout.fragment_world, container, false)
         val rvWorlds = root.findViewById(R.id.rvWorlds) as RecyclerView
         val fab = root.findViewById(R.id.fabCreateWorld) as ExtendedFloatingActionButton
@@ -58,6 +59,7 @@ class WorldFragment : Fragment() {
             // @TODO Add Scroll effect when items exceed phone height
             rv.overScrollMode = View.OVER_SCROLL_ALWAYS
         }
+
         fabe.tag = ""
     }
 

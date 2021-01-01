@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
 
 class CreateCharacterFragmentS3 : Fragment() {
 
@@ -38,10 +37,6 @@ class CreateCharacterFragmentS3 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as CreateCharacterActivity).setUpFocusChangers(2)
         (activity as CreateCharacterActivity).setUpTextChangers(2)
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
 }

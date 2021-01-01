@@ -13,7 +13,9 @@
         android:background="@color/background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/character_layout"/>
+        tools:listitem="@layout/character_layout"
+        android:paddingBottom="70dp"
+        android:clipToPadding="false" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabCreateCharacter"

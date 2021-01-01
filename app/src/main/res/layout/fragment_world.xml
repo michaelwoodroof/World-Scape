@@ -12,7 +12,9 @@
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/world_layout"/>
+        tools:listitem="@layout/world_layout"
+        android:paddingBottom="70dp"
+        android:clipToPadding="false" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabCreateWorld"

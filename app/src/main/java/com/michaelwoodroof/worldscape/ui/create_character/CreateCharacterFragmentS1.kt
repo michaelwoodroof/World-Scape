@@ -3,7 +3,6 @@ package com.michaelwoodroof.worldscape.ui.create_character
 import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -15,7 +14,6 @@ import android.widget.ScrollView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
