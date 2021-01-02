@@ -9,12 +9,12 @@
         android:id="@+id/tvCreateTrait"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="16dp"
         android:text="@string/name_of_trait"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/tilNewChip"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imgDrag" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilNewChip"
@@ -56,5 +56,18 @@
         app:layout_constraintStart_toStartOf="@+id/tilNewChip"
         app:layout_constraintTop_toBottomOf="@+id/tilNewChip"
         app:strokeColor="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/imgDrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_drag"
+        app:tint="@color/drag" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

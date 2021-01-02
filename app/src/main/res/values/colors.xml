@@ -10,6 +10,8 @@
     <color name="chipBackground">#54E91E63</color>
     <color name="closeColor">#606060</color>
 
+    <color name="drag">#EFEFEF</color>
+
     <color name="stroke_color">#AAAAAA</color>
     <color name="chip_stroke_color">@color/medGreen</color>
     <color name="stroke_color_cc">#C4C4C4</color>
