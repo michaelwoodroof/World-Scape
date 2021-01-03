@@ -36,6 +36,7 @@ import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS2
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS3
+import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS4
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.bottom_sheet_new_chip.*
 import kotlinx.android.synthetic.main.default_toolbar.*
@@ -48,7 +49,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     var currentCharacter : CharacterContent.CharacterItem =
         CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", ArrayList(), ArrayList(), "")
+            "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), "")
     lateinit var uriPointer : Uri
     lateinit var bottomSheetFragment : AddChipBottomDialogFragment
     var r : Runnable = Runnable {}
@@ -125,6 +126,11 @@ class CreateCharacterActivity : AppCompatActivity() {
             "S3" -> {
                 flCCMain.tag = "S2"
                 updateCharacter(2)
+            }
+
+            "S4" -> {
+                flCCMain.tag = "S3"
+                updateCharacter(3)
             }
         }
     }
@@ -204,6 +210,22 @@ class CreateCharacterActivity : AppCompatActivity() {
                     chip.setTextAppearance(R.style.NegativeChipText)
                     chip.text = child
                     cgn.addView(chip)
+                }
+
+                val cgi = findViewById<ChipGroup>(R.id.cgInterests)
+                for (child in currentCharacter.interests) {
+                    val chip = Chip(this)
+                    chip.setTextAppearance(R.style.ChipText)
+                    chip.text = child
+                    cgi.addView(chip)
+                }
+
+                val cgf = findViewById<ChipGroup>(R.id.cgFears)
+                for (child in currentCharacter.fears) {
+                    val chip = Chip(this, null, R.attr.NegativeChipStyle)
+                    chip.setTextAppearance(R.style.NegativeChipText)
+                    chip.text = child
+                    cgf.addView(chip)
                 }
             }
 
@@ -317,6 +339,24 @@ class CreateCharacterActivity : AppCompatActivity() {
                     chip as Chip
                     (currentCharacter.negativeTraits as ArrayList<String>).add(chip.text.toString())
                 }
+
+                val cgi = findViewById<ChipGroup>(R.id.cgInterests)
+                currentCharacter.interests = ArrayList()
+                for (chip in cgi.children) {
+                    chip as Chip
+                    (currentCharacter.interests as ArrayList<String>).add(chip.text.toString())
+                }
+
+                val cgf = findViewById<ChipGroup>(R.id.cgFears)
+                currentCharacter.interests = ArrayList()
+                for (chip in cgf.children) {
+                    chip as Chip
+                    (currentCharacter.fears as ArrayList<String>).add(chip.text.toString())
+                }
+            }
+
+            3 -> {
+
             }
 
         }
@@ -350,9 +390,17 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.commit()
             }
         } else if (flCCMain.tag == "S3") {
-//            if (checkFields(2)) {
-//                flCCMain.tag = "S4"
-//            }
+            if (checkFields(2)) {
+                flCCMain.tag = "S4"
+                val createCharacterFragment = CreateCharacterFragmentS4()
+                val transaction = supportFragmentManager.beginTransaction()
+
+                updateCharacter(2)
+
+                transaction.replace(R.id.flCCMain, createCharacterFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
         }
     }
 
@@ -762,12 +810,15 @@ class CreateCharacterActivity : AppCompatActivity() {
                     build.error = null
 
                     val marks = findViewById<TextInputEditText>(R.id.tilMarkings)
+                    marks.clearFocus()
                     marks.error = null
 
                     val hs = findViewById<TextInputEditText>(R.id.tilHairStyle)
+                    hs.clearFocus()
                     hs.error = null
 
                     val cl = findViewById<TextInputEditText>(R.id.tilClothingStyle)
+                    cl.clearFocus()
                     cl.error = null
                 }
 
@@ -789,7 +840,6 @@ class CreateCharacterActivity : AppCompatActivity() {
 
                 // Set-up for Stage One
                 val tietCN = findViewById<TextInputEditText>(R.id.tietCharacterName)
-
                 tietCN.onFocusChangeListener = View.OnFocusChangeListener { _: View, focus ->
                     if (!focus) {
                         checkField(100)

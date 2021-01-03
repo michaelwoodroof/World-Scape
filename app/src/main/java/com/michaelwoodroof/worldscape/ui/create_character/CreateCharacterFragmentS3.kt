@@ -39,4 +39,10 @@ class CreateCharacterFragmentS3 : Fragment() {
         (activity as CreateCharacterActivity).setUpTextChangers(2)
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as CreateCharacterActivity).h.removeCallbacksAndMessages(null)
+        (activity as CreateCharacterActivity).fillFields(2)
+    }
+
 }
