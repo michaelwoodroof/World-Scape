@@ -21,6 +21,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -44,6 +45,7 @@ import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 import java.lang.Exception
 
 // @TODO Fix Animation on Link Places
+// @TODO Fix Clothing Style Triggering Error
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -131,6 +133,9 @@ class CreateCharacterActivity : AppCompatActivity() {
             "S4" -> {
                 flCCMain.tag = "S3"
                 updateCharacter(3)
+
+                fabNext.visibility = View.VISIBLE
+                fabCreateCC.visibility = View.GONE
             }
         }
     }
@@ -227,6 +232,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                     chip.text = child
                     cgf.addView(chip)
                 }
+            }
+
+            3 -> {
+
+            }
+
+            else -> {
+                Log.e("Error", "ERR: NO SUCH METHOD")
             }
 
         }
@@ -400,6 +413,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.replace(R.id.flCCMain, createCharacterFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
+
+                fabNext.visibility = View.GONE
+                fabCreateCC.visibility = View.VISIBLE
             }
         }
     }
@@ -442,6 +458,9 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     private fun checkField(field: Int) : Boolean {
         h.removeCallbacksAndMessages(null)
+
+        Log.d("TESTING", field.toString())
+
         try {
 
             // 1XX - Stage One Fields
@@ -768,12 +787,10 @@ class CreateCharacterActivity : AppCompatActivity() {
 
                     val b = findViewById<TextInputLayout>(R.id.tilCurrentLocation)
                     b.error = null
-                    b.clearFocus()
                     b.clearAnimation()
 
                     val c = findViewById<TextInputLayout>(R.id.tilPlaceOfBirth)
                     c.error = null
-                    c.clearFocus()
                     c.clearAnimation()
 
                     val d = findViewById<TextInputLayout>(R.id.tilOccupation)
@@ -810,15 +827,12 @@ class CreateCharacterActivity : AppCompatActivity() {
                     build.error = null
 
                     val marks = findViewById<TextInputEditText>(R.id.tilMarkings)
-                    marks.clearFocus()
                     marks.error = null
 
                     val hs = findViewById<TextInputEditText>(R.id.tilHairStyle)
-                    hs.clearFocus()
                     hs.error = null
 
                     val cl = findViewById<TextInputEditText>(R.id.tilClothingStyle)
-                    cl.clearFocus()
                     cl.error = null
                 }
 
@@ -988,6 +1002,10 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             2 -> {
+
+            }
+
+            3 -> {
 
             }
 

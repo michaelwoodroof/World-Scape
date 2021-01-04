@@ -83,7 +83,7 @@
     <string name="add_fear">Add Fear</string>
     <string name="name_of_interest">Name of Interest</string>
     <string name="name_of_fear">Name of Fear</string>
-    <string name="optional_title">Optional Aspects of Character</string>
+    <string name="optional_title">Additional Aspects of Character</string>
 
     <!-- Positive Traits -->
     <string name="adventurous">Adventurous</string>

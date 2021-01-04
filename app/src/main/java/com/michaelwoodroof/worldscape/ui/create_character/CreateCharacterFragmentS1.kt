@@ -68,10 +68,10 @@ class CreateCharacterFragmentS1 : Fragment() {
     }
 
     override fun onResume() {
-        super.onResume()
         (activity as CreateCharacterActivity).h.removeCallbacksAndMessages(null)
         (activity as CreateCharacterActivity).resetFields(0)
         (activity as CreateCharacterActivity).fillFields(0)
+        super.onResume()
     }
 
     private fun addAnimation(root : View) {

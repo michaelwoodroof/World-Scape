@@ -6,7 +6,7 @@
     <color name="baseTextColor">#E1E1E1</color>
     <color name="navigation">#222222</color>
 
-    <color name="drag">#E1E1E1</color>
+    <color name="drag">@color/baseTextColor</color>
 
     <color name="chipBackground">#54FF6090</color>
     <color name="closeColor">#CFCFCF</color>

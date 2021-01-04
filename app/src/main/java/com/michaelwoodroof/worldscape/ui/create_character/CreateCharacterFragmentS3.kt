@@ -40,9 +40,10 @@ class CreateCharacterFragmentS3 : Fragment() {
     }
 
     override fun onResume() {
-        super.onResume()
         (activity as CreateCharacterActivity).h.removeCallbacksAndMessages(null)
         (activity as CreateCharacterActivity).fillFields(2)
+        (activity as CreateCharacterActivity).resetFields(2)
+        super.onResume()
     }
 
 }
