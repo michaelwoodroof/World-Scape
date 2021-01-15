@@ -26,6 +26,9 @@
     <color name="personality_ripple_pos">#fff</color>
     <color name="personality_ripple_neg">#fff</color>
 
+    <color name="rpg_background">#F8BBD0</color>
+    <color name="rpg_text">@color/background</color>
+
     <color name="background">#333333</color>
     <color name="add_button_bg">@color/colorPrimary</color>
     <color name="add_button_text_color">#333333</color>

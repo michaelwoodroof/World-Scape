@@ -5,7 +5,8 @@
     android:id="@+id/clCCS4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:addStatesFromChildren="true">
 
     <ScrollView
         android:id="@+id/svCreateCharacterS4"
@@ -25,47 +26,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tvOptional"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:ellipsize="end"
-                android:text="@string/optional_title"
-                android:textAlignment="viewStart"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilAdditional"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvOptional">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietAddditional"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl25"
@@ -88,13 +48,93 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.75" />
 
+            <TextView
+                android:id="@+id/tvRPG"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:text="@string/rpg_title"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stats"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/tvRPG"
+                app:layout_constraintTop_toBottomOf="@+id/tvRPG" />
+
+            <Button
+                android:id="@+id/btnAddStat"
+                style="@style/RoundedContainerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/rpg_background"
+                android:onClick="loadStatDialog"
+                android:text="@string/add_stats"
+                android:textAlignment="center"
+                android:textColor="@color/rpg_text"
+                android:textColorHighlight="@color/rpg_text"
+                android:textColorLink="@color/rpg_text"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_baseline_notes_24"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@color/rpg_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvStats"
+                app:layout_constraintTop_toBottomOf="@+id/tvStats"
+                app:rippleColor="@color/rpg_text" />
+
+            <TextView
+                android:id="@+id/tvAbilities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/abilities"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="@+id/tvRPG"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddStat" />
+
+            <Button
+                android:id="@+id/btnAddAbility"
+                style="@style/RoundedContainerButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/rpg_background"
+                android:text="@string/add_ability"
+                android:textColor="@color/rpg_text"
+                android:textColorHighlight="@color/rpg_text"
+                android:textColorLink="@color/rpg_text"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_baseline_games_24"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/rpg_text"
+                app:layout_constraintEnd_toEndOf="@+id/btnAddStat"
+                app:layout_constraintStart_toStartOf="@+id/btnAddStat"
+                app:layout_constraintTop_toBottomOf="@+id/tvAbilities"
+                app:rippleColor="@color/rpg_text" />
+
             <Space
                 android:id="@+id/spS4End"
                 android:layout_width="0dp"
                 android:layout_height="72dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvOptional"/>
+                app:layout_constraintTop_toBottomOf="@+id/btnAddAbility" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

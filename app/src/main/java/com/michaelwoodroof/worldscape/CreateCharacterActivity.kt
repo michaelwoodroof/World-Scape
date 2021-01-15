@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -34,6 +35,7 @@ import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
+import com.michaelwoodroof.worldscape.ui.StatDialogFragment
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS2
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS3
@@ -52,6 +54,7 @@ class CreateCharacterActivity : AppCompatActivity() {
     var currentCharacter : CharacterContent.CharacterItem =
         CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "",
             "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), "")
+    var isDialogLoaded = false
     lateinit var uriPointer : Uri
     lateinit var bottomSheetFragment : AddChipBottomDialogFragment
     var r : Runnable = Runnable {}
@@ -110,6 +113,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         backTasks()
+        isDialogLoaded = false
         super.onBackPressed()
     }
 
@@ -119,23 +123,25 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     private fun backTasks() {
-        when (flCCMain.tag) {
-            "S2" -> {
-                flCCMain.tag = "S1"
-                updateCharacter(1)
-            }
+        if (!isDialogLoaded) {
+            when (flCCMain.tag) {
+                "S2" -> {
+                    flCCMain.tag = "S1"
+                    updateCharacter(1)
+                }
 
-            "S3" -> {
-                flCCMain.tag = "S2"
-                updateCharacter(2)
-            }
+                "S3" -> {
+                    flCCMain.tag = "S2"
+                    updateCharacter(2)
+                }
 
-            "S4" -> {
-                flCCMain.tag = "S3"
-                updateCharacter(3)
+                "S4" -> {
+                    flCCMain.tag = "S3"
+                    updateCharacter(3)
 
-                fabNext.visibility = View.VISIBLE
-                fabCreateCC.visibility = View.GONE
+                    fabNext.visibility = View.VISIBLE
+                    fabCreateCC.visibility = View.GONE
+                }
             }
         }
     }
@@ -1299,6 +1305,18 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
         // @TODO Remove each Fragment in the Create Character Process then Call Super.onBackPressed()
         super.onBackPressed()
+    }
+
+    fun loadStatDialog(view : View) {
+        if (!isDialogLoaded) {
+            isDialogLoaded = true
+            val fragmentManager = supportFragmentManager
+            val statFragment = StatDialogFragment()
+            fragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .add(android.R.id.content, statFragment).commit()
+        }
     }
 
 }

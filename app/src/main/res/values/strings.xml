@@ -53,7 +53,7 @@
     <string name="birth_title">Year of Birth</string>
     <string name="birth_loc">Place of Birth</string>
     <string name="current_loc">Current Location / Region</string>
-    <string name="pick_image_cc">Image of Character</string>
+    <string name="pick_image_cc">Pick Image</string>
     <string name="biography_cc">Biography / Description</string>
     <string name="birthdate">Birthday</string>
     <string name="race">Race</string>
@@ -83,7 +83,10 @@
     <string name="add_fear">Add Fear</string>
     <string name="name_of_interest">Name of Interest</string>
     <string name="name_of_fear">Name of Fear</string>
-    <string name="optional_title">Additional Aspects of Character</string>
+    <string name="rpg_title">Role Playing Aspects of Character</string>
+    <string name="add_ability">Add a Ability</string>
+    <string name="abilities">Abilities</string>
+    <string name="stats">Stats</string>
 
     <!-- Positive Traits -->
     <string name="adventurous">Adventurous</string>

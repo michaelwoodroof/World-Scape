@@ -29,6 +29,9 @@
     <color name="personality_ripple_pos">@color/medGreen</color>
     <color name="personality_ripple_neg">@color/error_color</color>
 
+    <color name="rpg_background">#fff</color>
+    <color name="rpg_text">@color/colorPrimary</color>
+
     <color name="background">#F5F5F5</color>
     <color name="add_button_bg">#ffffff</color>
     <color name="add_button_text_color">#E91E63</color>
