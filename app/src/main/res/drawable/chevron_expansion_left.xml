@@ -12,6 +12,7 @@
                 android:name="path"
                 android:pathData="M 281.779 250 L 271 261.303 L 307.685 300.383 L 271 338.697 L 281.968 350 L 329.621 300.192 L 281.779 250 Z"
                 android:fillColor="#000000"
+                android:fillAlpha="1"
                 android:strokeWidth="1"/>
             <path
                 android:name="path_3"

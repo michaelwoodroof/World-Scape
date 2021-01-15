@@ -48,6 +48,7 @@ import java.lang.Exception
 
 // @TODO Fix Animation on Link Places
 // @TODO Fix Clothing Style Triggering Error
+// @TODO Hide FAB Buttons Correctly
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -96,19 +97,6 @@ class CreateCharacterActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.flCCMain, createCharacterFragment)
         transaction.commit()
-
-        // Used to Hide Create Character when Keyboard is not Screen (for better user experience)
-        val v : View = findViewById(R.id.clMainCC)
-        v.viewTreeObserver.addOnGlobalLayoutListener {
-            if ((v.rootView.height - v.height) > TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 200F, baseContext.resources.displayMetrics
-                )
-            ) {
-                fabNext.visibility = View.INVISIBLE
-            } else {
-                fabNext.visibility = View.VISIBLE
-            }
-        }
     }
 
     override fun onBackPressed() {
@@ -139,8 +127,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                     flCCMain.tag = "S3"
                     updateCharacter(3)
 
-                    fabNext.visibility = View.VISIBLE
-                    fabCreateCC.visibility = View.GONE
+                    fabCreateCC.hide()
+
+                    fabNext.show()
                 }
             }
         }
@@ -411,6 +400,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         } else if (flCCMain.tag == "S3") {
             if (checkFields(2)) {
                 flCCMain.tag = "S4"
+
                 val createCharacterFragment = CreateCharacterFragmentS4()
                 val transaction = supportFragmentManager.beginTransaction()
 
@@ -420,8 +410,8 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.addToBackStack(null)
                 transaction.commit()
 
-                fabNext.visibility = View.GONE
-                fabCreateCC.visibility = View.VISIBLE
+                fabNext.hide()
+                fabCreateCC.show()
             }
         }
     }
@@ -1317,6 +1307,14 @@ class CreateCharacterActivity : AppCompatActivity() {
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .add(android.R.id.content, statFragment).commit()
         }
+    }
+
+    fun popStack() {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.popBackStack()
+
+        val fab = findViewById<ExtendedFloatingActionButton>(R.id.fabNext)
+        fab.visibility = View.GONE
     }
 
 }

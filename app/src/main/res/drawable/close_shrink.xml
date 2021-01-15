@@ -1,0 +1,35 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="48dp"
+            android:height="48dp"
+            android:viewportWidth="600"
+            android:viewportHeight="600">
+            <path
+                android:name="path"
+                android:pathData="M 300 0 C 220.466 0 144.107 31.629 87.868 87.868 C 31.629 144.107 0 220.466 0 300 C 0 379.534 31.629 455.893 87.868 512.132 C 144.107 568.371 220.466 600 300 600 C 379.534 600 455.893 568.371 512.132 512.132 C 568.371 455.893 600 379.534 600 300 C 600 220.466 568.371 144.107 512.132 87.868 C 455.893 31.629 379.534 0 300 0 Z"
+                android:fillColor="#000000"
+                android:fillAlpha="0.4"
+                android:strokeWidth="1"/>
+            <path
+                android:name="path_1"
+                android:pathData="M 358.333 253.417 L 346.583 241.667 L 300 288.25 L 253.417 241.667 L 241.667 253.417 L 288.25 300 L 241.667 346.583 L 253.417 358.333 L 300 311.75 L 346.583 358.333 L 358.333 346.583 L 311.75 300 L 358.333 253.417 Z"
+                android:fillColor="#000000"
+                android:strokeWidth="1"/>
+        </vector>
+    </aapt:attr>
+    <target android:name="path">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="pathData"
+                android:duration="300"
+                android:valueFrom="M 300 0 C 220.466 0 144.107 31.629 87.868 87.868 C 31.629 144.107 0 220.466 0 300 C 0 379.534 31.629 455.893 87.868 512.132 C 144.107 568.371 220.466 600 300 600 C 379.534 600 455.893 568.371 512.132 512.132 C 568.371 455.893 600 379.534 600 300 C 600 220.466 568.371 144.107 512.132 87.868 C 455.893 31.629 379.534 0 300 0 Z"
+                android:valueTo="M 300.5 300 C 300.367 300 300.24 300.053 300.146 300.146 C 300.053 300.24 300 300.367 300 300.5 C 300 300.633 300.053 300.76 300.146 300.854 C 300.24 300.947 300.367 301 300.5 301 C 300.633 301 300.76 300.947 300.854 300.854 C 300.947 300.76 301 300.633 301 300.5 C 301 300.367 300.947 300.24 300.854 300.146 C 300.76 300.053 300.633 300 300.5 300 Z"
+                android:valueType="pathType"
+                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+        </aapt:attr>
+    </target>
+</animated-vector>
