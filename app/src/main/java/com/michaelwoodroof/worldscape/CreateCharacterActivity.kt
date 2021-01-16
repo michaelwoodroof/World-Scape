@@ -42,6 +42,7 @@ import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.bottom_sheet_new_chip.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
+import kotlinx.android.synthetic.main.fragment_create_character_s3.*
 import java.lang.Exception
 
 // @TODO Fix Animation on Link Places
@@ -49,7 +50,7 @@ import java.lang.Exception
 
 class CreateCharacterActivity : AppCompatActivity() {
 
-    var currentCharacter : CharacterContent.CharacterItem =
+    private var currentCharacter : CharacterContent.CharacterItem =
         CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "",
             "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), "")
     var isDialogLoaded = false
@@ -212,6 +213,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val chip = Chip(this)
                     chip.setTextAppearance(R.style.ChipText)
                     chip.text = child
+                    chip.setOnCloseIconClickListener {
+                        cgp.removeView(chip)
+                    }
                     cgp.addView(chip)
                 }
 
@@ -220,6 +224,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val chip = Chip(this, null, R.attr.NegativeChipStyle)
                     chip.setTextAppearance(R.style.NegativeChipText)
                     chip.text = child
+                    chip.setOnCloseIconClickListener {
+                        cgn.removeView(chip)
+                    }
                     cgn.addView(chip)
                 }
 
@@ -228,6 +235,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val chip = Chip(this)
                     chip.setTextAppearance(R.style.ChipText)
                     chip.text = child
+                    chip.setOnCloseIconClickListener {
+                        cgi.removeView(chip)
+                    }
                     cgi.addView(chip)
                 }
 
@@ -236,6 +246,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val chip = Chip(this, null, R.attr.NegativeChipStyle)
                     chip.setTextAppearance(R.style.NegativeChipText)
                     chip.text = child
+                    chip.setOnCloseIconClickListener {
+                        cgf.removeView(chip)
+                    }
                     cgf.addView(chip)
                 }
             }
@@ -367,7 +380,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
 
                 val cgf = findViewById<ChipGroup>(R.id.cgFears)
-                currentCharacter.interests = ArrayList()
+                currentCharacter.fears = ArrayList()
                 for (chip in cgf.children) {
                     chip as Chip
                     (currentCharacter.fears as ArrayList<String>).add(chip.text.toString())
