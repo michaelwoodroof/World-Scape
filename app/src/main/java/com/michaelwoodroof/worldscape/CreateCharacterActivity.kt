@@ -1,7 +1,6 @@
 package com.michaelwoodroof.worldscape
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
 import android.os.Build
@@ -21,7 +20,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
-import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
@@ -47,8 +45,7 @@ import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 import java.lang.Exception
 
 // @TODO Fix Animation on Link Places
-// @TODO Fix Clothing Style Triggering Error
-// @TODO Hide FAB Buttons Correctly
+// @TODO Fix Clothing Style Triggering Error --> Investigate Message in Log saying incorrect cast
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -91,6 +88,20 @@ class CreateCharacterActivity : AppCompatActivity() {
                 ) as AnimatedVectorDrawable
             )
         })
+
+        val v : View = findViewById(R.id.flCCMain)
+        v.viewTreeObserver.addOnGlobalLayoutListener {
+            if (flCCMain.tag != "S4") {
+                if ((v.rootView.height - v.height) > TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 200F, baseContext.resources.displayMetrics
+                    )
+                ) {
+                    fabNext.visibility = View.INVISIBLE
+                } else {
+                    fabNext.visibility = View.VISIBLE
+                }
+            }
+        }
 
         // Set up Fragment
         val createCharacterFragment = CreateCharacterFragmentS1()
