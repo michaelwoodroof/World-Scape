@@ -205,6 +205,7 @@
     <!-- First number is a major update such as a new feature and second number is for small updates such as: bugfixes or typos -->
     <string name="version">A.0.1</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_character_detail">CharacterDetailActivity</string>
 
     <!-- Settings -->
     <!-- Preference Titles -->

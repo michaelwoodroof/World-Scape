@@ -9,8 +9,8 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
-import com.michaelwoodroof.worldscape.content.CharacterContent
-import com.michaelwoodroof.worldscape.content.WorldContent
+import com.michaelwoodroof.worldscape.structure.MyCharacter
+import com.michaelwoodroof.worldscape.structure.World
 import java.io.*
 import java.lang.Exception
 import java.util.*
@@ -70,7 +70,7 @@ class ManageFiles(private val gc : Context) {
 
     }
 
-    fun saveWorld(world : WorldContent.WorldItem) : Boolean {
+    fun saveWorld(world : World) : Boolean {
 
         val fo = gc.filesDir
         return try {
@@ -121,15 +121,15 @@ class ManageFiles(private val gc : Context) {
 
     }
 
-    fun getWorlds() : ArrayList<WorldContent.WorldItem> {
-        val wl = ArrayList<WorldContent.WorldItem>()
+    fun getWorlds() : ArrayList<World> {
+        val wl = ArrayList<World>()
         // Get Worlds
         val wf = File(gc.filesDir.absolutePath + "/worlds")
 
         wf.listFiles()?.forEach {
             val fis = FileInputStream(it.absolutePath + "/world_data")
             val ois = ObjectInputStream(fis)
-            val wi = ois.readObject() as WorldContent.WorldItem
+            val wi = ois.readObject() as World
             wl.add(wi)
         }
 
@@ -167,7 +167,7 @@ class ManageFiles(private val gc : Context) {
 
     }
 
-    fun saveCharacter(sc : CharacterContent.CharacterItem, wuid : String) : Boolean {
+    fun saveCharacter(sc : MyCharacter, wuid : String) : Boolean {
         // wuid is the World's UID
         val uid = sc.uid
         val fo = gc.filesDir.absolutePath + "/worlds/$wuid/characters/$uid"
@@ -223,8 +223,8 @@ class ManageFiles(private val gc : Context) {
         }
     }
 
-    fun getCharacters(wuid : String, limit : Int) : ArrayList<CharacterContent.CharacterItem> {
-        val cl = ArrayList<CharacterContent.CharacterItem>()
+    fun getCharacters(wuid : String, limit : Int) : ArrayList<MyCharacter> {
+        val cl = ArrayList<MyCharacter>()
         // Get Characters
         val cf = File(gc.filesDir.absolutePath + "/worlds/$wuid/characters")
         var count = 0
@@ -232,7 +232,7 @@ class ManageFiles(private val gc : Context) {
         cf.listFiles()?.forEach {
             val fis = FileInputStream(it.absolutePath + "/character_data")
             val ois = ObjectInputStream(fis)
-            val ci = ois.readObject() as CharacterContent.CharacterItem
+            val ci = ois.readObject() as MyCharacter
             cl.add(ci)
             if (count == limit) {
                 return cl

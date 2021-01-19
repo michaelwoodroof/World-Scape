@@ -14,14 +14,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.adapters.WDCharacterAdapter
-import com.michaelwoodroof.worldscape.content.CharacterContent
-import com.michaelwoodroof.worldscape.content.PlacesContent
-import com.michaelwoodroof.worldscape.content.StoriesContent
+import com.michaelwoodroof.worldscape.structure.MyCharacter
+import com.michaelwoodroof.worldscape.structure.Place
+import com.michaelwoodroof.worldscape.structure.Story
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.fragment_world_detail.*
 
 class WorldDetailFragment : Fragment() {
+
+    // @TODO Add Edit plus description textview
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -37,19 +39,19 @@ class WorldDetailFragment : Fragment() {
         val btnSAS : ImageButton = root.findViewById(R.id.btnShowAllStories)
 
         // Set On Touches
-        btnSAC.setOnTouchListener(View.OnTouchListener() { view, event ->
+        btnSAC.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
             ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
             ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
-        btnSAP.setOnTouchListener(View.OnTouchListener() { view, event ->
+        btnSAP.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
-        btnSAS.setOnTouchListener(View.OnTouchListener() { view, event ->
+        btnSAS.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
@@ -80,19 +82,18 @@ class WorldDetailFragment : Fragment() {
         }
     }
 
-    // @TODO Replace with real method
-    private fun loadRecentCharacters() : ArrayList<CharacterContent.CharacterItem> {
+    private fun loadRecentCharacters() : ArrayList<MyCharacter> {
         val mf = activity?.baseContext?.let { ManageFiles(it) }
         return mf?.getCharacters((activity as WorldDetailActivity).intent.getStringExtra("uid").toString(), 10) ?: ArrayList()
     }
 
     // @TODO Replace with real method
-    private fun loadRecentPlaces() : ArrayList<PlacesContent.PlacesItem>? {
+    private fun loadRecentPlaces() : ArrayList<Place>? {
         return null
     }
 
     // @TODO Replace with real method
-    private fun loadRecentStories() : ArrayList<StoriesContent.StoriesItem>? {
+    private fun loadRecentStories() : ArrayList<Story>? {
         return null
     }
 

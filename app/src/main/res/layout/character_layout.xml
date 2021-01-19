@@ -17,6 +17,7 @@
         android:clickable="true"
         android:focusable="true"
         android:longClickable="true"
+        android:onClick="loadCharacter"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="4dp"
         app:cardElevation="0dp"

@@ -1,7 +1,7 @@
 package com.michaelwoodroof.worldscape.helper
 
-import com.michaelwoodroof.worldscape.content.CharacterContent
-import com.michaelwoodroof.worldscape.content.WorldContent
+import com.michaelwoodroof.worldscape.structure.MyCharacter
+import com.michaelwoodroof.worldscape.structure.World
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -9,10 +9,10 @@ import kotlin.collections.ArrayList
 
 object GenerateSampleData {
 
-    fun generateCharacterData(limit : Int) : ArrayList<CharacterContent.CharacterItem> {
+    fun generateCharacterData(limit : Int) : ArrayList<MyCharacter> {
 
-        val dataset = ArrayList<CharacterContent.CharacterItem>()
-        val baseCharacter = CharacterContent.CharacterItem("Bob", false, "Bob is bob", "200BC",
+        val dataset = ArrayList<MyCharacter>()
+        val baseCharacter = MyCharacter("Bob", false, "Bob is bob", "200BC",
             "200", "200", "200", "200", "200", "Blue", "Lizard", "Red", "Stocky", "None", "", "",
             "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), null, generateUUID(), "")
 
@@ -26,31 +26,31 @@ object GenerateSampleData {
 
     }
 
-    fun generateWorldData(limit : Int) : ArrayList<WorldContent.WorldItem> {
+    fun generateWorldData(limit : Int) : ArrayList<World> {
 
-        val dataset = ArrayList<WorldContent.WorldItem>()
+        val dataset = ArrayList<World>()
 
-        dataset.add(WorldContent.WorldItem("World One",
+        dataset.add(World("World One",
             "A very very long description for this world however, words can be long", "",
             false, "#8BC34A" , generateUUID()))
 
-        dataset.add(WorldContent.WorldItem("World Two",
+        dataset.add(World("World Two",
             "A very very long description for this world however, words can be long", "",
             false, "#8BC34A" , generateUUID()))
 
-        dataset.add(WorldContent.WorldItem("World Three",
+        dataset.add(World("World Three",
             "A very very long description for this world however, words can be long", "",
             false, "#8BC34A" , generateUUID()))
 
-        dataset.add(WorldContent.WorldItem("World Four",
+        dataset.add(World("World Four",
             "A very very long description for this world however, words can be long", "",
             false, "#8BC34A" , generateUUID()))
 
-        dataset.add(WorldContent.WorldItem("World Five",
+        dataset.add(World("World Five",
             "A very very long description for this world however, words can be long", "",
             false, "#8BC34A" , generateUUID()))
 
-        dataset.add(WorldContent.WorldItem("World Six",
+        dataset.add(World("World Six",
             "A very very long description for this world however, words can be long", "",
             false, "#8BC34A" , generateUUID()))
 

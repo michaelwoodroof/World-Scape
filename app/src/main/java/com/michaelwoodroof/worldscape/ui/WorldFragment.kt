@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.adapters.WorldAdapter
-import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.structure.World
 
 class WorldFragment : Fragment() {
 
@@ -63,7 +63,7 @@ class WorldFragment : Fragment() {
         fabe.tag = ""
     }
 
-    private fun loadWorlds() : ArrayList<WorldContent.WorldItem> {
+    private fun loadWorlds() : ArrayList<World> {
         val mf = activity?.baseContext?.let { ManageFiles(it) }
         return mf?.getWorlds() ?: ArrayList()
     }

@@ -11,11 +11,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.world_layout.view.*
 
-class WorldAdapter(private var givenValues: MutableList<WorldContent.WorldItem>)
+class WorldAdapter(private var givenValues: MutableList<World>)
     : RecyclerView.Adapter<WorldAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

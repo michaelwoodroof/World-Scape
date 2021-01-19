@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.structure.World
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
 
     fun loadWorld(view : View) {
         val intent = Intent(this, WorldDetailActivity::class.java)
-        val tag = view.tag as WorldContent.WorldItem
+        val tag = view.tag as World
         intent.putExtra("uid", tag.uid)
         intent.putExtra("title", tag.title)
         this.startActivity(intent)

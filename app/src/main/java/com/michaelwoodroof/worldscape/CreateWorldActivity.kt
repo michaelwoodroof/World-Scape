@@ -16,12 +16,13 @@ import android.transition.TransitionManager
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.michaelwoodroof.worldscape.content.WorldContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.activity_create_world.clMainCW
 import kotlinx.android.synthetic.main.activity_create_world.ddGenre
@@ -111,13 +112,13 @@ class CreateWorldActivity : AppCompatActivity() {
                 mf.saveWorldImage(uid, uriPointer, this.contentResolver)
             }
 
-            val world : WorldContent.WorldItem = WorldContent.WorldItem(title, desc, ed.toString(), img, "#ffffff", uid)
+            val world = World(title, desc, ed.toString(), img, "#ffffff", uid)
 
             if (mf.saveWorld(world)) {
                 super.onBackPressed()
             } else {
-                Snackbar.make(findViewById<View>(R.id.colMainCW), resources.getString(R.string.err_save_world), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
-                    addWorld(findViewById<View>(R.id.btnCreate))
+                Snackbar.make(findViewById<CoordinatorLayout>(R.id.colMainCW), resources.getString(R.string.err_save_world), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
+                    addWorld(findViewById<Button>(R.id.btnCreate))
                 }.show()
             }
         }

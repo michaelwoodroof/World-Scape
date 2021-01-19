@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
@@ -13,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
+import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.ui.CharacterFragment
 import com.michaelwoodroof.worldscape.ui.WorldDetailFragment
@@ -70,7 +70,7 @@ class WorldDetailActivity : AppCompatActivity() {
     fun loadCreateCharacter(view : View) {
         val wuid = intent.getStringExtra("uid").toString()
         val intent = Intent(this, CreateCharacterActivity::class.java)
-        intent.putExtra("uid", wuid as String)
+        intent.putExtra("uid", wuid)
         startActivity(intent)
     }
 
@@ -114,6 +114,14 @@ class WorldDetailActivity : AppCompatActivity() {
         item.isChecked = false
 
         dlMain.closeDrawer(GravityCompat.START)
+    }
+
+    fun loadCharacter(view : View) {
+        val data = view.tag as MyCharacter
+        val intent = Intent(this, CharacterDetailActivity::class.java)
+        intent.putExtra("wuid", data.wuid)
+        intent.putExtra("uid", data.uid)
+        this.startActivity(intent)
     }
 
 }

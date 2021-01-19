@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.content.CharacterContent
+import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.wd_character_layout.view.*
 
-class WDCharacterAdapter (private val givenValues: List<CharacterContent.CharacterItem>)
+class WDCharacterAdapter (private val givenValues: List<MyCharacter>)
 : RecyclerView.Adapter<WDCharacterAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,6 +24,7 @@ class WDCharacterAdapter (private val givenValues: List<CharacterContent.Charact
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = givenValues[position]
         holder.mTitle.text = item.name
+        holder.mCard.tag = item
 
         if (item.hasImg) {
             val mf = ManageFiles(holder.mImg.context)
@@ -34,6 +36,7 @@ class WDCharacterAdapter (private val givenValues: List<CharacterContent.Charact
 
     class ViewHolder(mView : View) : RecyclerView.ViewHolder(mView) {
         val mTitle : TextView = mView.tvCharacterName
+        val mCard : MaterialCardView = mView.cvWDCharacter
         val mImg : ImageView = mView.imgCharacterView
 
         override fun toString(): String {

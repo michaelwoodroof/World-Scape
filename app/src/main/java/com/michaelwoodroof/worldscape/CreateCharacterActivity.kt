@@ -30,8 +30,8 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.michaelwoodroof.worldscape.content.CharacterContent
-import com.michaelwoodroof.worldscape.content.StatContent
+import com.michaelwoodroof.worldscape.structure.MyCharacter
+import com.michaelwoodroof.worldscape.structure.StatItem
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
@@ -52,8 +52,8 @@ import java.lang.Exception
 
 class CreateCharacterActivity : AppCompatActivity() {
 
-    private var currentCharacter : CharacterContent.CharacterItem =
-        CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "",
+    private var currentCharacter : MyCharacter =
+        MyCharacter("", false, "", "", "", "", "", "", "", "", "", "", "", "",
             "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), null, "", "")
     var isDialogLoaded = false
     lateinit var uriPointer : Uri
@@ -1351,7 +1351,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         fab.visibility = View.GONE
     }
 
-    fun saveStats(statData : StatContent.StatItem) {
+    fun saveStats(statData : StatItem) {
         // @TODO Implement
     }
 

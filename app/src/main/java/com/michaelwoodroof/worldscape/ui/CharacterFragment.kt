@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.WorldDetailActivity
-import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.adapters.CharacterAdapter
+import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.fragment_character.*
 
@@ -48,7 +48,7 @@ class CharacterFragment : Fragment() {
         rvCharacters.adapter = CharacterAdapter(dataset)
     }
 
-    private fun loadCharacters() : ArrayList<CharacterContent.CharacterItem> {
+    private fun loadCharacters() : ArrayList<MyCharacter> {
         val mf = activity?.baseContext?.let { ManageFiles(it) }
         return mf?.getCharacters((activity as WorldDetailActivity).intent.getStringExtra("uid").toString(), -1) ?: ArrayList()
     }

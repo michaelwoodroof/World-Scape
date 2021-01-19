@@ -18,7 +18,7 @@ import androidx.fragment.app.DialogFragment
 import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.content.StatContent
+import com.michaelwoodroof.worldscape.structure.StatItem
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
@@ -62,7 +62,7 @@ class StatDialogFragment : DialogFragment() {
             (activity as CreateCharacterActivity).popStack()
             (activity as CreateCharacterActivity).isDialogLoaded = false
             // @TODO Get Data from Fields
-            val data = StatContent.StatItem("UU")
+            val data = StatItem("UU")
             (activity as CreateCharacterActivity).saveStats(data)
         }
 
