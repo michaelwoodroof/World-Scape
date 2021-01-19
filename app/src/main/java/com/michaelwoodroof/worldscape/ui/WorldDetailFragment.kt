@@ -12,12 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
+import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.adapters.WDCharacterAdapter
 import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.content.PlacesContent
 import com.michaelwoodroof.worldscape.content.StoriesContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.GenerateSampleData
+import com.michaelwoodroof.worldscape.helper.ManageFiles
 
 class WorldDetailFragment : Fragment() {
 
@@ -28,7 +30,7 @@ class WorldDetailFragment : Fragment() {
         // Set - Up Recent Characters for RecyclerView
         val rvRCharacters = root.findViewById<RecyclerView>(R.id.rvRecentCharacters)
         rvRCharacters.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        rvRCharacters.adapter = loadRecentCharacters()?.let { WDCharacterAdapter(it) }
+        rvRCharacters.adapter = WDCharacterAdapter(loadRecentCharacters())
 
         val btnSAC : ImageButton = root.findViewById(R.id.btnShowAllCharacters)
         val btnSAP : ImageButton = root.findViewById(R.id.btnShowAllPlaces)
@@ -66,8 +68,9 @@ class WorldDetailFragment : Fragment() {
     }
 
     // @TODO Replace with real method
-    private fun loadRecentCharacters() : ArrayList<CharacterContent.CharacterItem>? {
-        return GenerateSampleData.generateCharacterData(10)
+    private fun loadRecentCharacters() : ArrayList<CharacterContent.CharacterItem> {
+        val mf = activity?.baseContext?.let { ManageFiles(it) }
+        return mf?.getCharacters((activity as WorldDetailActivity).intent.getStringExtra("uid").toString(), 10) ?: ArrayList()
     }
 
     // @TODO Replace with real method

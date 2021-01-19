@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
@@ -29,8 +30,7 @@ class WorldDetailActivity : AppCompatActivity() {
 
         if (bundle != null) {
             if (bundle.containsKey("uid")) {
-                // @TODO LOAD DATA FROM UID
-//                tvDesc.text = intent.getStringExtra("uid")
+
             } else {
                 // @TODO
             }
@@ -68,10 +68,10 @@ class WorldDetailActivity : AppCompatActivity() {
     }
 
     fun loadCreateCharacter(view : View) {
-        val uid = intent.getStringExtra("uid")
-        val i = Intent(this, CreateCharacterActivity::class.java)
-        intent.putExtra("uid", uid)
-        startActivity(i)
+        val wuid = intent.getStringExtra("uid").toString()
+        val intent = Intent(this, CreateCharacterActivity::class.java)
+        intent.putExtra("uid", wuid as String)
+        startActivity(intent)
     }
 
     fun loadAllCharacters(view : View) {

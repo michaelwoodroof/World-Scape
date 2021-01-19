@@ -1,6 +1,7 @@
 package com.michaelwoodroof.worldscape
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
 import android.os.Build
@@ -30,6 +31,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.content.CharacterContent
+import com.michaelwoodroof.worldscape.content.StatContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
@@ -52,7 +54,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     private var currentCharacter : CharacterContent.CharacterItem =
         CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), "")
+            "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), null, "")
     var isDialogLoaded = false
     lateinit var uriPointer : Uri
     lateinit var bottomSheetFragment : AddChipBottomDialogFragment
@@ -1039,9 +1041,9 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     private fun TextInputEditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
         this.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(e: Editable?) {
                 afterTextChanged.invoke(e.toString())
@@ -1302,23 +1304,30 @@ class CreateCharacterActivity : AppCompatActivity() {
         // @TODO Add Check Fields method
         val mf = ManageFiles(this)
         // wuid is the World's uid
-        val wuid = intent.getStringExtra("uid")
         currentCharacter.uid = mf.generateUUID()
-        if (wuid != null) {
-            if (mf.saveCharacter(currentCharacter, wuid)) {
-                // Save Image for Character
-                if (currentCharacter.hasImg && this::uriPointer.isInitialized) {
-                    mf.saveCharacterImage(currentCharacter.uid, wuid, uriPointer,
-                        this.contentResolver)
-                }
-            } else {
-                Snackbar.make(findViewById(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
-                    createCharacter(findViewById(R.id.fabCreateCC))
-                }.show()
+        if (mf.saveCharacter(currentCharacter, intent.getStringExtra("uid").toString())) {
+            // Save Image for Character
+            if (currentCharacter.hasImg && this::uriPointer.isInitialized) {
+                mf.saveCharacterImage(currentCharacter.uid, intent.getStringExtra("uid").toString(), uriPointer,
+                    this.contentResolver)
             }
+        } else {
+            Snackbar.make(findViewById(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
+                createCharacter(findViewById(R.id.fabCreateCC))
+            }.show()
         }
-        // @TODO Remove each Fragment in the Create Character Process then Call Super.onBackPressed()
+
+        val fragmentManager = supportFragmentManager
+
+        for (i in 0..fragmentManager.backStackEntryCount ) {
+            fragmentManager.popBackStack()
+        }
+
         super.onBackPressed()
+
+        // Load Intent
+        val intent = Intent(this, WorldDetailActivity::class.java)
+        this.startActivity(intent)
     }
 
     fun loadStatDialog(view : View) {
@@ -1339,6 +1348,10 @@ class CreateCharacterActivity : AppCompatActivity() {
 
         val fab = findViewById<ExtendedFloatingActionButton>(R.id.fabNext)
         fab.visibility = View.GONE
+    }
+
+    fun saveStats(statData : StatContent.StatItem) {
+        // @TODO Implement
     }
 
 }

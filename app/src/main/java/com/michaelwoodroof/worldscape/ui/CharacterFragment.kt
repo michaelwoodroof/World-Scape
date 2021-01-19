@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.R
+import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.adapters.CharacterAdapter
-import com.michaelwoodroof.worldscape.helper.GenerateSampleData
+import com.michaelwoodroof.worldscape.helper.ManageFiles
 
 class CharacterFragment : Fragment() {
 
@@ -40,9 +41,9 @@ class CharacterFragment : Fragment() {
         return root
     }
 
-    // @TODO Update with Real Method
     private fun loadCharacters() : ArrayList<CharacterContent.CharacterItem> {
-        return GenerateSampleData.generateCharacterData(0)
+        val mf = activity?.baseContext?.let { ManageFiles(it) }
+        return mf?.getCharacters((activity as WorldDetailActivity).intent.getStringExtra("uid").toString(), -1) ?: ArrayList()
     }
 
 }
