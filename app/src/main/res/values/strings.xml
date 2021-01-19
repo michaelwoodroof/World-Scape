@@ -87,6 +87,8 @@
     <string name="add_ability">Add a Ability</string>
     <string name="abilities">Abilities</string>
     <string name="stats">Stats</string>
+    <string name="preset">Presets</string>
+    <string name="save">Save</string>
 
     <!-- Positive Traits -->
     <string name="adventurous">Adventurous</string>

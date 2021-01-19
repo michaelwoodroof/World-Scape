@@ -1,495 +1,483 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:id="@+id/svCreateCharacter"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/clCCS1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <ScrollView
-        android:id="@+id/svCreateCharacter"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        android:scrollbarSize="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clInnerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clInnerContainer"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl25"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible">
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl25"
-                android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <TextView
+            android:id="@+id/tvGeneralTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:text="@string/general_title"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvCharacterTitle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCharacterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/character_title"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGeneralTitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCharacterName"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            app:boxBackgroundColor="@color/content_background"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCharacterTitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietCharacterName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.25" />
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:textSize="12sp" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl50"
-                android:layout_width="wrap_content"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvBiography"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/biography_cc"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilCharacterName" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilBiography"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="start"
+            app:boxBackgroundColor="@color/content_background"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBiography">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietBiography"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvBirthYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/birth_title"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilBiography" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilBirthYear"
+            style="@style/TextInputLayoutThemeWarning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            app:boxBackgroundColor="@color/content_background"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/gl50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBirthYear">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietBirthYear"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:textSize="12sp" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl75"
-                android:layout_width="wrap_content"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvOptionalCC1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/optional"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tilBirthYear"
+            app:layout_constraintEnd_toEndOf="@+id/tilBirthYear" />
+
+        <TextView
+            android:id="@+id/tvBirthDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/birthdate"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/gl50"
+            app:layout_constraintTop_toTopOf="@+id/tvBirthYear" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilBirthDate"
+            style="@style/TextInputLayoutThemeWarning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            app:boxBackgroundColor="@color/content_background"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/gl50"
+            app:layout_constraintTop_toBottomOf="@+id/tvBirthYear">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietBirthDate"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.75" />
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tvGeneralTitle"
-                android:layout_width="0dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvOptionalCC2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/optional"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tilBirthDate"
+            app:layout_constraintEnd_toEndOf="@+id/tilBirthDate" />
+
+        <TextView
+            android:id="@+id/tvCurrentLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/current_loc"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilBirthYear" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCurrentLocation"
+            style="@style/TextInputLayoutThemeWarning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:tag="ne"
+            app:boxBackgroundColor="@color/content_background"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toStartOf="@+id/gl50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietCurrentLocation"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:ellipsize="end"
-                android:text="@string/general_title"
-                android:textAlignment="viewStart"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvCharacterTitle"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tvCharacterTitle"
-                android:layout_width="wrap_content"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btnLinkCurrentLoc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="2dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_link_icon"
+            android:onClick="setLink"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation"
+            app:layout_constraintTop_toTopOf="@+id/tilCurrentLocation"
+            app:srcCompat="@drawable/link_to_warning" />
+
+        <TextView
+            android:id="@+id/tvOptionalCC3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/optional"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tilCurrentLocation"
+            app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation" />
+
+        <TextView
+            android:id="@+id/tvPlaceOfBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/birth_loc"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/gl50"
+            app:layout_constraintTop_toTopOf="@+id/tvCurrentLocation" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPlaceOfBirth"
+            style="@style/TextInputLayoutThemeWarning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:tag="ne"
+            app:boxBackgroundColor="@color/content_background"
+            app:endIconCheckable="false"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/gl50"
+            app:layout_constraintTop_toBottomOf="@+id/tvPlaceOfBirth"
+            app:startIconCheckable="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietPlaceOfBirth"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/character_title"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvGeneralTitle" />
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:textSize="12sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilCharacterName"
-                style="@style/TextInputLayoutTheme"
-                android:layout_width="0dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btnLinkPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="2dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_link_icon"
+            android:onClick="setLink"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilPlaceOfBirth"
+            app:layout_constraintTop_toTopOf="@+id/tilPlaceOfBirth"
+            app:srcCompat="@drawable/link_to_warning" />
+
+        <TextView
+            android:id="@+id/tvOptionalCC4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/optional"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tilPlaceOfBirth"
+            app:layout_constraintEnd_toEndOf="@+id/btnLinkPlace" />
+
+        <TextView
+            android:id="@+id/tvOccupation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/occupation"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentLocation"
+            app:layout_constraintTop_toBottomOf="@+id/tilCurrentLocation" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilOccupation"
+            style="@style/TextInputLayoutThemeWarning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:tag="ne"
+            app:boxBackgroundColor="@color/content_background"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOccupation">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietOccupation"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCharacterTitle">
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:textSize="12sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietCharacterName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tvOptionalCC5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/optional"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tilOccupation"
+            app:layout_constraintEnd_toEndOf="@+id/tilOccupation" />
 
-            <TextView
-                android:id="@+id/tvBiography"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/biography_cc"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilCharacterName" />
+        <TextView
+            android:id="@+id/tvPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/pick_image_cc"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/tilCurrentLocation"
+            app:layout_constraintTop_toBottomOf="@+id/tilOccupation" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBiography"
-                style="@style/TextInputLayoutTheme"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="start"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvBiography">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvPreviewCC"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:translationZ="0dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/content_background"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spOne"
+            app:strokeColor="@color/stroke_color_cc"
+            app:strokeWidth="1dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBiography"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="top"
-                    android:inputType="textMultiLine"
-                    android:lines="2"
-                    android:textSize="12sp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clInnerCV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:id="@+id/imgPreviewCC"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/cd_character_preview"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/tvBirthYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/birth_title"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBiography" />
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabPickImageCC"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:fontFamily="sans-serif-condensed"
+            android:minHeight="30dp"
+            android:paddingTop="10dp"
+            android:tag="L"
+            android:text="@string/pick_image_cc"
+            android:textColor="@color/toolbar"
+            android:visibility="visible"
+            app:backgroundTint="@color/colorPrimary"
+            app:icon="@drawable/ic_baseline_image_24"
+            app:iconGravity="start"
+            app:iconPadding="16dp"
+            app:iconTint="@color/toolbar"
+            app:layout_constraintBottom_toBottomOf="@+id/cvPreviewCC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvPreviewCC"
+            app:rippleColor="@color/fab_ripple" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBirthYear"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toStartOf="@+id/gl50"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvBirthYear">
+        <Space
+            android:id="@+id/spOne"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPreview" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBirthYear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
+        <Space
+            android:id="@+id/spTwo"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fabPickImageCC" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tvOptionalCC1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="1dp"
-                android:text="@string/optional"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilBirthYear"
-                app:layout_constraintEnd_toEndOf="@+id/tilBirthYear" />
-
-            <TextView
-                android:id="@+id/tvBirthDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/birthdate"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="@+id/gl50"
-                app:layout_constraintTop_toTopOf="@+id/tvBirthYear" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBirthDate"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/gl50"
-                app:layout_constraintTop_toBottomOf="@+id/tvBirthYear">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBirthDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tvOptionalCC2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="1dp"
-                android:text="@string/optional"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilBirthDate"
-                app:layout_constraintEnd_toEndOf="@+id/tilBirthDate" />
-
-            <TextView
-                android:id="@+id/tvCurrentLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/current_loc"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBirthYear" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilCurrentLocation"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:tag="ne"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:errorIconDrawable="@null"
-                app:layout_constraintEnd_toStartOf="@+id/gl50"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocation">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietCurrentLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <ImageButton
-                android:id="@+id/btnLinkCurrentLoc"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="2dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/cd_link_icon"
-                android:onClick="setLink"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation"
-                app:layout_constraintTop_toTopOf="@+id/tilCurrentLocation"
-                app:srcCompat="@drawable/link_to_warning" />
-
-            <TextView
-                android:id="@+id/tvOptionalCC3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="1dp"
-                android:text="@string/optional"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilCurrentLocation"
-                app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation" />
-
-            <TextView
-                android:id="@+id/tvPlaceOfBirth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/birth_loc"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="@+id/gl50"
-                app:layout_constraintTop_toTopOf="@+id/tvCurrentLocation" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPlaceOfBirth"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:tag="ne"
-                app:boxBackgroundColor="@color/content_background"
-                app:endIconCheckable="false"
-                app:errorEnabled="true"
-                app:errorIconDrawable="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/gl50"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlaceOfBirth"
-                app:startIconCheckable="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietPlaceOfBirth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <ImageButton
-                android:id="@+id/btnLinkPlace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="2dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/cd_link_icon"
-                android:onClick="setLink"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/tilPlaceOfBirth"
-                app:layout_constraintTop_toTopOf="@+id/tilPlaceOfBirth"
-                app:srcCompat="@drawable/link_to_warning" />
-
-            <TextView
-                android:id="@+id/tvOptionalCC4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="1dp"
-                android:text="@string/optional"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilPlaceOfBirth"
-                app:layout_constraintEnd_toEndOf="@+id/btnLinkPlace" />
-
-            <TextView
-                android:id="@+id/tvOccupation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/occupation"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="@+id/tvCurrentLocation"
-                app:layout_constraintTop_toBottomOf="@+id/tilCurrentLocation" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilOccupation"
-                style="@style/TextInputLayoutThemeWarning"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:tag="ne"
-                app:boxBackgroundColor="@color/content_background"
-                app:errorEnabled="true"
-                app:errorIconDrawable="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvOccupation">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietOccupation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tvOptionalCC5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="1dp"
-                android:text="@string/optional"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tilOccupation"
-                app:layout_constraintEnd_toEndOf="@+id/tilOccupation" />
-
-            <TextView
-                android:id="@+id/tvPreview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/pick_image_cc"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="@+id/tilCurrentLocation"
-                app:layout_constraintTop_toBottomOf="@+id/tilOccupation" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvPreviewCC"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="8dp"
-                android:translationZ="0dp"
-                android:visibility="gone"
-                app:cardBackgroundColor="@color/content_background"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="0dp"
-                app:cardMaxElevation="0dp"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spOne"
-                app:strokeColor="@color/stroke_color_cc"
-                app:strokeWidth="1dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clInnerCV"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/imgPreviewCC"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:contentDescription="@string/cd_character_preview"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/fabPickImageCC"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:fontFamily="sans-serif-condensed"
-                android:minHeight="30dp"
-                android:paddingTop="10dp"
-                android:tag="L"
-                android:text="@string/pick_image_cc"
-                android:textColor="@color/toolbar"
-                android:visibility="visible"
-                app:backgroundTint="@color/colorPrimary"
-                app:icon="@drawable/ic_baseline_image_24"
-                app:iconGravity="start"
-                app:iconPadding="16dp"
-                app:iconTint="@color/toolbar"
-                app:layout_constraintBottom_toBottomOf="@+id/cvPreviewCC"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvPreviewCC"
-                app:rippleColor="@color/fab_ripple" />
-
-            <Space
-                android:id="@+id/spOne"
-                android:layout_width="0dp"
-                android:layout_height="28dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPreview" />
-
-            <Space
-                android:id="@+id/spTwo"
-                android:layout_width="0dp"
-                android:layout_height="72dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fabPickImageCC" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
