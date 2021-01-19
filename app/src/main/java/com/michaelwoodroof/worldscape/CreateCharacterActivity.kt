@@ -54,7 +54,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     private var currentCharacter : CharacterContent.CharacterItem =
         CharacterContent.CharacterItem("", false, "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), null, "")
+            "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), null, "", "")
     var isDialogLoaded = false
     lateinit var uriPointer : Uri
     lateinit var bottomSheetFragment : AddChipBottomDialogFragment
@@ -1305,6 +1305,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         val mf = ManageFiles(this)
         // wuid is the World's uid
         currentCharacter.uid = mf.generateUUID()
+        currentCharacter.wuid = intent.getStringExtra("uid").toString()
         if (mf.saveCharacter(currentCharacter, intent.getStringExtra("uid").toString())) {
             // Save Image for Character
             if (currentCharacter.hasImg && this::uriPointer.isInitialized) {

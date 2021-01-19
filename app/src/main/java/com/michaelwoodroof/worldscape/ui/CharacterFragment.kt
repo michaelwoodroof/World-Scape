@@ -13,6 +13,7 @@ import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.adapters.CharacterAdapter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import kotlinx.android.synthetic.main.fragment_character.*
 
 class CharacterFragment : Fragment() {
 
@@ -39,6 +40,12 @@ class CharacterFragment : Fragment() {
         rvCharacter.addOnScrollListener(sl)
 
         return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val dataset = loadCharacters()
+        rvCharacters.adapter = CharacterAdapter(dataset)
     }
 
     private fun loadCharacters() : ArrayList<CharacterContent.CharacterItem> {

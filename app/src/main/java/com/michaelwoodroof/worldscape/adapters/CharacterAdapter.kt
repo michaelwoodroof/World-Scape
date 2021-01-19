@@ -3,10 +3,12 @@ package com.michaelwoodroof.worldscape.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.content.CharacterContent
+import com.michaelwoodroof.worldscape.helper.ManageFiles
 import kotlinx.android.synthetic.main.character_layout.view.*
 
 class CharacterAdapter (private val givenValues: List<CharacterContent.CharacterItem>)
@@ -22,6 +24,11 @@ class CharacterAdapter (private val givenValues: List<CharacterContent.Character
         val item = givenValues[position]
         holder.mTitle.text = item.name
         holder.mDesc.text = item.yearOfBirth
+
+        if (item.hasImg) {
+            val mf = ManageFiles(holder.mImg.context)
+            holder.mImg.setImageBitmap(mf.getCharacterImage(item.wuid, item.uid))
+        }
     }
 
     override fun getItemCount(): Int = givenValues.size
@@ -29,6 +36,7 @@ class CharacterAdapter (private val givenValues: List<CharacterContent.Character
     class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         val mTitle : TextView = mView.tvCharacterName
         val mDesc : TextView = mView.tvDescription
+        val mImg : ImageView = mView.imgPreview
 
         override fun toString(): String {
             return super.toString() + " '"

@@ -14,7 +14,7 @@ object GenerateSampleData {
         val dataset = ArrayList<CharacterContent.CharacterItem>()
         val baseCharacter = CharacterContent.CharacterItem("Bob", false, "Bob is bob", "200BC",
             "200", "200", "200", "200", "200", "Blue", "Lizard", "Red", "Stocky", "None", "", "",
-            "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), null, generateUUID())
+            "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), null, generateUUID(), "")
 
         for (i in 0..limit) {
             baseCharacter.uid = generateUUID()

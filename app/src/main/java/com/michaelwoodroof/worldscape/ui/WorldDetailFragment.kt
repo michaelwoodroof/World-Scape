@@ -18,8 +18,8 @@ import com.michaelwoodroof.worldscape.content.CharacterContent
 import com.michaelwoodroof.worldscape.content.PlacesContent
 import com.michaelwoodroof.worldscape.content.StoriesContent
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
-import com.michaelwoodroof.worldscape.helper.GenerateSampleData
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import kotlinx.android.synthetic.main.fragment_world_detail.*
 
 class WorldDetailFragment : Fragment() {
 
@@ -65,6 +65,19 @@ class WorldDetailFragment : Fragment() {
 //        rvRStories.adapter = WDStoriesAdapter(loadRecentStories())
 
         return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val dataset = loadRecentCharacters()
+
+        rvRecentCharacters.adapter = WDCharacterAdapter(dataset)
+        if (dataset.size == 0) {
+            rvRecentCharacters.overScrollMode = View.OVER_SCROLL_NEVER
+        } else {
+            // @TODO Add Scroll effect when items exceed phone height
+            rvRecentCharacters.overScrollMode = View.OVER_SCROLL_ALWAYS
+        }
     }
 
     // @TODO Replace with real method
