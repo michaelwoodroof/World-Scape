@@ -53,9 +53,7 @@ import java.lang.Exception
 
 class CreateCharacterActivity : AppCompatActivity() {
 
-    private var currentCharacter : MyCharacter =
-        MyCharacter("", false, "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", ArrayList(), ArrayList(), ArrayList(), ArrayList(), null, "", "")
+    private var currentCharacter : MyCharacter? = null
     var isDialogLoaded = false
     lateinit var uriPointer : Uri
     lateinit var bottomSheetFragment : AddChipBottomDialogFragment
@@ -171,7 +169,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             0 -> {
                 // Only Update for Image as All other fields will be maintained through back stack
-                if (currentCharacter.hasImg) {
+                if (currentCharacter?.hasImg == true) {
                     val f = supportFragmentManager.findFragmentById(R.id.flCCMain) as CreateCharacterFragmentS1
                     val fab = findViewById<ExtendedFloatingActionButton>(R.id.fabPickImageCC)
                     fab.tag = "L"
@@ -185,77 +183,88 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             1 -> {
                 val h = findViewById<TextInputEditText>(R.id.tietHeight)
-                h.text = currentCharacter.height?.toEditable()
+                h.text = currentCharacter?.height?.toEditable()
 
                 val w = findViewById<TextInputEditText>(R.id.tietWeight)
-                w.text = currentCharacter.weight?.toEditable()
+                w.text = currentCharacter?.weight?.toEditable()
 
                 val eye = findViewById<TextInputEditText>(R.id.tietEyeColor)
-                eye.text = currentCharacter.eyeColor?.toEditable()
+                eye.text = currentCharacter?.eyeColor?.toEditable()
 
                 val race = findViewById<TextInputEditText>(R.id.tietRace)
-                race.text = currentCharacter.race?.toEditable()
+                race.text = currentCharacter?.race?.toEditable()
 
                 val hc = findViewById<TextInputEditText>(R.id.tietHairColor)
-                hc.text = currentCharacter.hairColor?.toEditable()
+                hc.text = currentCharacter?.hairColor?.toEditable()
 
                 val build = findViewById<TextInputEditText>(R.id.tietBuild)
-                build.text = currentCharacter.build?.toEditable()
+                build.text = currentCharacter?.build?.toEditable()
 
                 val marks = findViewById<TextInputEditText>(R.id.tietMarkings)
-                marks.text = currentCharacter.markings?.toEditable()
+                marks.text = currentCharacter?.markings?.toEditable()
 
                 val hs = findViewById<TextInputEditText>(R.id.tietHairStyle)
-                hs.text = currentCharacter.hairStyle?.toEditable()
+                hs.text = currentCharacter?.hairStyle?.toEditable()
 
                 val cl = findViewById<TextInputEditText>(R.id.tietClothingStyle)
-                cl.text = currentCharacter.clothingStyle?.toEditable()
+                cl.text = currentCharacter?.clothingStyle?.toEditable()
             }
 
             2 -> {
                 val cgp = findViewById<ChipGroup>(R.id.cgPositiveTraits)
-                for (child in currentCharacter.positiveTraits) {
-                    val chip = Chip(this)
-                    chip.setTextAppearance(R.style.ChipText)
-                    chip.text = child
-                    chip.setOnCloseIconClickListener {
-                        cgp.removeView(chip)
+                if (currentCharacter?.positiveTraits?.isNotEmpty() == true) {
+                    for (child in currentCharacter!!.positiveTraits) {
+                        val chip = Chip(this)
+                        chip.setTextAppearance(R.style.ChipText)
+                        chip.text = child
+                        chip.setOnCloseIconClickListener {
+                            cgp.removeView(chip)
+                        }
+                        cgp.addView(chip)
                     }
-                    cgp.addView(chip)
                 }
 
+
                 val cgn = findViewById<ChipGroup>(R.id.cgNegativeTraits)
-                for (child in currentCharacter.negativeTraits) {
-                    val chip = Chip(this, null, R.attr.NegativeChipStyle)
-                    chip.setTextAppearance(R.style.NegativeChipText)
-                    chip.text = child
-                    chip.setOnCloseIconClickListener {
-                        cgn.removeView(chip)
+                if (currentCharacter?.negativeTraits?.isNotEmpty() == true) {
+                    for (child in currentCharacter!!.negativeTraits) {
+                        val chip = Chip(this, null, R.attr.NegativeChipStyle)
+                        chip.setTextAppearance(R.style.NegativeChipText)
+                        chip.text = child
+                        chip.setOnCloseIconClickListener {
+                            cgn.removeView(chip)
+                        }
+                        cgn.addView(chip)
                     }
-                    cgn.addView(chip)
                 }
 
                 val cgi = findViewById<ChipGroup>(R.id.cgInterests)
-                for (child in currentCharacter.interests) {
-                    val chip = Chip(this)
-                    chip.setTextAppearance(R.style.ChipText)
-                    chip.text = child
-                    chip.setOnCloseIconClickListener {
-                        cgi.removeView(chip)
+                if (currentCharacter?.interests?.isNotEmpty() == true) {
+                    for (child in currentCharacter!!.interests) {
+                        val chip = Chip(this)
+                        chip.setTextAppearance(R.style.ChipText)
+                        chip.text = child
+                        chip.setOnCloseIconClickListener {
+                            cgi.removeView(chip)
+                        }
+                        cgi.addView(chip)
                     }
-                    cgi.addView(chip)
                 }
 
+
                 val cgf = findViewById<ChipGroup>(R.id.cgFears)
-                for (child in currentCharacter.fears) {
-                    val chip = Chip(this, null, R.attr.NegativeChipStyle)
-                    chip.setTextAppearance(R.style.NegativeChipText)
-                    chip.text = child
-                    chip.setOnCloseIconClickListener {
-                        cgf.removeView(chip)
+                if (currentCharacter?.fears?.isNotEmpty() == true) {
+                    for (child in currentCharacter!!.fears) {
+                        val chip = Chip(this, null, R.attr.NegativeChipStyle)
+                        chip.setTextAppearance(R.style.NegativeChipText)
+                        chip.text = child
+                        chip.setOnCloseIconClickListener {
+                            cgf.removeView(chip)
+                        }
+                        cgf.addView(chip)
                     }
-                    cgf.addView(chip)
                 }
+
             }
 
             3 -> {
@@ -309,86 +318,86 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             0 -> {
                 val cn = findViewById<TextInputEditText>(R.id.tietCharacterName)
-                currentCharacter.name = cn.text.toString()
+                currentCharacter?.name = cn.text.toString()
 
                 val bio = findViewById<TextInputEditText>(R.id.tietBiography)
-                currentCharacter.biography = bio.text.toString()
+                currentCharacter?.biography = bio.text.toString()
 
                 val by = findViewById<TextInputEditText>(R.id.tietBirthYear)
-                currentCharacter.yearOfBirth = by.text.toString()
+                currentCharacter?.yearOfBirth = by.text.toString()
 
                 val bd = findViewById<TextInputEditText>(R.id.tietBirthDate)
-                currentCharacter.birthday = bd.text.toString()
+                currentCharacter?.birthday = bd.text.toString()
 
                 val cl = findViewById<TextInputEditText>(R.id.tietCurrentLocation)
-                currentCharacter.currentLocation = cl.text.toString()
+                currentCharacter?.currentLocation = cl.text.toString()
 
                 val pob = findViewById<TextInputEditText>(R.id.tietPlaceOfBirth)
-                currentCharacter.placeOfBirth = pob.text.toString()
+                currentCharacter?.placeOfBirth = pob.text.toString()
 
                 val occ = findViewById<TextInputEditText>(R.id.tietOccupation)
-                currentCharacter.occupation = occ.text.toString()
+                currentCharacter?.occupation = occ.text.toString()
 
                 val img = findViewById<MaterialCardView>(R.id.cvPreviewCC)
-                currentCharacter.hasImg = img.visibility == View.VISIBLE
+                currentCharacter?.hasImg = img.visibility == View.VISIBLE
             }
 
             1 -> {
                 val h = findViewById<TextInputEditText>(R.id.tietHeight)
-                currentCharacter.height = h.text.toString()
+                currentCharacter?.height = h.text.toString()
 
                 val w = findViewById<TextInputEditText>(R.id.tietWeight)
-                currentCharacter.weight = w.text.toString()
+                currentCharacter?.weight = w.text.toString()
 
                 val eye = findViewById<TextInputEditText>(R.id.tietEyeColor)
-                currentCharacter.eyeColor = eye.text.toString()
+                currentCharacter?.eyeColor = eye.text.toString()
 
                 val race = findViewById<TextInputEditText>(R.id.tietRace)
-                currentCharacter.race = race.text.toString()
+                currentCharacter?.race = race.text.toString()
 
                 val hc = findViewById<TextInputEditText>(R.id.tietHairColor)
-                currentCharacter.hairColor = hc.text.toString()
+                currentCharacter?.hairColor = hc.text.toString()
 
                 val build = findViewById<TextInputEditText>(R.id.tietBuild)
-                currentCharacter.build = build.text.toString()
+                currentCharacter?.build = build.text.toString()
 
                 val marks = findViewById<TextInputEditText>(R.id.tietMarkings)
-                currentCharacter.markings = marks.text.toString()
+                currentCharacter?.markings = marks.text.toString()
 
                 val hs = findViewById<TextInputEditText>(R.id.tietHairStyle)
-                currentCharacter.hairStyle = hs.text.toString()
+                currentCharacter?.hairStyle = hs.text.toString()
 
                 val cl = findViewById<TextInputEditText>(R.id.tietClothingStyle)
-                currentCharacter.clothingStyle = cl.text.toString()
+                currentCharacter?.clothingStyle = cl.text.toString()
             }
 
             2 -> {
                 val cgp = findViewById<ChipGroup>(R.id.cgPositiveTraits)
-                currentCharacter.positiveTraits = ArrayList()
+                currentCharacter?.positiveTraits = ArrayList()
                 for (chip in cgp.children) {
                     chip as Chip
-                    (currentCharacter.positiveTraits as ArrayList<String>).add(chip.text.toString())
+                    (currentCharacter?.positiveTraits as ArrayList<String>).add(chip.text.toString())
                 }
 
                 val cgn = findViewById<ChipGroup>(R.id.cgNegativeTraits)
-                currentCharacter.negativeTraits = ArrayList()
+                currentCharacter?.negativeTraits = ArrayList()
                 for (chip in cgn.children) {
                     chip as Chip
-                    (currentCharacter.negativeTraits as ArrayList<String>).add(chip.text.toString())
+                    (currentCharacter?.negativeTraits as ArrayList<String>).add(chip.text.toString())
                 }
 
                 val cgi = findViewById<ChipGroup>(R.id.cgInterests)
-                currentCharacter.interests = ArrayList()
+                currentCharacter?.interests = ArrayList()
                 for (chip in cgi.children) {
                     chip as Chip
-                    (currentCharacter.interests as ArrayList<String>).add(chip.text.toString())
+                    (currentCharacter?.interests as ArrayList<String>).add(chip.text.toString())
                 }
 
                 val cgf = findViewById<ChipGroup>(R.id.cgFears)
-                currentCharacter.fears = ArrayList()
+                currentCharacter?.fears = ArrayList()
                 for (chip in cgf.children) {
                     chip as Chip
-                    (currentCharacter.fears as ArrayList<String>).add(chip.text.toString())
+                    (currentCharacter?.fears as ArrayList<String>).add(chip.text.toString())
                 }
             }
 
@@ -1307,13 +1316,16 @@ class CreateCharacterActivity : AppCompatActivity() {
         // @TODO Add Check Fields method
         val mf = ManageFiles(this)
         // wuid is the World's uid
-        currentCharacter.uid = mf.generateUUID()
-        currentCharacter.wuid = intent.getStringExtra("uid").toString()
-        if (mf.saveCharacter(currentCharacter, intent.getStringExtra("uid").toString())) {
+        currentCharacter?.uid = mf.generateUUID()
+        currentCharacter?.wuid = intent.getStringExtra("uid").toString()
+        if (currentCharacter?.let { mf.saveCharacter(it, intent.getStringExtra("uid").toString()) } == true) {
             // Save Image for Character
-            if (currentCharacter.hasImg && this::uriPointer.isInitialized) {
-                mf.saveCharacterImage(currentCharacter.uid, intent.getStringExtra("uid").toString(), uriPointer,
-                    this.contentResolver)
+            if (currentCharacter?.hasImg == true && this::uriPointer.isInitialized) {
+                currentCharacter?.uid?.let {
+                    mf.saveCharacterImage(
+                        it, intent.getStringExtra("uid").toString(), uriPointer,
+                        this.contentResolver)
+                }
             }
         } else {
             Snackbar.make(findViewById(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {

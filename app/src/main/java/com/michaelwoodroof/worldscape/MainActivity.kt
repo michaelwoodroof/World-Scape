@@ -31,24 +31,13 @@ class MainActivity : AppCompatActivity() {
         
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
-        val decor = window.decorView //@TODO Implement in Status Bar Method
-
         when (sharedPreferences.getString("theme", "")) {
             "dark_mode" -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    @Suppress("DEPRECATION")
-                    decor.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                }
-
             }
 
             "light_mode" -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    @Suppress("DEPRECATION")
-                    decor.systemUiVisibility = 0
-                }
             }
 
             else -> {
@@ -91,25 +80,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         tv.text = getString(R.string.app_name)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        when (sharedPreferences.getString("theme", "")) {
-            "dark_mode" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }
-
-            "light_mode" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-
-            else -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            }
-
-        }
     }
 
     fun loadSettings(view: View) {
