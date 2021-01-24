@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.adapters.WDCharacterAdapter
+import com.michaelwoodroof.worldscape.adapters.WDPlacesAdapter
+import com.michaelwoodroof.worldscape.adapters.WDStoriesAdapter
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.Place
 import com.michaelwoodroof.worldscape.structure.Story
@@ -29,10 +31,22 @@ class WorldDetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_world_detail, container, false)
+
         // Set - Up Recent Characters for RecyclerView
         val rvRCharacters = root.findViewById<RecyclerView>(R.id.rvRecentCharacters)
         rvRCharacters.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         rvRCharacters.adapter = WDCharacterAdapter(loadRecentCharacters())
+
+        // Set - Up Recent Places for RecylcerView
+        val rvRPlaces = rvRecentPlaces
+//        rvRPlaces.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+//        rvRPlaces.adapter = WDPlacesAdapter(loadRecentPlaces())
+
+
+       // Set - Up Recent Stories for RecylcerView
+        val rvRStories = rvRecentStories
+//        rvRStories.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+//        rvRStories.adapter = WDStoriesAdapter(loadRecentStories())
 
         val btnSAC : ImageButton = root.findViewById(R.id.btnShowAllCharacters)
         val btnSAP : ImageButton = root.findViewById(R.id.btnShowAllPlaces)
@@ -56,15 +70,6 @@ class WorldDetailFragment : Fragment() {
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
-
-//        val rvRPlaces = rvRecentCharacters
-//        rvRPlaces.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        rvRPlaces.adapter = WDPlacesAdapter(loadRecentPlaces())
-
-
-        //        val rvRStories = rvRecentStories
-//        rvRStories.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        rvRStories.adapter = WDStoriesAdapter(loadRecentStories())
 
         return root
     }

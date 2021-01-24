@@ -25,6 +25,7 @@
         android:fontFamily="sans-serif-condensed"
         android:minHeight="56dp"
         android:onClick="loadCreateWorld"
+        android:src="@drawable/default_gradient_oval"
         android:tag="L"
         android:text="@string/add_world"
         android:textColor="@color/add_button_text_color"

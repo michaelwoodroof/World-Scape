@@ -3,11 +3,13 @@ package com.michaelwoodroof.worldscape
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
@@ -15,6 +17,7 @@ import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.structure.World
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,13 +31,24 @@ class MainActivity : AppCompatActivity() {
         
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
+        val decor = window.decorView //@TODO Implement in Status Bar Method
+
         when (sharedPreferences.getString("theme", "")) {
             "dark_mode" -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    @Suppress("DEPRECATION")
+                    decor.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                }
+
             }
 
             "light_mode" -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    @Suppress("DEPRECATION")
+                    decor.systemUiVisibility = 0
+                }
             }
 
             else -> {
@@ -44,6 +58,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         setContentView(R.layout.activity_main)
+
+        SetStatusBar.create(this.window, this)
 
         // Add Fragment to Frame Layout
         val worldFragment = WorldFragment()
@@ -58,10 +74,20 @@ class MainActivity : AppCompatActivity() {
         btnMenu.visibility = View.GONE
 
         val btnSettings = incToolbarM.findViewById<ImageButton>(btnSettings.id)
-        btnSettings.setOnTouchListener(View.OnTouchListener() { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
-                ResourcesCompat.getDrawable(resources, R.drawable.settings_expand, null) as AnimatedVectorDrawable,
-                ResourcesCompat.getDrawable(resources, R.drawable.settings_shrink, null) as AnimatedVectorDrawable)
+        btnSettings.setOnTouchListener(View.OnTouchListener { view, event ->
+            return@OnTouchListener AssignTouchEvent.assignTouch(
+                view as ImageButton, event,
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.settings_expand,
+                    null
+                ) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.settings_shrink,
+                    null
+                ) as AnimatedVectorDrawable
+            )
         })
 
         tv.text = getString(R.string.app_name)
@@ -86,17 +112,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun loadSettings(view : View) {
+    fun loadSettings(view: View) {
         val i = Intent(this, SettingsActivity::class.java)
         startActivity(i)
     }
 
-    fun loadCreateWorld(view : View) {
+    fun loadCreateWorld(view: View) {
         val i = Intent(this, CreateWorldActivity::class.java)
         startActivity(i)
     }
 
-    fun deleteWorld(view : View) {
+    fun deleteWorld(view: View) {
         MaterialAlertDialogBuilder(this, R.style.DialogTheme)
             .setTitle(resources.getString(R.string.delete_world_dialog_title))
             .setMessage(resources.getString(R.string.delete_world_dialog_message))
@@ -115,14 +141,16 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     // Try Again Once
                     if (!mf.deleteWorld(view.tag as String)) {
-                        Toast.makeText(baseContext, resources.getString(R.string.delete_fail),
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            baseContext, resources.getString(R.string.delete_fail),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }.show()
     }
 
-    fun loadWorld(view : View) {
+    fun loadWorld(view: View) {
         val intent = Intent(this, WorldDetailActivity::class.java)
         val tag = view.tag as World
         intent.putExtra("uid", tag.uid)

@@ -7,6 +7,8 @@
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
         <item name="chipStyle">@style/ChipStyle</item>
         <item name="NegativeChipStyle">@style/NegativeChipStyle</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">

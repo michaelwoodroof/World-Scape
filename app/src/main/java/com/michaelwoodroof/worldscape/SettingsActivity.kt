@@ -13,6 +13,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
+import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 
@@ -39,6 +40,9 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         setContentView(R.layout.activity_settings)
+
+        SetStatusBar.create(this.window, this)
+
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.settings, SettingsFragment())
@@ -55,7 +59,7 @@ class SettingsActivity : AppCompatActivity() {
         val btnBack = incToolbarS.findViewById<ImageButton>(btnBack.id)
         btnBack.visibility = View.VISIBLE
 
-        btnBack.setOnTouchListener(View.OnTouchListener() { view, event ->
+        btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable

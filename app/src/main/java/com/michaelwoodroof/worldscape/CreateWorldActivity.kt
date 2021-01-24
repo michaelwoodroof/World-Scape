@@ -22,6 +22,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.activity_create_world.clMainCW
@@ -51,6 +52,8 @@ class CreateWorldActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_world)
 
+        SetStatusBar.create(this.window, this)
+
         // Set-Up Toolbar
         val tv = incToolbarCW.findViewById<TextView>(tvTitle.id)
         tv.text = getString(R.string.create_world_title)
@@ -61,7 +64,7 @@ class CreateWorldActivity : AppCompatActivity() {
         val btnBack = incToolbarCW.findViewById<ImageButton>(btnBack.id)
         btnBack.visibility = View.VISIBLE
 
-        btnBack.setOnTouchListener(View.OnTouchListener() { view, event ->
+        btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
@@ -127,9 +130,9 @@ class CreateWorldActivity : AppCompatActivity() {
 
     private fun TextInputEditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
         this.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(e: Editable?) {
                 afterTextChanged.invoke(e.toString())
@@ -140,9 +143,9 @@ class CreateWorldActivity : AppCompatActivity() {
 
     private fun AutoCompleteTextView.afterTextChanged(afterTextChanged: (String) -> Unit) {
         this.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(e: Editable?) {
                 afterTextChanged.invoke(e.toString())

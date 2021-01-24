@@ -24,7 +24,7 @@ class CharacterAdapter (private val givenValues: List<MyCharacter>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = givenValues[position]
         holder.mTitle.text = item.name
-        holder.mDesc.text = item.yearOfBirth
+        holder.mDesc.text = item.biography
         holder.mCard.tag = item
 
         if (item.hasImg) {

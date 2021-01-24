@@ -34,6 +34,7 @@ import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.StatItem
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
 import com.michaelwoodroof.worldscape.ui.StatDialogFragment
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
@@ -66,6 +67,8 @@ class CreateCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_character)
 
+        SetStatusBar.create(this.window, this)
+
         // Set-Up Toolbar
         val tv = incToolbarCC.findViewById<TextView>(tvTitle.id)
         tv.text = getString(R.string.create_character_title)
@@ -76,7 +79,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         val btnBack = incToolbarCC.findViewById<ImageButton>(btnBack.id)
         btnBack.visibility = View.VISIBLE
 
-        btnBack.setOnTouchListener(View.OnTouchListener() { view, event ->
+        btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener AssignTouchEvent.assignTouch(
                 view as ImageButton, event,
                 ResourcesCompat.getDrawable(

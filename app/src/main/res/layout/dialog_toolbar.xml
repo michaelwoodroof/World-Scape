@@ -4,7 +4,9 @@
     android:id="@+id/clDialogToolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:elevation="8dp"
+    android:outlineProvider="bounds">
 
     <TextView
         android:id="@+id/tvBacker"

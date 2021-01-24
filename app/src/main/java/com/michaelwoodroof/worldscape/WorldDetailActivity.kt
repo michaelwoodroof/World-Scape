@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
@@ -14,6 +15,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
+import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.ui.CharacterFragment
 import com.michaelwoodroof.worldscape.ui.WorldDetailFragment
 import kotlinx.android.synthetic.main.activity_world_detail.*
@@ -25,6 +27,8 @@ class WorldDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_world_detail)
+
+        SetStatusBar.create(this.window, this.baseContext)
 
         val bundle : Bundle? = intent.extras
 
@@ -50,7 +54,7 @@ class WorldDetailActivity : AppCompatActivity() {
         }
 
         val btnSettings = incToolbarWD.findViewById<ImageButton>(btnSettings.id)
-        btnSettings.setOnTouchListener(View.OnTouchListener() { view, event ->
+        btnSettings.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.settings_expand, null) as AnimatedVectorDrawable,
             ResourcesCompat.getDrawable(resources, R.drawable.settings_shrink, null) as AnimatedVectorDrawable)
@@ -119,8 +123,7 @@ class WorldDetailActivity : AppCompatActivity() {
     fun loadCharacter(view : View) {
         val data = view.tag as MyCharacter
         val intent = Intent(this, CharacterDetailActivity::class.java)
-        intent.putExtra("wuid", data.wuid)
-        intent.putExtra("uid", data.uid)
+        intent.putExtra("character", data as Parcelable)
         this.startActivity(intent)
     }
 

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
+import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
 class CreateCharacterFragmentS1 : Fragment() {

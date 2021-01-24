@@ -40,7 +40,7 @@ class StatDialogFragment : DialogFragment() {
             (activity as CreateCharacterActivity).isDialogLoaded = false
         }
 
-        close.setOnTouchListener(View.OnTouchListener() { view, event ->
+        close.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener AssignTouchEvent.assignTouch(
                 view as ImageButton, event,
                 ResourcesCompat.getDrawable(
