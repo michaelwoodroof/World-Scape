@@ -33,6 +33,8 @@ import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.StatItem
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
+import com.michaelwoodroof.worldscape.helper.Extensions.afterTextChanged
+import com.michaelwoodroof.worldscape.helper.Extensions.toEditable
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.helper.SetGradientButton
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
@@ -163,10 +165,6 @@ class CreateCharacterActivity : AppCompatActivity() {
             checkField(field)
         }
         h.postDelayed(r, 2000)
-    }
-
-    private fun String.toEditable() : Editable {
-        return Editable.Factory.getInstance().newEditable(this)
     }
 
     fun fillFields(stageNumber: Int) {
@@ -1054,19 +1052,6 @@ class CreateCharacterActivity : AppCompatActivity() {
 
         }
 
-    }
-
-    private fun TextInputEditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-        this.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(e: Editable?) {
-                afterTextChanged.invoke(e.toString())
-            }
-
-        })
     }
 
     fun setUpTextChangers(stageNumber: Int) {

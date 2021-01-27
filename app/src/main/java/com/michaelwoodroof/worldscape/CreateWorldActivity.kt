@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.Editable
-import android.text.TextWatcher
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.view.View
@@ -21,6 +19,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
+import com.michaelwoodroof.worldscape.helper.Extensions.afterTextChanged
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.structure.World
@@ -126,32 +125,6 @@ class CreateWorldActivity : AppCompatActivity() {
             }
         }
 
-    }
-
-    private fun TextInputEditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-        this.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(e: Editable?) {
-                afterTextChanged.invoke(e.toString())
-            }
-
-        })
-    }
-
-    private fun AutoCompleteTextView.afterTextChanged(afterTextChanged: (String) -> Unit) {
-        this.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(e: Editable?) {
-                afterTextChanged.invoke(e.toString())
-            }
-
-        })
     }
 
     private fun setUpTextChangers() {
