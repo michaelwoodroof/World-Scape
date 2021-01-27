@@ -19,7 +19,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.structure.StatItem
-import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
+import com.michaelwoodroof.worldscape.helper.assignTouch
 import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
 class StatDialogFragment : DialogFragment() {
@@ -41,7 +41,7 @@ class StatDialogFragment : DialogFragment() {
         }
 
         close.setOnTouchListener(View.OnTouchListener { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(
+            return@OnTouchListener assignTouch(
                 view as ImageButton, event,
                 ResourcesCompat.getDrawable(
                     resources,

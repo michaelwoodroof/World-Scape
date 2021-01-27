@@ -9,9 +9,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
+import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_character_detail.*
@@ -32,7 +32,7 @@ class CharacterDetailActivity : AppCompatActivity() {
 
         val btnSettings = incToolbarCharacterDetail.findViewById<ImageButton>(btnSettings.id)
         btnSettings.setOnTouchListener(View.OnTouchListener { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+            return@OnTouchListener assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.settings_expand, null) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(resources, R.drawable.settings_shrink, null) as AnimatedVectorDrawable
             )
@@ -41,7 +41,7 @@ class CharacterDetailActivity : AppCompatActivity() {
         val btnBack = incToolbarCharacterDetail.findViewById<ImageButton>(btnBack.id)
         btnBack.visibility = View.VISIBLE
         btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+            return@OnTouchListener assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
             )

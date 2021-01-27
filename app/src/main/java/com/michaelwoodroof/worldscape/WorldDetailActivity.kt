@@ -14,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import com.michaelwoodroof.worldscape.structure.MyCharacter
-import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
+import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.ui.CharacterFragment
 import com.michaelwoodroof.worldscape.ui.WorldDetailFragment
 import kotlinx.android.synthetic.main.activity_world_detail.*
@@ -55,7 +55,7 @@ class WorldDetailActivity : AppCompatActivity() {
 
         val btnSettings = incToolbarWD.findViewById<ImageButton>(btnSettings.id)
         btnSettings.setOnTouchListener(View.OnTouchListener { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+            return@OnTouchListener assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.settings_expand, null) as AnimatedVectorDrawable,
             ResourcesCompat.getDrawable(resources, R.drawable.settings_shrink, null) as AnimatedVectorDrawable)
         })

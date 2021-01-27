@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
+import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.structure.World
 import com.michaelwoodroof.worldscape.ui.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnSettings = incToolbarM.findViewById<ImageButton>(btnSettings.id)
         btnSettings.setOnTouchListener(View.OnTouchListener { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(
+            return@OnTouchListener assignTouch(
                 view as ImageButton, event,
                 ResourcesCompat.getDrawable(
                     resources,

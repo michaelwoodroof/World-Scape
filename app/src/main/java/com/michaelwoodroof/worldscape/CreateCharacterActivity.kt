@@ -8,9 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.Editable
 import android.text.SpannableStringBuilder
-import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
@@ -30,14 +28,9 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.michaelwoodroof.worldscape.helper.*
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.StatItem
-import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
-import com.michaelwoodroof.worldscape.helper.Extensions.afterTextChanged
-import com.michaelwoodroof.worldscape.helper.Extensions.toEditable
-import com.michaelwoodroof.worldscape.helper.ManageFiles
-import com.michaelwoodroof.worldscape.helper.SetGradientButton
-import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
 import com.michaelwoodroof.worldscape.ui.StatDialogFragment
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
@@ -81,7 +74,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         btnBack.visibility = View.VISIBLE
 
         btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(
+            return@OnTouchListener assignTouch(
                 view as ImageButton, event,
                 ResourcesCompat.getDrawable(
                     resources,

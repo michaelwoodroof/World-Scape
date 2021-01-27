@@ -18,10 +18,10 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
-import com.michaelwoodroof.worldscape.helper.Extensions.afterTextChanged
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
+import com.michaelwoodroof.worldscape.helper.afterTextChanged
+import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.activity_create_world.clMainCW
@@ -64,7 +64,7 @@ class CreateWorldActivity : AppCompatActivity() {
         btnBack.visibility = View.VISIBLE
 
         btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
-            return@OnTouchListener AssignTouchEvent.assignTouch(view as ImageButton, event,
+            return@OnTouchListener assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
             )

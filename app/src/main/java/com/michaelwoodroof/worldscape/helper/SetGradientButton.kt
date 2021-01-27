@@ -8,7 +8,6 @@ import android.widget.Button
 import androidx.core.content.ContextCompat
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.helper.Extensions.toPixels
 
 object SetGradientButton {
 
