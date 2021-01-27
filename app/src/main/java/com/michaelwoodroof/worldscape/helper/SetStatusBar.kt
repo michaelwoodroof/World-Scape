@@ -28,7 +28,7 @@ object SetStatusBar {
         when (sharedPreferences.getString("theme", "")) {
             "dark_mode" -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    @Suppress("DEPRECATION")
+                    @Suppress("DEPRECATION") //@TODO Review
                     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
                 }
             }

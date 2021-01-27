@@ -34,6 +34,7 @@ import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.StatItem
 import com.michaelwoodroof.worldscape.helper.AssignTouchEvent
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.helper.SetGradientButton
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
 import com.michaelwoodroof.worldscape.ui.StatDialogFragment
@@ -106,6 +107,10 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
             }
         }
+
+        // Set up Gradient Button
+        SetGradientButton.assign(fabNext, this)
+        SetGradientButton.assign(fabCreateCC, this)
 
         // Set up Fragment
         val createCharacterFragment = CreateCharacterFragmentS1()

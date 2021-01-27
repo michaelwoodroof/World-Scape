@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F8BBD0</color>
-    <color name="colorPrimaryDark">#c48b9f</color>
-    <color name="colorAccent">#ffeeff</color>
+    <color name="colorPrimary">#C3EDFF</color>
+    <color name="colorPrimaryDark">#5593CF</color>
+    <color name="colorAccent">#C2FFCC</color>
     <color name="baseTextColor">#E1E1E1</color>
     <color name="navigation">#222222</color>
 
@@ -33,7 +33,7 @@
     <color name="rpg_text">@color/background</color>
 
     <color name="background">#333333</color>
-    <color name="add_button_bg">@color/colorPrimary</color>
+    <color name="add_button_bg">@color/baseTextColor</color>
     <color name="add_button_text_color">#333333</color>
 
     <color name="show_all_background">#66FFEEFF</color>

@@ -13,6 +13,7 @@ import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.adapters.CharacterAdapter
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.helper.SetGradientButton
 import kotlinx.android.synthetic.main.fragment_character.*
 
 class CharacterFragment : Fragment() {
@@ -38,6 +39,8 @@ class CharacterFragment : Fragment() {
         }
 
         rvCharacter.addOnScrollListener(sl)
+
+        SetGradientButton.assign(fab, root.context)
 
         return root
     }

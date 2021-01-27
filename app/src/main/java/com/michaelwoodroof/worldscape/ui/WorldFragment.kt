@@ -11,6 +11,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.adapters.WorldAdapter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.helper.SetGradientButton
 import com.michaelwoodroof.worldscape.structure.World
 
 class WorldFragment : Fragment() {
@@ -28,6 +29,7 @@ class WorldFragment : Fragment() {
         fabe = fab
         rvWorlds.layoutManager = LinearLayoutManager(activity)
         val dataset = loadWorlds()
+
         // Ensures in Alphabetical Order @TODO Allow user to Filter and Search for Worlds
         //dataset.sortBy { it.title }
         rvWorlds.adapter = WorldAdapter(dataset)
@@ -43,6 +45,8 @@ class WorldFragment : Fragment() {
                 }
             }
         }
+
+        SetGradientButton.assign(fab, this.requireContext())
 
         rvWorlds.addOnScrollListener(sl)
 
