@@ -11,6 +11,7 @@ import android.os.Handler
 import android.os.Looper
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
@@ -18,10 +19,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.michaelwoodroof.worldscape.helper.ManageFiles
-import com.michaelwoodroof.worldscape.helper.SetStatusBar
-import com.michaelwoodroof.worldscape.helper.afterTextChanged
-import com.michaelwoodroof.worldscape.helper.assignTouch
+import com.michaelwoodroof.worldscape.helper.*
 import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.activity_create_world.clMainCW
@@ -52,6 +50,11 @@ class CreateWorldActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_world)
 
         SetStatusBar.create(this.window, this)
+
+        val displayMetrics: DisplayMetrics = this.resources.displayMetrics
+        val dpWidth = displayMetrics.widthPixels / displayMetrics.density.toInt()
+
+        SetGradientButton.assign(btnCreate, this, dpWidth)
 
         // Set-Up Toolbar
         val tv = incToolbarCW.findViewById<TextView>(tvTitle.id)

@@ -29,7 +29,7 @@
     <color name="personality_ripple_pos">#fff</color>
     <color name="personality_ripple_neg">#fff</color>
 
-    <color name="rpg_background">#F8BBD0</color>
+    <color name="rpg_background">@color/colorPrimary</color>
     <color name="rpg_text">@color/background</color>
 
     <color name="background">#333333</color>

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.SpannableStringBuilder
+import android.util.DisplayMetrics
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
@@ -105,7 +106,10 @@ class CreateCharacterActivity : AppCompatActivity() {
 
         // Set up Gradient Button
         SetGradientButton.assign(fabNext, this)
-        SetGradientButton.assign(fabCreateCC, this)
+
+        val displayMetrics: DisplayMetrics = this.resources.displayMetrics
+        val dpWidth = displayMetrics.widthPixels / displayMetrics.density.toInt()
+        SetGradientButton.assign(fabCreateCC, this, dpWidth)
 
         // Set up Fragment
         val createCharacterFragment = CreateCharacterFragmentS1()

@@ -14,11 +14,17 @@ object SetGradientButton {
     private const val ICON_SIZE : Int = 24
     private const val OFFSET : Int = 16
 
-    fun assign(fab : ExtendedFloatingActionButton, context : Context) {
+    fun assign(fab : ExtendedFloatingActionButton, context : Context, givenWidth : Int = -1) {
         val paint = Paint()
-        var width : Float = paint.measureText(fab.text.toString())
-        width += ICON_SIZE.toPixels()
-        width += OFFSET.toPixels()
+        var width: Float
+
+        if (givenWidth == -1) {
+            width = paint.measureText(fab.text.toString())
+            width += ICON_SIZE.toPixels()
+            width += OFFSET.toPixels()
+        } else {
+            width = (givenWidth + ICON_SIZE.toPixels() + OFFSET.toPixels()).toFloat()
+        }
 
         // Set Gradient Text on FAB
         fab.paint.shader = LinearGradient(0f, 0f, width, 0f,
@@ -27,9 +33,17 @@ object SetGradientButton {
             Shader.TileMode.CLAMP)
     }
 
-    fun assign(btn : Button, context : Context) {
+    fun assign(btn : Button, context : Context, givenWidth : Int = -1) {
         val paint = Paint()
-        val width : Float = paint.measureText(btn.text.toString())
+        var width: Float
+
+        if (givenWidth == -1) {
+            width = paint.measureText(btn.text.toString())
+            width += ICON_SIZE.toPixels()
+            width += OFFSET.toPixels()
+        } else {
+            width = (givenWidth + ICON_SIZE.toPixels() + OFFSET.toPixels()).toFloat()
+        }
 
         // Set Gradient Text on FAB
         btn.paint.shader = LinearGradient(0f, 0f, width, 0f,
