@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
+import kotlinx.android.synthetic.main.fragment_create_character_s2.*
 
 class CreateCharacterFragmentS2 : Fragment() {
 
@@ -40,10 +41,10 @@ class CreateCharacterFragmentS2 : Fragment() {
     }
 
     override fun onResume() {
+        super.onResume()
         (activity as CreateCharacterActivity).h.removeCallbacksAndMessages(null)
         (activity as CreateCharacterActivity).fillFields(1)
         (activity as CreateCharacterActivity).resetFields(1)
-        super.onResume()
     }
 
 }

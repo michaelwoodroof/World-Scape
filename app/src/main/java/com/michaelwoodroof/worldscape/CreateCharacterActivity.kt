@@ -42,11 +42,11 @@ import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.bottom_sheet_new_chip.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
+import kotlinx.android.synthetic.main.fragment_create_character_s2.view.*
 import kotlinx.android.synthetic.main.fragment_create_character_s3.*
 import java.lang.Exception
 
 // @TODO Fix Animation on Link Places
-// @TODO Fix Clothing Style Triggering Error --> Investigate Message in Log saying incorrect cast
 
 class CreateCharacterActivity : AppCompatActivity() {
 
@@ -182,7 +182,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             1 -> {
-                val h = findViewById<TextInputEditText>(R.id.tietHeight)
+                val h: TextInputEditText = findViewById(R.id.tietHeight)
                 h.text = currentCharacter?.height?.toEditable()
 
                 val w = findViewById<TextInputEditText>(R.id.tietWeight)
@@ -206,7 +206,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 val hs = findViewById<TextInputEditText>(R.id.tietHairStyle)
                 hs.text = currentCharacter?.hairStyle?.toEditable()
 
-                val cl = findViewById<TextInputEditText>(R.id.tietClothingStyle)
+                val cl: TextInputEditText = findViewById(R.id.tietClothingStyle)
                 cl.text = currentCharacter?.clothingStyle?.toEditable()
             }
 
@@ -842,32 +842,35 @@ class CreateCharacterActivity : AppCompatActivity() {
                 }
 
                 1 -> {
-                    val h = findViewById<TextInputEditText>(R.id.tilHeight)
+                    val h = findViewById<TextInputLayout>(R.id.tilHeight)
                     h.error = null
 
-                    val w = findViewById<TextInputEditText>(R.id.tilWeight)
+                    val w = findViewById<TextInputLayout>(R.id.tilWeight)
                     w.error = null
 
-                    val eye = findViewById<TextInputEditText>(R.id.tilEyeColor)
+                    val eye = findViewById<TextInputLayout>(R.id.tilEyeColor)
                     eye.error = null
 
-                    val race = findViewById<TextInputEditText>(R.id.tilRace)
+                    val race = findViewById<TextInputLayout>(R.id.tilRace)
                     race.error = null
 
-                    val hc = findViewById<TextInputEditText>(R.id.tilHairColor)
+                    val hc = findViewById<TextInputLayout>(R.id.tilHairColor)
                     hc.error = null
 
-                    val build = findViewById<TextInputEditText>(R.id.tilBuild)
+                    val build = findViewById<TextInputLayout>(R.id.tilBuild)
                     build.error = null
 
-                    val marks = findViewById<TextInputEditText>(R.id.tilMarkings)
+                    val marks = findViewById<TextInputLayout>(R.id.tilMarkings)
                     marks.error = null
 
-                    val hs = findViewById<TextInputEditText>(R.id.tilHairStyle)
+                    val hs = findViewById<TextInputLayout>(R.id.tilHairStyle)
                     hs.error = null
 
-                    val cl = findViewById<TextInputEditText>(R.id.tilClothingStyle)
+                    val cl = findViewById<TextInputLayout>(R.id.tilClothingStyle)
                     cl.error = null
+
+                    val op9 = findViewById<TextView>(R.id.tvOptional2CC9)
+                    op9.visibility = View.VISIBLE
                 }
 
                 2 -> {
@@ -937,7 +940,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     if (!focus) {
                         checkField(106)
                     } else {
-                        checkField(106)
+                        delayError(106)
                     }
                 }
 
@@ -1197,7 +1200,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
                 val tietClothingStyle = findViewById<TextInputEditText>(R.id.tietClothingStyle)
                 tietClothingStyle.afterTextChanged {
-                    if (it.isEmpty()) {
+                    if (it.isEmpty() and tietClothingStyle.hasFocus()) {
                         delayError(208)
                     } else {
                         checkField(208)
