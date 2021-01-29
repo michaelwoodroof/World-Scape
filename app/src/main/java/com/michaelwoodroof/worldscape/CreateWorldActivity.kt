@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +13,7 @@ import android.transition.TransitionManager
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
@@ -22,16 +22,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.michaelwoodroof.worldscape.helper.*
 import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_create_world.*
-import kotlinx.android.synthetic.main.activity_create_world.clMainCW
-import kotlinx.android.synthetic.main.activity_create_world.ddGenre
-import kotlinx.android.synthetic.main.activity_create_world.fabPickImage
-import kotlinx.android.synthetic.main.activity_create_world.imgPreview
-import kotlinx.android.synthetic.main.activity_create_world.incToolbarCW
-import kotlinx.android.synthetic.main.activity_create_world.tietDesc
-import kotlinx.android.synthetic.main.activity_create_world.tietWorld
-import kotlinx.android.synthetic.main.activity_create_world.tilDesc
-import kotlinx.android.synthetic.main.activity_create_world.tilWorld
-import kotlinx.android.synthetic.main.activity_create_world.txtiGenre
 import kotlinx.android.synthetic.main.default_toolbar.*
 
 class CreateWorldActivity : AppCompatActivity() {

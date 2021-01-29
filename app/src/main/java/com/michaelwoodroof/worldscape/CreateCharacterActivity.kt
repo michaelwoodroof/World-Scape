@@ -44,7 +44,6 @@ import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 import kotlinx.android.synthetic.main.fragment_create_character_s2.view.*
 import kotlinx.android.synthetic.main.fragment_create_character_s3.*
-import java.lang.Exception
 
 // @TODO Fix Animation on Link Places
 

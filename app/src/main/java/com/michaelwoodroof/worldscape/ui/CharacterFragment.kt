@@ -11,9 +11,9 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.adapters.CharacterAdapter
-import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.helper.SetGradientButton
+import com.michaelwoodroof.worldscape.structure.MyCharacter
 import kotlinx.android.synthetic.main.fragment_character.*
 
 class CharacterFragment : Fragment() {

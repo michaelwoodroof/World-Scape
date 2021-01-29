@@ -18,8 +18,8 @@ import androidx.fragment.app.DialogFragment
 import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.structure.StatItem
 import com.michaelwoodroof.worldscape.helper.assignTouch
+import com.michaelwoodroof.worldscape.structure.StatItem
 import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
 class StatDialogFragment : DialogFragment() {

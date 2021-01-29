@@ -13,9 +13,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
-import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.helper.assignTouch
+import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.ui.CharacterFragment
 import com.michaelwoodroof.worldscape.ui.WorldDetailFragment
 import kotlinx.android.synthetic.main.activity_world_detail.*

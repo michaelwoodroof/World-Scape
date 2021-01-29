@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.structure.MyCharacter
 import kotlinx.android.synthetic.main.character_layout.view.*
 
 class CharacterAdapter (private val givenValues: List<MyCharacter>)

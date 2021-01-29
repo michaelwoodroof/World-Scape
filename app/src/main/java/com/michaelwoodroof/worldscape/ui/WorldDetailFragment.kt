@@ -11,17 +11,14 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.WorldDetailActivity
 import com.michaelwoodroof.worldscape.adapters.WDCharacterAdapter
-import com.michaelwoodroof.worldscape.adapters.WDPlacesAdapter
-import com.michaelwoodroof.worldscape.adapters.WDStoriesAdapter
+import com.michaelwoodroof.worldscape.helper.ManageFiles
+import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.Place
 import com.michaelwoodroof.worldscape.structure.Story
-import com.michaelwoodroof.worldscape.helper.ManageFiles
-import com.michaelwoodroof.worldscape.helper.assignTouch
 import kotlinx.android.synthetic.main.fragment_world_detail.*
 
 class WorldDetailFragment : Fragment() {

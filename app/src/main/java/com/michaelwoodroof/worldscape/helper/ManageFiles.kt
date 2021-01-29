@@ -12,7 +12,6 @@ import android.util.Log
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.World
 import java.io.*
-import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
