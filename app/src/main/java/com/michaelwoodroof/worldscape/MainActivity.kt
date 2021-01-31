@@ -17,7 +17,7 @@ import com.michaelwoodroof.worldscape.helper.ManageFiles
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.structure.World
-import com.michaelwoodroof.worldscape.ui.WorldFragment
+import com.michaelwoodroof.worldscape.ui.fragments.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 

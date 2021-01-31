@@ -13,6 +13,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -32,8 +33,8 @@ import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.helper.*
 import com.michaelwoodroof.worldscape.structure.MyCharacter
 import com.michaelwoodroof.worldscape.structure.StatItem
-import com.michaelwoodroof.worldscape.ui.AddChipBottomDialogFragment
-import com.michaelwoodroof.worldscape.ui.StatDialogFragment
+import com.michaelwoodroof.worldscape.ui.fragments.AddChipBottomDialogFragment
+import com.michaelwoodroof.worldscape.ui.fragments.StatDialogFragment
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS2
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS3
@@ -44,15 +45,16 @@ import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 import kotlinx.android.synthetic.main.fragment_create_character_s2.view.*
 import kotlinx.android.synthetic.main.fragment_create_character_s3.*
+import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
 // @TODO Fix Animation on Link Places
 
 class CreateCharacterActivity : AppCompatActivity() {
 
-    private var currentCharacter : MyCharacter? = null
+    var currentCharacter : MyCharacter? = null
     var isDialogLoaded = false
     lateinit var uriPointer : Uri
-    lateinit var bottomSheetFragment : AddChipBottomDialogFragment
+    private lateinit var bottomSheetFragment : AddChipBottomDialogFragment
     var r : Runnable = Runnable {}
     var h : Handler = Handler(Looper.getMainLooper())
 
@@ -104,11 +106,11 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
 
         // Set up Gradient Button
-        SetGradientButton.assign(fabNext, this)
+        SetGradient.assign(fabNext, this)
 
         val displayMetrics: DisplayMetrics = this.resources.displayMetrics
         val dpWidth = displayMetrics.widthPixels / displayMetrics.density.toInt()
-        SetGradientButton.assign(fabCreateCC, this, dpWidth)
+        SetGradient.assign(fabCreateCC, this, dpWidth)
 
         // Set up Fragment
         val createCharacterFragment = CreateCharacterFragmentS1()
@@ -1302,7 +1304,6 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     fun createCharacter(view: View) {
-        // @TODO Add Check Fields method
         val mf = ManageFiles(this)
         // wuid is the World's uid
         currentCharacter?.uid = mf.generateUUID()
@@ -1324,7 +1325,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
         val fragmentManager = supportFragmentManager
 
-        for (i in 0..fragmentManager.backStackEntryCount ) {
+        for (i in 0..fragmentManager.backStackEntryCount) {
             fragmentManager.popBackStack()
         }
 
@@ -1353,10 +1354,6 @@ class CreateCharacterActivity : AppCompatActivity() {
 
         val fab = findViewById<ExtendedFloatingActionButton>(R.id.fabNext)
         fab.visibility = View.GONE
-    }
-
-    fun saveStats(statData : StatItem) {
-        // @TODO Implement
     }
 
 }

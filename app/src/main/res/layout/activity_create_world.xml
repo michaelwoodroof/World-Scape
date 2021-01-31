@@ -191,7 +191,7 @@
             android:text="@string/choose_an_image"
             android:textColor="@color/toolbar"
             android:visibility="visible"
-            app:backgroundTint="@color/colorPrimary"
+            app:backgroundTint="@color/gradient_start"
             app:icon="@drawable/ic_baseline_image_24"
             app:iconTint="@color/toolbar"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/clStatFE"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/svStatFE"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -9,6 +10,320 @@
         android:id="@+id/clInnerFE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFE50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/tvFEHitpoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/hit_points"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFEHitpoints"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/glFE50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFEHitpoints">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFEHitpoints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFEMovement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/movement"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toTopOf="@+id/tvFEHitpoints" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFEMovement"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tvFEHitpoints">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFEMovement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFEStrength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/strength"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilFEHitpoints" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFEStrength"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/glFE50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFEStrength">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFEStrength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFEMagic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/magic"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tilFEHitpoints" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFEMagic"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tvFEMagic">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFEMagic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFEDexterity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/dexterity"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/tvFEStrength"
+            app:layout_constraintTop_toBottomOf="@+id/tilFEStrength" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFEDexerity"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/glFE50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFEDexterity">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFEDexerity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFESpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/speed"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tilFEStrength" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFESpeed"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tvFESpeed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFESpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFELuck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/luck"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/tvFEStrength"
+            app:layout_constraintTop_toBottomOf="@+id/tilFEDexerity" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFELuck"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/glFE50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFELuck">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFELuck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFEDefense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/defense"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tilFESpeed" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFEDefense"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tvFEDefense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFEDefense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFEResistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/resistance"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/tvFEStrength"
+            app:layout_constraintTop_toBottomOf="@+id/tilFELuck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFEResistance"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/glFE50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFEResistance">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFEResistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvFECharm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/charm"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tilFEDefense" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFECharm"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/glFE50"
+            app:layout_constraintTop_toBottomOf="@+id/tvFECharm">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietFECharm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

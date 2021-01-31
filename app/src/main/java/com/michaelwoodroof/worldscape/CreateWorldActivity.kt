@@ -44,7 +44,7 @@ class CreateWorldActivity : AppCompatActivity() {
         val displayMetrics: DisplayMetrics = this.resources.displayMetrics
         val dpWidth = displayMetrics.widthPixels / displayMetrics.density.toInt()
 
-        SetGradientButton.assign(btnCreate, this, dpWidth)
+        SetGradient.assign(btnCreate, this, dpWidth)
 
         // Set-Up Toolbar
         val tv = incToolbarCW.findViewById<TextView>(tvTitle.id)

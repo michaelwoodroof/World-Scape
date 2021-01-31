@@ -16,8 +16,8 @@ import androidx.core.view.GravityCompat
 import com.michaelwoodroof.worldscape.helper.SetStatusBar
 import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.structure.MyCharacter
-import com.michaelwoodroof.worldscape.ui.CharacterFragment
-import com.michaelwoodroof.worldscape.ui.WorldDetailFragment
+import com.michaelwoodroof.worldscape.ui.fragments.CharacterFragment
+import com.michaelwoodroof.worldscape.ui.fragments.WorldDetailFragment
 import kotlinx.android.synthetic.main.activity_world_detail.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 

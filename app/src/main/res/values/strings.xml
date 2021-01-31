@@ -29,7 +29,6 @@
     <!-- Create World Strings -->
     <string name="create_world_title">Create a World</string>
     <string name="create_world_create">Create World</string>
-    <string name="create_world_button">Pick Image</string>
     <string name="name_of_world">Name of World</string>
     <string name="desc_of_world">Description of World</string>
     <string name="choose_an_image">Choose an Image</string>
@@ -53,7 +52,6 @@
     <string name="birth_title">Year of Birth</string>
     <string name="birth_loc">Place of Birth</string>
     <string name="current_loc">Current Location / Region</string>
-    <string name="pick_image_cc">Pick Image</string>
     <string name="biography_cc">Biography / Description</string>
     <string name="birthdate">Birthday</string>
     <string name="race">Race</string>
@@ -184,6 +182,21 @@
 
     <!-- Character Layout Strings -->
     <string name="add_character">Add Character</string>
+
+    <!-- Stat Sheet String -->
+    <!-- Shared Strings -->
+
+    <!-- FE Strings -->
+    <string name="hit_points">Hit Points (HP)</string>
+    <string name="movement">Movement (MV)</string>
+    <string name="strength">Strength (STR)</string>
+    <string name="magic">Magic (MAG)</string>
+    <string name="dexterity">Dexterity (DEX)</string>
+    <string name="speed">Speed (SPD)</string>
+    <string name="luck">Luck (LCK)</string>
+    <string name="defense">Defense (DEF)</string>
+    <string name="resistance">Resistance (RES)</string>
+    <string name="charm">Charm (CHA)</string>
 
     <!-- Content Descriptions -->
     <string name="cd_settings">Settings Button</string>

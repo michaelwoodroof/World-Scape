@@ -177,7 +177,7 @@
         android:minHeight="40dp"
         android:paddingTop="10dp"
         android:tag="L"
-        android:text="@string/pick_image_cc"
+        android:text="@string/choose_an_image"
         android:textColor="@color/toolbar"
         android:visibility="visible"
         app:backgroundTint="@color/colorPrimary"
