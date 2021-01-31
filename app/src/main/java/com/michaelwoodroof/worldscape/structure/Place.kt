@@ -5,9 +5,10 @@ import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 @Parcelize
-data class Place(val name : String, val age : String, val uid : String) : Parcelable, Serializable {
+data class Place(val name: String, val age: String, val uid: String) : Parcelable, Serializable {
+
     override fun toString(): String {
-        return super.toString()
+        return "[name: $name, age: $age, uid: $uid]"
     }
 
     companion object {
