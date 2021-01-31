@@ -5,16 +5,17 @@ import android.graphics.LinearGradient
 import android.graphics.Paint
 import android.graphics.Shader
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.R
 
-object SetGradientButton {
+object SetGradient {
 
     private const val ICON_SIZE : Int = 24
     private const val OFFSET : Int = 16
 
-    fun assign(fab : ExtendedFloatingActionButton, context : Context, givenWidth : Int = -1) {
+    fun assign(fab: ExtendedFloatingActionButton, context: Context, givenWidth: Int = -1) {
         val paint = Paint()
         var width: Float
 
@@ -30,10 +31,11 @@ object SetGradientButton {
         fab.paint.shader = LinearGradient(0f, 0f, width, 0f,
             ContextCompat.getColor(context, R.color.gradient_start),
             ContextCompat.getColor(context, R.color.gradient_end),
-            Shader.TileMode.CLAMP)
+            Shader.TileMode.CLAMP
+        )
     }
 
-    fun assign(btn : Button, context : Context, givenWidth : Int = -1) {
+    fun assign(btn: Button, context: Context, givenWidth: Int = -1) {
         val paint = Paint()
         var width: Float
 
@@ -49,7 +51,20 @@ object SetGradientButton {
         btn.paint.shader = LinearGradient(0f, 0f, width, 0f,
             ContextCompat.getColor(context, R.color.gradient_start),
             ContextCompat.getColor(context, R.color.gradient_end),
-            Shader.TileMode.CLAMP)
+            Shader.TileMode.CLAMP
+        )
     }
+
+    fun assign(tv: TextView, context: Context) {
+        val paint = Paint()
+        val width: Float = paint.measureText(tv.text.toString())
+
+        tv.paint.shader = LinearGradient(0f, 0f, width, 0f,
+            ContextCompat.getColor(context, R.color.gradient_start),
+            ContextCompat.getColor(context, R.color.gradient_end),
+            Shader.TileMode.CLAMP
+        )
+    }
+
 
 }
