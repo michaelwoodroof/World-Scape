@@ -1,4 +1,4 @@
-package com.michaelwoodroof.worldscape.ui
+package com.michaelwoodroof.worldscape.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.adapters.WorldAdapter
 import com.michaelwoodroof.worldscape.helper.ManageFiles
-import com.michaelwoodroof.worldscape.helper.SetGradientButton
+import com.michaelwoodroof.worldscape.helper.SetGradient
 import com.michaelwoodroof.worldscape.structure.World
 
 class WorldFragment : Fragment() {
@@ -46,7 +46,7 @@ class WorldFragment : Fragment() {
             }
         }
 
-        SetGradientButton.assign(fab, this.requireContext())
+        SetGradient.assign(fab, this.requireContext())
 
         rvWorlds.addOnScrollListener(sl)
 

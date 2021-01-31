@@ -1,4 +1,4 @@
-package com.michaelwoodroof.worldscape.ui
+package com.michaelwoodroof.worldscape.ui.fragments
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
@@ -21,7 +21,7 @@ import com.michaelwoodroof.worldscape.structure.Place
 import com.michaelwoodroof.worldscape.structure.Story
 import kotlinx.android.synthetic.main.fragment_world_detail.*
 
-class WorldDetailFragment : Fragment() {
+class WorldDetailFragment: Fragment() {
 
     // @TODO Add Edit plus description textview
 

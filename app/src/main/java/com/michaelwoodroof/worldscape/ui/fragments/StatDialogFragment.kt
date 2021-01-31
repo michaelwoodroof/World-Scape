@@ -1,7 +1,8 @@
-package com.michaelwoodroof.worldscape.ui
+package com.michaelwoodroof.worldscape.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.text.Editable
@@ -13,22 +14,30 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.children
+import androidx.core.view.iterator
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
 import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.structure.StatItem
+import com.michaelwoodroof.worldscape.ui.fragments.stat_fragments.FireEmblemFragment
 import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
-class StatDialogFragment : DialogFragment() {
+class StatDialogFragment: DialogFragment() {
 
     var currentPreset = ""
+    lateinit var flStats: FrameLayout
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val root = inflater.inflate(R.layout.fragment_stat_sheet, container, false)
+        flStats = root.findViewById(R.id.flStats)
         val toolbar = root.findViewById<ConstraintLayout>(R.id.incToolbarStat)
         val title = toolbar.findViewById<TextView>(R.id.tvTitle)
         title.text = getString(R.string.stats)
@@ -58,12 +67,11 @@ class StatDialogFragment : DialogFragment() {
 
         val save = toolbar.findViewById<Button>(R.id.btnSave)
         save.setOnClickListener {
+            val attributes = saveStats()
+            (activity as CreateCharacterActivity).currentCharacter?.stats = attributes
             this.dismiss()
             (activity as CreateCharacterActivity).popStack()
             (activity as CreateCharacterActivity).isDialogLoaded = false
-            // @TODO Get Data from Fields
-            val data = StatItem("UU")
-            (activity as CreateCharacterActivity).saveStats(data)
         }
 
         val items = listOf("DND", "Fire Emblem", "Custom")
@@ -78,10 +86,9 @@ class StatDialogFragment : DialogFragment() {
 
             override fun afterTextChanged(e: Editable?) {
                 if (currentPreset == "" || currentPreset != e.toString()) {
-                    Log.d("TESTDATA", "CHANGED PRESET")
                     currentPreset = e.toString()
+                    updatePreset(root.context)
                 }
-                Log.d("TESTDATA", e.toString())
             }
 
         })
@@ -93,6 +100,53 @@ class StatDialogFragment : DialogFragment() {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         return dialog
+    }
+
+    private fun updatePreset(c: Context) {
+        var statFragment: Fragment? = null
+        when (currentPreset) {
+
+            "DND" -> {
+
+            }
+
+            "Fire Emblem" -> {
+                statFragment = FireEmblemFragment()
+            }
+
+            "Custom" -> {
+
+            }
+
+        }
+
+        if (statFragment != null) {
+            val transaction = childFragmentManager.beginTransaction()
+            transaction.replace(R.id.flStats, statFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+    }
+
+    private fun saveStats(): ArrayList<StatItem> {
+        val attributes: ArrayList<StatItem> = ArrayList()
+        var lastTextView = ""
+
+        // Find clInnerFE
+        val cl = flStats.findViewById<ConstraintLayout>(R.id.clInnerFE) //@TODO Update to More Generic Method
+        for (view in cl.children) {
+            when (view) {
+                is TextView -> {
+                    lastTextView = view.text.toString()
+                }
+                is TextInputLayout -> {
+                    attributes.add(StatItem(lastTextView, view.editText?.text.toString()))
+                }
+            }
+        }
+        Log.d("TESTDATA", attributes.toString())
+        return attributes
     }
 
 }

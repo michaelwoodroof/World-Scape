@@ -1,4 +1,4 @@
-package com.michaelwoodroof.worldscape.ui
+package com.michaelwoodroof.worldscape.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
