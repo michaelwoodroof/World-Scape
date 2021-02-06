@@ -12,7 +12,6 @@
 
     <color name="drag">@color/baseTextColor</color>
 
-    <color name="chipBackground">#54FF6090</color>
     <color name="closeColor">#CFCFCF</color>
 
     <color name="stroke_color">#AAAAAA</color>
@@ -36,8 +35,6 @@
     <color name="background">#333333</color>
     <color name="add_button_bg">@color/baseTextColor</color>
     <color name="add_button_text_color">#333333</color>
-
-    <color name="show_all_background">#66FFEEFF</color>
 
     <color name="error_color">#EF9A9A</color>
     <color name="warning_color">#FFF8E1</color>

@@ -2,25 +2,20 @@ package com.michaelwoodroof.worldscape.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
-import androidx.core.view.iterator
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
@@ -32,7 +27,7 @@ import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 class StatDialogFragment: DialogFragment() {
 
     var currentPreset = ""
-    lateinit var flStats: FrameLayout
+    private lateinit var flStats: FrameLayout
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -87,7 +82,7 @@ class StatDialogFragment: DialogFragment() {
             override fun afterTextChanged(e: Editable?) {
                 if (currentPreset == "" || currentPreset != e.toString()) {
                     currentPreset = e.toString()
-                    updatePreset(root.context)
+                    updatePreset()
                 }
             }
 
@@ -102,7 +97,7 @@ class StatDialogFragment: DialogFragment() {
         return dialog
     }
 
-    private fun updatePreset(c: Context) {
+    private fun updatePreset() {
         var statFragment: Fragment? = null
         when (currentPreset) {
 
@@ -133,20 +128,41 @@ class StatDialogFragment: DialogFragment() {
         val attributes: ArrayList<StatItem> = ArrayList()
         var lastTextView = ""
 
-        // Find clInnerFE
-        val cl = flStats.findViewById<ConstraintLayout>(R.id.clInnerFE) //@TODO Update to More Generic Method
-        for (view in cl.children) {
-            when (view) {
-                is TextView -> {
-                    lastTextView = view.text.toString()
-                }
-                is TextInputLayout -> {
-                    attributes.add(StatItem(lastTextView, view.editText?.text.toString()))
-                }
+        var cl: ConstraintLayout? = null
+
+        when (currentPreset) {
+            "DND" -> {
+                //@TODO
+            }
+
+            "Fire Emblem" -> {
+                cl = flStats.findViewById(R.id.clInnerFE)
+            }
+
+            "Custom" -> {
+                //@TODO
+            }
+
+            else -> {
+                cl = null
             }
         }
-        Log.d("TESTDATA", attributes.toString())
-        return attributes
+
+        return if (cl != null) {
+            for (view in cl.children) {
+                when (view) {
+                    is TextView -> {
+                        lastTextView = view.text.toString()
+                    }
+                    is TextInputLayout -> {
+                        attributes.add(StatItem(lastTextView, view.editText?.text.toString()))
+                    }
+                }
+            }
+            attributes
+        } else {
+            attributes
+        }
     }
 
 }

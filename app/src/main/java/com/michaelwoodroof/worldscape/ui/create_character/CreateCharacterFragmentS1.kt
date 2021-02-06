@@ -11,15 +11,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
-import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.helper.SetGradient
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
-import org.w3c.dom.Text
 
 class CreateCharacterFragmentS1 : Fragment() {
 

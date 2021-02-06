@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/svStatFE"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -43,14 +42,12 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFEHitpoints">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFEHitpoints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/tvFEMovement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -60,7 +57,6 @@
             app:layout_constraintTop_toTopOf="@+id/tvFEHitpoints" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilFEMovement"
             style="@style/TextInputLayoutTheme"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -73,7 +69,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFEHitpoints">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFEMovement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -104,7 +99,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFEStrength">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFEStrength"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -122,7 +116,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tilFEHitpoints" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilFEMagic"
             style="@style/TextInputLayoutTheme"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -135,7 +128,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFEMagic">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFEMagic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -165,7 +157,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFEDexterity">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFEDexerity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -196,7 +187,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFESpeed">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFESpeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -226,7 +216,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFELuck">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFELuck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -257,7 +246,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFEDefense">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFEDefense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -274,7 +262,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tilFELuck" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilFEResistance"
             style="@style/TextInputLayoutTheme"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -287,7 +274,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFEResistance">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFEResistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -305,7 +291,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tilFEDefense" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilFECharm"
             style="@style/TextInputLayoutTheme"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -318,7 +303,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvFECharm">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietFECharm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />

@@ -1,14 +1,10 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/psMain">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:id="@+id/pcTheme"
         app:iconSpaceReserved="false"
         app:title="@string/theme_header">
 
         <ListPreference
-            android:id="@+id/prlTheme"
             app:entries="@array/theme_choices"
             app:entryValues="@array/theme_values"
             app:iconSpaceReserved="false"
@@ -17,9 +13,8 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:id="@+id/pcVersion">
+    <PreferenceCategory>
         <Preference
-            android:id="@+id/prVersion"
             app:iconSpaceReserved="false"
             app:key="version"
             app:summary="@string/version"

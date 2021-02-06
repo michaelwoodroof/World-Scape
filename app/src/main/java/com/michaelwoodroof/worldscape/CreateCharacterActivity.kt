@@ -13,7 +13,6 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -32,13 +31,12 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.helper.*
 import com.michaelwoodroof.worldscape.structure.MyCharacter
-import com.michaelwoodroof.worldscape.structure.StatItem
-import com.michaelwoodroof.worldscape.ui.fragments.AddChipBottomDialogFragment
-import com.michaelwoodroof.worldscape.ui.fragments.StatDialogFragment
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS1
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS2
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS3
 import com.michaelwoodroof.worldscape.ui.create_character.CreateCharacterFragmentS4
+import com.michaelwoodroof.worldscape.ui.fragments.AddChipBottomDialogFragment
+import com.michaelwoodroof.worldscape.ui.fragments.StatDialogFragment
 import kotlinx.android.synthetic.main.activity_create_character.*
 import kotlinx.android.synthetic.main.bottom_sheet_new_chip.*
 import kotlinx.android.synthetic.main.default_toolbar.*

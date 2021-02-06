@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<paths>
-    <files-path name = "world_path" path = "/data/worlds" />
-    <files-path name = "character_path" path = "/data/characters" />
-    <files-path name = "image_path" path="/data/res/images" />
-</paths>

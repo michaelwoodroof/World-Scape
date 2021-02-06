@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.default_toolbar.*
 
 class CreateWorldActivity : AppCompatActivity() {
 
-    lateinit var uriPointer : Uri
+    private lateinit var uriPointer : Uri
     lateinit var r : Runnable
 
     companion object {

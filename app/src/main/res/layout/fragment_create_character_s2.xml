@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:id="@+id/svCreateCharacterS2"
+<ScrollView android:id="@+id/svCreateCharacterS2"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clInnerContainerS2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -19,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl25"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -33,7 +29,6 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl75"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -102,7 +97,6 @@
             app:layout_constraintEnd_toEndOf="@+id/tilHeight" />
 
         <TextView
-            android:id="@+id/tvWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/weight"
@@ -193,7 +187,6 @@
             app:layout_constraintEnd_toEndOf="@+id/tilEyeColor" />
 
         <TextView
-            android:id="@+id/tvRace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -286,7 +279,6 @@
             app:layout_constraintEnd_toStartOf="@+id/gl50" />
 
         <TextView
-            android:id="@+id/tvBuild"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -471,7 +463,6 @@
             app:layout_constraintEnd_toEndOf="@+id/tilMarkings" />
 
         <Space
-            android:id="@+id/spEnd"
             android:layout_width="0dp"
             android:layout_height="72dp"
             app:layout_constraintEnd_toEndOf="parent"

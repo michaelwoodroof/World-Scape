@@ -159,7 +159,6 @@
             app:layout_constraintTop_toBottomOf="@+id/spOne">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clPreview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
