@@ -23,6 +23,7 @@ import com.michaelwoodroof.worldscape.helper.*
 import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.default_toolbar.*
+import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
 class CreateWorldActivity : AppCompatActivity() {
 
@@ -68,8 +69,6 @@ class CreateWorldActivity : AppCompatActivity() {
 
         val adapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, genreTypes)
         ddGenre.setAdapter(adapter)
-
-        addAnimation()
     }
 
     override fun onStart() {
@@ -220,22 +219,18 @@ class CreateWorldActivity : AppCompatActivity() {
         return t1 && t2 && t3 && t4
     }
 
-    private fun addAnimation() {
-        findViewById<Button>(R.id.fabPickImage).setOnClickListener {
-            // Only Animate if Condition is Met
+    fun pickImage(view: View) {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = ("image/*")
 
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = ("image/*")
+        // Mime Types
+        val acceptedTypes = ArrayList<String>()
+        acceptedTypes.add("image/png")
+        acceptedTypes.add("image/jpg")
+        acceptedTypes.add("image/jpeg")
 
-            // Mime Types
-            val acceptedTypes = ArrayList<String>()
-            acceptedTypes.add("image/png")
-            acceptedTypes.add("image/jpg")
-            acceptedTypes.add("image/jpeg")
-
-            intent.putExtra(Intent.EXTRA_MIME_TYPES, acceptedTypes)
-            startActivityForResult(intent, MEDIA_PICK_CODE)
-        }
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, acceptedTypes)
+        startActivityForResult(intent, MEDIA_PICK_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -246,9 +241,12 @@ class CreateWorldActivity : AppCompatActivity() {
                 val selectedImage = data?.data
                 if (selectedImage != null) {
                     imgPreview.setImageURI(selectedImage)
+                    cvPreview.visibility = View.VISIBLE
                     uriPointer = selectedImage
                     imgPreview.tag = "hasImage"
-                    animatePickImage()
+                    btnPickImage.visibility = View.GONE
+                    btnPickImageShrunk.visibility = View.VISIBLE
+                    //animatePickImage(400)
                 }
             }
         }
@@ -289,37 +287,6 @@ class CreateWorldActivity : AppCompatActivity() {
             }
         }
 
-    }
-
-    private fun animatePickImage() {
-        val root = clMainCW
-
-        val c = ConstraintSet()
-        c.clone(this, R.layout.activity_create_world_alt)
-
-        if (fabPickImage.tag != "run") {
-            val dur = ChangeBounds()
-            dur.duration = 300
-
-            val r1 = Runnable {
-                TransitionManager.beginDelayedTransition(root, dur)
-                c.applyTo(root)
-            }
-
-            val r2 = Runnable {
-                // Convert to Circle
-                fabPickImage.shrink()
-            }
-
-            val r = Runnable {}
-
-            r.run {
-                Handler(Looper.getMainLooper()).postDelayed(r1, 100)
-                Handler(Looper.getMainLooper()).postDelayed(r2, 400)
-            }
-
-            fabPickImage.tag = "run"
-        }
     }
 
 }

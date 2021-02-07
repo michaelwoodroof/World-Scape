@@ -4,16 +4,298 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/colMainCW"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <!-- @TODO Add Scrollview to Layout -->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clMainCW"
+    <ScrollView
+        android:id="@+id/svCreateWorld"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-        tools:context=".CreateWorldActivity">
+        android:layout_marginTop="54dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMainCW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvWorldName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/name_of_world"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilWorld"
+                style="@style/TextInputLayoutTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:boxBackgroundColor="@color/content_background"
+                app:counterMaxLength="100"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWorldName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietWorld"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/desc_of_world"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilWorld" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDesc"
+                style="@style/TextInputLayoutTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="top"
+                app:boxBackgroundColor="@color/content_background"
+                app:counterMaxLength="500"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:maxLines="3"
+                    android:minLines="3"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/genre_of_world"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilDesc" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtiGenre"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#FFFFFF"
+                android:minHeight="50dp"
+                app:boxBackgroundColor="@color/content_background"
+                app:boxStrokeErrorColor="@color/error_color"
+                app:errorEnabled="true"
+                app:errorIconTint="@color/error_color"
+                app:errorTextColor="@color/error_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGenre">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ddGenre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvImageSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/choose_an_image"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtiGenre" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvPreview"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spOne"
+                tools:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgPreview"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:adjustViewBounds="false"
+                        android:contentDescription="@string/cd_preview"
+                        android:cropToPadding="false"
+                        android:scaleType="fitXY"
+                        android:tag="NT"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/fabPickImage"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="sans-serif-condensed"
+                android:minHeight="30dp"
+                android:paddingTop="10dp"
+                android:tag="L"
+                android:text="@string/choose_an_image"
+                android:textColor="@color/toolbar"
+                android:visibility="gone"
+                app:backgroundTint="@color/gradient_start"
+                app:icon="@drawable/ic_baseline_image_24"
+                app:iconTint="@color/toolbar"
+                app:layout_constraintBottom_toBottomOf="@+id/cvPreview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvPreview"
+                app:rippleColor="@color/fab_ripple" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPickImage"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/button_gradient"
+                android:drawableStart="@drawable/ic_baseline_image_24"
+                android:drawablePadding="14dp"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:letterSpacing="0.07"
+                android:minHeight="0dp"
+                android:onClick="pickImage"
+                android:paddingStart="18dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="26dp"
+                android:paddingBottom="0dp"
+                android:text="@string/choose_an_image"
+                android:textColor="@color/toolbar"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/cvPreview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvPreview">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPickImageShrunk"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:background="@drawable/button_gradient"
+                android:drawableStart="@drawable/ic_baseline_image_24"
+                android:drawablePadding="0dp"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:letterSpacing="0.07"
+                android:minWidth="0dp"
+                android:onClick="pickImage"
+                android:padding="0dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
+                android:textColor="@color/toolbar"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/fabPickImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvPreview">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <Space
+                android:id="@+id/spOne"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWarning" />
+
+            <TextView
+                android:id="@+id/tvWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/war_img"
+                android:textColor="@color/warning_color"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/imgWarning"
+                app:layout_constraintTop_toBottomOf="@+id/tvImageSelect" />
+
+            <ImageView
+                android:id="@+id/imgWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvWarning"
+                app:layout_constraintStart_toStartOf="@+id/tvImageSelect"
+                app:layout_constraintTop_toBottomOf="@+id/tvImageSelect"
+                app:srcCompat="@drawable/ic_baseline_warning_24"
+                app:tint="@color/warning_color"
+                tools:visibility="gone" />
+
+            <Space
+                android:id="@+id/spTwo"
+                android:layout_width="match_parent"
+                android:layout_height="102dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fabPickImage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clCreation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <include
             android:id="@+id/incToolbarCW"
@@ -24,187 +306,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvWorldName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/name_of_world"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/incToolbarCW" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilWorld"
-            style="@style/TextInputLayoutTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:boxBackgroundColor="@color/content_background"
-            app:counterMaxLength="100"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWorldName">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietWorld"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="12sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tvDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/desc_of_world"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilWorld" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDesc"
-            style="@style/TextInputLayoutTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:gravity="top"
-            app:boxBackgroundColor="@color/content_background"
-            app:counterMaxLength="500"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDesc">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                android:lines="3"
-                android:maxLines="3"
-                android:minLines="3"
-                android:textSize="12sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tvGenre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/genre_of_world"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilDesc" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtiGenre"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="#FFFFFF"
-            android:minHeight="50dp"
-            app:boxBackgroundColor="@color/content_background"
-            app:boxStrokeErrorColor="@color/error_color"
-            app:errorEnabled="true"
-            app:errorIconTint="@color/error_color"
-            app:errorTextColor="@color/error_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvGenre">
-
-            <AutoCompleteTextView
-                android:id="@+id/ddGenre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="12sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tvImageSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/choose_an_image"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtiGenre" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvPreview"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:visibility="gone"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spOne">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imgPreview"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="@string/cd_preview"
-                    android:cropToPadding="false"
-                    android:scaleType="fitXY"
-                    android:tag="NT"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/fabPickImage"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:fontFamily="sans-serif-condensed"
-            android:minHeight="30dp"
-            android:paddingTop="10dp"
-            android:tag="L"
-            android:text="@string/choose_an_image"
-            android:textColor="@color/toolbar"
-            android:visibility="visible"
-            app:backgroundTint="@color/gradient_start"
-            app:icon="@drawable/ic_baseline_image_24"
-            app:iconTint="@color/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spOne"
-            app:rippleColor="@color/fab_ripple" />
-
         <Button
             android:id="@+id/btnCreate"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:elevation="8dp"
             android:fontFamily="sans-serif-condensed"
             android:onClick="addWorld"
@@ -219,39 +327,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:rippleColor="@color/fab_ripple" />
-
-        <Space
-            android:id="@+id/spOne"
-            android:layout_width="0dp"
-            android:layout_height="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWarning" />
-
-        <TextView
-            android:id="@+id/tvWarning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:text="@string/war_img"
-            android:textColor="@color/warning_color"
-            android:textSize="12sp"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/imgWarning"
-            app:layout_constraintTop_toBottomOf="@+id/tvImageSelect" />
-
-        <ImageView
-            android:id="@+id/imgWarning"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvWarning"
-            app:layout_constraintStart_toStartOf="@+id/tvImageSelect"
-            app:layout_constraintTop_toBottomOf="@+id/tvImageSelect"
-            app:srcCompat="@drawable/ic_baseline_warning_24"
-            app:tint="@color/warning_color"
-            tools:visibility="gone" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

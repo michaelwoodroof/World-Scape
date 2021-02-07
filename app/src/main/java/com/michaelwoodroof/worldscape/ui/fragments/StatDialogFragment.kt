@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 import com.michaelwoodroof.worldscape.CreateCharacterActivity
 import com.michaelwoodroof.worldscape.R
+import com.michaelwoodroof.worldscape.helper.afterTextChanged
 import com.michaelwoodroof.worldscape.helper.assignTouch
 import com.michaelwoodroof.worldscape.structure.StatItem
 import com.michaelwoodroof.worldscape.ui.fragments.stat_fragments.FireEmblemFragment
@@ -74,19 +75,12 @@ class StatDialogFragment: DialogFragment() {
         val preset = root.findViewById<TextInputLayout>(R.id.txtiPreset)
         (preset.editText as? AutoCompleteTextView)?.setAdapter(adapter)
 
-        preset.editText?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(e: Editable?) {
-                if (currentPreset == "" || currentPreset != e.toString()) {
-                    currentPreset = e.toString()
-                    updatePreset()
-                }
+        preset.editText?.afterTextChanged {
+            if (currentPreset == "" || currentPreset != it) {
+                currentPreset = it
+                updatePreset()
             }
-
-        })
+        }
 
         return root
     }

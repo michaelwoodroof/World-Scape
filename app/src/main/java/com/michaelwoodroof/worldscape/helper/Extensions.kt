@@ -4,6 +4,8 @@ import android.content.res.Resources
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.AutoCompleteTextView
+import android.widget.EditText
+import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.textfield.TextInputEditText
 
 
@@ -29,6 +31,19 @@ fun TextInputEditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
 }
 
 fun AutoCompleteTextView.afterTextChanged(afterTextChanged: (String) -> Unit) {
+    this.addTextChangedListener(object: TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+        override fun afterTextChanged(e: Editable?) {
+            afterTextChanged.invoke(e.toString())
+        }
+
+    })
+}
+
+fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object: TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 

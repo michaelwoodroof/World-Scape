@@ -110,13 +110,13 @@ class CreateCharacterFragmentS1 : Fragment() {
 
     fun animatePickImage(timer : Int) {
         if (fabPickImageCC.tag != "run") {
-            val r2 = Runnable {
+            val r = Runnable {
                 // Convert to Circle
                 fabPickImageCC.shrink()
             }
 
-            r2.run {
-                Handler(Looper.getMainLooper()).postDelayed(r2, timer.toLong())
+            r.run {
+                Handler(Looper.getMainLooper()).postDelayed(r, timer.toLong())
             }
 
             fabPickImageCC.tag = "run"
