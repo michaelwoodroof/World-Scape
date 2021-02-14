@@ -2,8 +2,10 @@ package com.michaelwoodroof.worldscape
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -24,9 +26,11 @@ import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 
+
 class MainActivity : AppCompatActivity() {
 
     private var deletedWorld: World? = null
+    private var deletedWorldImage: Bitmap? = null
     private var worldData: ArrayList<World> = ArrayList()
 
     @SuppressLint("ClickableViewAccessibility")
@@ -135,6 +139,22 @@ class MainActivity : AppCompatActivity() {
         val adapter = WorldAdapter(worldData)
         rvWorldsM.adapter = adapter
         adapter.notifyDataSetChanged()
+
+        // Detect overflows
+        if (worldData.size == 0) {
+            rvWorldsM.overScrollMode = View.OVER_SCROLL_NEVER
+        } else {
+            val displayMetrics = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(displayMetrics)
+            val calculatedHeight = displayMetrics.heightPixels - 50.toPixels()
+            val worldItemsHeight = (167.toPixels() * worldData.size)
+
+            if (calculatedHeight - worldItemsHeight > 0) {
+                rvWorldsM.overScrollMode = View.OVER_SCROLL_NEVER
+            } else {
+                rvWorldsM.overScrollMode = View.OVER_SCROLL_ALWAYS
+            }
+        }
     }
 
     fun loadSettings(view: View) {
@@ -157,13 +177,30 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton(resources.getString(R.string.dialog_accept)) { dialog, _ ->
                 val mf = ManageFiles(this)
                 deletedWorld = mf.getWorld(view.tag as String)
+                deletedWorldImage = if (deletedWorld?.hasImg == true) {
+                    deletedWorld?.uid?.let { mf.getWorldImage(it) }
+                } else {
+                    null
+                }
                 if (mf.deleteWorld(view.tag as String)) {
                     // Create Snack Bar
                     updateDataSet()
-                    Snackbar.make(coMain, R.string.delete_world_dialog_message, Snackbar.LENGTH_INDEFINITE)
+                    Snackbar.make(
+                        coMain,
+                        R.string.delete_world_dialog_message,
+                        Snackbar.LENGTH_INDEFINITE
+                    )
                         .setAction(R.string.undo) {
                             // Save World
-                            deletedWorld?.uid?.let { dworld -> mf.createFolderStructure(dworld, this) }
+                            deletedWorld?.uid?.let { dworld -> mf.createFolderStructure(
+                                dworld,
+                                this
+                            ) }
+                            if (deletedWorld?.hasImg == true) {
+                                deletedWorld?.uid?.let { uid -> deletedWorldImage?.let { bm ->
+                                    mf.saveWorldImage(uid, bm)
+                                }}
+                            }
                             mf.saveWorld(deletedWorld)
                             updateDataSet()
                         }

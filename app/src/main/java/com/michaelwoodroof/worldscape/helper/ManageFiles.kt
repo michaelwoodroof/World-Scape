@@ -124,6 +124,21 @@ class ManageFiles(private val gc : Context) {
 
     }
 
+    fun saveWorldImage(uid : String, bm: Bitmap) : Boolean {
+        return try {
+            val cf = File(gc.filesDir.absolutePath + "/worlds/$uid", "world_image")
+            cf.createNewFile()
+            val stream : OutputStream = FileOutputStream(cf)
+            bm.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            stream.flush()
+            stream.close()
+            true
+        } catch (e: Exception) {
+            Log.e("error", e.toString())
+            false
+        }
+    }
+
     fun getWorlds() : ArrayList<World> {
         val wl = ArrayList<World>()
         // Get Worlds
