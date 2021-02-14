@@ -1,34 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coMain"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:fitsSystemWindows="true"
-    tools:context="com.michaelwoodroof.worldscape.MainActivity">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/flFragmentsM"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMain"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/background"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incToolbarM">
-
-    </FrameLayout>
-
-    <include
-        android:id="@+id/incToolbarM"
-        layout="@layout/default_toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fitsSystemWindows="true"
+        tools:context="com.michaelwoodroof.worldscape.MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <FrameLayout
+            android:id="@+id/flFragmentsM"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/incToolbarM">
+
+        </FrameLayout>
+
+        <include
+            android:id="@+id/incToolbarM"
+            layout="@layout/default_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWorldsM"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingBottom="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/flFragmentsM"
+            tools:listitem="@layout/world_layout" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabCreateWorldM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-condensed"
+            android:minHeight="56dp"
+            android:onClick="loadCreateWorld"
+            android:tag="L"
+            android:text="@string/add_world"
+            android:textColor="@color/add_button_text_color"
+            android:visibility="visible"
+            app:backgroundTint="@color/add_button_bg"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconTint="@color/gradient_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:rippleColor="@color/fab_ripple" />
+
+        <ImageView
+            android:id="@+id/imgWorldPrompt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="loadCreateWorld"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_add_world_prompt"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnPrompt"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="loadCreateWorld"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/no_worlds_prompt"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/imgWorldPrompt"
+            app:layout_constraintStart_toStartOf="@+id/imgWorldPrompt"
+            app:layout_constraintTop_toBottomOf="@+id/imgWorldPrompt"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

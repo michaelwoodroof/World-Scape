@@ -14,6 +14,11 @@
 
     <color name="closeColor">#CFCFCF</color>
 
+    <color name="prompt_text">#FFF</color>
+    <color name="wp_blue">#98F2FF</color>
+    <color name="wp_pink">#FD96FF</color>
+    <color name="wp_yellow">#FFEE96</color>
+
     <color name="stroke_color">#AAAAAA</color>
     <color name="stroke_color_cc">#777</color>
     <color name="content_background">#494949</color>

@@ -16,6 +16,11 @@
 
     <color name="drag">@color/baseTextColor</color>
 
+    <color name="prompt_text">#000</color>
+    <color name="wp_blue">#43E8FF</color>
+    <color name="wp_pink">#FB43FF</color>
+    <color name="wp_yellow">#FFE55E</color>
+
     <color name="stroke_color">#AAAAAA</color>
     <color name="chip_stroke_color">@color/medGreen</color>
     <color name="stroke_color_cc">#C4C4C4</color>

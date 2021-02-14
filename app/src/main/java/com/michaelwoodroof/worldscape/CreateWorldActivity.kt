@@ -8,13 +8,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.transition.ChangeBounds
-import android.transition.TransitionManager
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
@@ -246,7 +243,6 @@ class CreateWorldActivity : AppCompatActivity() {
                     imgPreview.tag = "hasImage"
                     btnPickImage.visibility = View.GONE
                     btnPickImageShrunk.visibility = View.VISIBLE
-                    //animatePickImage(400)
                 }
             }
         }

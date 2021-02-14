@@ -16,7 +16,7 @@
     <string name="places">Places</string>
     <string name="stories">Stories</string>
 
-    <!-- Main Menu Strings -->
+    <!-- Main Activity Strings -->
     <string name="add_world">Add World</string>
     <string name="delete_world_dialog_title">Delete World</string>
     <string name="delete_world_dialog_message">This will delete the world and all information
@@ -24,6 +24,7 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_accept">Delete</string>
     <string name="delete_fail">Could not delete world</string>
+    <string name="no_worlds_prompt">NO WORLDS ADD ONE</string>
 
     <!-- Create World Strings -->
     <string name="create_world_title">Create a World</string>
@@ -41,6 +42,7 @@
 
     <!-- Generics -->
     <string name="next">Next</string>
+    <string name="undo">UNDO</string>
 
     <!-- Create Character Strings -->
     <string name="create_character_title">Create a Character</string>
@@ -84,10 +86,6 @@
     <string name="stats">Stats</string>
     <string name="preset">Presets</string>
     <string name="save">Save</string>
-
-    <!-- Positive Traits -->
-
-    <!-- Negative Traits -->
 
     <!-- Errors -->
     <string name="err_save_world">"ERR: Could not Save World"</string>
@@ -152,8 +150,10 @@
     <!-- Hints -->
 
     <!-- Version is denoted as Letter [A, B, S] : Alpha Release, Beta Release and Stable Release  -->
-    <!-- First number is a major update such as a new feature and second number is for small updates such as: bugfixes or typos -->
-    <string name="version">A.0.1</string>
+    <!-- First number is a major update such as a new major feature
+         Second Number is for medium updates such as layout changes or minor feature
+         Third Number is for small updates such as bug fixes or typos-->
+    <string name="version">A:1.0.0</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_character_detail">CharacterDetailActivity</string>
 

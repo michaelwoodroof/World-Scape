@@ -59,7 +59,7 @@
         android:rotation="180"
         android:tag="na"
         android:tint="@color/toolbar"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
@@ -80,5 +80,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
         app:srcCompat="@drawable/settings_expand" />
+
+    <ImageButton
+        android:id="@+id/btnSort"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:background="@null"
+        android:contentDescription="@string/cd_settings"
+        android:onClick="sortData"
+        android:padding="0dp"
+        android:tag="na"
+        android:tint="@color/toolbar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+        app:layout_constraintEnd_toStartOf="@+id/btnSettings"
+        app:layout_constraintTop_toTopOf="@+id/tvTitle"
+        app:srcCompat="@drawable/sort_expand" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

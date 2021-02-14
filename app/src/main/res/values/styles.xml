@@ -9,6 +9,7 @@
         <item name="NegativeChipStyle">@style/NegativeChipStyle</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="snackbarButtonStyle">@style/Snackbar.Action.Button</item>
     </style>
 
     <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
@@ -54,6 +55,7 @@
         <item name="errorIconDrawable">@drawable/ic_baseline_warning_24</item>
         <item name="textAppearanceCaption">@style/TextAppearanceTextInputLayout</item>
     </style>
+
     <style name="TextAppearanceTextInputLayout" parent="@style/TextAppearance.AppCompat.Caption">
         <item name="android:textSize">10sp</item>
     </style>
@@ -82,6 +84,10 @@
 
     <style name="CondensedFont" parent="android:Widget.TextView">
         <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="Snackbar.Action.Button" parent="@style/Widget.MaterialComponents.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
     <style name="ChipStyle" parent="@style/Widget.MaterialComponents.Chip.Entry">

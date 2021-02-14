@@ -15,16 +15,24 @@ object SetGradient {
     private const val ICON_SIZE : Int = 24
     private const val OFFSET : Int = 16
 
-    fun assign(fab: ExtendedFloatingActionButton, context: Context, givenWidth: Int = -1) {
+    fun assign(fab: ExtendedFloatingActionButton, context: Context, givenWidth: Int = -1, offsets: Boolean = true) {
         val paint = Paint()
         var width: Float
 
+        var adjustedIconSize = ICON_SIZE
+        var adjustedOffset = OFFSET
+
+        if (!offsets) {
+            adjustedIconSize = 0
+            adjustedOffset = 0
+        }
+
         if (givenWidth == -1) {
             width = paint.measureText(fab.text.toString())
-            width += ICON_SIZE.toPixels()
-            width += OFFSET.toPixels()
+            width += adjustedIconSize.toPixels()
+            width += adjustedOffset.toPixels()
         } else {
-            width = (givenWidth + ICON_SIZE.toPixels() + OFFSET.toPixels()).toFloat()
+            width = (givenWidth + adjustedIconSize.toPixels() + adjustedOffset.toPixels()).toFloat()
         }
 
         // Set Gradient Text on FAB
@@ -35,16 +43,24 @@ object SetGradient {
         )
     }
 
-    fun assign(btn: Button, context: Context, givenWidth: Int = -1) {
+    fun assign(btn: Button, context: Context, givenWidth: Int = -1, offsets: Boolean = true) {
         val paint = Paint()
         var width: Float
 
+        var adjustedIconSize = ICON_SIZE
+        var adjustedOffset = OFFSET
+
+        if (!offsets) {
+            adjustedIconSize = 0
+            adjustedOffset = 0
+        }
+
         if (givenWidth == -1) {
             width = paint.measureText(btn.text.toString())
-            width += ICON_SIZE.toPixels()
-            width += OFFSET.toPixels()
+            width += adjustedIconSize.toPixels()
+            width += adjustedOffset.toPixels()
         } else {
-            width = (givenWidth + ICON_SIZE.toPixels() + OFFSET.toPixels()).toFloat()
+            width = (givenWidth + adjustedIconSize.toPixels() + adjustedOffset.toPixels()).toFloat()
         }
 
         // Set Gradient Text on FAB

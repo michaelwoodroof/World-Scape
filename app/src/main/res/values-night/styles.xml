@@ -11,6 +11,7 @@
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
         <item name="chipStyle">@style/ChipStyle</item>
         <item name="NegativeChipStyle">@style/NegativeChipStyle</item>
+        <item name="snackbarButtonStyle">@style/Snackbar.Action.Button</item>
     </style>
 
     <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
@@ -81,6 +82,10 @@
 
     <style name="CondensedFont" parent="android:Widget.TextView">
         <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="Snackbar.Action.Button" parent="@style/Widget.MaterialComponents.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
     <style name="ChipStyle" parent="@style/Widget.MaterialComponents.Chip.Entry">

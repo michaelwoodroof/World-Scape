@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -29,6 +30,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -60,58 +62,63 @@
             app:layout_constraintStart_toStartOf="@+id/tvRPG"
             app:layout_constraintTop_toBottomOf="@+id/tvRPG" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddStat"
-            style="@style/RoundedContainerButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/rpg_background"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_gradient"
+            android:drawableStart="@drawable/ic_baseline_notes_24"
+            android:drawablePadding="14dp"
+            android:elevation="6dp"
+            android:fontFamily="sans-serif-condensed"
+            android:letterSpacing="0.07"
+            android:minHeight="0dp"
             android:onClick="loadStatDialog"
+            android:paddingStart="18dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="26dp"
+            android:paddingBottom="0dp"
             android:text="@string/add_stats"
-            android:textAlignment="center"
-            android:textColor="@color/rpg_text"
-            android:textColorHighlight="@color/rpg_text"
-            android:textColorLink="@color/rpg_text"
-            android:textSize="12sp"
-            app:icon="@drawable/ic_baseline_notes_24"
-            app:iconGravity="start"
-            app:iconPadding="12dp"
-            app:iconTint="@color/rpg_text"
+            android:textColor="@color/toolbar"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvStats"
-            app:layout_constraintTop_toBottomOf="@+id/tvStats"
-            app:rippleColor="@color/rpg_text" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvStats" />
 
         <TextView
             android:id="@+id/tvAbilities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@string/abilities"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="@+id/tvRPG"
             app:layout_constraintTop_toBottomOf="@+id/btnAddStat" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddAbility"
-            style="@style/RoundedContainerButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/rpg_background"
+            android:background="@drawable/button_gradient"
+            android:drawableStart="@drawable/ic_baseline_games_24"
+            android:drawablePadding="14dp"
+            android:elevation="6dp"
+            android:fontFamily="sans-serif-condensed"
+            android:letterSpacing="0.07"
+            android:minHeight="0dp"
+            android:onClick="loadStatDialog"
+            android:paddingStart="18dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="44dp"
+            android:paddingBottom="0dp"
             android:text="@string/add_ability"
-            android:textColor="@color/rpg_text"
-            android:textColorHighlight="@color/rpg_text"
-            android:textColorLink="@color/rpg_text"
-            android:textSize="12sp"
-            app:icon="@drawable/ic_baseline_games_24"
-            app:iconGravity="start"
-            app:iconPadding="12dp"
-            app:iconSize="20dp"
-            app:iconTint="@color/rpg_text"
+            android:textColor="@color/toolbar"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="@+id/btnAddStat"
             app:layout_constraintStart_toStartOf="@+id/btnAddStat"
-            app:layout_constraintTop_toBottomOf="@+id/tvAbilities"
-            app:rippleColor="@color/rpg_text" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAbilities" />
 
         <Space
             android:layout_width="0dp"

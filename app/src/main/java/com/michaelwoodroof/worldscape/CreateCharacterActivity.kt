@@ -169,14 +169,10 @@ class CreateCharacterActivity : AppCompatActivity() {
             0 -> {
                 // Only Update for Image as All other fields will be maintained through back stack
                 if (currentCharacter?.hasImg == true) {
-                    val f = supportFragmentManager.findFragmentById(R.id.flCCMain) as CreateCharacterFragmentS1
-                    val fab = findViewById<ExtendedFloatingActionButton>(R.id.fabPickImageCC)
-                    fab.tag = "L"
                     val cv = findViewById<MaterialCardView>(R.id.cvPreviewCC)
                     cv.visibility = View.VISIBLE
                     val img = findViewById<ImageView>(R.id.imgPreviewCC)
                     img.setImageURI(uriPointer)
-                    f.animatePickImage(0)
                 }
             }
 

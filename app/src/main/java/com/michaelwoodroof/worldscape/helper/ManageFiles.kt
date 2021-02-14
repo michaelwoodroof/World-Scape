@@ -69,23 +69,27 @@ class ManageFiles(private val gc : Context) {
 
     }
 
-    fun saveWorld(world : World) : Boolean {
+    fun saveWorld(world : World?) : Boolean {
 
-        val fo = gc.filesDir
-        return try {
-            val uid = world.uid
-            val filePath = File(fo.absolutePath + "/worlds/$uid")
-            val fwd = File(filePath, "world_data")
-            fwd.createNewFile()
-            val fos = FileOutputStream(fwd)
-            val oos = ObjectOutputStream(fos)
-            //  Write World to File
-            oos.writeObject(world)
-            fos.close()
-            oos.close()
-            true
-        } catch (e : Exception) {
-            Log.e("error", e.toString())
+        return if (world != null) {
+            val fo = gc.filesDir
+            return try {
+                val uid = world.uid
+                val filePath = File(fo.absolutePath + "/worlds/$uid")
+                val fwd = File(filePath, "world_data")
+                fwd.createNewFile()
+                val fos = FileOutputStream(fwd)
+                val oos = ObjectOutputStream(fos)
+                //  Write World to File
+                oos.writeObject(world)
+                fos.close()
+                oos.close()
+                true
+            } catch (e : Exception) {
+                Log.e("error", e.toString())
+                false
+            }
+        } else {
             false
         }
 
@@ -135,8 +139,23 @@ class ManageFiles(private val gc : Context) {
         return wl
     }
 
+    fun getWorld(fileName: String) : World? {
+        return try {
+            // Get World
+            val f = File(gc.filesDir.absolutePath + "/worlds/" + fileName + "/world_data")
+            val fis = FileInputStream(f)
+            val ois = ObjectInputStream(fis)
+            val wi = ois.readObject() as World
+            fis.close()
+            ois.close()
+            wi
+        } catch (e : Exception) {
+            Log.e("error", e.toString())
+            null
+        }
+    }
+
     fun getWorldImage(uid : String) : Bitmap? {
-        val bm : Bitmap? = null
 
         val wf = File(gc.filesDir.absolutePath + "/worlds/$uid/world_image")
 
@@ -144,7 +163,7 @@ class ManageFiles(private val gc : Context) {
             BitmapFactory.decodeFile(wf.absolutePath)
         } catch (e : Exception) {
             Log.e("error", e.toString())
-            bm
+            null
         }
 
     }
@@ -243,7 +262,6 @@ class ManageFiles(private val gc : Context) {
     }
 
     fun getCharacterImage(wuid : String, uid : String) : Bitmap? {
-        val bm : Bitmap? = null
 
         val cf = File(gc.filesDir.absolutePath + "/worlds/$wuid/characters/$uid/character_image")
 
@@ -251,7 +269,7 @@ class ManageFiles(private val gc : Context) {
             BitmapFactory.decodeFile(cf.absolutePath)
         } catch (e : Exception) {
             Log.e("error", e.toString())
-            bm
+            null
         }
     }
 

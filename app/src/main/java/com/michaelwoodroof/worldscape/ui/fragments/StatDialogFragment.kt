@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
 class StatDialogFragment: DialogFragment() {
 
-    var currentPreset = ""
+    private var currentPreset = ""
     private lateinit var flStats: FrameLayout
 
     @SuppressLint("ClickableViewAccessibility")

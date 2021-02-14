@@ -7,7 +7,7 @@ import java.io.Serializable
 @Parcelize
 data class World (
     val title: String, val desc: String, val genre: String, val hasImg: Boolean,
-    val color: String, val uid: String) : Parcelable, Serializable {
+    val color: String, var uid: String) : Parcelable, Serializable {
 
     override fun toString(): String {
         return "[title: $title, desc: $desc, genre: $genre, hasImg: $hasImg, " +

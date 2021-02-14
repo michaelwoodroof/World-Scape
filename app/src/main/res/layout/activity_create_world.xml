@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <!-- @TODO Add Scrollview to Layout -->
-
     <ScrollView
         android:id="@+id/svCreateWorld"
         android:layout_width="match_parent"
@@ -176,26 +174,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/fabPickImage"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:fontFamily="sans-serif-condensed"
-                android:minHeight="30dp"
-                android:paddingTop="10dp"
-                android:tag="L"
-                android:text="@string/choose_an_image"
-                android:textColor="@color/toolbar"
-                android:visibility="gone"
-                app:backgroundTint="@color/gradient_start"
-                app:icon="@drawable/ic_baseline_image_24"
-                app:iconTint="@color/toolbar"
-                app:layout_constraintBottom_toBottomOf="@+id/cvPreview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvPreview"
-                app:rippleColor="@color/fab_ripple" />
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPickImage"
                 android:layout_width="wrap_content"
@@ -218,9 +196,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/cvPreview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvPreview">
-
-            </androidx.appcompat.widget.AppCompatButton>
+                app:layout_constraintTop_toBottomOf="@+id/cvPreview"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPickImageShrunk"
@@ -241,7 +217,7 @@
                 android:paddingBottom="16dp"
                 android:textColor="@color/toolbar"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/fabPickImage"
+                app:layout_constraintBottom_toBottomOf="@+id/cvPreview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvPreview">
@@ -286,7 +262,7 @@
                 android:layout_height="102dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fabPickImage" />
+                app:layout_constraintTop_toBottomOf="@+id/btnPickImage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
