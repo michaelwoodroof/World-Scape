@@ -18,7 +18,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <TextView
-            android:id="@+id/tvFEHitpoints"
+            android:id="@+id/tvFEHitPoints"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilFEHitpoints"
+            android:id="@+id/tilFEHitPoints"
             style="@style/TextInputLayoutTheme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/glFE50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFEHitpoints">
+            app:layout_constraintTop_toBottomOf="@+id/tvFEHitPoints">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             android:text="@string/movement"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="@+id/glFE50"
-            app:layout_constraintTop_toTopOf="@+id/tvFEHitpoints" />
+            app:layout_constraintTop_toTopOf="@+id/tvFEHitPoints" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/TextInputLayoutTheme"
@@ -66,7 +66,7 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/glFE50"
-            app:layout_constraintTop_toBottomOf="@+id/tvFEHitpoints">
+            app:layout_constraintTop_toBottomOf="@+id/tvFEHitPoints">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             android:text="@string/strength"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilFEHitpoints" />
+            app:layout_constraintTop_toBottomOf="@+id/tilFEHitPoints" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilFEStrength"
@@ -113,7 +113,7 @@
             android:text="@string/magic"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="@+id/glFE50"
-            app:layout_constraintTop_toBottomOf="@+id/tilFEHitpoints" />
+            app:layout_constraintTop_toBottomOf="@+id/tilFEHitPoints" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/TextInputLayoutTheme"

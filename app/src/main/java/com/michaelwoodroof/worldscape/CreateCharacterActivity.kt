@@ -63,6 +63,11 @@ class CreateCharacterActivity : AppCompatActivity() {
 
         SetStatusBar.create(this.window, this)
 
+        // Initialise a blank character
+        currentCharacter = MyCharacter("", false, "", null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null, ArrayList(), ArrayList(), ArrayList(),
+            ArrayList(), ArrayList(), "", "")
+
         // Set-Up Toolbar
         val tv = incToolbarCC.findViewById<TextView>(tvTitle.id)
         tv.text = getString(R.string.create_character_title)
@@ -309,6 +314,7 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     private fun updateCharacter(stageNumber: Int) {
+
         when (stageNumber) {
 
             0 -> {
@@ -401,6 +407,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
         }
+
     }
 
     fun stepForward(view : View) {
@@ -487,8 +494,6 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     private fun checkField(field: Int) : Boolean {
         h.removeCallbacksAndMessages(null)
-
-        Log.d("TESTING", field.toString())
 
         try {
 
@@ -636,7 +641,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                     val o = findViewById<TextView>(R.id.tvOptionalCC2)
 
                     if (x.text.toString().trim() == "") {
-                        xp.error = getString(R.string.err_no_bday)
+                        xp.error = getString(R.string.err_no_birthday)
                         o.visibility = View.GONE
                     } else {
                         xp.error = null
@@ -1208,7 +1213,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
 
             else -> {
-                Log.e("error", "Err : Non-Existent Stage for Text Changer")
+                Log.e("error", "Err : Non-Existent Stage for Text Changer $stageNumber")
             }
 
         }
@@ -1311,23 +1316,24 @@ class CreateCharacterActivity : AppCompatActivity() {
                         this.contentResolver)
                 }
             }
+
+            val fragmentManager = supportFragmentManager
+
+            for (i in 0..fragmentManager.backStackEntryCount) {
+                fragmentManager.popBackStack()
+            }
+
+            super.onBackPressed()
+
+            // Load Intent
+            val intent = Intent(this, WorldDetailActivity::class.java)
+            this.startActivity(intent)
         } else {
             Snackbar.make(findViewById(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
                 createCharacter(findViewById(R.id.fabCreateCC))
             }.show()
         }
 
-        val fragmentManager = supportFragmentManager
-
-        for (i in 0..fragmentManager.backStackEntryCount) {
-            fragmentManager.popBackStack()
-        }
-
-        super.onBackPressed()
-
-        // Load Intent
-        val intent = Intent(this, WorldDetailActivity::class.java)
-        this.startActivity(intent)
     }
 
     fun loadStatDialog(view : View) {

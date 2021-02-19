@@ -8,13 +8,11 @@
     android:background="@color/background">
 
     <ScrollView
-        android:id="@+id/svCreateWorld"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="54dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clMainCW"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -123,6 +121,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvGenre">
 
                 <AutoCompleteTextView
+                    android:labelFor="@string/label_drop_down_genre"
                     android:id="@+id/ddGenre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -254,10 +253,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvImageSelect"
                 app:srcCompat="@drawable/ic_baseline_warning_24"
                 app:tint="@color/warning_color"
-                tools:visibility="gone" />
+                tools:visibility="gone"
+                android:contentDescription="TODO" />
 
             <Space
-                android:id="@+id/spTwo"
                 android:layout_width="match_parent"
                 android:layout_height="102dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -269,7 +268,6 @@
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clCreation"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

@@ -7,7 +7,6 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -81,7 +80,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_add_world_prompt"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            android:contentDescription="TODO" />
 
         <Button
             android:id="@+id/btnPrompt"

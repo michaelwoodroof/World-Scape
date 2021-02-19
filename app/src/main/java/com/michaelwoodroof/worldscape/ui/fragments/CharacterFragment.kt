@@ -24,8 +24,8 @@ class CharacterFragment : Fragment() {
         val rvCharacter = root.findViewById(R.id.rvCharacters) as RecyclerView
         val fab = root.findViewById(R.id.fabCreateCharacter) as ExtendedFloatingActionButton
         rvCharacter.layoutManager = LinearLayoutManager(activity)
-        val dataset = loadCharacters()
-        rvCharacter.adapter = CharacterAdapter(dataset)
+        val dataSet = loadCharacters()
+        rvCharacter.adapter = CharacterAdapter(dataSet)
 
         val sl = object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -47,8 +47,8 @@ class CharacterFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val dataset = loadCharacters()
-        rvCharacters.adapter = CharacterAdapter(dataset)
+        val dataSet = loadCharacters()
+        rvCharacters.adapter = CharacterAdapter(dataSet)
     }
 
     private fun loadCharacters() : ArrayList<MyCharacter> {

@@ -16,7 +16,7 @@
             <path
                 android:name="agwdewjue"
                 android:pathData="M 320 319.5 C 320 319.78 319.78 320 319.5 320 C 319.22 320 319 319.78 319 319.5 C 319 319.22 319.22 319 319.5 319 C 319.78 319 320 319.22 320 319.5 Z"
-                android:fillColor="#000"
+                android:fillColor="#000000"
                 android:fillAlpha="0.4"
                 android:strokeWidth="1"/>
         </vector>

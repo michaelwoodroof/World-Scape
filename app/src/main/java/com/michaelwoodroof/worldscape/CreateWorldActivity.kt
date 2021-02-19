@@ -19,6 +19,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.michaelwoodroof.worldscape.helper.*
 import com.michaelwoodroof.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_create_world.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
@@ -44,6 +45,19 @@ class CreateWorldActivity : AppCompatActivity() {
 
         SetGradient.assign(btnCreate, this, dpWidth)
 
+        val rootView = colMainCW
+        val height = displayMetrics.heightPixels
+
+        // Detect Soft Keyboard
+        rootView.viewTreeObserver.addOnGlobalLayoutListener {
+            val heightDiff: Int = height - rootView.height
+            if (heightDiff > 100) {
+                btnCreate.visibility = View.GONE
+            } else {
+                btnCreate.visibility = View.VISIBLE
+            }
+        }
+
         // Set-Up Toolbar
         val tv = incToolbarCW.findViewById<TextView>(tvTitle.id)
         tv.text = getString(R.string.create_world_title)
@@ -55,9 +69,18 @@ class CreateWorldActivity : AppCompatActivity() {
         btnBack.visibility = View.VISIBLE
 
         btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
-            return@OnTouchListener assignTouch(view as ImageButton, event,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
+            return@OnTouchListener assignTouch(
+                view as ImageButton, event,
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.chevron_expansion_left,
+                    null
+                ) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.chevron_shrink_left,
+                    null
+                ) as AnimatedVectorDrawable
             )
         })
 
@@ -76,11 +99,11 @@ class CreateWorldActivity : AppCompatActivity() {
         r = Runnable {}
     }
 
-    fun goBack(view : View) {
+    fun goBack(view: View) {
         super.onBackPressed()
     }
 
-    fun addWorld(view : View) {
+    fun addWorld(view: View) {
 
         if (checkFields()) {
             // Captures Data from Activity
@@ -108,7 +131,11 @@ class CreateWorldActivity : AppCompatActivity() {
             if (mf.saveWorld(world)) {
                 super.onBackPressed()
             } else {
-                Snackbar.make(findViewById<CoordinatorLayout>(R.id.colMainCW), resources.getString(R.string.err_save_world), Snackbar.LENGTH_INDEFINITE).setAction(R.string.action_text) {
+                Snackbar.make(
+                    findViewById<CoordinatorLayout>(R.id.colMainCW),
+                    resources.getString(R.string.err_save_world),
+                    Snackbar.LENGTH_INDEFINITE
+                ).setAction(R.string.action_text) {
                     addWorld(findViewById<Button>(R.id.btnCreate))
                 }.show()
             }
@@ -146,7 +173,7 @@ class CreateWorldActivity : AppCompatActivity() {
 
     }
 
-    private fun delayError(field : Int) {
+    private fun delayError(field: Int) {
         // Ensures Reset before Attempting Timeout
         Handler(Looper.getMainLooper()).removeCallbacksAndMessages(r)
         r = Runnable {
@@ -155,7 +182,7 @@ class CreateWorldActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(r, 2000)
     }
 
-    private fun checkField(field : Int) : Boolean {
+    private fun checkField(field: Int) : Boolean {
         when (field) {
 
             0 -> {

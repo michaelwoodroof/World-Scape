@@ -25,6 +25,7 @@
     <string name="dialog_accept">Delete</string>
     <string name="delete_fail">Could not delete world</string>
     <string name="no_worlds_prompt">NO WORLDS ADD ONE</string>
+    <string name="snack_bar_delete_world_message">World has been deleted press undo to restore the world and all of it\'s details</string>
 
     <!-- Create World Strings -->
     <string name="create_world_title">Create a World</string>
@@ -34,6 +35,7 @@
     <string name="choose_an_image">Choose an Image</string>
     <string name="genre_of_world">Genre of World</string>
     <string name="action_text">Retry</string>
+    <string name="label_drop_down_genre">Drop down menu featuring different genres</string>
     <string-array name="genres"> <!-- TODO EXPAND -->
         <item>Fantasy</item>
         <item>Sci-Fi</item>
@@ -52,7 +54,7 @@
     <string name="birth_loc">Place of Birth</string>
     <string name="current_loc">Current Location / Region</string>
     <string name="biography_cc">Biography / Description</string>
-    <string name="birthdate">Birthday</string>
+    <string name="birth_date">Birthday</string>
     <string name="race">Race</string>
     <string name="add_stats">Add a stat sheet</string>
     <string name="general_title">General Information about the Character</string>
@@ -99,7 +101,7 @@
     <string name="err_no_bio">No description / biography chosen</string>
     <string name="err_no_by">No birth year chosen</string>
     <string name="err_no_pob">No place of birth chosen</string>
-    <string name="err_no_bday">No birth day chosen</string>
+    <string name="err_no_birthday">No birth day chosen</string>
     <string name="err_no_cl">No current location chosen</string>
     <string name="err_no_height">No height chosen</string>
     <string name="err_no_weight">No weight chosen</string>
@@ -120,8 +122,8 @@
     <!-- Character Layout Strings -->
     <string name="add_character">Add Character</string>
 
-    <!-- Stat Sheet String -->
-    <!-- Shared Strings -->
+    <!-- Stat Sheet Strings -->
+    <string name="label_drop_down_presets">Drop down menu featuring different stat presets</string>
 
     <!-- FE Strings -->
     <string name="hit_points">Hit Points (HP)</string>
@@ -148,6 +150,8 @@
     <string name="cd_link_icon">Link Button</string>
 
     <!-- Hints -->
+
+    <!-- Shared Strings -->
 
     <!-- Version is denoted as Letter [A, B, S] : Alpha Release, Beta Release and Stable Release  -->
     <!-- First number is a major update such as a new major feature

@@ -16,14 +16,8 @@
 
     <color name="drag">@color/baseTextColor</color>
 
-    <color name="prompt_text">#000</color>
-    <color name="wp_blue">#43E8FF</color>
-    <color name="wp_pink">#FB43FF</color>
-    <color name="wp_yellow">#FFE55E</color>
-
     <color name="stroke_color">#AAAAAA</color>
     <color name="chip_stroke_color">@color/medGreen</color>
-    <color name="stroke_color_cc">#C4C4C4</color>
     <color name="content_background">#ffffff</color>
     <color name="card_ripple">#66AAAAAA</color>
     <color name="fab_ripple">#40FFFFFF</color>
@@ -36,9 +30,6 @@
     <color name="personality_text_color_pos">@color/medGreen</color>
     <color name="personality_ripple_pos">@color/medGreen</color>
     <color name="personality_ripple_neg">@color/error_color</color>
-
-    <color name="rpg_background">#fff</color>
-    <color name="rpg_text">@color/colorPrimary</color>
 
     <color name="background">#F5F5F5</color>
     <color name="add_button_bg">#ffffff</color>

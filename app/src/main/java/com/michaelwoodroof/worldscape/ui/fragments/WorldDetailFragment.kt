@@ -36,7 +36,7 @@ class WorldDetailFragment: Fragment() {
         rvRCharacters.adapter = WDCharacterAdapter(loadRecentCharacters())
 
         // Set - Up Recent Places for RecylcerView
-        val rvRPlaces = rvRecentPlaces
+        val rvRPlaces = root.findViewById<RecyclerView>(R.id.rvRecentPlaces)
 //        rvRPlaces.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 //        rvRPlaces.adapter = WDPlacesAdapter(loadRecentPlaces())
 
