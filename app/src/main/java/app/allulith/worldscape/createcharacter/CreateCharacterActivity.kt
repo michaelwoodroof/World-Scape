@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import app.allulith.worldscape.R
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -27,8 +28,6 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.michaelwoodroof.worldscape.R
-import com.michaelwoodroof.worldscape.utils.*
 import app.allulith.worldscape.structure.MyCharacter
 import app.allulith.worldscape.createcharacter.fragments.CreateCharacterFragmentS1
 import app.allulith.worldscape.createcharacter.fragments.CreateCharacterFragmentS2

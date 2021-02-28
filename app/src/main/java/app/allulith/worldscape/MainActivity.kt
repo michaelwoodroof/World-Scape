@@ -24,7 +24,6 @@ import app.allulith.worldscape.adapters.WorldAdapter
 import app.allulith.worldscape.detail.WorldDetailActivity
 import app.allulith.worldscape.shared.SortDialogFragment
 import app.allulith.worldscape.utils.*
-import com.michaelwoodroof.worldscape.utils.*
 import app.allulith.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_toolbar.*

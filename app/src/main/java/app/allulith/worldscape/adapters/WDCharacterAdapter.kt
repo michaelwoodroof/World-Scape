@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import app.allulith.worldscape.R
 import com.google.android.material.card.MaterialCardView
-import com.michaelwoodroof.worldscape.R
 import app.allulith.worldscape.utils.ManageFiles
 import app.allulith.worldscape.structure.MyCharacter
 import kotlinx.android.synthetic.main.wd_character_layout.view.*

@@ -14,12 +14,13 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import app.allulith.worldscape.R
 import com.google.android.material.textfield.TextInputLayout
 import app.allulith.worldscape.createcharacter.CreateCharacterActivity
-import com.michaelwoodroof.worldscape.R
 import app.allulith.worldscape.utils.assignTouch
 import app.allulith.worldscape.structure.StatItem
 import app.allulith.worldscape.createcharacter.stats.fragments.FireEmblemFragment
+import app.allulith.worldscape.utils.afterTextChanged
 import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
 class StatDialogFragment: DialogFragment() {

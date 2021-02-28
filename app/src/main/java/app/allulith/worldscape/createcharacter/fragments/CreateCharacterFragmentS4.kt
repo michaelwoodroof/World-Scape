@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import app.allulith.worldscape.R
 import app.allulith.worldscape.createcharacter.CreateCharacterActivity
-import com.michaelwoodroof.worldscape.R
 
 class CreateCharacterFragmentS4 : Fragment() {
 

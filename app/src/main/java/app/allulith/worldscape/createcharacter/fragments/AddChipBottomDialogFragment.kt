@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import app.allulith.worldscape.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.michaelwoodroof.worldscape.R
 
 class AddChipBottomDialogFragment : BottomSheetDialogFragment() {
 

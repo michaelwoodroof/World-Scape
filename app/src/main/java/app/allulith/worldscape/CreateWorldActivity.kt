@@ -17,7 +17,6 @@ import androidx.core.content.res.ResourcesCompat
 import app.allulith.worldscape.utils.*
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.michaelwoodroof.worldscape.utils.*
 import app.allulith.worldscape.structure.World
 import kotlinx.android.synthetic.main.activity_create_world.*
 import kotlinx.android.synthetic.main.activity_main.*

@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
-import com.michaelwoodroof.worldscape.R
+import app.allulith.worldscape.R
 import app.allulith.worldscape.utils.assignTouch
 
 class SortDialogFragment: DialogFragment() {

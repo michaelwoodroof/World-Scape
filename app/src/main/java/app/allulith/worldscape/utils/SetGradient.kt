@@ -7,8 +7,8 @@ import android.graphics.Shader
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import app.allulith.worldscape.R
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.michaelwoodroof.worldscape.R
 
 object SetGradient {
 

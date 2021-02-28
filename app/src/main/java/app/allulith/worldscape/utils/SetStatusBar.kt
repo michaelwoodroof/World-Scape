@@ -9,7 +9,7 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
-import com.michaelwoodroof.worldscape.R
+import app.allulith.worldscape.R
 
 object SetStatusBar {
 

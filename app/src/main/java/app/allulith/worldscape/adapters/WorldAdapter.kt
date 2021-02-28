@@ -10,7 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.michaelwoodroof.worldscape.R
+import app.allulith.worldscape.R
 import app.allulith.worldscape.utils.ManageFiles
 import app.allulith.worldscape.structure.World
 import kotlinx.android.synthetic.main.world_layout.view.*

@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
+import app.allulith.worldscape.R
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import app.allulith.worldscape.createcharacter.CreateCharacterActivity
-import com.michaelwoodroof.worldscape.R
 
 class CreateCharacterFragmentS2 : Fragment() {
 

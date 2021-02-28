@@ -12,9 +12,9 @@ import android.widget.ScrollView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import app.allulith.worldscape.R
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import app.allulith.worldscape.createcharacter.CreateCharacterActivity
-import com.michaelwoodroof.worldscape.R
 import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
 class CreateCharacterFragmentS1 : Fragment() {
