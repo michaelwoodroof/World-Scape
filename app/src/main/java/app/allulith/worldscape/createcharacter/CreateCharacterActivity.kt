@@ -82,12 +82,12 @@ class CreateCharacterActivity : AppCompatActivity() {
                 view as ImageButton, event,
                 ResourcesCompat.getDrawable(
                     resources,
-                    R.drawable.chevron_expansion_left,
+                    R.drawable.avd_chevron_expansion_left,
                     null
                 ) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(
                     resources,
-                    R.drawable.chevron_shrink_left,
+                    R.drawable.avd_chevron_shrink_left,
                     null
                 ) as AnimatedVectorDrawable
             )
@@ -566,7 +566,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                             btn.setImageDrawable(
                                 ResourcesCompat.getDrawable(
                                     resources,
-                                    R.drawable.warning_to_link,
+                                    R.drawable.avd_warning_to_link,
                                     null
                                 )
                             )
@@ -605,7 +605,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                             btn.setImageDrawable(
                                 ResourcesCompat.getDrawable(
                                     resources,
-                                    R.drawable.warning_to_link,
+                                    R.drawable.avd_warning_to_link,
                                     null
                                 )
                             )

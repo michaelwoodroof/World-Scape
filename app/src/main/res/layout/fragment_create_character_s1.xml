@@ -263,7 +263,7 @@
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation"
             app:layout_constraintTop_toTopOf="@+id/tilCurrentLocation"
-            app:srcCompat="@drawable/link_to_warning" />
+            app:srcCompat="@drawable/avd_link_to_warning" />
 
         <TextView
             android:id="@+id/tvOptionalCC3"
@@ -328,7 +328,7 @@
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilPlaceOfBirth"
             app:layout_constraintTop_toTopOf="@+id/tilPlaceOfBirth"
-            app:srcCompat="@drawable/link_to_warning" />
+            app:srcCompat="@drawable/avd_link_to_warning" />
 
         <TextView
             android:id="@+id/tvOptionalCC4"

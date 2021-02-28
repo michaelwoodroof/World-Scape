@@ -37,12 +37,12 @@ class SortDialogFragment: DialogFragment() {
                 view as ImageButton, event,
                 ResourcesCompat.getDrawable(
                     resources,
-                    R.drawable.close_expand,
+                    R.drawable.avd_close_expand,
                     null
                 ) as AnimatedVectorDrawable,
                 ResourcesCompat.getDrawable(
                     resources,
-                    R.drawable.close_shrink,
+                    R.drawable.avd_close_shrink,
                     null
                 ) as AnimatedVectorDrawable
             )

@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
-        app:srcCompat="@drawable/close_expand" />
+        app:srcCompat="@drawable/avd_close_expand" />
 
     <Button
         android:id="@+id/btnSave"

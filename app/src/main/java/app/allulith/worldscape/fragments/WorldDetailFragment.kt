@@ -53,20 +53,20 @@ class WorldDetailFragment: Fragment() {
         // Set On Touches
         btnSAC.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener assignTouch(view as ImageButton, event,
-            ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
-            ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
+            ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_expansion, null) as AnimatedVectorDrawable,
+            ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
         btnSAP.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener assignTouch(view as ImageButton, event,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
+                ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_expansion, null) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
         btnSAS.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener assignTouch(view as ImageButton, event,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion, null) as AnimatedVectorDrawable,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_short, null) as AnimatedVectorDrawable)
+                ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_expansion, null) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
         return root

@@ -75,7 +75,7 @@
             android:textColor="@color/gradient_start"
             android:visibility="visible"
             app:backgroundTint="@color/add_button_bg"
-            app:icon="@drawable/chevron_shrink_short"
+            app:icon="@drawable/avd_chevron_shrink_short"
             app:iconGravity="end"
             app:iconTint="@color/gradient_end"
             app:layout_constraintBottom_toBottomOf="parent"

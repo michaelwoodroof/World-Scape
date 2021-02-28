@@ -61,8 +61,8 @@ class SettingsActivity : AppCompatActivity() {
 
         btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener assignTouch(view as ImageButton, event,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_expansion_left, null) as AnimatedVectorDrawable,
-                ResourcesCompat.getDrawable(resources, R.drawable.chevron_shrink_left, null) as AnimatedVectorDrawable
+                ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_expansion_left, null) as AnimatedVectorDrawable,
+                ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_shrink_left, null) as AnimatedVectorDrawable
             )
         })
     }

@@ -59,8 +59,8 @@ class WorldDetailActivity : AppCompatActivity() {
         val btnSettings = incToolbarWD.findViewById<ImageButton>(btnSettings.id)
         btnSettings.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener assignTouch(view as ImageButton, event,
-                ResourcesCompat.getDrawable(resources, R.drawable.settings_expand, null) as AnimatedVectorDrawable,
-            ResourcesCompat.getDrawable(resources, R.drawable.settings_shrink, null) as AnimatedVectorDrawable)
+                ResourcesCompat.getDrawable(resources, R.drawable.avd_settings_expand, null) as AnimatedVectorDrawable,
+            ResourcesCompat.getDrawable(resources, R.drawable.avd_settings_shrink, null) as AnimatedVectorDrawable)
         })
 
     }

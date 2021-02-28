@@ -63,9 +63,9 @@ class CreateCharacterFragmentS1 : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
+        btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.avd_link_to_warning, null))
         btnLinkCurrentLoc.tag = "ne"
-        btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.link_to_warning, null))
+        btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.avd_link_to_warning, null))
         btnLinkPlace.tag = "ne"
         val drawableOne = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
         val drawableTwo = btnLinkPlace.drawable as AnimatedVectorDrawable

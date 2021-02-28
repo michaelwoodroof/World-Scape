@@ -27,7 +27,7 @@
         android:contentDescription="@string/cd_show_c"
         android:onClick="loadAllCharacters"
         android:padding="4dp"
-        android:src="@drawable/chevron_shrink_short"
+        android:src="@drawable/avd_chevron_shrink_short"
         android:tag="na"
         android:tint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/tvRecentCharacters"
@@ -73,7 +73,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvRecentPlaces"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvRecentPlaces"
-        android:src="@drawable/chevron_shrink_short"
+        android:src="@drawable/avd_chevron_shrink_short"
         android:tag="na" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -115,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvRecentStories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvRecentStories"
-        android:src="@drawable/chevron_shrink_short"
+        android:src="@drawable/avd_chevron_shrink_short"
         android:tag="na" />
 
     <androidx.recyclerview.widget.RecyclerView

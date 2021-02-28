@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
-        app:srcCompat="@drawable/menu_expand" />
+        app:srcCompat="@drawable/avd_menu_expand" />
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -63,7 +63,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
-        app:srcCompat="@drawable/chevron_expansion_left" />
+        app:srcCompat="@drawable/avd_chevron_expansion_left" />
 
     <ImageButton
         android:id="@+id/btnSettings"
@@ -79,7 +79,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
-        app:srcCompat="@drawable/settings_expand" />
+        app:srcCompat="@drawable/avd_settings_expand" />
 
     <ImageButton
         android:id="@+id/btnSort"
@@ -95,6 +95,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
         app:layout_constraintEnd_toStartOf="@+id/btnSettings"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
-        app:srcCompat="@drawable/sort_expand" />
+        app:srcCompat="@drawable/avd_sort_expand" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
