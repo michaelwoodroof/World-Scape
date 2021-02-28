@@ -38,6 +38,7 @@
     <string name="label_drop_down_genre">Drop down menu featuring different genres</string>
     <string-array name="genres"> <!-- TODO EXPAND -->
         <item>Fantasy</item>
+        <item>Horror</item>
         <item>Sci-Fi</item>
         <item>Other</item>
     </string-array>

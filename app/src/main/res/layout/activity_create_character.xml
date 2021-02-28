@@ -50,7 +50,7 @@
             android:visibility="gone"
             app:backgroundTint="@color/add_button_bg"
             app:icon="@drawable/ic_baseline_add_24"
-            app:iconTint="@color/add_button_text_color"
+            app:iconTint="@color/gradient_start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -125,4 +125,12 @@
         <item name="android:textColor">@color/error_color</item>
     </style>
 
+    <style name="Widget.WorldScape.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.WorldScape.Chip.Choice</item>
+    </style>
+
+    <style name="ThemeOverlay.WorldScape.Chip.Choice" parent="">
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
+
 </resources>

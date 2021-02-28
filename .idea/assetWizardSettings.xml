@@ -366,7 +366,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialiconsround/menu/round_menu_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/arrow_drop_down/baseline_arrow_drop_down_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -376,8 +376,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_round_menu_24" />
-                            <entry key="sourceFile" value="C:\Users\Michael\Desktop\icons\menu_alt.svg" />
+                            <entry key="outputName" value="ic_baseline_arrow_drop_down_24" />
+                            <entry key="sourceFile" value="C:\Users\Michael\Desktop\horror.svg" />
                           </map>
                         </option>
                       </PersistentState>
