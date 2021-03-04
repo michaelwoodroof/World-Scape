@@ -48,10 +48,10 @@ import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
 class CreateCharacterActivity : AppCompatActivity() {
 
-    var currentCharacter : MyCharacter? = null
+    var currentCharacter: MyCharacter? = null
+    lateinit var uriPointer: Uri
+    private lateinit var bottomSheetFragment: AddChipBottomDialogFragment
     var isDialogLoaded = false
-    lateinit var uriPointer : Uri
-    private lateinit var bottomSheetFragment : AddChipBottomDialogFragment
     var r : Runnable = Runnable {}
     var h : Handler = Handler(Looper.getMainLooper())
 
@@ -133,24 +133,26 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     private fun backTasks() {
-        when (flCCMain.tag) {
-            "S2" -> {
-                flCCMain.tag = "S1"
-                updateCharacter(1)
-            }
+        if (!isDialogLoaded) {
+            when (flCCMain.tag) {
+                "S2" -> {
+                    flCCMain.tag = "S1"
+                    updateCharacter(1)
+                }
 
-            "S3" -> {
-                flCCMain.tag = "S2"
-                updateCharacter(2)
-            }
+                "S3" -> {
+                    flCCMain.tag = "S2"
+                    updateCharacter(2)
+                }
 
-            "S4" -> {
-                flCCMain.tag = "S3"
-                updateCharacter(3)
+                "S4" -> {
+                    flCCMain.tag = "S3"
+                    updateCharacter(3)
 
-                fabCreateCC.hide()
+                    fabCreateCC.hide()
 
-                fabNext.show()
+                    fabNext.show()
+                }
             }
         }
     }
@@ -1300,40 +1302,36 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     fun createCharacter(view: View) {
-        if (!isDialogLoaded) {
-            val mf = ManageFiles(this)
-            // wuid is the World's uid
-            currentCharacter?.uid = mf.generateUUID()
-            currentCharacter?.wuid = intent.getStringExtra("uid").toString()
-            if (currentCharacter?.let { mf.saveCharacter(it, intent.getStringExtra("uid").toString()) } == true) {
-                // Save Image for Character
-                if (currentCharacter?.hasImg == true && this::uriPointer.isInitialized) {
-                    currentCharacter?.uid?.let {
-                        mf.saveCharacterImage(
-                            it, intent.getStringExtra("uid").toString(), uriPointer,
-                            this.contentResolver)
-                    }
+        val mf = ManageFiles(this)
+        // wuid is the World's uid
+        currentCharacter?.uid = mf.generateUUID()
+        currentCharacter?.wuid = intent.getStringExtra("uid").toString()
+        if (currentCharacter?.let { mf.saveCharacter(it, intent.getStringExtra("uid").toString()) } == true) {
+            // Save Image for Character
+            if (currentCharacter?.hasImg == true && this::uriPointer.isInitialized) {
+                currentCharacter?.uid?.let {
+                    mf.saveCharacterImage(
+                        it, intent.getStringExtra("uid").toString(), uriPointer,
+                        this.contentResolver)
                 }
-                this.finish()
-            } else {
-                Snackbar.make(findViewById(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(
-                    R.string.action_text
-                ) {
-                    createCharacter(findViewById(R.id.fabCreateCC))
-                }.show()
             }
+            this.finish()
+        } else {
+            Snackbar.make(findViewById(R.id.colMainCC), resources.getString(R.string.err_save_character), Snackbar.LENGTH_INDEFINITE).setAction(
+                R.string.action_text
+            ) {
+                createCharacter(findViewById(R.id.fabCreateCC))
+            }.show()
         }
     }
 
     fun loadStatDialog(view : View) {
-        if (!isDialogLoaded) {
-            isDialogLoaded = true
-            val fragmentManager = supportFragmentManager
-            val statFragment = StatDialogFragment()
-            fragmentManager.beginTransaction()
-                .addToBackStack(null)
-                .add(android.R.id.content, statFragment).commit()
-        }
+        val fragmentManager = supportFragmentManager
+        val statFragment = StatDialogFragment()
+        isDialogLoaded = true
+        fragmentManager.beginTransaction()
+            .addToBackStack(null)
+            .add(android.R.id.content, statFragment).commit()
     }
 
     fun popStack() {
