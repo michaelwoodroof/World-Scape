@@ -133,4 +133,59 @@
         <item name="elevationOverlayEnabled">false</item>
     </style>
 
+    <style name="Title" parent="Widget.MaterialComponents.TextView">
+        <item name="android:ellipsize">end</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/titleTextColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Optional" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/baseTextColor</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="GradientButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_gradient</item>
+        <item name="android:drawablePadding">14dp</item>
+        <item name="android:elevation">6dp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:letterSpacing">0.07</item>
+        <item name="android:height">40dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textColor">@color/toolbar</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingEnd">44dp</item>
+        <item name="android:paddingStart">18dp</item>
+        <item name="android:paddingTop">0dp</item>
+    </style>
+
+    <style name="GradientButton.Small" parent="GradientButton">
+        <item name="android:drawablePadding">0dp</item>
+        <item name="android:height">54dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+    </style>
+
+    <style name="CreateButton" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="android:backgroundTint">@color/add_button_bg</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">@color/gradient_start</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">52dp</item>
+    </style>
+
+    <style name="NextButton" parent="CreateButton">
+        <item name="android:width">175dp</item>
+        <item name="android:paddingStart">56dp</item>
+        <item name="android:paddingEnd">20dp</item>
+    </style>
+
 </resources>

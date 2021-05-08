@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/name_of_trait"
-        android:textColor="@color/colorPrimary"
+        android:textAppearance="@style/Title"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/tilNewChip"
         app:layout_constraintTop_toBottomOf="@+id/imgDrag" />
@@ -40,21 +40,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddTrait"
-        style="@style/RoundedContainerButton"
+        style="@style/GradientButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:onClick="addTrait"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
         android:text="@string/add_trait"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tilNewChip"
         app:layout_constraintStart_toStartOf="@+id/tilNewChip"
-        app:layout_constraintTop_toBottomOf="@+id/tilNewChip"
-        app:strokeColor="@color/colorPrimary" />
+        app:layout_constraintTop_toBottomOf="@+id/tilNewChip">
+
+    </androidx.appcompat.widget.AppCompatButton>
 
     <ImageView
         android:id="@+id/imgDrag"

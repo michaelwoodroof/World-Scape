@@ -12,19 +12,18 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
+import app.allulith.worldscape.databinding.ActivityCreateWorldBinding
 import app.allulith.worldscape.utils.*
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import app.allulith.worldscape.structure.World
-import kotlinx.android.synthetic.main.activity_create_world.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.default_toolbar.*
-import kotlinx.android.synthetic.main.fragment_create_character_s1.*
 
 class CreateWorldActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityCreateWorldBinding
     private lateinit var uriPointer : Uri
     lateinit var r : Runnable
 
@@ -36,36 +35,40 @@ class CreateWorldActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_world)
+
+        binding = ActivityCreateWorldBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         SetStatusBar.create(this.window, this)
 
         val displayMetrics: DisplayMetrics = this.resources.displayMetrics
         val dpWidth = displayMetrics.widthPixels / displayMetrics.density.toInt()
 
-        SetGradient.assign(btnCreate, this, dpWidth)
+        SetGradient.assign(binding.btnCreate, this, dpWidth)
 
-        val rootView = colMainCW
+        val rootView = binding.colMainCW
         val height = displayMetrics.heightPixels
 
         // Detect Soft Keyboard
         rootView.viewTreeObserver.addOnGlobalLayoutListener {
             val heightDiff: Int = height - rootView.height
             if (heightDiff > 100) {
-                btnCreate.visibility = View.GONE
+                binding.btnCreate.visibility = View.GONE
             } else {
-                btnCreate.visibility = View.VISIBLE
+                binding.btnCreate.visibility = View.VISIBLE
             }
         }
 
         // Set-Up Toolbar
-        val tv = incToolbarCW.findViewById<TextView>(tvTitle.id)
+        val toolbar = findViewById<ConstraintLayout>(R.id.incToolbarCW)
+
+        val tv = toolbar.findViewById<TextView>(R.id.tvTitle)
         tv.text = getString(R.string.create_world_title)
-        val btnMenu = incToolbarCW.findViewById<ImageButton>(btnMenu.id)
+        val btnMenu = toolbar.findViewById<ImageButton>(R.id.btnMenu)
         btnMenu.visibility = View.GONE
-        val btnSettings = incToolbarCW.findViewById<ImageButton>(btnSettings.id)
+        val btnSettings = toolbar.findViewById<ImageButton>(R.id.btnSettings)
         btnSettings.visibility = View.GONE
-        val btnBack = incToolbarCW.findViewById<ImageButton>(btnBack.id)
+        val btnBack = toolbar.findViewById<ImageButton>(R.id.btnBack)
         btnBack.visibility = View.VISIBLE
 
         btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
@@ -88,7 +91,7 @@ class CreateWorldActivity : AppCompatActivity() {
         val genreTypes = resources.getStringArray(R.array.genres)
 
         val adapter = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, genreTypes)
-        ddGenre.setAdapter(adapter)
+        binding.ddGenre.setAdapter(adapter)
     }
 
     override fun onStart() {
@@ -107,16 +110,16 @@ class CreateWorldActivity : AppCompatActivity() {
 
         if (checkFields()) {
             // Captures Data from Activity
-            val title = tietWorld.text.toString()
-            val desc = tietDesc.text.toString()
+            val title = binding.tietWorld.text.toString()
+            val desc = binding.tietDesc.text.toString()
 
             var img = false
-            if (imgPreview.tag == "hasImage") {
+            if (binding.imgPreview.tag == "hasImage") {
                 img = true
             }
 
             val mf = ManageFiles(this)
-            val ed = ddGenre.text
+            val ed = binding.ddGenre.text
             val uid = mf.generateUUID()
 
             mf.createFolderStructure(uid, this)
@@ -186,44 +189,44 @@ class CreateWorldActivity : AppCompatActivity() {
         when (field) {
 
             0 -> {
-                return if (tietWorld.text.toString().trim() == "") {
+                return if (binding.tietWorld.text.toString().trim() == "") {
                     // Highlight Field to Indicate Error
-                    tilWorld.error = getString(R.string.err_world)
+                    binding.tilWorld.error = getString(R.string.err_world)
                     false
                 } else {
                     // Reset Field -- To Ensure Error isn't Showing
-                    tilWorld.error = null
+                    binding.tilWorld.error = null
                     true
                 }
             }
 
             1 -> {
-                return if (tietDesc.text.toString().trim() == "") {
-                    tilDesc.error = getString(R.string.err_desc)
+                return if (binding.tietDesc.text.toString().trim() == "") {
+                    binding.tilDesc.error = getString(R.string.err_desc)
                     false
                 } else {
-                    tilDesc.error = null
+                    binding.tilDesc.error = null
                     true
                 }
             }
 
             2 -> {
-                return if (ddGenre.text.toString().trim() == "") {
-                    txtiGenre.error = getString(R.string.err_genre)
+                return if (binding.ddGenre.text.toString().trim() == "") {
+                    binding.txtiGenre.error = getString(R.string.err_genre)
                     false
                 } else {
-                    txtiGenre.error = null
+                    binding.txtiGenre.error = null
                     true
                 }
             }
 
             3 -> {
-                if (imgPreview.tag == "NT") {
-                    tvWarning.visibility = View.VISIBLE
-                    imgWarning.visibility = View.VISIBLE
+                if (binding.imgPreview.tag == "NT") {
+                    binding.tvWarning.visibility = View.VISIBLE
+                    binding.imgWarning.visibility = View.VISIBLE
                 } else {
-                    tvWarning.visibility = View.GONE
-                    imgWarning.visibility = View.GONE
+                    binding.tvWarning.visibility = View.GONE
+                    binding.imgWarning.visibility = View.GONE
                 }
                 return true
             }
@@ -264,12 +267,12 @@ class CreateWorldActivity : AppCompatActivity() {
             if (requestCode == MEDIA_PICK_CODE) {
                 val selectedImage = data?.data
                 if (selectedImage != null) {
-                    imgPreview.setImageURI(selectedImage)
-                    cvPreview.visibility = View.VISIBLE
+                    binding.imgPreview.setImageURI(selectedImage)
+                    binding.cvPreview.visibility = View.VISIBLE
                     uriPointer = selectedImage
-                    imgPreview.tag = "hasImage"
-                    btnPickImage.visibility = View.GONE
-                    btnPickImageShrunk.visibility = View.VISIBLE
+                    binding.imgPreview.tag = "hasImage"
+                    binding.btnPickImage.visibility = View.GONE
+                    binding.btnPickImageShrunk.visibility = View.VISIBLE
                 }
             }
         }

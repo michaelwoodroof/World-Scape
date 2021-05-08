@@ -10,45 +10,44 @@ import android.widget.ImageButton
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import app.allulith.worldscape.R
 import app.allulith.worldscape.adapters.WDCharacterAdapter
+import app.allulith.worldscape.databinding.FragmentWorldDetailBinding
 import app.allulith.worldscape.detail.WorldDetailActivity
 import app.allulith.worldscape.utils.ManageFiles
 import app.allulith.worldscape.utils.assignTouch
 import app.allulith.worldscape.structure.MyCharacter
 import app.allulith.worldscape.structure.Place
 import app.allulith.worldscape.structure.Story
-import kotlinx.android.synthetic.main.fragment_world_detail.*
 
 class WorldDetailFragment: Fragment() {
 
     // @TODO Add Edit plus description textview
+    private lateinit var binding: FragmentWorldDetailBinding
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_world_detail, container, false)
+        binding = FragmentWorldDetailBinding.inflate(inflater, container, false)
 
         // Set - Up Recent Characters for RecyclerView
-        val rvRCharacters = root.findViewById<RecyclerView>(R.id.rvRecentCharacters)
-        rvRCharacters.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        rvRCharacters.adapter = WDCharacterAdapter(loadRecentCharacters())
+        binding.rvRecentCharacters.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvRecentCharacters.adapter = WDCharacterAdapter(loadRecentCharacters())
 
         // Set - Up Recent Places for RecylcerView
-        val rvRPlaces = root.findViewById<RecyclerView>(R.id.rvRecentPlaces)
+        //val rvRPlaces = root.findViewById<RecyclerView>(R.id.rvRecentPlaces)
 //        rvRPlaces.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 //        rvRPlaces.adapter = WDPlacesAdapter(loadRecentPlaces())
 
 
        // Set - Up Recent Stories for RecylcerView
-        val rvRStories = rvRecentStories
+        val rvRStories = binding.rvRecentStories
 //        rvRStories.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 //        rvRStories.adapter = WDStoriesAdapter(loadRecentStories())
 
-        val btnSAC : ImageButton = root.findViewById(R.id.btnShowAllCharacters)
-        val btnSAP : ImageButton = root.findViewById(R.id.btnShowAllPlaces)
-        val btnSAS : ImageButton = root.findViewById(R.id.btnShowAllStories)
+        val btnSAC : ImageButton = binding.btnShowAllCharacters
+        val btnSAP : ImageButton = binding.btnShowAllPlaces
+        val btnSAS : ImageButton = binding.btnShowAllStories
 
         // Set On Touches
         btnSAC.setOnTouchListener(View.OnTouchListener { view, event ->
@@ -69,19 +68,19 @@ class WorldDetailFragment: Fragment() {
                 ResourcesCompat.getDrawable(resources, R.drawable.avd_chevron_shrink_short, null) as AnimatedVectorDrawable)
         })
 
-        return root
+        return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        val dataset = loadRecentCharacters()
+        val dataSet = loadRecentCharacters()
 
-        rvRecentCharacters.adapter = WDCharacterAdapter(dataset)
-        if (dataset.size == 0) {
-            rvRecentCharacters.overScrollMode = View.OVER_SCROLL_NEVER
+        binding.rvRecentCharacters.adapter = WDCharacterAdapter(dataSet)
+        if (dataSet.size == 0) {
+            binding.rvRecentCharacters.overScrollMode = View.OVER_SCROLL_NEVER
         } else {
             // @TODO Add Scroll effect when items exceed phone height
-            rvRecentCharacters.overScrollMode = View.OVER_SCROLL_ALWAYS
+            binding.rvRecentCharacters.overScrollMode = View.OVER_SCROLL_ALWAYS
         }
     }
 

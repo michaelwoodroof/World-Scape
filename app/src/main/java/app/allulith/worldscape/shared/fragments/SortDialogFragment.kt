@@ -1,4 +1,4 @@
-package app.allulith.worldscape.shared
+package app.allulith.worldscape.shared.fragments
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable

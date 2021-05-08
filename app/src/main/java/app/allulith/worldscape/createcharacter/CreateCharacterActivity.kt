@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import app.allulith.worldscape.R
@@ -35,30 +36,27 @@ import app.allulith.worldscape.createcharacter.fragments.CreateCharacterFragment
 import app.allulith.worldscape.createcharacter.fragments.CreateCharacterFragmentS4
 import app.allulith.worldscape.createcharacter.fragments.AddChipBottomDialogFragment
 import app.allulith.worldscape.createcharacter.stats.StatDialogFragment
+import app.allulith.worldscape.databinding.ActivityCreateCharacterBinding
 import app.allulith.worldscape.utils.*
-import kotlinx.android.synthetic.main.activity_create_character.*
-import kotlinx.android.synthetic.main.bottom_sheet_new_chip.*
-import kotlinx.android.synthetic.main.default_toolbar.*
-import kotlinx.android.synthetic.main.fragment_create_character_s1.*
-import kotlinx.android.synthetic.main.fragment_create_character_s2.view.*
-import kotlinx.android.synthetic.main.fragment_create_character_s3.*
-import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
 // @TODO Fix Animation on Link Places
 
 class CreateCharacterActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityCreateCharacterBinding
     var currentCharacter: MyCharacter? = null
     lateinit var uriPointer: Uri
     private lateinit var bottomSheetFragment: AddChipBottomDialogFragment
     var isDialogLoaded = false
-    var r : Runnable = Runnable {}
-    var h : Handler = Handler(Looper.getMainLooper())
+    var r: Runnable = Runnable {}
+    var h: Handler = Handler(Looper.getMainLooper())
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_character)
+
+        binding = ActivityCreateCharacterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         SetStatusBar.create(this.window, this)
 
@@ -68,13 +66,15 @@ class CreateCharacterActivity : AppCompatActivity() {
             ArrayList(), ArrayList(), "", "")
 
         // Set-Up Toolbar
-        val tv = incToolbarCC.findViewById<TextView>(tvTitle.id)
+        val toolbar = findViewById<ConstraintLayout>(R.id.incToolbarCC)
+
+        val tv = toolbar.findViewById<TextView>(R.id.tvTitle)
         tv.text = getString(R.string.create_character_title)
-        val btnMenu = incToolbarCC.findViewById<ImageButton>(btnMenu.id)
+        val btnMenu = toolbar.findViewById<ImageButton>(R.id.btnMenu)
         btnMenu.visibility = View.GONE
-        val btnSettings = incToolbarCC.findViewById<ImageButton>(btnSettings.id)
+        val btnSettings = toolbar.findViewById<ImageButton>(R.id.btnSettings)
         btnSettings.visibility = View.GONE
-        val btnBack = incToolbarCC.findViewById<ImageButton>(btnBack.id)
+        val btnBack = toolbar.findViewById<ImageButton>(R.id.btnBack)
         btnBack.visibility = View.VISIBLE
 
         btnBack.setOnTouchListener(View.OnTouchListener { view, event ->
@@ -95,24 +95,24 @@ class CreateCharacterActivity : AppCompatActivity() {
 
         val v : View = findViewById(R.id.flCCMain)
         v.viewTreeObserver.addOnGlobalLayoutListener {
-            if (flCCMain.tag != "S4") {
+            if (binding.flCCMain.tag != "S4") {
                 if ((v.rootView.height - v.height) > TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP, 200F, baseContext.resources.displayMetrics
                     )
                 ) {
-                    fabNext.visibility = View.INVISIBLE
+                    binding.fabNext.visibility = View.INVISIBLE
                 } else {
-                    fabNext.visibility = View.VISIBLE
+                    binding.fabNext.visibility = View.VISIBLE
                 }
             }
         }
 
         // Set up Gradient Button
-        SetGradient.assign(fabNext, this)
+        SetGradient.assign(binding.fabNext, this)
 
         val displayMetrics: DisplayMetrics = this.resources.displayMetrics
         val dpWidth = displayMetrics.widthPixels / displayMetrics.density.toInt()
-        SetGradient.assign(fabCreateCC, this, dpWidth)
+        SetGradient.assign(binding.fabCreateCC, this, dpWidth)
 
         // Set up Fragment
         val createCharacterFragment = CreateCharacterFragmentS1()
@@ -134,24 +134,24 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     private fun backTasks() {
         if (!isDialogLoaded) {
-            when (flCCMain.tag) {
+            when (binding.flCCMain.tag) {
                 "S2" -> {
-                    flCCMain.tag = "S1"
+                    binding.flCCMain.tag = "S1"
                     updateCharacter(1)
                 }
 
                 "S3" -> {
-                    flCCMain.tag = "S2"
+                    binding.flCCMain.tag = "S2"
                     updateCharacter(2)
                 }
 
                 "S4" -> {
-                    flCCMain.tag = "S3"
+                    binding.flCCMain.tag = "S3"
                     updateCharacter(3)
 
-                    fabCreateCC.hide()
+                    binding.fabCreateCC.hide()
 
-                    fabNext.show()
+                    binding.fabNext.show()
                 }
             }
         }
@@ -283,24 +283,24 @@ class CreateCharacterActivity : AppCompatActivity() {
 
             // @TODO Replace with Actual Places
 
-            btnLinkPlace.id -> {
+            R.id.btnLinkPlace -> {
                 val items = arrayOf("Item One", "Item Two", "Item Three", "Item Four", "Item Five")
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Test Title")
                     .setItems(items) { dialog, which ->
-                        tietPlaceOfBirth.text = SpannableStringBuilder(items[which])
-                        tietPlaceOfBirth.setSelection(items[which].length)
+                        findViewById<TextInputEditText>(R.id.tietPlaceOfBirth).text = SpannableStringBuilder(items[which])
+                        findViewById<TextInputEditText>(R.id.tietPlaceOfBirth).setSelection(items[which].length)
                         dialog.dismiss()
                     }.show()
             }
 
-            btnLinkCurrentLoc.id -> {
+            R.id.btnLinkCurrentLoc -> {
                 val items = arrayOf("Item One", "Item Two", "Item Three", "Item Four", "Item Five")
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Test Title")
                     .setItems(items) { dialog, which ->
-                        tietCurrentLocation.text = SpannableStringBuilder(items[which])
-                        tietCurrentLocation.setSelection(items[which].length)
+                        findViewById<TextInputEditText>(R.id.tietCurrentLocation).text = SpannableStringBuilder(items[which])
+                        findViewById<TextInputEditText>(R.id.tietCurrentLocation).setSelection(items[which].length)
                         dialog.dismiss()
                     }.show()
             }
@@ -410,10 +410,10 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     fun stepForward(view : View) {
-        if (flCCMain.tag == "S1") {
+        if (binding.flCCMain.tag == "S1") {
             // Update Frag if Condition passed
             if (checkFields(0)) {
-                flCCMain.tag = "S2"
+                binding.flCCMain.tag = "S2"
                 val createCharacterFragment = CreateCharacterFragmentS2()
                 val transaction = supportFragmentManager.beginTransaction()
 
@@ -423,10 +423,10 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.addToBackStack(null)
                 transaction.commit()
             }
-        } else if (flCCMain.tag == "S2") {
+        } else if (binding.flCCMain.tag == "S2") {
             // Update Frag if Condition passes
             if (checkFields(1)) {
-                flCCMain.tag = "S3"
+                binding.flCCMain.tag = "S3"
                 val createCharacterFragment = CreateCharacterFragmentS3()
                 val transaction = supportFragmentManager.beginTransaction()
 
@@ -436,9 +436,9 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.addToBackStack(null)
                 transaction.commit()
             }
-        } else if (flCCMain.tag == "S3") {
+        } else if (binding.flCCMain.tag == "S3") {
             if (checkFields(2)) {
-                flCCMain.tag = "S4"
+                binding.flCCMain.tag = "S4"
 
                 val createCharacterFragment = CreateCharacterFragmentS4()
                 val transaction = supportFragmentManager.beginTransaction()
@@ -449,8 +449,8 @@ class CreateCharacterActivity : AppCompatActivity() {
                 transaction.addToBackStack(null)
                 transaction.commit()
 
-                fabNext.hide()
-                fabCreateCC.show()
+                binding.fabNext.hide()
+                binding.fabCreateCC.show()
             }
         }
     }
@@ -1263,7 +1263,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             chip.setTextAppearance(R.style.NegativeChipText)
         }
 
-        chip.text = bottomSheetFragment.tietNewChip.text.toString()
+        chip.text = bottomSheetFragment.view?.findViewById<TextInputEditText>(R.id.tietNewChip)?.text.toString()
 
         var parent : ChipGroup = this.findViewById(R.id.cgPositiveTraits)
         when (bottomSheetFragment.titleOfFrag) {

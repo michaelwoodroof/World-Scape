@@ -8,25 +8,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
-import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import app.allulith.worldscape.R
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import app.allulith.worldscape.createcharacter.CreateCharacterActivity
-import kotlinx.android.synthetic.main.fragment_create_character_s1.*
+import app.allulith.worldscape.databinding.FragmentCreateCharacterS1Binding
 
 class CreateCharacterFragmentS1 : Fragment() {
 
-    companion object {
-        // Intent Codes
-        private const val MEDIA_PICK_CODE = 100
-    }
+    private lateinit var binding: FragmentCreateCharacterS1Binding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_create_character_s1, container, false)
+
+        binding = FragmentCreateCharacterS1Binding.inflate(inflater, container, false)
 
         if (Build.VERSION.SDK_INT >= 23) {
             val sl = View.OnScrollChangeListener { _, _, sy, _, osy ->
@@ -37,22 +33,19 @@ class CreateCharacterFragmentS1 : Fragment() {
                 }
             }
 
-            val sv = root.findViewById<ScrollView>(R.id.svCreateCharacter)
-            sv.setOnScrollChangeListener(sl)
+            binding.svCreateCharacter.setOnScrollChangeListener(sl)
         }
 
-        val btnPickImage = root.findViewById<AppCompatButton>(R.id.btnPickImageCC)
-        val btnPickImageShrunk = root.findViewById<AppCompatButton>(R.id.btnPickImageCCShrunk)
 
-        btnPickImage.setOnClickListener {
+        binding.btnPickImageCC.setOnClickListener {
             pickImage()
         }
 
-        btnPickImageShrunk.setOnClickListener {
+        binding.btnPickImageCCShrunk.setOnClickListener {
             pickImage()
         }
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,12 +56,13 @@ class CreateCharacterFragmentS1 : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.avd_link_to_warning, null))
-        btnLinkCurrentLoc.tag = "ne"
-        btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.avd_link_to_warning, null))
-        btnLinkPlace.tag = "ne"
-        val drawableOne = btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
-        val drawableTwo = btnLinkPlace.drawable as AnimatedVectorDrawable
+        binding.btnLinkCurrentLoc.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.avd_link_to_warning, null))
+        binding.btnLinkCurrentLoc.tag = "ne"
+        binding.btnLinkPlace.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.avd_link_to_warning, null))
+        binding.btnLinkPlace.tag = "ne"
+
+        val drawableOne = binding.btnLinkCurrentLoc.drawable as AnimatedVectorDrawable
+        val drawableTwo = binding.btnLinkPlace.drawable as AnimatedVectorDrawable
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             drawableOne.reset()
             drawableTwo.reset()
@@ -103,15 +97,20 @@ class CreateCharacterFragmentS1 : Fragment() {
             if (requestCode == MEDIA_PICK_CODE) {
                 val selectedImage = data?.data
                 if (selectedImage != null) {
-                    imgPreviewCC.setImageURI(selectedImage)
+                    binding.imgPreviewCC.setImageURI(selectedImage)
                     (activity as CreateCharacterActivity).uriPointer = selectedImage
-                    imgPreviewCC.tag = "hasImage"
-                    cvPreviewCC.visibility = View.VISIBLE
-                    btnPickImageCC.visibility = View.GONE
-                    btnPickImageCCShrunk.visibility = View.VISIBLE
+                    binding.imgPreviewCC.tag = "hasImage"
+                    binding.cvPreviewCC.visibility = View.VISIBLE
+                    binding.btnPickImageCC.visibility = View.GONE
+                    binding.btnPickImageCCShrunk.visibility = View.VISIBLE
                 }
             }
         }
+    }
+
+    companion object {
+        // Intent Codes
+        private const val MEDIA_PICK_CODE = 100
     }
 
 }

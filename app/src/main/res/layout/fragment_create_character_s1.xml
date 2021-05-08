@@ -38,11 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:ellipsize="end"
             android:text="@string/general_title"
-            android:textAlignment="viewStart"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
+            android:textAppearance="@style/Title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvCharacterTitle"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +51,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/character_title"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvGeneralTitle" />
 
@@ -90,7 +86,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:text="@string/biography_cc"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilCharacterName" />
 
@@ -126,7 +121,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:text="@string/birth_title"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilBiography" />
 
@@ -162,8 +156,7 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="1dp"
             android:text="@string/optional"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp"
+            android:textAppearance="@style/Optional"
             app:layout_constraintBottom_toBottomOf="@+id/tilBirthYear"
             app:layout_constraintEnd_toEndOf="@+id/tilBirthYear" />
 
@@ -172,7 +165,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/birth_date"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="@+id/gl50"
             app:layout_constraintTop_toTopOf="@+id/tvBirthYear" />
 
@@ -208,8 +200,7 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="1dp"
             android:text="@string/optional"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp"
+            android:textAppearance="@style/Optional"
             app:layout_constraintBottom_toBottomOf="@+id/tilBirthDate"
             app:layout_constraintEnd_toEndOf="@+id/tilBirthDate" />
 
@@ -220,7 +211,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:text="@string/current_loc"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilBirthYear" />
 
@@ -272,8 +262,7 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="1dp"
             android:text="@string/optional"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp"
+            android:textAppearance="@style/Optional"
             app:layout_constraintBottom_toBottomOf="@+id/tilCurrentLocation"
             app:layout_constraintEnd_toEndOf="@+id/tilCurrentLocation" />
 
@@ -283,7 +272,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/birth_loc"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="@+id/gl50"
             app:layout_constraintTop_toTopOf="@+id/tvCurrentLocation" />
 
@@ -337,8 +325,7 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="1dp"
             android:text="@string/optional"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp"
+            android:textAppearance="@style/Optional"
             app:layout_constraintBottom_toBottomOf="@+id/tilPlaceOfBirth"
             app:layout_constraintEnd_toEndOf="@+id/btnLinkPlace" />
 
@@ -348,7 +335,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/occupation"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="@+id/tvCurrentLocation"
             app:layout_constraintTop_toBottomOf="@+id/tilCurrentLocation" />
 
@@ -385,8 +371,7 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="1dp"
             android:text="@string/optional"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp"
+            android:textAppearance="@style/Optional"
             app:layout_constraintBottom_toBottomOf="@+id/tilOccupation"
             app:layout_constraintEnd_toEndOf="@+id/tilOccupation" />
 
@@ -396,7 +381,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/choose_an_image"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="@+id/tilCurrentLocation"
             app:layout_constraintTop_toBottomOf="@+id/tilOccupation" />
 
@@ -437,23 +421,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnPickImageCC"
+            style="@style/GradientButton"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/button_gradient"
+            android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_image_24"
-            android:drawablePadding="14dp"
-            android:elevation="6dp"
-            android:fontFamily="sans-serif-condensed"
-            android:letterSpacing="0.07"
-            android:minHeight="0dp"
             android:onClick="pickImage"
-            android:paddingStart="18dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="26dp"
-            android:paddingBottom="0dp"
             android:text="@string/choose_an_image"
-            android:textColor="@color/toolbar"
-            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/cvPreviewCC"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -463,22 +436,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnPickImageCCShrunk"
+            style="@style/GradientButton.Small"
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:background="@drawable/button_gradient"
+            android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_image_24"
-            android:drawablePadding="0dp"
-            android:elevation="6dp"
-            android:fontFamily="sans-serif-condensed"
-            android:letterSpacing="0.07"
-            android:minWidth="0dp"
             android:onClick="pickImage"
-            android:padding="0dp"
-            android:paddingStart="16dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="16dp"
-            android:textColor="@color/toolbar"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/cvPreviewCC"
             app:layout_constraintEnd_toEndOf="parent"

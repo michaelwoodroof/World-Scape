@@ -7,41 +7,40 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.allulith.worldscape.R
+import app.allulith.worldscape.databinding.WdCharacterLayoutBinding
 import com.google.android.material.card.MaterialCardView
 import app.allulith.worldscape.utils.ManageFiles
 import app.allulith.worldscape.structure.MyCharacter
-import kotlinx.android.synthetic.main.wd_character_layout.view.*
 
 class WDCharacterAdapter (private val givenValues: List<MyCharacter>)
 : RecyclerView.Adapter<WDCharacterAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.wd_character_layout, parent, false)
-        return ViewHolder(view)
+        val binding = WdCharacterLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = givenValues[position]
-        holder.mTitle.text = item.name
-        holder.mCard.tag = item
-
-        if (item.hasImg) {
-            val mf = ManageFiles(holder.mImg.context)
-            holder.mImg.setImageBitmap(mf.getCharacterImage(item.wuid, item.uid))
-        }
+        holder.bind(item)
     }
 
     override fun getItemCount(): Int = givenValues.size
 
-    class ViewHolder(mView : View) : RecyclerView.ViewHolder(mView) {
-        val mTitle : TextView = mView.tvCharacterName
-        val mCard : MaterialCardView = mView.cvWDCharacter
-        val mImg : ImageView = mView.imgCharacterView
+    class ViewHolder(private val binding: WdCharacterLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        override fun toString(): String {
-            return super.toString() + " '"
+        fun bind(data: MyCharacter) {
+
+            binding.tvCharacterName.text = data.name
+            binding.cvWDCharacter.tag = data
+
+            if (data.hasImg) {
+                val mf = ManageFiles(itemView.context)
+                binding.imgCharacterView.setImageBitmap(mf.getCharacterImage(data.wuid, data.uid))
+            }
+
         }
+
     }
 
 

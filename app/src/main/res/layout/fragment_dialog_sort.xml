@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:clickable="true"
+    android:focusable="true"
     android:paddingBottom="16dp">
 
     <include
@@ -16,106 +18,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvOptionOne"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:paddingStart="4dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="10dp"
-        android:text="Option One"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
-
-    <TextView
-        android:id="@+id/tvOptionTwo"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:paddingStart="4dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="10dp"
-        android:text="Option Two"
-        app:layout_constraintEnd_toEndOf="@+id/tvOptionOne"
-        app:layout_constraintStart_toStartOf="@+id/tvOptionOne"
-        app:layout_constraintTop_toBottomOf="@+id/tvOptionOne" />
-
-    <TextView
-        android:id="@+id/tvOptionThree"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:paddingStart="4dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="10dp"
-        android:text="Option Three"
-        app:layout_constraintEnd_toEndOf="@+id/tvOptionTwo"
-        app:layout_constraintStart_toStartOf="@+id/tvOptionTwo"
-        app:layout_constraintTop_toBottomOf="@+id/tvOptionTwo" />
-
-    <TextView
-        android:id="@+id/tvOptionFour"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:paddingStart="4dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="10dp"
-        android:text="Option Four"
-        app:layout_constraintEnd_toEndOf="@+id/tvOptionThree"
-        app:layout_constraintStart_toStartOf="@+id/tvOptionThree"
-        app:layout_constraintTop_toBottomOf="@+id/tvOptionThree" />
-
-    <TextView
-        android:id="@+id/tvOptionFive"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:paddingStart="4dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="10dp"
-        android:text="Option Five"
-        app:layout_constraintEnd_toEndOf="@+id/tvOptionFour"
-        app:layout_constraintStart_toStartOf="@+id/tvOptionFour"
-        app:layout_constraintTop_toBottomOf="@+id/tvOptionFour" />
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incToolbarSort">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chpAsc"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Ascending"
-            app:chipIcon="@drawable/ic_baseline_arrow_drop_up_24"
-            app:chipIconEnabled="true" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chpDsc"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="Descending"
-            app:chipIcon="@drawable/ic_baseline_arrow_drop_down_24"
-            app:chipIconEnabled="true" />
-
-    </com.google.android.material.chip.ChipGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

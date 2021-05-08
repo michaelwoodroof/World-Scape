@@ -10,45 +10,46 @@ import androidx.recyclerview.widget.RecyclerView
 import app.allulith.worldscape.R
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import app.allulith.worldscape.adapters.CharacterAdapter
+import app.allulith.worldscape.databinding.FragmentCharacterBinding
 import app.allulith.worldscape.detail.WorldDetailActivity
 import app.allulith.worldscape.utils.ManageFiles
 import app.allulith.worldscape.utils.SetGradient
 import app.allulith.worldscape.structure.MyCharacter
-import kotlinx.android.synthetic.main.fragment_character.*
 
 class CharacterFragment : Fragment() {
 
+    private lateinit var binding: FragmentCharacterBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_character, container, false)
-        val rvCharacter = root.findViewById(R.id.rvCharacters) as RecyclerView
-        val fab = root.findViewById(R.id.fabCreateCharacter) as ExtendedFloatingActionButton
-        rvCharacter.layoutManager = LinearLayoutManager(activity)
+                              savedInstanceState: Bundle?): View {
+        binding = FragmentCharacterBinding.inflate(inflater, container, false)
+
+        binding.rvCharacters.layoutManager = LinearLayoutManager(activity)
         val dataSet = loadCharacters()
-        rvCharacter.adapter = CharacterAdapter(dataSet)
+        binding.rvCharacters.adapter = CharacterAdapter(dataSet)
 
         val sl = object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (dy > 0) {
-                    fab.shrink()
+                    binding.fabCreateCharacter.shrink()
                 } else {
-                    fab.extend()
+                    binding.fabCreateCharacter.extend()
                 }
             }
         }
 
-        rvCharacter.addOnScrollListener(sl)
+        binding.rvCharacters.addOnScrollListener(sl)
 
-        SetGradient.assign(fab, root.context)
+        SetGradient.assign(binding.fabCreateCharacter, requireContext())
 
-        return root
+        return binding.root
     }
 
     override fun onStart() {
         super.onStart()
         val dataSet = loadCharacters()
-        rvCharacters.adapter = CharacterAdapter(dataSet)
+        binding.rvCharacters.adapter = CharacterAdapter(dataSet)
     }
 
     private fun loadCharacters() : ArrayList<MyCharacter> {

@@ -11,93 +11,87 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import app.allulith.worldscape.R
+import app.allulith.worldscape.databinding.WorldLayoutBinding
 import app.allulith.worldscape.utils.ManageFiles
 import app.allulith.worldscape.structure.World
-import kotlinx.android.synthetic.main.world_layout.view.*
 
 class WorldAdapter(private val givenValues: List<World>)
     : RecyclerView.Adapter<WorldAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.world_layout, parent, false)
-        return ViewHolder(view)
+        val binding = WorldLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = givenValues[position]
-        holder.mTitle.text = item.title
-        holder.mDesc.text = item.desc
-        holder.mCont.id = position
-        holder.mDel.tag = item.uid
-        holder.itemView.tag = item.uid + "," + item.title
-        holder.mCard.tag = item
-
-        if (item.hasImg) {
-            val mf = ManageFiles(holder.mImg.context)
-            holder.mImg.setImageBitmap(mf.getWorldImage(item.uid))
-        }
-
-        when (item.genre) {
-
-            "Fantasy" -> {
-                holder.mGenre.setImageDrawable(
-                    ResourcesCompat.getDrawable(
-                        holder.itemView.resources,
-                        R.drawable.ic_genre_fantasy,
-                        null
-                    )
-                )
-            }
-
-            "Horror" -> {
-                holder.mGenre.setImageDrawable(
-                    ResourcesCompat.getDrawable(
-                        holder.itemView.resources,
-                        R.drawable.ic_genre_horror,
-                        null
-                    )
-                )
-            }
-
-            "Sci-Fi" -> {
-                holder.mGenre.setImageDrawable(
-                    ResourcesCompat.getDrawable(
-                        holder.itemView.resources,
-                        R.drawable.ic_genre_scifi,
-                        null
-                    )
-                )
-            }
-
-            else -> {
-                holder.mGenre.setImageDrawable(
-                    ResourcesCompat.getDrawable(
-                        holder.itemView.resources,
-                        R.drawable.ic_genre_other,
-                        null
-                    )
-                )
-            }
-
-        }
-
+        holder.bind(item)
     }
 
     override fun getItemCount(): Int = givenValues.size
 
-    class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
-        val mTitle : TextView = mView.tvTitle
-        val mDesc : TextView = mView.tvDesc
-        val mCard : CardView = mView.cvMain
-        val mCont : ConstraintLayout = mView.clCard
-        val mImg : ImageView = mView.imgPreview
-        val mDel : ImageButton = mView.btnDelete
-        val mGenre : ImageView = mView.imgGenre
+    class ViewHolder(private val binding: WorldLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        override fun toString(): String {
-            return super.toString() + " '"
+        fun bind(data: World) {
+
+            binding.tvTitle.text = data.title
+            binding.tvDesc.text = data.desc
+            binding.clCard.tag = data.uid
+            binding.btnDelete.tag = data.uid
+            itemView.tag = data.uid + "," + data.title
+            binding.cvMain.tag = data
+
+            if (data.hasImg) {
+                val mf = ManageFiles(itemView.context)
+                binding.imgPreview.setImageBitmap(mf.getWorldImage(data.uid))
+            }
+
+            when (data.genre) {
+
+                "Fantasy" -> {
+                    binding.imgGenre.setImageDrawable(
+                        ResourcesCompat.getDrawable(
+                            itemView.resources,
+                            R.drawable.ic_genre_fantasy,
+                            null
+                        )
+                    )
+                }
+
+                "Horror" -> {
+                    binding.imgGenre.setImageDrawable(
+                        ResourcesCompat.getDrawable(
+                            itemView.resources,
+                            R.drawable.ic_genre_horror,
+                            null
+                        )
+                    )
+                }
+
+                "Sci-Fi" -> {
+                    binding.imgGenre.setImageDrawable(
+                        ResourcesCompat.getDrawable(
+                            itemView.resources,
+                            R.drawable.ic_genre_scifi,
+                            null
+                        )
+                    )
+                }
+
+                else -> {
+                    binding.imgGenre.setImageDrawable(
+                        ResourcesCompat.getDrawable(
+                            itemView.resources,
+                            R.drawable.ic_genre_other,
+                            null
+                        )
+                    )
+                }
+
+            }
+
         }
+
     }
 
     companion object {

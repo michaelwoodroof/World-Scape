@@ -11,8 +11,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import app.allulith.worldscape.fragments.CharacterFragment
 import app.allulith.worldscape.R
 import app.allulith.worldscape.SettingsActivity
@@ -21,8 +23,6 @@ import app.allulith.worldscape.createcharacter.CreateCharacterActivity
 import app.allulith.worldscape.utils.SetStatusBar
 import app.allulith.worldscape.utils.assignTouch
 import app.allulith.worldscape.structure.MyCharacter
-import kotlinx.android.synthetic.main.activity_world_detail.*
-import kotlinx.android.synthetic.main.default_toolbar.*
 
 class WorldDetailActivity : AppCompatActivity() {
 
@@ -35,6 +35,8 @@ class WorldDetailActivity : AppCompatActivity() {
 
         val bundle : Bundle? = intent.extras
 
+        val toolbar = findViewById<ConstraintLayout>(R.id.incToolbarWD)
+
         if (bundle != null) {
             if (bundle.containsKey("uid")) {
 
@@ -44,7 +46,7 @@ class WorldDetailActivity : AppCompatActivity() {
 
             if (bundle.containsKey("title")) {
                 // @TODO
-                val tv = incToolbarWD.findViewById<TextView>(tvTitle.id)
+                val tv = toolbar.findViewById<TextView>(R.id.tvTitle)
                 tv.text = intent.getStringExtra("title")
 
                 val worldDetailFragment = WorldDetailFragment()
@@ -56,7 +58,7 @@ class WorldDetailActivity : AppCompatActivity() {
             }
         }
 
-        val btnSettings = incToolbarWD.findViewById<ImageButton>(btnSettings.id)
+        val btnSettings = toolbar.findViewById<ImageButton>(R.id.btnSettings)
         btnSettings.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener assignTouch(view as ImageButton, event,
                 ResourcesCompat.getDrawable(resources, R.drawable.avd_settings_expand, null) as AnimatedVectorDrawable,
@@ -71,7 +73,7 @@ class WorldDetailActivity : AppCompatActivity() {
     }
 
     fun loadMenu(view : View) {
-        dlMain.openDrawer(GravityCompat.START)
+        findViewById<DrawerLayout>(R.id.dlMain).openDrawer(GravityCompat.START)
     }
 
     fun loadCreateCharacter(view : View) {
@@ -120,7 +122,7 @@ class WorldDetailActivity : AppCompatActivity() {
         item.isCheckable = true
         item.isChecked = false
 
-        dlMain.closeDrawer(GravityCompat.START)
+        findViewById<DrawerLayout>(R.id.dlMain).closeDrawer(GravityCompat.START)
     }
 
     fun loadCharacter(view : View) {

@@ -7,29 +7,28 @@ import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import app.allulith.worldscape.adapters.WorldAdapter
+import app.allulith.worldscape.databinding.ActivityMainBinding
 import app.allulith.worldscape.detail.WorldDetailActivity
-import app.allulith.worldscape.shared.SortDialogFragment
+import app.allulith.worldscape.shared.fragments.SortDialogFragment
 import app.allulith.worldscape.utils.*
 import app.allulith.worldscape.structure.World
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.default_toolbar.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private var deletedWorld: World? = null
     private var deletedWorldImage: Bitmap? = null
     private var worldData: ArrayList<World> = ArrayList()
@@ -38,6 +37,9 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
@@ -56,16 +58,17 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        setContentView(R.layout.activity_main)
         SetStatusBar.create(this.window, this)
 
         // Set Up Toolbar
-        val tv = incToolbarM.findViewById<TextView>(tvTitle.id)
+        val toolbar = findViewById<ConstraintLayout>(R.id.incToolbarM)
+
+        val tv = toolbar.findViewById<TextView>(R.id.tvTitle)
         // Hide Menu as Not Needed
-        val btnMenu = incToolbarM.findViewById<ImageButton>(btnMenu.id)
+        val btnMenu = toolbar.findViewById<ImageButton>(R.id.btnMenu)
         btnMenu.visibility = View.GONE
 
-        val btnSettings = incToolbarM.findViewById<ImageButton>(btnSettings.id)
+        val btnSettings = toolbar.findViewById<ImageButton>(R.id.btnSettings)
         btnSettings.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener assignTouch(
                 view as ImageButton, event,
@@ -82,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             )
         })
 
-        val btnSort = incToolbarM.findViewById<ImageButton>(btnSort.id)
+        val btnSort = toolbar.findViewById<ImageButton>(R.id.btnSort)
         btnSort.visibility = View.VISIBLE
         btnSort.setOnTouchListener(View.OnTouchListener { view, event ->
             return@OnTouchListener assignTouch(
@@ -104,27 +107,27 @@ class MainActivity : AppCompatActivity() {
         val mf = ManageFiles(this)
         worldData = mf.getWorlds()
 
-        rvWorldsM.adapter = WorldAdapter(worldData)
+        binding.rvWorldsM.adapter = WorldAdapter(worldData)
 
         val sl = object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (dy > 0) {
-                    fabCreateWorldM.shrink()
+                    binding.fabCreateWorldM.shrink()
                 } else {
-                    fabCreateWorldM.extend()
+                    binding.fabCreateWorldM.extend()
                 }
             }
         }
 
-        rvWorldsM.layoutManager = LinearLayoutManager(this)
-        rvWorldsM.adapter = WorldAdapter(this.worldData)
-        rvWorldsM.addOnScrollListener(sl)
+        binding.rvWorldsM.layoutManager = LinearLayoutManager(this)
+        binding.rvWorldsM.adapter = WorldAdapter(this.worldData)
+        binding.rvWorldsM.addOnScrollListener(sl)
 
         tv.text = getString(R.string.app_name)
-        SetGradient.assign(btnPrompt as Button, this)
+        SetGradient.assign(binding.btnPrompt, this)
 
-        SetGradient.assign(fabCreateWorldM as ExtendedFloatingActionButton, this)
+        SetGradient.assign(binding.fabCreateWorldM, this)
 
         showPrompt(worldData.size)
     }
@@ -169,12 +172,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         val adapter = WorldAdapter(data)
-        rvWorldsM.adapter = adapter
+        binding.rvWorldsM.adapter = adapter
         adapter.notifyDataSetChanged()
 
         // Detect overflows
         if (worldData.size == 0) {
-            rvWorldsM.overScrollMode = View.OVER_SCROLL_NEVER
+            binding.rvWorldsM.overScrollMode = View.OVER_SCROLL_NEVER
         } else {
             val displayMetrics = DisplayMetrics()
             windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -183,9 +186,9 @@ class MainActivity : AppCompatActivity() {
             val worldItemsHeight = (WorldAdapter.cardHeight.toPixels() * data.size)
 
             if (calculatedHeight - worldItemsHeight > 0) {
-                rvWorldsM.overScrollMode = View.OVER_SCROLL_NEVER
+                binding.rvWorldsM.overScrollMode = View.OVER_SCROLL_NEVER
             } else {
-                rvWorldsM.overScrollMode = View.OVER_SCROLL_ALWAYS
+                binding.rvWorldsM.overScrollMode = View.OVER_SCROLL_ALWAYS
             }
         }
 
@@ -218,13 +221,14 @@ class MainActivity : AppCompatActivity() {
                     null
                 }
 
+                @Suppress("UNCHECKED_CAST")
                 val modifiedDataSet = worldData.clone() as ArrayList<World>
                 modifiedDataSet.remove(deletedWorld)
 
                 updateDataSet(modifiedDataSet)
 
                 snackBar = Snackbar.make(
-                    coMain,
+                    binding.coMain,
                     R.string.snack_bar_delete_world_message,
                     Snackbar.LENGTH_LONG
                 )
@@ -270,20 +274,20 @@ class MainActivity : AppCompatActivity() {
     private fun showPrompt(size: Int) {
         when {
             size > 0 -> {
-                imgWorldPrompt.visibility = View.GONE
-                btnPrompt.visibility = View.GONE
-                fabCreateWorldM.visibility = View.VISIBLE
+                binding.imgWorldPrompt.visibility = View.GONE
+                binding.btnPrompt.visibility = View.GONE
+                binding.fabCreateWorldM.visibility = View.VISIBLE
             }
             size == 1 -> {
                 // Animate it leaving the screen @TODO
-                imgWorldPrompt.visibility = View.GONE
-                btnPrompt.visibility = View.GONE
-                fabCreateWorldM.visibility = View.VISIBLE
+                binding.imgWorldPrompt.visibility = View.GONE
+                binding.btnPrompt.visibility = View.GONE
+                binding.fabCreateWorldM.visibility = View.VISIBLE
             }
             else -> {
-                imgWorldPrompt.visibility = View.VISIBLE
-                btnPrompt.visibility = View.VISIBLE
-                fabCreateWorldM.visibility = View.GONE
+                binding.imgWorldPrompt.visibility = View.VISIBLE
+                binding.btnPrompt.visibility = View.VISIBLE
+                binding.fabCreateWorldM.visibility = View.GONE
             }
         }
     }

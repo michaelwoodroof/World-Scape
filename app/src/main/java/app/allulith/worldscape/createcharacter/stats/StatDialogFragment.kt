@@ -21,7 +21,6 @@ import app.allulith.worldscape.utils.assignTouch
 import app.allulith.worldscape.structure.StatItem
 import app.allulith.worldscape.createcharacter.stats.fragments.FireEmblemFragment
 import app.allulith.worldscape.utils.afterTextChanged
-import kotlinx.android.synthetic.main.fragment_stat_sheet.*
 
 class StatDialogFragment: DialogFragment() {
 

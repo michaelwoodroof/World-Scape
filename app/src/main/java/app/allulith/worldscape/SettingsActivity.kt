@@ -9,19 +9,24 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import app.allulith.worldscape.databinding.ActivitySettingsBinding
 import app.allulith.worldscape.utils.SetStatusBar
 import app.allulith.worldscape.utils.assignTouch
-import kotlinx.android.synthetic.main.activity_settings.*
-import kotlinx.android.synthetic.main.default_toolbar.*
 
 class SettingsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySettingsBinding
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         when (sharedPreferences.getString("theme", "")) {
@@ -50,13 +55,15 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Set-Up Toolbar
-        val tv = incToolbarS.findViewById<TextView>(tvTitle.id)
+        val toolbar = findViewById<ConstraintLayout>(R.id.incToolbarS)
+
+        val tv = toolbar.findViewById<TextView>(R.id.tvTitle)
         tv.text = getString(R.string.settings)
-        val btnMenu = incToolbarS.findViewById<ImageButton>(btnMenu.id)
+        val btnMenu = toolbar.findViewById<ImageButton>(R.id.btnMenu)
         btnMenu.visibility = View.GONE
-        val btnSettings = incToolbarS.findViewById<ImageButton>(btnSettings.id)
+        val btnSettings = toolbar.findViewById<ImageButton>(R.id.btnSettings)
         btnSettings.visibility = View.GONE
-        val btnBack = incToolbarS.findViewById<ImageButton>(btnBack.id)
+        val btnBack = toolbar.findViewById<ImageButton>(R.id.btnBack)
         btnBack.visibility = View.VISIBLE
 
         btnBack.setOnTouchListener(View.OnTouchListener { view, event ->

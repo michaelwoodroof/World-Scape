@@ -5,6 +5,7 @@
     <color name="colorAccent">#B0E8B0</color>
 
     <color name="baseTextColor">#E1E1E1</color>
+    <color name="titleTextColor">#DCDCDC</color>
     <color name="navigation">#222222</color>
 
     <color name="gradient_start">#6BBEE1</color>
